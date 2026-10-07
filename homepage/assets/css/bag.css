@@ -1,0 +1,62 @@
+/* Stylish Naari — bag drawer and header count. Shared by every page. */
+
+.bag-icon { position: relative; }
+.bag-icon__count {
+  position: absolute; top: 6px; right: 4px;
+  min-width: 16px; height: 16px; padding: 0 4px;
+  border-radius: var(--radius-full);
+  background: currentColor;
+  font-size: 10px; line-height: 16px; text-align: center; font-weight: var(--font-weight-medium);
+}
+/* the number sits in the opposite colour of the header text */
+.bag-icon__count { color: var(--color-ivory); background: var(--color-ink); }
+.site-header:not(.is-solid):not(.is-menu-open) .bag-icon__count { color: var(--color-ink); background: var(--color-ivory); }
+
+.bag-overlay {
+  position: fixed; inset: 0; z-index: 70;
+  background: rgba(31, 26, 22, 0.3);
+  opacity: 0; transition: opacity var(--duration-base) var(--ease-out);
+}
+.bag-overlay.is-open { opacity: 1; }
+
+.bag-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 71;
+  width: min(440px, 100vw);
+  display: flex; flex-direction: column;
+  background: var(--color-bg);
+  box-shadow: -1px 0 0 var(--color-border);
+  transform: translateX(100%);
+  transition: transform var(--duration-base) var(--ease-in-out);
+}
+.bag-drawer.is-open { transform: none; }
+.bag-drawer__head {
+  display: flex; justify-content: space-between; align-items: center;
+  height: var(--header-height); padding: 0 var(--spacing-3) 0 var(--spacing-6);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+.bag-drawer__body { flex: 1; overflow-y: auto; padding: var(--spacing-6); }
+.bag-drawer__empty { margin-bottom: var(--spacing-2); color: var(--color-text-muted); }
+.bag-drawer__foot { padding: var(--spacing-5) var(--spacing-6) var(--spacing-6); box-shadow: 0 -1px 0 var(--color-border); }
+.bag-drawer__total {
+  display: flex; justify-content: space-between; margin-bottom: var(--spacing-4);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-variant-numeric: tabular-nums;
+}
+.bag-drawer__note { margin-top: var(--spacing-3); font-size: var(--font-size-caption); color: var(--color-text-muted); }
+
+.bag-lines { display: grid; row-gap: var(--spacing-6); }
+.bag-line { display: grid; grid-template-columns: 72px 1fr auto; column-gap: var(--spacing-4); align-items: start; }
+.bag-line__media { display: block; aspect-ratio: 3 / 4; overflow: hidden; background: var(--color-surface); }
+.bag-line__media img { width: 100%; height: 100%; object-fit: cover; }
+.bag-line__name { font-family: var(--font-display); font-weight: var(--font-weight-medium); }
+.bag-line__descriptor { margin-top: 2px; font-size: var(--font-size-caption); color: var(--color-text-muted); }
+.bag-line__qty { display: inline-flex; align-items: center; gap: var(--spacing-2); margin-top: var(--spacing-3); box-shadow: inset 0 0 0 1px var(--color-border); border-radius: var(--radius-sm); }
+.bag-line__qty span { min-width: 1.5em; text-align: center; font-variant-numeric: tabular-nums; font-size: 14px; }
+.bag-line__step { width: 36px; height: 36px; font-size: 16px; }
+.bag-line__end { text-align: right; }
+.bag-line__price { font-variant-numeric: tabular-nums; }
+.bag-line__remove {
+  margin-top: var(--spacing-3); min-height: 32px;
+  font-size: var(--font-size-caption); color: var(--color-text-muted);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.bag-line__remove:hover { color: var(--color-text); }

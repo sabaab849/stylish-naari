@@ -1,0 +1,60 @@
+<!-- Shared footer. Included by serve.mjs via the include:footer marker. Becomes the Shopify footer section. -->
+  <!-- ─── 07 Footer ─────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="newsletter">
+        <h2 class="t-h3">Letters from the loom</h2>
+        <p class="newsletter__copy">New sarees, new edits, occasionally a story. Never too often.</p>
+        <form class="newsletter__form" novalidate data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">Email address</label>
+          <div class="newsletter__field">
+            <input id="newsletter-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Email address" aria-describedby="newsletter-msg">
+            <button type="submit" class="link"><span class="link__label">Subscribe</span><span class="link__arrow" aria-hidden="true">→</span></button>
+          </div>
+          <p class="newsletter__msg" id="newsletter-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <details class="footer-group" data-footer-group>
+        <summary class="eyebrow">Shop</summary>
+        <ul>
+          <li><a href="/#new-arrivals">New arrivals</a></li>
+          <li><a href="#">All sarees</a></li>
+          <li><a href="/#edits">Shop by edit</a></li>
+          <li><a href="/#festive">Festive edit</a></li>
+        </ul>
+      </details>
+      <details class="footer-group" data-footer-group>
+        <summary class="eyebrow">About</summary>
+        <ul>
+          <li><a href="#">Our story</a></li>
+          <li><a href="/#craft">The Art of Banarasi</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </details>
+      <details class="footer-group" data-footer-group>
+        <summary class="eyebrow">Help</summary>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Care guide</a></li>
+        </ul>
+      </details>
+      <div class="footer-group footer-group--follow">
+        <p class="eyebrow">Follow</p>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container site-footer__bar">
+      <span class="wordmark wordmark--small">Stylish Naari</span>
+      <ul>
+        <li>© 2026 Stylish Naari</li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+      </ul>
+    </div>
+  </footer>

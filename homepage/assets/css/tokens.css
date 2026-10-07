@@ -1,0 +1,135 @@
+/* Stylish Naari — design tokens
+   Source of truth: brand-guidelines.md §18. Change values there first. */
+
+:root {
+  /* ─── Colour: foundation ─────────────────────────── */
+  --color-bg:               #F6F1EA; /* Ivory — page */
+  --color-surface:          #EDE5DA; /* Stone — secondary background */
+  --color-surface-2:        #E2D7C8; /* Sand — hover on surface, skeletons */
+  --color-text:             #1F1A16; /* Ink */
+  --color-text-secondary:   #4A413A; /* Umber */
+  --color-text-muted:       #6E645B; /* Taupe Grey — AA on Ivory */
+  --color-border:           #DDD3C6; /* Linen hairline */
+  --color-border-strong:    #B9AB9A; /* Clay Line — never text */
+  --color-ivory:            #F6F1EA; /* text on image / dark */
+  --color-ink:              #1F1A16; /* dark section background */
+  --color-ink-muted:        #A89C90; /* muted text on ink */
+  --color-ink-border:       #3A332D; /* hairline on ink */
+
+  /* ─── Colour: interactive ────────────────────────── */
+  --color-accent:           #1F1A16; /* the accent is ink */
+  --color-accent-hover:     #3D342D;
+  --color-accent-contrast:  #F6F1EA;
+  --color-focus:            #1F1A16;
+
+  /* ─── Colour: functional ─────────────────────────── */
+  --color-error:            #A3302A;
+  --color-success:          #3F5B3A;
+
+  /* ─── Colour: studio neutrals (campaign use only) ── */
+  --color-studio-clay:      #C99E7A;
+  --color-studio-plaster:   #E4CBA8;
+  --color-studio-umber:     #6A4A36;
+
+  /* ─── Colour: content / story (Colour Story only) ── */
+  --story-rani:             #A3175F;
+  --story-marigold:         #D9531E;
+  --story-chartreuse:       #B3A21A;
+  --story-rose:             #C9607E;
+  --story-wine:             #4A0E1C;
+  --story-indigo:           #1E2150;
+  --story-sindoor:          #8E1B2C;
+
+  /* ─── Typography: families ───────────────────────── */
+  --font-display:  "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-body:     "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-accent:   "Instrument Serif", Georgia, serif; /* italic only */
+
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+
+  /* ─── Typography: fluid sizes (mobile → desktop) ── */
+  --font-size-display:  clamp(3rem,      2rem + 5vw,       6.5rem);
+  --font-size-h1:       clamp(2.25rem,   1.5rem + 3vw,     4rem);
+  --font-size-h2:       clamp(1.75rem,   1.4rem + 1.2vw,   2.5rem);
+  --font-size-h3:       clamp(1.125rem,  1rem + 0.35vw,    1.375rem);
+  --font-size-body-lg:  clamp(1.0625rem, 1rem + 0.2vw,     1.1875rem);
+  --font-size-body:     clamp(0.9375rem, 0.9rem + 0.1vw,   1rem);
+  --font-size-caption:  clamp(0.75rem,   0.72rem + 0.1vw,  0.8125rem);
+  --font-size-nav:      0.875rem;
+  --font-size-product:  clamp(0.875rem,  0.85rem + 0.1vw,  0.9375rem);
+  --font-size-button:   0.875rem;
+  --font-size-eyebrow:  clamp(0.6875rem, 0.66rem + 0.1vw,  0.75rem);
+
+  --line-height-display: 0.95;
+  --line-height-h1:      1.0;
+  --line-height-h2:      1.08;
+  --line-height-h3:      1.25;
+  --line-height-body:    1.6;
+  --line-height-caption: 1.45;
+
+  --letter-spacing-display: -0.035em;
+  --letter-spacing-h1:      -0.03em;
+  --letter-spacing-h2:      -0.02em;
+  --letter-spacing-h3:      -0.01em;
+  --letter-spacing-eyebrow:  0.14em;
+  --letter-spacing-button:   0.01em;
+
+  /* ─── Spacing (4px base) ─────────────────────────── */
+  --spacing-1:   4px;
+  --spacing-2:   8px;
+  --spacing-3:  12px;
+  --spacing-4:  16px;
+  --spacing-5:  24px;
+  --spacing-6:  32px;
+  --spacing-7:  40px;
+  --spacing-8:  48px;
+  --spacing-9:  64px;
+  --spacing-10: 96px;
+  --spacing-11: 128px;
+  --spacing-12: 160px;
+
+  --section-spacing:    clamp(80px, 4rem + 6vw, 160px);
+  --section-header-gap: clamp(24px, 1rem + 2vw, 48px);
+
+  /* ─── Radius ─────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-sm:   2px;
+  --radius-full: 999px;
+
+  /* ─── Layout ─────────────────────────────────────── */
+  --container-width:   1440px;
+  --grid-columns:      12;
+  --page-margin:       48px;
+  --grid-gutter:       24px;
+  --header-height:     72px;
+  --announcement-height: 36px;
+
+  /* ─── Motion ─────────────────────────────────────── */
+  --duration-fast:    200ms;
+  --duration-base:    400ms;
+  --duration-slow:    800ms;
+  --duration-slower:  1200ms;
+  --ease-out:         cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:      cubic-bezier(0.65, 0, 0.35, 1);
+  --hover-zoom:       1.03;
+}
+
+@media (max-width: 1279px) {
+  :root { --page-margin: 40px; --grid-gutter: 20px; }
+}
+@media (max-width: 1023px) {
+  :root { --grid-columns: 8; --page-margin: 32px; --grid-gutter: 16px; }
+}
+@media (max-width: 767px) {
+  :root { --grid-columns: 4; --page-margin: 16px; --grid-gutter: 12px; --header-height: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+    --hover-zoom: 1;
+  }
+}

@@ -1,0 +1,121 @@
+<!-- Shared header: announcement bar, header, mega menu, mobile menu, bag drawer.
+     Included by serve.mjs via the include:header marker. Becomes the Shopify header section. -->
+  <!-- ─── Announcement bar ─────────────────────────────────── -->
+  <div class="announcement">
+    <p>Complimentary shipping across India</p>
+  </div>
+
+  <!-- ─── Header ───────────────────────────────────────────── -->
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <nav class="site-nav" aria-label="Primary">
+        <button class="icon-button site-header__menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        </button>
+        <ul class="site-nav__list">
+          <li>
+            <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="mega-shop" data-mega-trigger>Shop</button>
+          </li>
+          <li><a class="site-nav__link" href="/#edits">Edits</a></li>
+          <li class="hide-tablet"><a class="site-nav__link" href="/#craft">Craft</a></li>
+          <li><a class="site-nav__link" href="#">About</a></li>
+        </ul>
+      </nav>
+
+      <a class="wordmark site-header__logo" href="/" aria-label="Stylish Naari — home">Stylish Naari</a>
+
+      <ul class="site-utilities">
+        <li class="hide-mobile"><a class="site-nav__link" href="#">Search</a></li>
+        <li class="hide-tablet"><a class="site-nav__link" href="#">Account</a></li>
+        <li class="hide-mobile"><button class="site-nav__link" type="button" data-bag-open aria-controls="bag-drawer">Bag (<span data-bag-count>0</span>)</button></li>
+        <li class="show-mobile">
+          <a class="icon-button" href="#" aria-label="Search">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+          </a>
+        </li>
+        <li class="show-mobile">
+          <button class="icon-button bag-icon" type="button" data-bag-open aria-controls="bag-drawer" aria-label="Bag">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+            <span class="bag-icon__count" data-bag-count data-bag-badge hidden>0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Shop mega menu -->
+    <div class="mega" id="mega-shop" data-mega hidden>
+      <div class="container mega__grid">
+        <div class="mega__col">
+          <p class="eyebrow">Shop</p>
+          <ul>
+            <li><a href="/#new-arrivals">New arrivals</a></li>
+            <li><a href="#">All sarees</a></li>
+            <li><a href="/#festive">Festive edit</a></li>
+          </ul>
+        </div>
+        <div class="mega__col">
+          <p class="eyebrow">By edit</p>
+          <ul>
+            <li><a href="/#edits">The Jewel Edit</a></li>
+            <li><a href="/#edits">The Contrast Edit</a></li>
+            <li><a href="/#edits">The Bright Edit</a></li>
+          </ul>
+        </div>
+        <div class="mega__col">
+          <p class="eyebrow">The craft</p>
+          <ul>
+            <li><a href="/#craft">The Art of Banarasi</a></li>
+            <li><a href="#">Care guide</a></li>
+          </ul>
+        </div>
+        <a class="mega__feature" href="/#festive">
+          <div class="media media--4-5">
+            <img class="crop" src="/assets/images/bagh-front.jpg" alt="" loading="lazy" style="--s:1.87; --ox:83%; --oy:36%">
+          </div>
+          <span class="link"><span class="link__label">The festive edit</span><span class="link__arrow" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+    <div class="mobile-menu__top">
+      <button class="icon-button" type="button" aria-label="Close menu" data-menu-close>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+      <span class="wordmark">Stylish Naari</span>
+      <span class="icon-button" aria-hidden="true"></span>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <ul class="mobile-menu__primary">
+        <li><a href="/#new-arrivals">New arrivals</a></li>
+        <li><a href="#">All sarees</a></li>
+        <li><a href="/#edits">Edits</a></li>
+        <li><a href="/#craft">The Art of Banarasi</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <ul class="mobile-menu__secondary">
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Bag drawer (rendered by bag.js) -->
+  <div class="bag-overlay" data-bag-overlay hidden></div>
+  <aside class="bag-drawer" id="bag-drawer" data-bag-drawer aria-labelledby="bag-title" role="dialog" aria-modal="true" hidden>
+    <div class="bag-drawer__head">
+      <h2 class="t-h3" id="bag-title">Bag (<span data-bag-count>0</span>)</h2>
+      <button class="icon-button" type="button" aria-label="Close bag" data-bag-close>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+    <div class="bag-drawer__body" data-bag-items></div>
+    <div class="bag-drawer__foot" data-bag-foot hidden>
+      <div class="bag-drawer__total"><span>Subtotal</span><span data-bag-subtotal></span></div>
+      <button class="button button--filled button--block" type="button" disabled aria-describedby="bag-checkout-note">Checkout</button>
+      <p class="bag-drawer__note" id="bag-checkout-note">Prototype: checkout is handled by Shopify in the live store.</p>
+    </div>
+  </aside>

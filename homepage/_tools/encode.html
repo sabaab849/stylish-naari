@@ -1,0 +1,40 @@
+<!doctype html>
+<html><body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script>
+// Cuts [START, START+LEN] from the source, bakes it to black & white, re-encodes at 1920×1080.
+const START = 20, LEN = 10, FPS = 25;
+const v = document.createElement('video');
+v.src = '../_source-footage/pexels-6701504-handloom.mp4'; v.muted = true; v.playsInline = true; v.preload = 'auto';
+const c = document.getElementById('c'), g = c.getContext('2d');
+window.status_ = 'loading';
+
+const mime = ['video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm']
+  .find(t => MediaRecorder.isTypeSupported(t));
+window.mime = mime;
+
+v.addEventListener('loadeddata', async () => {
+  await new Promise(r => { v.onseeked = r; v.currentTime = START; });
+  const stream = c.captureStream(FPS);
+  const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 3_800_000 });
+  const chunks = [];
+  rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+  rec.onstop = async () => {
+    const blob = new Blob(chunks, { type: mime.split(';')[0] });
+    const buf = new Uint8Array(await blob.arrayBuffer());
+    let s = ''; for (let i = 0; i < buf.length; i += 0x8000) s += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
+    window.result = btoa(s);
+    window.status_ = 'done';
+  };
+  const draw = () => {
+    g.filter = 'grayscale(1) contrast(1.12) brightness(1.02)';
+    g.drawImage(v, 0, 0, c.width, c.height);
+    if (v.currentTime < START + LEN && !v.ended) requestAnimationFrame(draw);
+    else { v.pause(); rec.stop(); }
+  };
+  rec.start(500);
+  window.status_ = 'recording';
+  await v.play();
+  draw();
+});
+</script></body></html>

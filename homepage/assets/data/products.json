@@ -1,0 +1,457 @@
+{
+  "_notes": {
+    "source": "Every value here comes from content already in the project: the homepage product cards, brand-guidelines.md (§5.2 image inventory, §15.5 product naming, §9.4 content colours) and the photographs themselves.",
+    "price": "Prices are the homepage PLACEHOLDERS (priceIsPlaceholder: true). Bagh has no price anywhere in the project, so it is null and cannot be added to the bag. Replace with real prices before launch.",
+    "description": "descriptionStatus 'guideline' = text from brand-guidelines.md. 'draft' = a sentence assembled only from documented visual attributes (colour, border, motif). Approve or rewrite before launch.",
+    "nulls": "null = not documented anywhere yet. The PDP hides any row or section whose data is null. Nothing is invented to fill gaps.",
+    "crops": "Crops are zooms of the existing photos (s = scale, ox/oy = focal point, op = object-position). They stand in for dedicated drape and macro photography, which hasn't been shot yet."
+  },
+  "store": {
+    "shipping": "Complimentary shipping across India",
+    "returns": null,
+    "care": null
+  },
+  "edits": {
+    "jewel": {
+      "title": "The Jewel Edit",
+      "descriptor": "Ruby, magenta, wine and indigo — colour at full depth."
+    },
+    "contrast": {
+      "title": "The Contrast Edit",
+      "descriptor": "Where the border disagrees with the body, beautifully."
+    },
+    "bright": {
+      "title": "The Bright Edit",
+      "descriptor": "Chartreuse, rose, marigold. Sarees for daylight."
+    }
+  },
+  "products": [
+    {
+      "slug": "kairi",
+      "name": "Kairi",
+      "nameMeaning": "raw mango",
+      "descriptor": "Chartreuse and rose ombré, silk",
+      "description": "Kairi moves from rose into chartreuse across its length, finished with a gold zari border and scattered floral buti.",
+      "descriptionStatus": "guideline",
+      "colourLine": "Rose into chartreuse, across the length of the silk.",
+      "colourLineStatus": "draft",
+      "price": 24500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "bright"
+      ],
+      "colours": [
+        {
+          "name": "Chartreuse",
+          "hex": "#B3A21A",
+          "text": "#1F1A16"
+        },
+        {
+          "name": "Rose",
+          "hex": "#C9607E",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Chartreuse and rose ombré",
+        "border": "Gold zari border",
+        "motif": "Scattered floral buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/kairi.jpg",
+          "width": 1092,
+          "height": 1440,
+          "alt": "Kairi — a chartreuse and rose ombré silk saree with a gold zari border, worn seated on a painted stool in a pool of studio light"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.9,
+          "ox": "78%",
+          "oy": "92%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 2.6,
+          "ox": "42%",
+          "oy": "62%"
+        },
+        "border": {
+          "img": 0,
+          "s": 2.2,
+          "ox": "84%",
+          "oy": "78%",
+          "op": "50% 92%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 4.6,
+          "ox": "66%",
+          "oy": "80%"
+        },
+        "zari": {
+          "img": 0,
+          "s": 5.2,
+          "ox": "86%",
+          "oy": "88%"
+        },
+        "borderDetail": {
+          "img": 0,
+          "s": 4.5,
+          "ox": "45%",
+          "oy": "72%"
+        },
+        "motif": {
+          "img": 0,
+          "s": 5.5,
+          "ox": "82%",
+          "oy": "72%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 2.2,
+          "ox": "75%",
+          "oy": "85%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 4.4,
+          "ox": "68%",
+          "oy": "80%"
+        }
+      },
+      "looks": []
+    },
+    {
+      "slug": "jamun",
+      "name": "Jamun",
+      "nameMeaning": "Indian blackberry",
+      "descriptor": "Wine with rose zari border, silk",
+      "description": "Jamun is wine silk scattered with gold buti and edged in a rose zari border.",
+      "descriptionStatus": "draft",
+      "colourLine": "A deep wine silk, lit with gold buti.",
+      "colourLineStatus": "draft",
+      "price": 28900,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "colours": [
+        {
+          "name": "Wine",
+          "hex": "#4A0E1C",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Wine",
+        "border": "Rose zari border",
+        "motif": "Gold buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/jamun.jpg",
+          "width": 1086,
+          "height": 1448,
+          "alt": "Jamun — a wine silk saree with gold buti and a rose zari border, worn seated on plaster steps in raking window light"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "72%",
+          "oy": "94%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 2.4,
+          "ox": "52%",
+          "oy": "48%"
+        },
+        "border": {
+          "img": 0,
+          "s": 3.4,
+          "ox": "70%",
+          "oy": "82%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 5.6,
+          "ox": "77%",
+          "oy": "87%"
+        },
+        "zari": {
+          "img": 0,
+          "s": 4.8,
+          "ox": "54%",
+          "oy": "72%"
+        },
+        "borderDetail": {
+          "img": 0,
+          "s": 4,
+          "ox": "62%",
+          "oy": "96%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 0,
+          "s": 5.6,
+          "ox": "82%",
+          "oy": "74%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "64%",
+          "oy": "74%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 4.8,
+          "ox": "72%",
+          "oy": "80%"
+        }
+      },
+      "looks": []
+    },
+    {
+      "slug": "neel",
+      "name": "Neel",
+      "nameMeaning": "indigo",
+      "descriptor": "Indigo with aqua-silver border, silk",
+      "description": "Neel is indigo silk with woven lotus buti and an aqua-silver border.",
+      "descriptionStatus": "draft",
+      "colourLine": "Indigo silk, cooled by an aqua-silver border.",
+      "colourLineStatus": "draft",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "colours": [
+        {
+          "name": "Indigo",
+          "hex": "#1E2150",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Indigo",
+        "border": "Aqua-silver border",
+        "motif": "Lotus buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/neel.jpg",
+          "width": 1092,
+          "height": 1440,
+          "alt": "Neel — an indigo silk saree with lotus buti and an aqua-silver border, seen from behind against a painted forest wall"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "56%",
+          "oy": "94%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 2.18,
+          "ox": "64%",
+          "oy": "85%"
+        },
+        "border": {
+          "img": 0,
+          "s": 2.2,
+          "ox": "52%",
+          "oy": "80%",
+          "op": "50% 96%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 5.2,
+          "ox": "60%",
+          "oy": "62%"
+        },
+        "zari": {
+          "img": 0,
+          "s": 4.6,
+          "ox": "45%",
+          "oy": "68%"
+        },
+        "borderDetail": {
+          "img": 0,
+          "s": 4.6,
+          "ox": "45%",
+          "oy": "68%"
+        },
+        "motif": {
+          "img": 0,
+          "s": 5.6,
+          "ox": "57%",
+          "oy": "79%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "56%",
+          "oy": "66%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 4.6,
+          "ox": "54%",
+          "oy": "62%"
+        }
+      },
+      "looks": []
+    },
+    {
+      "slug": "bagh",
+      "name": "Bagh",
+      "nameMeaning": "garden",
+      "descriptor": "Magenta jaal with marigold border, silk",
+      "description": "Bagh is magenta silk woven with a tree-of-life jaal and finished with a marigold border.",
+      "descriptionStatus": "draft",
+      "colourLine": "Magenta silk, edged in marigold.",
+      "colourLineStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "colours": [
+        {
+          "name": "Rani",
+          "hex": "#A3175F",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Marigold",
+          "hex": "#D9531E",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Magenta",
+        "border": "Marigold border",
+        "motif": "Tree-of-life jaal",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/bagh-front.jpg",
+          "width": 1086,
+          "height": 1448,
+          "alt": "Bagh — a magenta silk saree with a tree-of-life jaal and a marigold border, worn seated on a wooden chair before a red disc"
+        },
+        {
+          "src": "/assets/images/bagh-back.jpg",
+          "width": 1024,
+          "height": 1536,
+          "alt": "Bagh seen from behind, the marigold-bordered pallu trailing across the floor"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 1
+        },
+        "fall": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "88%",
+          "oy": "88%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.87,
+          "ox": "83%",
+          "oy": "36%"
+        },
+        "border": {
+          "img": 0,
+          "s": 3.6,
+          "ox": "80%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 4.8,
+          "ox": "77%",
+          "oy": "80%"
+        },
+        "zari": {
+          "img": 0,
+          "s": 4,
+          "ox": "57%",
+          "oy": "68%"
+        },
+        "borderDetail": {
+          "img": 0,
+          "s": 4,
+          "ox": "57%",
+          "oy": "68%"
+        },
+        "motif": {
+          "img": 0,
+          "s": 5,
+          "ox": "72%",
+          "oy": "86%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "70%",
+          "oy": "76%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 4.4,
+          "ox": "88%",
+          "oy": "86%"
+        }
+      },
+      "looks": []
+    }
+  ]
+}

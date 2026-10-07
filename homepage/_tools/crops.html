@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head>
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/homepage.css">
+<style>
+  body { padding: 16px; font: 12px/1.3 sans-serif; }
+  .row { display: flex; gap: 10px; margin-bottom: 18px; align-items: flex-start; }
+  .row h2 { width: 70px; font-size: 14px; }
+  figure { margin: 0; width: 150px; }
+  figcaption { margin-top: 4px; }
+</style></head>
+<body>
+<div id="out"></div>
+<script>
+// Crop preview: every crop of every product, at the aspect ratio the PDP uses for it.
+const ratio = { swatch: '4/5', silhouette: '3/4', fall: '4/5', pallu: '1/1', border: '16/10', weave: '3/4', zari: '3/4', borderDetail: '3/4', motif: '3/4', colour: '4/5' };
+fetch('/assets/data/products.json').then(r => r.json()).then(d => {
+  document.getElementById('out').innerHTML = d.products.map(p => `<div class="row"><h2>${p.name}</h2>` +
+    Object.entries(p.crops).map(([k, c]) => {
+      const img = p.images[c.img || 0];
+      const st = [c.s && `--s:${c.s}`, c.ox && `--ox:${c.ox}`, c.oy && `--oy:${c.oy}`, c.op && `object-position:${c.op}`].filter(Boolean).join(';');
+      return `<figure><div class="media" style="aspect-ratio:${ratio[k] || '1/1'}"><img class="crop" src="${img.src}" style="${st}"></div><figcaption>${k}</figcaption></figure>`;
+    }).join('') + '</div>').join('');
+});
+</script></body></html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html><body style="margin:0;background:#111">
+<canvas id="c" width="1600" height="1080"></canvas>
+<script>
+// Contact sheet: 25 frames across the clip, 5×5, each labelled with its timestamp.
+const v = document.createElement('video');
+v.src = new URLSearchParams(location.search).get('src') || '../assets/video/pexels-6701504-handloom.mp4'; v.muted = true; v.preload = 'auto';
+const c = document.getElementById('c'), g = c.getContext('2d');
+const cols = 5, rows = 5, w = 320, h = 180, gap = 36;
+c.height = rows * (h + gap);
+v.addEventListener('loadedmetadata', async () => {
+  const n = cols * rows, d = v.duration;
+  for (let i = 0; i < n; i++) {
+    const t = (d - 1) * i / (n - 1);
+    await new Promise(r => { v.onseeked = r; v.currentTime = t; });
+    const x = (i % cols) * w, y = Math.floor(i / cols) * (h + gap);
+    g.drawImage(v, x, y, w, h);
+    g.fillStyle = '#fff'; g.font = '20px sans-serif'; g.fillText(t.toFixed(1) + 's', x + 6, y + h + 24);
+  }
+  document.title = 'done';
+});
+</script></body></html>
