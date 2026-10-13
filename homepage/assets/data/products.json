@@ -4,7 +4,12 @@
     "price": "Prices are the homepage PLACEHOLDERS (priceIsPlaceholder: true). Bagh has no price anywhere in the project, so it is null and cannot be added to the bag. Replace with real prices before launch.",
     "description": "descriptionStatus 'guideline' = text from brand-guidelines.md. 'draft' = a sentence assembled only from documented visual attributes (colour, border, motif). Approve or rewrite before launch.",
     "nulls": "null = not documented anywhere yet. The PDP hides any row or section whose data is null. Nothing is invented to fill gaps.",
-    "crops": "Crops are zooms of the existing photos (s = scale, ox/oy = focal point, op = object-position). They stand in for dedicated drape and macro photography, which hasn't been shot yet."
+    "crops": "Crops are zooms of the existing photos (s = scale, ox/oy = focal point, op = object-position). They stand in for dedicated drape and macro photography, which hasn't been shot yet.",
+    "secondShoot": "Sarees 05–12 come from the second shoot (model photography folder). Their names are PROPOSALS in the same convention as the first four. Fabric is stated only where the photograph filename states it (silk, brocade); border and motif describe what is visible in the photographs. Prices are null: none have been supplied.",
+    "focus": "images[].pos / images[].focus frame each photograph in the 3:4 gallery and card frame. The whole figure stays in frame; zoom is used only where the model is small in the photo.",
+    "styling": "styling = one line listing only what is visible in the saree's own portrait (hair, jewellery, blouse). stylingStatus 'draft': approve or rewrite before launch. null hides the 'As styled' feature on the PDP. crops.styling frames that part of the portrait.",
+    "backdrop": "backdrop = the photograph behind 'The Saree, Unfolded' on the PDP. img = which of the saree's own images; pos / posMobile = object-position on desktop / phone; wide = an optional landscape file of the same saree, used from tablet up.",
+    "closer": "product.closer drives the \"A closer look\" section: a per-saree heading (draft copy) and up to three attribute pairs drawn from that saree's attributes. Without it the section falls back to the attributes directly."
   },
   "store": {
     "shipping": "Complimentary shipping across India",
@@ -14,7 +19,7 @@
   "edits": {
     "jewel": {
       "title": "The Jewel Edit",
-      "descriptor": "Ruby, magenta, wine and indigo — colour at full depth."
+      "descriptor": "Magenta, wine, plum, emerald and indigo — colour at full depth."
     },
     "contrast": {
       "title": "The Contrast Edit",
@@ -22,7 +27,15 @@
     },
     "bright": {
       "title": "The Bright Edit",
-      "descriptor": "Chartreuse, rose, marigold. Sarees for daylight."
+      "descriptor": "Chartreuse, coral, marigold. Sarees for daylight."
+    },
+    "soft": {
+      "title": "The Soft Edit",
+      "descriptor": "Ivory, pink, lavender and olive. Colour, turned down."
+    },
+    "festive": {
+      "title": "The Festive Edit",
+      "descriptor": "For evenings, celebrations and everything worth dressing for."
     }
   },
   "products": [
@@ -35,6 +48,8 @@
       "descriptionStatus": "guideline",
       "colourLine": "Rose into chartreuse, across the length of the silk.",
       "colourLineStatus": "draft",
+      "styling": "Shown with a pink rose and jasmine in the hair, gold hoop earrings and stacked gold bangles.",
+      "stylingStatus": "draft",
       "price": 24500,
       "priceIsPlaceholder": true,
       "edits": [
@@ -68,7 +83,12 @@
           "src": "/assets/images/kairi.jpg",
           "width": 1092,
           "height": 1440,
-          "alt": "Kairi — a chartreuse and rose ombré silk saree with a gold zari border, worn seated on a painted stool in a pool of studio light"
+          "alt": "Kairi — a chartreuse and rose ombré silk saree with a gold zari border, worn seated on a painted stool in a pool of studio light",
+          "focus": {
+            "s": 1.2,
+            "ox": "65%",
+            "oy": "62%"
+          }
         }
       ],
       "crops": {
@@ -129,9 +149,39 @@
           "s": 4.4,
           "ox": "68%",
           "oy": "80%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 2.2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 17%"
         }
       },
-      "looks": []
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 94%",
+        "posMobile": "68% 60%"
+      },
+      "closer": {
+        "heading": "Chartreuse, turning rose.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Chartreuse and rose ombré"
+          ],
+          [
+            "Motif",
+            "Scattered floral buti"
+          ],
+          [
+            "Border",
+            "Gold zari"
+          ]
+        ]
+      }
     },
     {
       "slug": "jamun",
@@ -142,11 +192,14 @@
       "descriptionStatus": "draft",
       "colourLine": "A deep wine silk, lit with gold buti.",
       "colourLineStatus": "draft",
+      "styling": "Shown with jasmine in the hair, large gold earrings and wide gold cuffs.",
+      "stylingStatus": "draft",
       "price": 28900,
       "priceIsPlaceholder": true,
       "edits": [
         "jewel",
-        "contrast"
+        "contrast",
+        "festive"
       ],
       "colours": [
         {
@@ -171,7 +224,12 @@
           "src": "/assets/images/jamun.jpg",
           "width": 1086,
           "height": 1448,
-          "alt": "Jamun — a wine silk saree with gold buti and a rose zari border, worn seated on plaster steps in raking window light"
+          "alt": "Jamun — a wine silk saree with gold buti and a rose zari border, worn seated on plaster steps in raking window light",
+          "focus": {
+            "s": 1.2,
+            "ox": "62%",
+            "oy": "75%"
+          }
         }
       ],
       "crops": {
@@ -232,9 +290,39 @@
           "s": 4.8,
           "ox": "72%",
           "oy": "80%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 2.2,
+          "ox": "68%",
+          "oy": "50%",
+          "op": "50% 18%"
         }
       },
-      "looks": []
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 90%",
+        "posMobile": "66% 60%"
+      },
+      "closer": {
+        "heading": "Wine, lit with gold.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Wine"
+          ],
+          [
+            "Motif",
+            "Gold buti"
+          ],
+          [
+            "Border",
+            "Rose zari"
+          ]
+        ]
+      }
     },
     {
       "slug": "neel",
@@ -245,6 +333,8 @@
       "descriptionStatus": "draft",
       "colourLine": "Indigo silk, cooled by an aqua-silver border.",
       "colourLineStatus": "draft",
+      "styling": "Shown with a long braid dressed in pink flowers and a mirror-work blouse.",
+      "stylingStatus": "draft",
       "price": 26500,
       "priceIsPlaceholder": true,
       "edits": [
@@ -274,7 +364,12 @@
           "src": "/assets/images/neel.jpg",
           "width": 1092,
           "height": 1440,
-          "alt": "Neel — an indigo silk saree with lotus buti and an aqua-silver border, seen from behind against a painted forest wall"
+          "alt": "Neel — an indigo silk saree with lotus buti and an aqua-silver border, seen from behind against a painted forest wall",
+          "focus": {
+            "s": 1.15,
+            "ox": "60%",
+            "oy": "80%"
+          }
         }
       ],
       "crops": {
@@ -335,9 +430,39 @@
           "s": 4.6,
           "ox": "54%",
           "oy": "62%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 2,
+          "ox": "62%",
+          "oy": "37%",
+          "op": "50% 0%"
         }
       },
-      "looks": []
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 84%",
+        "posMobile": "52% 60%"
+      },
+      "closer": {
+        "heading": "Indigo, edged in silver.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Indigo"
+          ],
+          [
+            "Motif",
+            "Lotus buti"
+          ],
+          [
+            "Border",
+            "Aqua-silver"
+          ]
+        ]
+      }
     },
     {
       "slug": "bagh",
@@ -348,11 +473,14 @@
       "descriptionStatus": "draft",
       "colourLine": "Magenta silk, edged in marigold.",
       "colourLineStatus": "draft",
+      "styling": "Shown with jasmine in the hair, gold earrings and wide gold cuffs.",
+      "stylingStatus": "draft",
       "price": null,
       "priceIsPlaceholder": false,
       "edits": [
         "jewel",
-        "contrast"
+        "contrast",
+        "festive"
       ],
       "colours": [
         {
@@ -449,9 +577,1134 @@
           "s": 4.4,
           "ox": "88%",
           "oy": "86%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 2.2,
+          "ox": "76%",
+          "oy": "50%",
+          "op": "50% 30%"
         }
       },
-      "looks": []
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 60%",
+        "posMobile": "70% 60%",
+        "wide": {
+          "src": "/assets/images/hero-bagh-wide.jpg",
+          "width": 2731,
+          "height": 1536
+        }
+      },
+      "closer": {
+        "heading": "Magenta, in full garden.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Magenta"
+          ],
+          [
+            "Motif",
+            "Tree-of-life jaal"
+          ],
+          [
+            "Border",
+            "Marigold"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "kajal",
+      "name": "Kajal",
+      "nameMeaning": "kohl",
+      "descriptor": "Black silk with elephant motifs",
+      "description": "Kajal is black silk with elephant and lion motifs and a floral border in gold and silver.",
+      "descriptionStatus": "draft",
+      "colourLine": "Black silk, lit with gold and silver.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with a gold necklace, a maang tikka and stacked bangles.",
+      "stylingStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "contrast",
+        "festive"
+      ],
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#1C1616",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Black",
+        "border": "Floral border in gold and silver",
+        "motif": "Elephant and lion motifs",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/kajal.jpg",
+          "width": 1594,
+          "height": 2392,
+          "alt": "Kajal — a black silk saree with elephant motifs and a floral border, worn reclining on a red cloth beside loose jasmine",
+          "pos": "50% 75%"
+        },
+        {
+          "src": "/assets/images/kajal-detail.jpg",
+          "width": 1594,
+          "height": 2390,
+          "alt": "Kajal up close: a lion motif and floral border in gold and silver on black silk"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "78%",
+          "oy": "100%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.9,
+          "ox": "48%",
+          "oy": "55%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.4,
+          "ox": "55%",
+          "oy": "50%"
+        },
+        "weave": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "50%",
+          "oy": "38%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.4,
+          "ox": "24%",
+          "oy": "52%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.5,
+          "ox": "55%",
+          "oy": "72%"
+        },
+        "swatch": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "22%",
+          "oy": "52%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.9,
+          "ox": "33%",
+          "oy": "50%",
+          "op": "50% 20%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 1,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Black, in gold and silver.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Black"
+          ],
+          [
+            "Motif",
+            "Elephants and lions"
+          ],
+          [
+            "Border",
+            "Gold and silver florals"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "panna",
+      "name": "Panna",
+      "nameMeaning": "emerald",
+      "descriptor": "Emerald silk with floral jaal",
+      "description": "Panna is emerald silk covered in a floral jaal, with a gold zari border and a paisley pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Deep emerald, threaded with gold.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with the pallu worn open across the back and the hair left long.",
+      "stylingStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "jewel",
+        "festive"
+      ],
+      "colours": [
+        {
+          "name": "Emerald",
+          "hex": "#12382D",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Emerald",
+        "border": "Gold zari border",
+        "motif": "Floral jaal with paisley pallu",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/panna.jpg",
+          "width": 1750,
+          "height": 3109,
+          "alt": "Panna — an emerald silk saree with a floral jaal, seen from behind on a candlelit staircase, the paisley pallu spread across the steps",
+          "pos": "50% 100%"
+        },
+        {
+          "src": "/assets/images/panna-detail.jpg",
+          "width": 1594,
+          "height": 2392,
+          "alt": "Panna up close: floral jaal, gold zari border and paisley motifs on emerald silk"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0,
+          "op": "50% 80%"
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "60%",
+          "oy": "90%",
+          "op": "50% 90%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.7,
+          "ox": "46%",
+          "oy": "38%",
+          "op": "50% 55%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.5,
+          "ox": "60%",
+          "oy": "45%"
+        },
+        "weave": {
+          "img": 1
+        },
+        "zari": {
+          "img": 1,
+          "s": 2,
+          "ox": "66%",
+          "oy": "55%"
+        },
+        "borderDetail": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "62%",
+          "oy": "38%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "82%",
+          "oy": "82%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.5,
+          "ox": "52%",
+          "oy": "72%",
+          "op": "50% 80%"
+        },
+        "swatch": {
+          "img": 1,
+          "s": 2,
+          "ox": "30%",
+          "oy": "50%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.5,
+          "ox": "56%",
+          "oy": "50%",
+          "op": "50% 23%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 1,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Emerald, threaded with gold.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Emerald"
+          ],
+          [
+            "Motif",
+            "Floral jaal, paisley pallu"
+          ],
+          [
+            "Border",
+            "Gold zari"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "phalsa",
+      "name": "Phalsa",
+      "nameMeaning": "a purple summer berry",
+      "descriptor": "Plum silk with elephant motifs",
+      "description": "Phalsa is plum silk woven with elephants and flowering vines, finished with a gold floral border.",
+      "descriptionStatus": "draft",
+      "colourLine": "Plum silk, crossed by gold vines.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with the hair worn loose and small gold earrings.",
+      "stylingStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "jewel",
+        "festive"
+      ],
+      "colours": [
+        {
+          "name": "Plum",
+          "hex": "#4B2040",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Plum",
+        "border": "Gold floral border",
+        "motif": "Elephant and vine motifs",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/phalsa.jpg",
+          "width": 1836,
+          "height": 2755,
+          "alt": "Phalsa — a plum silk saree with gold elephant motifs, worn seated with chin on folded hands before red and ivory drapes",
+          "pos": "50% 85%"
+        },
+        {
+          "src": "/assets/images/phalsa-detail.jpg",
+          "width": 1594,
+          "height": 2391,
+          "alt": "Phalsa up close: gold elephants, vines and a floral border on plum silk"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "78%",
+          "oy": "100%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "45%",
+          "oy": "62%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.5,
+          "ox": "45%",
+          "oy": "50%"
+        },
+        "weave": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "45%",
+          "oy": "58%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.6,
+          "ox": "68%",
+          "oy": "45%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "40%",
+          "oy": "75%"
+        },
+        "swatch": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "72%",
+          "oy": "42%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "12%",
+          "oy": "50%",
+          "op": "50% 41%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 1,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Plum, crossed by vines.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Plum"
+          ],
+          [
+            "Motif",
+            "Elephants and vines"
+          ],
+          [
+            "Border",
+            "Gold florals"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "moonga",
+      "name": "Moonga",
+      "nameMeaning": "coral",
+      "descriptor": "Coral silk with botanical pallu",
+      "description": "Moonga is coral silk with a gold border and a botanical pallu of flowering branches and birds.",
+      "descriptionStatus": "draft",
+      "colourLine": "Coral silk, flowering at the pallu.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with a low bun dressed in jasmine, gold earrings and embroidered flats.",
+      "stylingStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "bright"
+      ],
+      "colours": [
+        {
+          "name": "Coral",
+          "hex": "#D5603B",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Coral",
+        "border": "Gold border",
+        "motif": "Botanical pallu with birds",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/moonga.jpg",
+          "width": 1465,
+          "height": 2603,
+          "alt": "Moonga — a coral silk saree with a botanical pallu, worn in profile against a peach and rose backdrop",
+          "focus": {
+            "s": 1.2,
+            "ox": "72%",
+            "oy": "45%"
+          },
+          "pos": "50% 45%"
+        },
+        {
+          "src": "/assets/images/moonga-detail.jpg",
+          "width": 1593,
+          "height": 2390,
+          "alt": "Moonga up close: flowering branches and birds on the coral pallu, edged in gold"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0,
+          "op": "50% 45%"
+        },
+        "fall": {
+          "img": 0,
+          "s": 2,
+          "ox": "45%",
+          "oy": "62%",
+          "op": "50% 50%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "70%",
+          "oy": "55%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.4,
+          "ox": "55%",
+          "oy": "88%"
+        },
+        "weave": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "38%",
+          "oy": "45%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.4,
+          "ox": "74%",
+          "oy": "52%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "60%",
+          "oy": "55%",
+          "op": "50% 50%"
+        },
+        "swatch": {
+          "img": 1,
+          "s": 2,
+          "ox": "72%",
+          "oy": "48%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 2.4,
+          "ox": "41%",
+          "oy": "50%",
+          "op": "50% 7%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 1,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Coral, in flower.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Coral"
+          ],
+          [
+            "Pallu",
+            "Flowering branches and birds"
+          ],
+          [
+            "Border",
+            "Gold"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "chameli",
+      "name": "Chameli",
+      "nameMeaning": "jasmine",
+      "descriptor": "Ivory with rose floral embroidery",
+      "description": "Chameli is ivory, embroidered with trailing roses and tone-on-tone lacework.",
+      "descriptionStatus": "draft",
+      "colourLine": "Ivory, scattered with roses.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with a maang tikka and gold bangles, the hair worn loose.",
+      "stylingStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "soft"
+      ],
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#E3CDB4",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Ivory",
+        "border": "Tone-on-tone lacework",
+        "motif": "Rose floral embroidery",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/chameli.jpg",
+          "width": 1465,
+          "height": 2603,
+          "alt": "Chameli — an ivory saree embroidered with roses, worn seated with the head resting on drawn-up knees",
+          "pos": "50% 100%"
+        },
+        {
+          "src": "/assets/images/chameli-detail.jpg",
+          "width": 1594,
+          "height": 2391,
+          "alt": "Chameli up close: embroidered roses and tone-on-tone lacework on ivory"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0,
+          "op": "50% 92%"
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "40%",
+          "oy": "94%",
+          "op": "50% 100%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.7,
+          "ox": "70%",
+          "oy": "72%",
+          "op": "50% 88%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.4,
+          "ox": "65%",
+          "oy": "55%"
+        },
+        "weave": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1,
+          "s": 1.7,
+          "ox": "60%",
+          "oy": "42%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.4,
+          "ox": "25%",
+          "oy": "62%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "55%",
+          "oy": "78%",
+          "op": "50% 92%"
+        },
+        "swatch": {
+          "img": 1,
+          "s": 2,
+          "ox": "24%",
+          "oy": "60%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.9,
+          "ox": "33%",
+          "oy": "50%",
+          "op": "50% 64%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 1,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Ivory, in bloom.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Soft ivory"
+          ],
+          [
+            "Embroidery",
+            "Rose florals"
+          ],
+          [
+            "Border",
+            "Intricate lacework"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "kasni",
+      "name": "Kasni",
+      "nameMeaning": "the colour of chicory flowers",
+      "descriptor": "Lavender brocade with pink border",
+      "description": "Kasni is lavender brocade with a pink-striped border and floral panels on the pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Lavender, edged in pink.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with a braided bun dressed in pink flowers, a beaded choker and floral earrings.",
+      "stylingStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "soft"
+      ],
+      "colours": [
+        {
+          "name": "Lavender",
+          "hex": "#B48CC6",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Lavender",
+        "border": "Pink-striped border",
+        "motif": "Floral pallu panels",
+        "length": null,
+        "blousePiece": null,
+        "weave": "Brocade",
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/kasni.jpg",
+          "width": 1594,
+          "height": 2390,
+          "alt": "Kasni — a lavender brocade saree with a pink border, worn seated on a stone block, the pallu falling to the floor",
+          "focus": {
+            "s": 1.25,
+            "ox": "80%",
+            "oy": "68%"
+          }
+        },
+        {
+          "src": "/assets/images/kasni-detail.jpg",
+          "width": 1594,
+          "height": 2392,
+          "alt": "Kasni up close: lavender brocade pleats, pink-striped border and floral pallu panels"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.9,
+          "ox": "56%",
+          "oy": "70%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.7,
+          "ox": "78%",
+          "oy": "80%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.5,
+          "ox": "55%",
+          "oy": "50%"
+        },
+        "weave": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "55%",
+          "oy": "45%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "74%",
+          "oy": "76%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.5,
+          "ox": "70%",
+          "oy": "62%"
+        },
+        "swatch": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "32%",
+          "oy": "30%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 2.6,
+          "ox": "94%",
+          "oy": "50%",
+          "op": "50% 14%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 1,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Lavender, edged in pink.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Lavender"
+          ],
+          [
+            "Weave",
+            "Brocade"
+          ],
+          [
+            "Border",
+            "Pink stripes"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "mehendi",
+      "name": "Mehendi",
+      "nameMeaning": "henna",
+      "descriptor": "Olive floral with pink-edged border",
+      "description": "Mehendi is olive with a pale floral jaal and a gold border edged in pink.",
+      "descriptionStatus": "draft",
+      "colourLine": "Olive, softened by a pink edge.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with jasmine in the hair, silver earrings and stacked silver bangles.",
+      "stylingStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "soft",
+        "contrast"
+      ],
+      "colours": [
+        {
+          "name": "Olive",
+          "hex": "#8E8960",
+          "text": "#1F1A16"
+        },
+        {
+          "name": "Rose",
+          "hex": "#C9728A",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Olive",
+        "border": "Gold border edged in pink",
+        "motif": "Floral jaal",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/mehendi.jpg",
+          "width": 1956,
+          "height": 2444,
+          "alt": "Mehendi — an olive floral saree with a pink-edged border, seen from above on a wooden staircase, the pallu spread across the steps"
+        },
+        {
+          "src": "/assets/images/mehendi-detail.jpg",
+          "width": 1747,
+          "height": 2182,
+          "alt": "Mehendi up close: pale floral jaal on olive, with a gold border edged in pink"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "38%",
+          "oy": "78%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "76%",
+          "oy": "40%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.5,
+          "ox": "60%",
+          "oy": "72%"
+        },
+        "weave": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "80%",
+          "oy": "96%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.4,
+          "ox": "74%",
+          "oy": "42%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "55%",
+          "oy": "50%"
+        },
+        "swatch": {
+          "img": 1,
+          "s": 2,
+          "ox": "72%",
+          "oy": "44%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 2,
+          "ox": "10%",
+          "oy": "50%",
+          "op": "50% 10%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 1,
+        "pos": "50% 55%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Olive, softened with pink.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Olive"
+          ],
+          [
+            "Motif",
+            "Floral jaal"
+          ],
+          [
+            "Border",
+            "Gold, edged in pink"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "kamal",
+      "name": "Kamal",
+      "nameMeaning": "lotus",
+      "descriptor": "Pink with white embroidery",
+      "description": "Kamal is sheer pink with a white embroidered border and scattered flower motifs.",
+      "descriptionStatus": "draft",
+      "colourLine": "Pink, traced in white.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with a low bun, cluster earrings and a matching embroidered blouse.",
+      "stylingStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "soft"
+      ],
+      "colours": [
+        {
+          "name": "Pink",
+          "hex": "#DE9A91",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Pink",
+        "border": "White embroidered border",
+        "motif": "Scattered flower motifs",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/kamal.jpg",
+          "width": 1747,
+          "height": 2182,
+          "alt": "Kamal — a sheer pink saree with white embroidery, worn seated against an olive wall, holding lotus flowers"
+        },
+        {
+          "src": "/assets/images/kamal-detail.jpg",
+          "width": 1593,
+          "height": 2390,
+          "alt": "Kamal up close: white embroidery along the border of the pink saree"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.9,
+          "ox": "62%",
+          "oy": "100%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "66%",
+          "oy": "56%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.4,
+          "ox": "40%",
+          "oy": "45%"
+        },
+        "weave": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "35%",
+          "oy": "40%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.4,
+          "ox": "30%",
+          "oy": "70%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "55%",
+          "oy": "66%"
+        },
+        "swatch": {
+          "img": 1,
+          "s": 2,
+          "ox": "72%",
+          "oy": "50%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.7,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 10%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 1,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Pink, traced in white.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Pink"
+          ],
+          [
+            "Motif",
+            "Scattered flowers"
+          ],
+          [
+            "Border",
+            "White embroidery"
+          ]
+        ]
+      }
     }
   ]
 }

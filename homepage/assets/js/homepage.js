@@ -137,6 +137,16 @@
   /* ─── New arrivals: scroll progress line (tablet/mobile) ─ */
   var row = document.querySelector('[data-product-row]');
   var progress = document.querySelector('[data-row-progress]');
+  // Arrow buttons (desktop): move the row by about three cards
+  var rowPrev = document.querySelector('[data-row-prev]');
+  var rowNext = document.querySelector('[data-row-next]');
+  function stepRow(dir) {
+    row.scrollBy({ left: dir * row.clientWidth * 0.9, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+  if (row && rowPrev && rowNext) {
+    rowPrev.addEventListener('click', function () { stepRow(-1); });
+    rowNext.addEventListener('click', function () { stepRow(1); });
+  }
   function updateProgress() {
     if (!row || !progress) return;
     var max = row.scrollWidth - row.clientWidth;
@@ -144,11 +154,77 @@
     progress.style.width = (visible * 100) + '%';
     var p = max > 0 ? row.scrollLeft / max : 0;
     progress.style.transform = 'translateX(' + (p * (1 / visible - 1) * 100) + '%)';
+    if (rowPrev) rowPrev.disabled = row.scrollLeft <= 2;
+    if (rowNext) rowNext.disabled = row.scrollLeft >= max - 2;
   }
   if (row) {
     row.addEventListener('scroll', updateProgress, { passive: true });
     window.addEventListener('resize', updateProgress);
     updateProgress();
+  }
+
+  /* ─── Campaign: particles run only on screen and travel with the scroll; a cursor scoped to the section ─ */
+  var campaign = document.querySelector('[data-campaign]');
+  if (campaign) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        campaign.classList.toggle('is-live', entries[0].isIntersecting);
+      }).observe(campaign);
+    } else {
+      campaign.classList.add('is-live');
+    }
+
+    // Scroll position → --scroll, from -1 (section entering at the bottom) to 1 (leaving at the top)
+    if (!reduceMotion) {
+      var sparkTick = false;
+      var setSparkScroll = function () {
+        sparkTick = false;
+        var box = campaign.getBoundingClientRect();
+        var vh = window.innerHeight;
+        if (box.bottom < 0 || box.top > vh) return;
+        var p = (vh / 2 - (box.top + box.height / 2)) / ((vh + box.height) / 2);
+        campaign.style.setProperty('--scroll', Math.max(-1, Math.min(1, p)).toFixed(3));
+      };
+      window.addEventListener('scroll', function () {
+        if (!sparkTick) { sparkTick = true; window.requestAnimationFrame(setSparkScroll); }
+      }, { passive: true });
+      window.addEventListener('resize', setSparkScroll);
+      setSparkScroll();
+    }
+
+    // Mouse and trackpad only: touch devices keep their normal behaviour and never see the star
+    var star = campaign.querySelector('[data-campaign-cursor]');
+    var trail = campaign.querySelector('[data-campaign-cursor-trail]');
+    if (star && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var pointerX = 0, pointerY = 0, cursorFrame = 0, placed = false;
+      // Share of the remaining distance covered per frame: the star keeps up, the sparkle drifts after it
+      var marks = [{ el: star, x: 0, y: 0, follow: reduceMotion ? 1 : 0.6 }];
+      if (trail) marks.push({ el: trail, x: 0, y: 0, follow: reduceMotion ? 1 : 0.16 });
+      var moveCursor = function () {
+        var box = campaign.getBoundingClientRect(); // read each frame, so scrolling under a still pointer stays correct
+        var x = pointerX - box.left, y = pointerY - box.top;
+        marks.forEach(function (m) {
+          if (placed) { m.x += (x - m.x) * m.follow; m.y += (y - m.y) * m.follow; }
+          else { m.x = x; m.y = y; }
+          m.el.style.translate = m.x.toFixed(1) + 'px ' + m.y.toFixed(1) + 'px';
+        });
+        placed = true;
+        cursorFrame = window.requestAnimationFrame(moveCursor);
+      };
+      var stopCursor = function () {
+        campaign.classList.remove('is-pointing');
+        window.cancelAnimationFrame(cursorFrame);
+        cursorFrame = 0; placed = false;
+      };
+      campaign.classList.add('has-cursor');
+      campaign.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        pointerX = e.clientX; pointerY = e.clientY;
+        if (!cursorFrame) { campaign.classList.add('is-pointing'); cursorFrame = window.requestAnimationFrame(moveCursor); }
+      });
+      campaign.addEventListener('pointerleave', stopCursor);
+      window.addEventListener('blur', stopCursor);
+    }
   }
 
   /* ─── Reveal on scroll (once, staggered within a row) ─── */
@@ -170,7 +246,7 @@
   }
 
   /* ─── Craft films: play only while on screen; pausable ─ */
-  var craft = document.querySelector('.craft');
+  var craft = document.querySelector('.craft-film, .craft');
   var craftVideos = document.querySelectorAll('[data-craft-video]');
   var craftToggle = document.querySelector('[data-craft-toggle]');
   var userPaused = reduceMotion; // reduced motion: never autoplay, show the poster still

@@ -10,16 +10,18 @@
   if (gallery) {
     var track = gallery.querySelector('[data-gallery-track]');
     var slides = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-slide]'));
-    var indexEl = gallery.querySelector('[data-gallery-index]');
+    var thumbs = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-thumb]'));
     var current = 0;
 
-    var label = function (i) { return String(i + 1).padStart(2, '0'); };
     var setIndex = function (i) {
       current = i;
-      if (indexEl) indexEl.textContent = label(i);
       slides.forEach(function (s, n) {
         s.classList.toggle('is-active', n === i);
         if (n === i) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
+      });
+      thumbs.forEach(function (t, n) {
+        t.classList.toggle('is-active', n === i);
+        if (n === i) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
       });
     };
     var go = function (i) {
@@ -33,11 +35,12 @@
       var nextBtn = gallery.querySelector('[data-gallery-next]');
       if (prev) prev.addEventListener('click', function () { go(current - 1); });
       if (nextBtn) nextBtn.addEventListener('click', function () { go(current + 1); });
+      thumbs.forEach(function (t, n) { t.addEventListener('click', function () { go(n); }); });
       gallery.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
         if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
       });
-      // Swipe: keep the counter in step with the scroll position
+      // Swipe: keep the thumbnails in step with the scroll position
       var ticking = false;
       track.addEventListener('scroll', function () {
         if (!swipeMode.matches || ticking) return;
@@ -117,9 +120,11 @@
     var palette = [tone(base), tone(mix(base, WHITE, 0.1)), tone(mix(base, BLACK, 0.34))].slice(0, n);
     var geoFixed = chapter.getAttribute('data-geo') ? hex(chapter.getAttribute('data-geo')) : null;
 
-    /* Timeline (fraction of the pinned scroll): hold, cross, hold, cross, hold, release */
-    var HOLDS = n === 3 ? [[0, 0.27], [0.36, 0.57], [0.66, 0.85]] : n === 2 ? [[0, 0.4], [0.5, 0.85]] : [[0, 0.85]];
-    var RELEASE = [0.86, 1];
+    /* Timeline (fraction of the pinned scroll): hold, cross, hold, cross, hold.
+       The colour stays at full spread to the end and the chapter scrolls away still filled, straight
+       into the full-bleed photograph below, so there is no empty ivory screen on the way out. */
+    var HOLDS = n === 3 ? [[0, 0.27], [0.36, 0.57], [0.66, 0.86]] : n === 2 ? [[0, 0.4], [0.5, 0.86]] : [[0, 0.86]];
+    var RELEASE = [0.88, 1]; // the last stretch of the pinned scroll: the colour closes back into the centre
     var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
     var ease = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }; // easeInOutCubic
     var lerp = function (a, b, t) { return a + (b - a) * t; };
@@ -161,9 +166,11 @@
       var sp = statePos(p);
       if (still) sp = Math.round(sp);
 
-      // Colour: spreads out from the centre on arrival, contracts back into it on release.
-      var grow = still ? (entry > 0.5 ? 1 : 0) : ease(clamp((entry - 0.15) / 0.85, 0, 1));
-      var release = still ? (p < 0.93 ? 1 : 0) : 1 - ease(clamp((p - RELEASE[0]) / (RELEASE[1] - RELEASE[0]), 0, 1));
+      // Colour: opens from the centre as the chapter arrives and closes back into the centre as it ends.
+      // Both are tied to scroll position, so scrolling up replays each one in reverse: coming back from
+      // below, the circle reopens from the centre; leaving at the top, it closes.
+      var grow = still ? (entry > 0.2 ? 1 : 0) : ease(clamp(entry / 0.6, 0, 1));
+      var release = still ? (p < 0.94 ? 1 : 0) : 1 - ease(clamp((p - RELEASE[0]) / (RELEASE[1] - RELEASE[0]), 0, 1));
       var radius = 71 * Math.min(grow, release);
 
       var pc = at(palette, sp);
@@ -176,9 +183,10 @@
       chapter.style.setProperty('--ch-text', css(text));
       chapter.style.setProperty('--ch-geo', css(geo));
 
-      // Content arrives once the colour has mostly spread, and leaves before it contracts
-      var contentIn = still ? (entry > 0.6 ? 1 : 0) : clamp((entry - 0.55) / 0.4, 0, 1);
-      var contentOut = still ? (p < 0.9 ? 1 : 0) : 1 - clamp((p - 0.85) / 0.06, 0, 1);
+      // Content arrives once the colour has mostly spread
+      var contentIn = still ? (entry > 0.3 ? 1 : 0) : clamp((entry - 0.3) / 0.35, 0, 1);
+      // …and leaves just before the colour closes
+      var contentOut = still ? (p < 0.92 ? 1 : 0) : 1 - clamp((p - 0.84) / 0.06, 0, 1);
       inner.style.opacity = Math.min(contentIn, contentOut).toFixed(3);
 
       // Frame shape
@@ -236,6 +244,24 @@
   }
 
   /* ─── Buy bar: appears once the main Add to bag has scrolled away ─ */
+  /* ─── The Saree, Unfolded: the photograph shifts slightly as the section crosses the screen ─ */
+  var unfolded = document.querySelector('[data-unfolded]');
+  if (unfolded && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var shiftQueued = false;
+    var setShift = function () {
+      shiftQueued = false;
+      var box = unfolded.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if (box.bottom < 0 || box.top > vh) return;
+      var p = (vh / 2 - (box.top + box.height / 2)) / ((vh + box.height) / 2); // -1 entering → 1 leaving
+      unfolded.style.setProperty('--shift', Math.max(-1, Math.min(1, p)).toFixed(3));
+    };
+    var queueShift = function () { if (!shiftQueued) { shiftQueued = true; requestAnimationFrame(setShift); } };
+    window.addEventListener('scroll', queueShift, { passive: true });
+    window.addEventListener('resize', queueShift);
+    setShift();
+  }
+
   var bar = document.querySelector('[data-buybar]');
   var cta = document.querySelector('[data-pdp-cta]');
   var footer = document.querySelector('.site-footer');

@@ -39,6 +39,15 @@
   --story-wine:             #4A0E1C;
   --story-indigo:           #1E2150;
   --story-sindoor:          #8E1B2C;
+  /* second shoot */
+  --story-pink:             #DE9A91;
+  --story-coral:            #D5603B;
+  --story-lavender:         #B48CC6;
+  --story-olive:            #8E8960;
+  --story-plum:             #4B2040;
+  --story-emerald:          #12382D;
+  --story-ivory:            #E3CDB4;
+  --story-black:            #1C1616;
 
   /* ─── Typography: families ───────────────────────── */
   --font-display:  "Inter Tight", "Helvetica Neue", Arial, sans-serif;

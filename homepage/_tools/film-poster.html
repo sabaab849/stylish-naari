@@ -1,0 +1,7 @@
+<!doctype html><html><body style="margin:0;overflow:hidden;background:#000"><canvas id="c" width="1920" height="1080" style="display:block"></canvas>
+<script>
+// One frame of the craft film (at ?t= seconds), full size, to save as its poster image.
+const v = document.createElement('video'); v.src = '../assets/video/craft-film.mp4'; v.muted = true; v.preload = 'auto';
+v.addEventListener('loadedmetadata', () => { document.title = v.duration.toFixed(1); v.currentTime = +(new URLSearchParams(location.search).get('t') || 6); });
+v.addEventListener('seeked', () => document.getElementById('c').getContext('2d').drawImage(v, 0, 0, 1920, 1080));
+</script></body></html>

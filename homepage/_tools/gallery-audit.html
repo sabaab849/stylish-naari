@@ -1,0 +1,9 @@
+<!doctype html><html><head><link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/homepage.css">
+<style>body{padding:12px;font:11px sans-serif;background:#fff}.row{display:flex;gap:8px;margin-bottom:14px;align-items:flex-start}.row h2{width:64px;font-size:13px}figure{margin:0;width:150px}.raw img{width:150px;display:block}</style></head><body><div id="o"></div>
+<script>
+// Gallery audit: for each product, the untouched photographs (left) then every gallery view as the PDP frames it.
+fetch('/assets/data/products.json').then(r=>r.json()).then(d=>{const from=+(new URLSearchParams(location.search).get('from')||0),to=+(new URLSearchParams(location.search).get('to')||99);
+const st=c=>[c.s&&`--s:${c.s}`,c.ox&&`--ox:${c.ox}`,c.oy&&`--oy:${c.oy}`,(c.op||c.pos)&&`object-position:${c.op||c.pos}`].filter(Boolean).join(';');
+document.getElementById('o').innerHTML=d.products.slice(from,to).map(p=>{const views=p.images.map((im,i)=>({im,s:st({...(im.focus||{}),pos:im.pos}),n:'photo '+(i+1)}));const hd=p.images.length>1&&(p.crops.motif?.img||0)>0;for(const k of(hd?['motif','borderDetail']:(p.images.length>1?[]:['border','swatch']))){const c=p.crops[k];if(c)views.push({im:p.images[c.img||0],s:st({...c,s:Math.min(c.s||1,2.4)}),n:k})}
+return `<div class="row"><h2>${p.name}</h2>`+p.images.map((im,i)=>`<figure class="raw"><img src="${im.src}"><figcaption>original ${i+1} (${im.width}×${im.height})</figcaption></figure>`).join('')+'<div style="width:16px"></div>'+views.map(v=>`<figure><div class="media" style="aspect-ratio:3/4"><img class="crop" src="${v.im.src}" style="${v.s}"></div><figcaption>${v.n}</figcaption></figure>`).join('')+'</div>'}).join('')});
+</script></body></html>

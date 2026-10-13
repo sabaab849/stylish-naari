@@ -416,6 +416,27 @@ See §12.8.
 
 ---
 
+## 8a. Second shoot: twelve sarees
+
+The collection grew from four sarees to twelve. Sarees 05–12 each have a portrait and a fabric close-up. Names are proposals in the §15.5 convention; prices are not set.
+
+| # | Name | Saree | Edits | Homepage use |
+|---|---|---|---|---|
+| 05 | Kajal | Black silk, elephant motifs | Contrast, Festive | Contrast Edit card (detail) |
+| 06 | Panna | Emerald silk, floral jaal | Jewel, Festive | Festive Edit section |
+| 07 | Phalsa | Plum silk, elephant motifs | Jewel, Festive | Jewel Edit card |
+| 08 | Moonga | Coral silk, botanical pallu | Bright | Bright Edit card (detail) |
+| 09 | Chameli | Ivory, rose embroidery | Soft | New arrivals |
+| 10 | Kasni | Lavender brocade, pink border | Soft | Hero |
+| 11 | Mehendi | Olive floral, pink-edged border | Soft, Contrast | New arrivals |
+| 12 | Kamal | Pink, white embroidery | Soft | Soft Edit card |
+
+**Changes to the homepage (§8):** New arrivals is a scrolling row of the eight new sarees. Shop by Edit has four edits (The Soft Edit is new) in two mirrored rows. Colour Story has six fields, each opening onto a real fabric close-up and linking to its saree. Festive uses Panna. `/sarees` and `/edits/<key>` are real collection pages.
+
+**Where this shoot departs from §6:** it is softer and more set-dressed than the first (candles, brass, flowers, heavier jewellery, shallow focus). The UI rules are unchanged; the photography direction in §6 should be revisited if this becomes the house style.
+
+---
+
 ## 8b. Product Detail Page
 
 The PDP is a fashion editorial that happens to be shoppable. Section order: Hero (gallery + sticky info) → Saree Swatch (a textile specimen: an extreme crop of the saree's own photo over a band in its colour) → On the body (the fall, the pallu, the border) → Colour chapter → The craft → About the saree → Style it → From the edit / Complete the story.
@@ -424,13 +445,30 @@ The PDP is a fashion editorial that happens to be shoppable. Section order: Hero
 
 | Rule elsewhere | PDP exception |
 |---|---|
-| Content colours appear only in Colour Story (§9.4) | **One** colour chapter per PDP: a pinned, scroll-driven sequence (the colour → the drape → the weave) in which the saree's colour spreads from the centre of the screen, shifts within its own tonal family (base → lighter → deeper), then contracts back to ivory. Text switches between ink and ivory per tone and never drops below 4.5:1. The colour also appears as the Saree Swatch band and the plane behind "The fall". No section repeats an image or title the chapter shows. |
+| Content colours appear only in Colour Story (§9.4) | **One** colour chapter per PDP: a pinned, scroll-driven sequence (the colour → the drape → the weave) in which the saree's colour spreads from the centre of the screen, shifts within its own tonal family (base → lighter → deeper), and stays at full spread as the chapter scrolls away into The Saree, Unfolded (no empty ivory screen before or after it). Text switches between ink and ivory per tone and never drops below 4.5:1. The colour also appears as the Saree Swatch band and the plane behind "The fall". No section repeats an image or title the chapter shows. |
 | Don't reuse the disc as a UI shape (§5.1) | **At most two** geometric shapes per PDP: the plane behind "The fall" (rectangle) and the chapter disc, which drifts slowly while the photo's frame morphs from rectangle to column to circle. Both use the product's colours, never decoration. |
 | Uppercase only for eyebrows (§10.3) | The giant colour name and the Saree Swatch colour name are uppercase. |
 
 **Data rule:** every row, caption and section renders only from real product data. Missing data hides the row or section; it is never filled with placeholder copy. Style it stays hidden until styling photography exists.
 
+**In detail (circular features):** directly after the hero, up to four circular crops of the saree's own photographs, each with an uppercase heading and one line: fabric and colour, the border, the motif, and "As styled" (the hair, jewellery and blouse visible in the portrait; `styling` in the product record, draft until approved). Circles are an approved exception to the 0-radius rule (§12.11) for this section only: no card, border or shadow. A feature with no crop or no data is left out.
+
+**The Saree, Unfolded (replaces "About the saree"):** the saree's own photograph edge to edge (`backdrop` in the product record), the heading top-left and the product data as annotations lower-right, with the Shipping accordion beneath them. Two corner scrims in Ink carry the type; the diagonal between them is left clear. The photograph shifts a few percent with the scroll, the one approved parallax on the site, and is still under reduced motion.
+
 **Motion rules for the chapter:** scroll position drives everything; nothing snaps, intercepts the wheel or waits for an animation. Under reduced motion, states switch instantly with no zoom, drift or spread. Parallax stays off elsewhere (§13).
+
+---
+
+## 8c. Homepage campaign section
+
+One full-bleed editorial section between New Arrivals and Shop by Edit: one edit, shown through one saree's portrait, on the studio neutral behind that photograph (§9.3). It links to the edit's collection page. Copy is the edit's title and descriptor, nothing else. Shopify section: `homepage/shopify/sections/campaign.liquid`.
+
+**Approved exceptions, for this section only** (§13 otherwise bans both)
+
+| Rule elsewhere | Campaign exception |
+|---|---|
+| No sparkles | Around twenty small ivory light particles drift and fade slowly (10–20s drift, CSS only, never gold) and shift gently with the scroll, nearer ones further. They ignore the pointer, pause off screen, are halved on phones and are still under reduced motion. |
+| No cursor followers | Inside this section only, a fine pointer becomes an ivory four-point star with a smaller sparkle trailing it. The normal cursor returns on leaving. Touch devices never see it; it never intercepts clicks. |
 
 ---
 

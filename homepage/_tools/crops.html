@@ -15,7 +15,7 @@
 // Crop preview: every crop of every product, at the aspect ratio the PDP uses for it.
 const ratio = { swatch: '4/5', silhouette: '3/4', fall: '4/5', pallu: '1/1', border: '16/10', weave: '3/4', zari: '3/4', borderDetail: '3/4', motif: '3/4', colour: '4/5' };
 fetch('/assets/data/products.json').then(r => r.json()).then(d => {
-  document.getElementById('out').innerHTML = d.products.map(p => `<div class="row"><h2>${p.name}</h2>` +
+  document.getElementById('out').innerHTML = d.products.slice(+(new URLSearchParams(location.search).get('from') || 0)).map(p => `<div class="row"><h2>${p.name}</h2>` +
     Object.entries(p.crops).map(([k, c]) => {
       const img = p.images[c.img || 0];
       const st = [c.s && `--s:${c.s}`, c.ox && `--ox:${c.ox}`, c.oy && `--oy:${c.oy}`, c.op && `object-position:${c.op}`].filter(Boolean).join(';');

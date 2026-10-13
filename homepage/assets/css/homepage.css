@@ -369,20 +369,7 @@ a:hover > .edit-card__text .link__arrow,
 .row-progress { display: none; }
 
 /* ─── 03 Shop by edit ──────────────────────────────────── */
-.edits__grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--grid-gutter);
-  align-items: start;
-}
 .edit-card { display: block; }
-.edit-card--large { grid-column: 1 / 8; }
-.edits__stack {
-  grid-column: 9 / 13; /* column 8 is left empty on purpose */
-  margin-top: var(--spacing-11);
-  display: grid;
-  row-gap: var(--spacing-8);
-}
 .edit-card__text { margin-top: var(--spacing-4); }
 .edit-card__descriptor { margin-top: var(--spacing-1); color: var(--color-text-muted); max-width: 30em; }
 .edit-card__text .link { margin-top: var(--spacing-1); }
@@ -535,7 +522,6 @@ a:hover > .edit-card__text .link__arrow,
 @media (max-width: 1023px) {
   .hide-tablet { display: none; }
 
-  .hero { height: 85svh; }
 
   /* New arrivals: horizontal scroll, 2.3 cards visible */
   .product-row {
@@ -550,10 +536,7 @@ a:hover > .edit-card__text .link__arrow,
   .row-progress { display: block; position: relative; height: 1px; background: var(--color-border); margin-top: var(--spacing-6); }
   .row-progress span { position: absolute; top: 0; left: 0; height: 1px; background: var(--color-ink); width: 40%; transition: transform 100ms linear; }
 
-  .edits__grid { grid-template-columns: 1fr; }
-  .edit-card--large { grid-column: 1; }
-  .edits__stack { grid-column: 1; margin-top: var(--spacing-8); grid-template-columns: 1fr 1fr; column-gap: var(--grid-gutter); }
-
+    
   .colour-story__grid { grid-template-columns: 1fr; row-gap: var(--spacing-7); }
   .colour-story__intro, .swatches { grid-column: 1; }
   .colour-story__intro { padding-right: 0; }
@@ -585,8 +568,6 @@ a:hover > .edit-card__text .link__arrow,
   .wordmark { font-size: 13px; letter-spacing: 0.26em; margin-right: -0.26em; }
   .mega { display: none; }
 
-  /* Hero: native 2:3 portrait, uncropped */
-  .hero { height: auto; min-height: 0; aspect-ratio: 2 / 3; }
   .hero__content { bottom: var(--spacing-7); }
   .hero__line { font-size: var(--font-size-body); max-width: 20em; }
 
@@ -594,12 +575,6 @@ a:hover > .edit-card__text .link__arrow,
   .product-card { flex-basis: calc((100% - var(--grid-gutter)) / 1.25); }
 
   /* Edits: large card full-bleed, small pair indented left and bleeding right */
-  .edit-card--large .media { margin: 0 calc(-1 * var(--page-margin)); }
-  .edits__stack { margin-left: var(--spacing-4); margin-right: calc(-1 * var(--page-margin)); padding-right: var(--page-margin); }
-  .edit-card__media--small { aspect-ratio: 1 / 1; }
-  .edits__stack .edit-card__descriptor,
-  .edits__stack .link { display: none; }
-  .edits__stack .t-h3 { font-size: 15px; }
 
   /* Colour story: snap-scroll, split cards */
   .swatches {
@@ -646,4 +621,424 @@ a:hover > .edit-card__text .link__arrow,
   .footer-group--follow { display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid var(--color-border); }
   .footer-group--follow .eyebrow { margin: 0; }
   .site-footer__bar { flex-direction: column; align-items: flex-start; gap: var(--spacing-3); border-top: 0; }
+}
+
+/* ─── Homepage density ─────────────────────────────────────
+   The homepage runs tighter than the token defaults (160px between sections felt empty).
+   Scoped to .home so product pages keep their own rhythm. */
+.home {
+  --section-spacing: clamp(56px, 2.5rem + 3.2vw, 96px);
+  --section-header-gap: clamp(20px, 1rem + 1vw, 32px);
+}
+.home .site-footer { padding-top: var(--spacing-9); }
+.home .site-footer__grid { padding-bottom: var(--spacing-9); }
+.home .festive__aside { padding: var(--spacing-9) 0; }
+@media (min-width: 1024px) {
+  .home .product-row > :nth-child(2) { margin-top: var(--spacing-9); }  /* centre card offset: 96 → 64 */
+}
+@media (max-width: 1023px) {
+  .home .festive__aside { padding: var(--spacing-7) 0 var(--spacing-9); }
+}
+@media (max-width: 767px) {
+  .home .festive__aside { padding: 0 0 var(--spacing-8); }
+}
+
+/* ═══ Second shoot (twelve sarees) ═════════════════════════════
+   Layout for the larger collection: a scrolling arrivals row, four edits, six colour fields that
+   open onto real fabric close-ups, and the collection pages. */
+
+/* ─── Hero: the lavender portrait. Desktop shows a wide band of it; phones show it whole ─ */
+.hero--kasni .hero__img { object-position: 50% 43%; }
+.hero--kasni .hero__scrim {
+  background:
+    linear-gradient(to bottom, rgba(30, 22, 16, 0.28) 0%, rgba(30, 22, 16, 0) 22%),
+    linear-gradient(to top, rgba(30, 22, 16, 0.5) 0%, rgba(30, 22, 16, 0) 45%);
+}
+
+/* ─── New arrivals: a scrolling row once there are more than three ─ */
+.section-head__actions { display: flex; align-items: center; gap: var(--spacing-5); }
+.row-nav { display: none; }
+.row-progress span { position: absolute; top: 0; left: 0; height: 1px; background: var(--color-ink); width: 40%; transition: transform 100ms linear; }
+@media (min-width: 1024px) {
+  .product-row--scroll {
+    display: flex; gap: var(--grid-gutter);
+    overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+    margin-right: calc(-1 * var(--bleed)); padding-right: var(--bleed);
+  }
+  .product-row--scroll::-webkit-scrollbar { display: none; }
+  .product-row--scroll > .product-card { flex: 0 0 calc((100% - 3 * var(--grid-gutter)) / 3.3); scroll-snap-align: start; }
+  .home .product-row--scroll > :nth-child(n) { margin-top: 0; }
+  .home .product-row--scroll > :nth-child(even) { margin-top: var(--spacing-8); } /* the offset, kept as a rhythm */
+  .product-row--scroll + .row-progress { display: block; position: relative; height: 1px; background: var(--color-border); margin-top: var(--spacing-7); }
+  .row-nav { display: flex; }
+  .row-nav button { width: 44px; height: 44px; font-size: 16px; border-radius: var(--radius-sm); transition: background-color var(--duration-fast) var(--ease-out); }
+  .row-nav button:hover:not(:disabled) { background: var(--color-surface); }
+  .row-nav button:disabled { color: var(--color-border-strong); cursor: default; }
+}
+
+/* ─── Colour story: six fields, each a link to its saree ─── */
+.swatches--six .swatch { aspect-ratio: 1 / 2; }
+.swatch__link { position: absolute; inset: 0; display: block; }
+.swatch__link:focus-visible { outline: 2px solid var(--color-ivory); outline-offset: -5px; }
+.swatch:focus-within .swatch__field { opacity: 0; }
+
+/* ─── Festive: the candlelit staircase ───────────────────── */
+.festive__media img { object-position: 50% 80%; }
+
+/* ─── Collection pages (/sarees, /edits/…) ───────────────── */
+.page--solid-header .collection { padding-top: var(--header-height); }
+.collection__head { padding: var(--spacing-10) 0 var(--spacing-7); }
+.collection__intro { margin-top: var(--spacing-3); font-size: var(--font-size-body-lg); color: var(--color-text-muted); max-width: 34em; }
+.collection__tabs {
+  display: flex; flex-wrap: wrap; gap: 0 var(--spacing-6);
+  margin-bottom: var(--spacing-8); border-bottom: 1px solid var(--color-border);
+}
+.collection__tab {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 48px;
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 14px;
+  color: var(--color-text-muted);
+}
+.collection__tab span { font-size: 11px; font-variant-numeric: tabular-nums; }
+.collection__tab:hover { color: var(--color-text); }
+.collection__tab.is-current { color: var(--color-text); box-shadow: inset 0 -1px 0 var(--color-ink); }
+.collection__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-9) var(--grid-gutter);
+  padding-bottom: var(--spacing-10);
+  align-items: start;
+}
+.collection__grid > :nth-child(3n + 2) { margin-top: var(--spacing-9); }
+
+@media (max-width: 1023px) {
+  .collection__grid { grid-template-columns: 1fr 1fr; gap: var(--spacing-7) var(--grid-gutter); }
+  .collection__grid > :nth-child(n) { margin-top: 0; }
+  .collection__head { padding-top: var(--spacing-8); }
+}
+@media (max-width: 767px) {
+  .hero--kasni .hero__img { object-position: 50% 50%; }
+  .swatches--six .swatch { aspect-ratio: 3 / 4; }
+  .collection__tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: calc(-1 * var(--page-margin)); padding-right: var(--page-margin); }
+  .collection__tabs::-webkit-scrollbar { display: none; }
+  .collection__tab { white-space: nowrap; }
+}
+
+/* ═══ Smaller imagery ═══════════════════════════════════════════
+   Photos are cropped onto the saree and shown smaller: more per row, less backdrop. */
+
+/* Product card photos carry their own focus crop; hover adds the shared zoom on top of it */
+@media (hover: hover) {
+  .product-card__link:hover .product-card__img.crop { transform: scale(calc(var(--s) * var(--hover-zoom))); }
+}
+
+/* ─── Shop by edit: intro left, five equal tiles right ───── */
+.edits__layout {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gutter); align-items: center;
+}
+.edits__intro { grid-column: 1 / 4; padding-right: var(--spacing-5); }
+.edits__copy { margin: var(--spacing-3) 0 var(--spacing-5); color: var(--color-text-muted); max-width: 22em; }
+.edits__row { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(5, 1fr); column-gap: var(--spacing-3); }
+.edit-tile { display: block; }
+.edit-tile__media { aspect-ratio: 3 / 4; }
+@media (hover: hover) { .edit-tile:hover .crop { --z: var(--hover-zoom); } }
+.edit-tile__label {
+  display: block; margin-top: var(--spacing-4); text-align: center;
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+}
+.edit-tile:hover .edit-tile__label { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+@media (min-width: 1024px) {
+  .hero--kasni .hero__img { object-position: 50% 40%; }
+  /* New arrivals: about four and a half cards across */
+  .product-row--scroll > .product-card { flex-basis: calc((100% - 4 * var(--grid-gutter)) / 4.5); }
+  .home .product-row--scroll > :nth-child(even) { margin-top: var(--spacing-6); }
+  /* Craft film and festive photo: shorter */
+  .home .craft__media { grid-column: 1 / 6; }
+  .home .craft__media .media { aspect-ratio: 5 / 4; }
+  .home .craft__text { grid-column: 7 / 11; }
+  .home .festive__media { aspect-ratio: auto; height: min(72svh, 620px); grid-column: 1 / 7; }
+  .home .festive__aside { grid-column: 8 / 13; padding: var(--spacing-8) 0; }
+  .home .festive__detail { width: 140px; }
+  .collection__grid { grid-template-columns: repeat(4, 1fr); gap: var(--spacing-8) var(--grid-gutter); }
+  .collection__grid > :nth-child(n) { margin-top: 0; }
+  .collection__grid > :nth-child(even) { margin-top: var(--spacing-7); }
+}
+@media (max-width: 1023px) {
+  .edits__layout { grid-template-columns: 1fr; row-gap: var(--spacing-6); }
+  .edits__intro, .edits__row { grid-column: 1; }
+  .edits__row {
+    display: flex; gap: var(--spacing-3); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+    margin-right: calc(-1 * var(--page-margin)); padding-right: var(--page-margin);
+  }
+  .edits__row::-webkit-scrollbar { display: none; }
+  .edits__row > li { flex: 0 0 28%; scroll-snap-align: start; }
+}
+@media (max-width: 767px) {
+  .edits__row > li { flex-basis: 44%; }
+  .hero--kasni .hero__img { object-position: 72% 55%; }
+}
+
+/* ═══ Campaign — full-bleed editorial ═══════════════════════════
+   One edit, shown through one saree's portrait, edge to edge on the studio colour behind it (--cc).
+   Approved exceptions for this section only (brand-guidelines.md §8c): slow ivory light particles
+   and a section-scoped star cursor. Both are decorative, ignore the pointer, and switch off
+   under reduced motion; the section is one ordinary link without them. */
+.campaign {
+  position: relative; isolation: isolate; overflow: hidden;
+  margin-top: var(--section-spacing);
+  height: min(100svh, 900px); min-height: 600px;
+  background: var(--cc); color: var(--color-ivory);
+}
+/* Keyboard focus rings the whole section (it is one link), not the wrapped headline */
+.campaign__link:focus-visible { outline: none; }
+.campaign:has(.campaign__link:focus-visible) { outline: 2px solid var(--color-ivory); outline-offset: -8px; }
+
+/* The portrait fills the right of the frame and dissolves into the colour field on its left */
+.campaign__media {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 64%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 36%);
+          mask-image: linear-gradient(to right, transparent 0%, #000 36%);
+}
+.campaign__media img {
+  width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%);
+  transition: transform var(--duration-slower) var(--ease-out);
+}
+@media (hover: hover) { .campaign:hover .campaign__media img { transform: scale(var(--hover-zoom)); } }
+
+.campaign__content { position: absolute; left: 0; right: 0; bottom: var(--spacing-9); z-index: 2; }
+.campaign__eyebrow { color: inherit; opacity: 0.8; }
+.campaign__title {
+  max-width: 5em;
+  font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: clamp(2.5rem, 1.4rem + 4.4vw, 5.5rem);
+  line-height: 0.94; letter-spacing: -0.03em; text-transform: uppercase;
+}
+/* The whole section is the link */
+.campaign__link::after { content: ""; position: absolute; inset: -200vh -100vw; z-index: 1; }
+.campaign__line { margin-top: var(--spacing-4); max-width: 22em; font-size: var(--font-size-body-lg); }
+.campaign__content .link { margin-top: var(--spacing-3); }
+.campaign:hover .link__label, .campaign:focus-within .link__label { background-size: 100% 1px; }
+.campaign:hover .link__arrow, .campaign:focus-within .link__arrow { transform: translateX(4px); }
+
+/* Light particles: two animations each (drift + glow), values set per spark by render/campaign.mjs.
+   They also travel with the page: homepage.js sets --scroll (-1 → 1 as the section crosses the screen)
+   and each spark moves by its own distance --p, nearer ones further, so the field has depth. */
+.campaign__sparks { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.spark {
+  position: absolute; left: var(--x); top: var(--y);
+  width: var(--d); height: var(--d); border-radius: 50%;
+  background: var(--color-ivory);
+  box-shadow: 0 0 calc(var(--d) * 2) calc(var(--d) * 0.5) rgba(246, 241, 234, 0.3);
+  opacity: var(--o);
+  translate: 0 calc(var(--scroll, 0) * var(--p, 0px));
+  transition: translate var(--duration-slow) var(--ease-out);
+  animation:
+    spark-drift var(--t) var(--ease-in-out) var(--delay) infinite alternate,
+    spark-glow var(--g) ease-in-out var(--delay) infinite alternate;
+}
+@keyframes spark-drift { to { transform: translate3d(var(--dx), var(--dy), 0); } }
+@keyframes spark-glow { from { opacity: calc(var(--o) * 0.3); } to { opacity: var(--o); } }
+/* homepage.js adds .is-live while the section is on screen, so nothing animates off screen */
+.js .campaign:not(.is-live) .spark { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .spark { animation: none; translate: none; } }
+
+/* Cursor: inside this section a fine pointer becomes a four-point star, with a smaller sparkle
+   trailing just behind it (positions set by homepage.js). No ring, no label, nothing that scales in. */
+.campaign__cursor {
+  position: absolute; top: 0; left: 0; z-index: 3;
+  display: none; fill: var(--color-ivory);
+  filter: drop-shadow(0 0 3px rgba(31, 26, 22, 0.5)); /* keeps the star readable over pale silk */
+  pointer-events: none;
+  opacity: 0; transition: opacity var(--duration-fast) var(--ease-out);
+  will-change: translate;
+}
+.campaign__cursor--star { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+.campaign__cursor--sparkle { width: 11px; height: 11px; margin: -24px 0 0 10px; }
+.campaign.has-cursor, .campaign.has-cursor a { cursor: none; }
+.campaign.has-cursor .campaign__cursor { display: block; }
+.campaign.is-pointing .campaign__cursor { opacity: 1; }
+.campaign.is-pointing .campaign__cursor--sparkle { animation: cursor-twinkle 1.8s ease-in-out infinite alternate; }
+@keyframes cursor-twinkle { from { opacity: 0.35; scale: 0.7; } to { opacity: 1; scale: 1; } }
+@media (prefers-reduced-motion: reduce) { .campaign.is-pointing .campaign__cursor--sparkle { animation: none; } }
+
+/* Tablet and phone: the portrait fills the frame and fades into the colour under the text */
+@media (max-width: 1023px) {
+  .campaign { height: 86svh; min-height: 520px; }
+  .campaign__media {
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 48%, transparent 96%);
+            mask-image: linear-gradient(to bottom, #000 48%, transparent 96%);
+  }
+  .campaign__media img { object-position: 88% 50%; }
+  .campaign__content { bottom: var(--spacing-8); }
+}
+@media (max-width: 767px) {
+  /* Phone: the portrait on top, the words below it on the colour, so nothing sits on the saree */
+  .campaign { height: auto; min-height: 0; }
+  .campaign__media {
+    position: relative; aspect-ratio: 4 / 5;
+    -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+  }
+  .campaign__content { position: relative; bottom: auto; padding-top: var(--spacing-3); padding-bottom: var(--spacing-8); }
+  .campaign__line { font-size: var(--font-size-body); }
+  .spark:nth-child(even) { display: none; } /* fewer particles on a small screen */
+}
+
+/* ═══ Texture banner — "Texture first" ════════════════════════════════
+   One close-up of a saree, edge to edge, in a wide cinematic frame. The words sit in the lower left
+   on a black-green shade that clears by the middle of the picture, so the weave on the right stays
+   untouched. The whole section is one link; the only movement is the arrow and underline on hover. */
+.texture-banner {
+  position: relative; isolation: isolate; overflow: hidden;
+  margin-top: var(--section-spacing);
+  aspect-ratio: 2.8 / 1; min-height: 460px; max-height: 88svh;
+  background: #0B1511; color: var(--color-ivory);
+}
+/* Keyboard focus rings the whole section (it is one link), not the wrapped headline */
+.texture-banner__link:focus-visible { outline: none; }
+.texture-banner:has(.texture-banner__link:focus-visible) { outline: 2px solid var(--color-ivory); outline-offset: -8px; }
+
+.texture-banner__media { position: absolute; inset: 0; }
+/* --pos / --pos-tablet / --pos-mobile choose which band of the photograph each width shows */
+.texture-banner__media img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.texture-banner__scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(8, 17, 13, 0.9) 0%, rgba(8, 17, 13, 0.72) 22%, rgba(8, 17, 13, 0.3) 42%, rgba(8, 17, 13, 0) 58%),
+    linear-gradient(to top, rgba(8, 17, 13, 0.35) 0%, rgba(8, 17, 13, 0) 40%);
+}
+
+.texture-banner__content { position: absolute; left: 0; right: 0; bottom: clamp(var(--spacing-7), 4.5vw, var(--spacing-9)); z-index: 1; }
+.texture-banner__eyebrow { color: inherit; opacity: 0.78; margin-bottom: var(--spacing-5); }
+.texture-banner__title {
+  max-width: 9em;
+  font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
+  line-height: 1; letter-spacing: -0.03em;
+}
+/* The whole section is the link */
+.texture-banner__link::after { content: ""; position: absolute; inset: -200vh -100vw; z-index: 1; }
+.texture-banner__line { margin-top: var(--spacing-3); max-width: 22em; font-size: clamp(1.0625rem, 0.9rem + 0.6vw, 1.5rem); line-height: 1.3; }
+.texture-banner__cta { margin-top: clamp(var(--spacing-6), 4vw, var(--spacing-9)); }
+.texture-banner:hover .link__label, .texture-banner:focus-within .link__label { background-size: 100% 1px; }
+.texture-banner:hover .link__arrow, .texture-banner:focus-within .link__arrow { transform: translate(3px, -3px); }
+@media (prefers-reduced-motion: reduce) {
+  .texture-banner .link__label, .texture-banner .link__arrow { transition: none; }
+  .texture-banner:hover .link__arrow, .texture-banner:focus-within .link__arrow { transform: none; }
+}
+
+/* Tablet: a taller frame, and the shade reaches further across so the headline keeps its room */
+@media (max-width: 1023px) {
+  .texture-banner { aspect-ratio: 16 / 9; min-height: 420px; }
+  .texture-banner__media img { object-position: var(--pos-tablet, var(--pos, 50% 50%)); }
+  .texture-banner__scrim {
+    background:
+      linear-gradient(to right, rgba(8, 17, 13, 0.9) 0%, rgba(8, 17, 13, 0.66) 34%, rgba(8, 17, 13, 0) 76%),
+      linear-gradient(to top, rgba(8, 17, 13, 0.45) 0%, rgba(8, 17, 13, 0) 50%);
+  }
+}
+/* Phone: a portrait frame showing most of the photograph; the words sit at the foot, on a shade from below */
+@media (max-width: 767px) {
+  .texture-banner { aspect-ratio: 4 / 5; min-height: 0; max-height: none; }
+  .texture-banner__media img { object-position: var(--pos-mobile, var(--pos, 50% 50%)); }
+  .texture-banner__scrim {
+    background: linear-gradient(to top, rgba(8, 17, 13, 0.94) 0%, rgba(8, 17, 13, 0.78) 30%, rgba(8, 17, 13, 0) 62%);
+  }
+  .texture-banner__content { bottom: var(--spacing-7); }
+  .texture-banner__eyebrow { margin-bottom: var(--spacing-3); }
+  .texture-banner__title { font-size: clamp(2.125rem, 9.5vw, 2.75rem); }
+  .texture-banner__cta { margin-top: var(--spacing-5); }
+}
+
+/* ─── New arrivals: more, smaller cards on tablet and phone too ─ */
+.home .product-card__media { margin-bottom: var(--spacing-3); }
+@media (max-width: 1023px) {
+  .home .product-row--scroll > .product-card { flex-basis: calc((100% - 3 * var(--grid-gutter)) / 3.4); }
+}
+@media (max-width: 767px) {
+  .home .product-row--scroll > .product-card { flex-basis: calc((100% - var(--grid-gutter)) / 1.9); }
+  .home .product-card__descriptor { font-size: 13px; }
+}
+
+/* ═══ Footer — Deep Espresso ═════════════════════════════════════
+   The footer closes the page on a dark field. Nothing global changes: the colour tokens are
+   redefined on .site-footer only, so every existing footer rule (text, muted text, hairlines,
+   the newsletter underline, focus rings) picks up the espresso palette by inheritance. */
+.site-footer {
+  --color-text:        #F8F1E8; /* warm ivory — links, headings, input text */
+  --color-text-muted:  #D5B7A1; /* champagne beige — column headings, supporting copy */
+  --color-border:      #655047; /* warm brown hairlines */
+  --color-ink:         #F8F1E8; /* the newsletter underline and its focus line */
+  --color-focus:       #F8F1E8;
+  --color-error:       #F2A99B; /* the page's error red is too dark to read on espresso */
+  margin-top: var(--spacing-9);
+  background: #30241F;
+  color: var(--color-text);
+}
+/* The homepage already ends on a dark section, so the footer follows it directly */
+.home .site-footer { margin-top: 0; }
+.site-footer .newsletter__field input { caret-color: var(--color-text); }
+.site-footer__bar { border-top-color: rgba(101, 80, 71, 0.7); }
+/* Product pages reserve room for the fixed buy bar under the last content; keep that room espresso, not ivory */
+@media (max-width: 1023px) {
+  body:has(.pdp-buybar) { padding-bottom: 0; }
+  body:has(.pdp-buybar) .site-footer { padding-bottom: 72px; }
+}
+
+/* ═══ The art of Indian craftsmanship — full-bleed film ═════════
+   The film fills the section edge to edge; the copy sits lower-left on a soft scrim. The headline pairs
+   the grotesk with the serif italic accent. One quiet text control pauses the film. */
+.craft-film {
+  position: relative; isolation: isolate; overflow: hidden;
+  margin-top: var(--section-spacing);
+  background: var(--color-studio-umber); color: var(--color-ivory);
+}
+.craft-film :focus-visible { outline-color: var(--color-ivory); }
+.craft-film__media { position: absolute; inset: 0; z-index: -2; }
+.craft-film__video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; display: block; }
+.craft-film__scrim {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(to right, rgba(31, 26, 22, 0.72) 0%, rgba(31, 26, 22, 0.42) 42%, rgba(31, 26, 22, 0.08) 72%),
+    linear-gradient(to top, rgba(31, 26, 22, 0.5) 0%, rgba(31, 26, 22, 0) 45%);
+}
+.craft-film__inner {
+  position: relative;
+  min-height: min(86svh, 760px);
+  display: flex; align-items: flex-end;
+  padding-top: var(--spacing-10); padding-bottom: var(--spacing-9);
+}
+.craft-film__text { max-width: 34rem; }
+.craft-film__eyebrow { color: inherit; opacity: 0.82; margin-bottom: var(--spacing-4); }
+.craft-film__title {
+  font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: clamp(2.1rem, 1.3rem + 3vw, 4rem);
+  line-height: 1.02; letter-spacing: -0.03em;
+}
+.craft-film__title .serif { display: block; }
+.craft-film__body { margin-top: var(--spacing-5); font-size: var(--font-size-body-lg); line-height: 1.6; max-width: 30em; opacity: 0.92; }
+.craft-film__text .link { margin-top: var(--spacing-5); }
+.craft-film__toggle {
+  position: absolute; right: var(--page-margin); bottom: var(--spacing-9);
+  min-height: 44px; padding: 0 var(--spacing-2);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 13px;
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+.craft-film.has-video .craft-film__toggle { opacity: 0.85; pointer-events: auto; }
+.craft-film.has-video .craft-film__toggle:hover { opacity: 1; }
+.craft-film + .festive { margin-top: 0; }
+
+@media (max-width: 767px) {
+  .craft-film__inner { min-height: 92svh; padding-top: var(--spacing-9); padding-bottom: var(--spacing-8); }
+  .craft-film__video { object-position: 62% 50%; }
+  .craft-film__scrim {
+    background:
+      linear-gradient(to bottom, rgba(31, 26, 22, 0.55) 0%, rgba(31, 26, 22, 0) 22%), /* behind the pause control */
+      linear-gradient(to top, rgba(31, 26, 22, 0.86) 0%, rgba(31, 26, 22, 0.55) 42%, rgba(31, 26, 22, 0.1) 72%);
+  }
+  .craft-film__toggle { right: var(--page-margin); bottom: auto; top: var(--spacing-5); }
 }

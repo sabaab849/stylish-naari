@@ -29,19 +29,31 @@
 .pdp-gallery__slide.is-active { opacity: 1; }
 .pdp-gallery__slide img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
 
-.pdp-gallery__controls {
-  position: absolute; bottom: var(--spacing-5); left: var(--bleed);
-  display: flex; align-items: center;
-  background: rgba(246, 241, 234, 0.92); color: var(--color-text);
-  border-radius: var(--radius-sm);
+/* Thumbnail rail on the left, the image beside it, a round arrow on each side of the image */
+.pdp-gallery--many { display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: var(--spacing-4); align-items: start; }
+.pdp-gallery__main { position: relative; min-width: 0; }
+.pdp-gallery__thumbs { display: grid; row-gap: var(--spacing-3); margin: 0; padding: 0; list-style: none; }
+.pdp-gallery__thumb {
+  display: block; width: 100%; aspect-ratio: 2 / 3; padding: 0; overflow: hidden;
+  background: var(--color-surface);
+  opacity: 0.6;
+  transition: opacity var(--duration-slow) var(--ease-out);
 }
-.pdp-gallery__btn { width: 44px; height: 44px; font-size: 16px; }
-.pdp-gallery__btn:hover { background: var(--color-surface-2); }
-.pdp-gallery__count {
-  min-width: 4.6em; text-align: center;
-  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 13px;
-  font-variant-numeric: tabular-nums;
+.pdp-gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pdp-gallery__thumb:hover { opacity: 1; }
+.pdp-gallery__thumb.is-active { opacity: 1; outline: 1px solid var(--color-text); outline-offset: 2px; }
+
+.pdp-gallery__btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  border: 1px solid var(--color-text); border-radius: 50%;
+  background: rgba(246, 241, 234, 0.72); color: var(--color-text);
+  transition: background var(--duration-slow) var(--ease-out);
 }
+.pdp-gallery__btn--prev { left: var(--spacing-4); }
+.pdp-gallery__btn--next { right: var(--spacing-4); }
+.pdp-gallery__btn:hover { background: rgba(246, 241, 234, 0.96); }
 
 .pdp-info {
   grid-column: 9 / 13; grid-row: 1;
@@ -115,6 +127,31 @@
 }
 .saree-swatch__pair { display: inline; margin-left: var(--spacing-1); font-size: 0.72em; text-transform: none; letter-spacing: 0; }
 .saree-swatch__meta { margin-top: var(--spacing-2); font-size: 12px; line-height: 1.35; }
+/* ─── 02b In detail — circular features ────────────────────
+   Circles are an approved PDP exception to the 0-radius rule (brand-guidelines.md §8b): no card,
+   border or shadow, just the crop, an uppercase heading and one line of product data. */
+.features__head { margin-bottom: var(--section-header-gap); }
+.features__grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-8) var(--grid-gutter);
+  align-items: start;
+}
+.features__grid--3 { grid-template-columns: repeat(3, 1fr); max-width: 75%; }
+.features__grid--2 { grid-template-columns: repeat(2, 1fr); max-width: 50%; }
+.feature { text-align: center; }
+.feature__media {
+  width: min(100%, 280px); aspect-ratio: 1 / 1;
+  margin: 0 auto var(--spacing-5);
+  border-radius: 50%;
+}
+@media (hover: hover) { .feature:hover .crop { --z: var(--hover-zoom); } }
+.feature__title {
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+  line-height: 1.2;
+}
+.feature__text { margin: var(--spacing-2) auto 0; max-width: 20em; color: var(--color-text-secondary); line-height: 1.5; }
+
 /* ─── 03 The drape study (fall · pallu · border) ───────── */
 .drape__head { margin-bottom: var(--section-header-gap); }
 .drape__grid {
@@ -150,7 +187,9 @@
    The section is tall; .chapter__sticky pins for its length. pdp.js maps scroll position to:
    --ch-r (colour spread radius), --ch-bg / --ch-text (tonal palette), --ch-geo (disc), and
    inline transforms on the frame, images, disc and state text. Nothing intercepts scrolling. */
-.chapter { position: relative; margin-top: var(--section-spacing); }
+.chapter { position: relative; margin-top: var(--spacing-9); }
+/* the chapter leaves still filled with colour, so the photograph below follows it with no gap */
+.chapter + .unfolded { margin-top: 0; }
 .chapter__sticky { position: relative; min-height: 100svh; overflow: hidden; }
 .chapter__bg {
   position: absolute; inset: 0;
@@ -220,39 +259,76 @@
 .chapter__hex { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 12px; opacity: 0.85; }
 
 /* Scroll length: only applied when JS is running, so without JS it is a normal colour section */
-.js .chapter { height: 430vh; --ch-r: 0%; } /* pdp.js overrides --ch-r inline on .chapter */
+.js .chapter { height: 370vh; --ch-r: 0%; } /* pdp.js overrides --ch-r inline on .chapter */
 .js .chapter__sticky { position: sticky; top: 0; height: 100svh; }
 .js .chapter__inner { opacity: 0; }
-/* ─── 05 The craft — macro details ────────────────────── */
-.pdp-craft { padding: var(--section-spacing) 0; background: var(--color-surface); }
-.pdp-craft__head { margin-bottom: var(--section-header-gap); }
-.pdp-craft__grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: var(--grid-gutter); align-items: start; }
-.pdp-craft__grid--3 { grid-template-columns: repeat(3, 1fr); }
-/* Two close-ups stay quarter-width (the sources are small), offset across the row */
-.pdp-craft__grid--2 .macro:nth-child(1) { grid-column: 2; }
-.pdp-craft__grid--2 .macro:nth-child(2) { grid-column: 4; }
-.macro { margin: 0; }
-.macro:nth-child(even) { margin-top: var(--spacing-10); }
-.macro__media { aspect-ratio: 3 / 4; background: var(--color-surface-2); }
-.macro__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.macro figcaption { margin-top: var(--spacing-3); display: grid; row-gap: 2px; }
-.macro__label { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 14px; }
-.macro__caption { font-size: var(--font-size-caption); color: var(--color-text-muted); }
-
 /* ─── 06 Product details ───────────────────────────────── */
-.pdp-details__grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--grid-gutter); }
-.pdp-details__head { grid-column: 1 / 5; }
-.pdp-details__body { grid-column: 6 / 13; }
+/* "The Saree, Unfolded": the saree's own photograph edge to edge, the heading top-left and the
+   product data as annotations lower-right. Two corner scrims carry the text; the diagonal between
+   them is left untouched so the cloth reads at full colour. The photograph shifts a few percent
+   with the scroll (pdp.js sets --shift; off under reduced motion). */
+.unfolded {
+  position: relative; isolation: isolate; overflow: hidden;
+  margin-top: var(--section-spacing);
+  background: var(--pc); color: var(--color-ivory);
+  text-shadow: 0 0 28px rgba(31, 26, 22, 0.45); /* a soft halo, for pale silk under the type */
+}
+.unfolded :focus-visible { outline-color: var(--color-ivory); }
+.unfolded__media {
+  position: absolute; inset: -7% 0; z-index: -2;
+  translate: 0 calc(var(--shift, 0) * 6%);
+  will-change: translate;
+}
+.unfolded__media picture { display: block; width: 100%; height: 100%; }
+.unfolded__media img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.unfolded__scrim {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse 62% 78% at 0% 0%, rgba(31, 26, 22, 0.88) 0%, rgba(31, 26, 22, 0.66) 46%, rgba(31, 26, 22, 0) 100%),
+    radial-gradient(ellipse 70% 96% at 100% 100%, rgba(31, 26, 22, 0.92) 0%, rgba(31, 26, 22, 0.74) 50%, rgba(31, 26, 22, 0) 100%);
+}
+.unfolded__inner {
+  min-height: min(94svh, 880px);
+  display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr auto;
+  column-gap: var(--grid-gutter);
+  padding-top: var(--spacing-10); padding-bottom: var(--spacing-9);
+}
+.unfolded__head { grid-column: 1 / 8; grid-row: 1; }
+.unfolded__eyebrow { color: inherit; opacity: 0.85; margin-bottom: var(--spacing-4); }
+.unfolded__title {
+  max-width: 6em; margin-left: -0.04em;
+  font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: clamp(2.75rem, 1.5rem + 5vw, 6.5rem);
+  line-height: 0.94; letter-spacing: -0.035em;
+}
+.unfolded__body { grid-column: 8 / 13; grid-row: 3; align-self: end; }
+
 .spec { margin: 0; }
 .spec__row {
-  display: grid; grid-template-columns: minmax(160px, 34%) 1fr; column-gap: var(--grid-gutter);
-  padding: var(--spacing-4) 0;
-  border-top: 1px solid var(--color-border);
+  display: grid; grid-template-columns: 9.5em 1fr; column-gap: var(--spacing-4); align-items: baseline;
+  padding: var(--spacing-3) 0;
+  border-top: 1px solid rgba(246, 241, 234, 0.42);
 }
-.spec__row:last-child { border-bottom: 1px solid var(--color-border); }
-.spec__row dt { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 14px; }
-.spec__row dt span { color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
-.spec__row dd { margin: 0; color: var(--color-text-secondary); }
+.spec__row dt {
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+}
+.spec__row dt span { display: inline-block; width: 2.4em; font-variant-numeric: tabular-nums; opacity: 0.75; }
+.spec__row dd {
+  margin: 0;
+  font-family: var(--font-display); font-size: var(--font-size-h3); line-height: 1.25; letter-spacing: -0.01em;
+}
+
+/* The accordion sits under the annotations, on the photograph, in the same hairlines */
+.unfolded .accordion { margin-top: 0; }
+.unfolded .accordion__item,
+.unfolded .accordion__item:last-child { border-color: rgba(246, 241, 234, 0.42); }
+.unfolded .accordion__summary {
+  min-height: 52px;
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+}
+.unfolded .accordion__summary::after { font-size: 16px; letter-spacing: 0; }
+.unfolded .accordion__panel { color: inherit; }
 
 .accordion { margin-top: var(--spacing-8); }
 .accordion__item { border-top: 1px solid var(--color-border); }
@@ -309,9 +385,11 @@
   }
   .pdp-gallery__stage::-webkit-scrollbar { display: none; }
   .pdp-gallery__slide { position: relative; inset: auto; flex: 0 0 100%; aspect-ratio: var(--ratio, 3 / 4); opacity: 1; scroll-snap-align: start; }
-  .pdp-gallery__controls { left: auto; right: var(--page-margin); bottom: var(--spacing-4); }
   .pdp-gallery__btn { display: none; }
-  .pdp-gallery__count { padding: 0 var(--spacing-3); min-height: 32px; line-height: 32px; }
+  /* the rail becomes a row of thumbnails under the swipe gallery */
+  .pdp-gallery--many { display: flex; flex-direction: column; }
+  .pdp-gallery__thumbs { order: 2; display: flex; gap: var(--spacing-3); padding: var(--spacing-4) var(--page-margin) 0; }
+  .pdp-gallery__thumbs li { flex: 0 0 56px; }
 
   .pdp-info { grid-column: 1; grid-row: auto; position: static; padding: var(--spacing-7) 0 0; }
   .pdp-info__meta { grid-template-columns: repeat(4, auto); justify-content: start; column-gap: var(--spacing-7); }
@@ -319,7 +397,7 @@
 
 
   /* Chapter: image on top, text below; shorter scroll, gentler movement (set in pdp.js) */
-  .js .chapter { height: 340svh; }
+  .js .chapter { height: 300svh; }
   .chapter__inner {
     grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
     align-items: start; row-gap: var(--spacing-5);
@@ -331,12 +409,15 @@
   .chapter__states { grid-column: 1; grid-row: 3; height: 30svh; min-height: 200px; align-self: end; }
   .chapter__title { font-size: min(8rem, calc(var(--col-w) / (var(--chars) * 0.6))); margin-bottom: var(--spacing-3); }
 
-  .pdp-craft__grid, .pdp-craft__grid--3 { grid-template-columns: 1fr 1fr; row-gap: var(--spacing-7); }
-  .pdp-craft__grid--2 .macro:nth-child(n) { grid-column: auto; }
-  .macro:nth-child(even) { margin-top: var(--spacing-8); }
 
-  .pdp-details__grid { grid-template-columns: 1fr; row-gap: var(--spacing-6); }
-  .pdp-details__head, .pdp-details__body { grid-column: 1; }
+  .unfolded__head { grid-column: 1 / -1; }
+  .unfolded__body { grid-column: 5 / 13; }
+  /* narrower screens: the lower scrim reaches further across, under the whole annotation block */
+  .unfolded__scrim {
+    background:
+      radial-gradient(ellipse 80% 60% at 0% 0%, rgba(31, 26, 22, 0.88) 0%, rgba(31, 26, 22, 0.66) 46%, rgba(31, 26, 22, 0) 100%),
+      radial-gradient(ellipse 120% 78% at 100% 100%, rgba(31, 26, 22, 0.92) 0%, rgba(31, 26, 22, 0.78) 52%, rgba(31, 26, 22, 0) 100%);
+  }
 
   .style-it__grid { grid-auto-flow: row; grid-template-columns: 1fr 1fr; row-gap: var(--spacing-6); }
 
@@ -374,6 +455,118 @@
   .chapter__chips { margin-top: var(--spacing-4); }
   .chapter__disc { width: 74%; right: -10%; }
 
-  .spec__row { grid-template-columns: 1fr; row-gap: var(--spacing-1); }
+  /* Unfolded on a phone: the photograph fills the screen, heading at the top, annotations at the bottom */
+  .unfolded__inner { display: flex; flex-direction: column; min-height: 118svh; padding-top: var(--spacing-9); padding-bottom: var(--spacing-8); }
+  .unfolded__body { margin-top: auto; align-self: stretch; }
+  .unfolded__media img { object-position: var(--pos-m, var(--pos, 50% 50%)); }
+  .unfolded__scrim {
+    background:
+      linear-gradient(to bottom, rgba(31, 26, 22, 0.74) 0%, rgba(31, 26, 22, 0.42) 20%, rgba(31, 26, 22, 0) 36%),
+      linear-gradient(to top, rgba(31, 26, 22, 0.88) 0%, rgba(31, 26, 22, 0.66) 30%, rgba(31, 26, 22, 0) 54%);
+  }
+  .spec__row { grid-template-columns: 8.5em 1fr; }
+  .spec__row dd { font-size: 17px; }
 
+}
+
+/* ═══ Compact product photography ══════════════════════════════
+   The gallery is a fixed 4:5 frame, about 40% of the page, cropped onto the saree (images[].focus).
+   The "on the body" images are a small staggered row instead of a full-width spread. */
+.pdp-gallery__slide img { object-position: 50% 50%; }
+@media (min-width: 1024px) {
+  .pdp-hero { padding-top: var(--spacing-7); }
+  .pdp-gallery { grid-column: 1 / 8; margin-left: 0; }
+  .pdp-gallery:not(.pdp-gallery--many) { grid-column: 2 / 8; }
+  /* The image fills the whole column beside the rail and nearly the full screen height */
+  /* A 3:4 portrait frame the full width of the column: tall enough to show the whole figure, head to hem */
+  .pdp-gallery__stage { aspect-ratio: 3 / 4; height: auto; }
+  .pdp-gallery__thumb { aspect-ratio: 3 / 4; }
+  .pdp-info { padding-top: var(--spacing-5); }
+
+  .drape__grid { grid-template-rows: auto; }
+  .drape__item--fall { grid-column: 2 / 6; grid-row: 1; }
+  .drape__item--pallu { grid-column: 7 / 10; grid-row: 1; margin-top: var(--spacing-9); }
+  .drape__item--border { grid-column: 10 / 13; grid-row: 1; align-self: start; margin: var(--spacing-11) 0 0; }
+  .drape__item--border .drape__media { aspect-ratio: 1 / 1; box-shadow: none; }
+  .drape__item--fall::before { top: var(--spacing-8); bottom: var(--spacing-8); left: 45%; right: -12%; }
+  .drape { padding-bottom: 0; }
+}
+
+/* ─── In detail: two circles per row on tablet and phone ─── */
+@media (max-width: 1023px) {
+  .features__grid, .features__grid--3, .features__grid--2 { grid-template-columns: 1fr 1fr; max-width: none; row-gap: var(--spacing-7); }
+  .feature__media { width: min(100%, 240px); margin-bottom: var(--spacing-4); }
+}
+@media (max-width: 767px) {
+  .features__grid, .features__grid--3, .features__grid--2 { row-gap: var(--spacing-6); }
+  .feature__text { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .unfolded__media { inset: 0; translate: none; } }
+
+/* ═══ "A closer look" — campaign treatment ══════════════════════
+   Overrides the earlier "Saree, Unfolded" layout: a smaller heading, the attributes as a borderless
+   2 × 2 grid in the lower right, shipping as an inline accordion, and lighter scrims so the cloth leads.
+   Hierarchy comes from type, space and alignment only: no rules, numbers, cards or icons. */
+.unfolded { text-shadow: 0 0 24px rgba(31, 26, 22, 0.5); }
+.unfolded__scrim {
+  background:
+    radial-gradient(ellipse 52% 60% at 0% 0%, rgba(31, 26, 22, 0.7) 0%, rgba(31, 26, 22, 0.4) 48%, rgba(31, 26, 22, 0) 100%),
+    radial-gradient(ellipse 60% 72% at 100% 100%, rgba(31, 26, 22, 0.8) 0%, rgba(31, 26, 22, 0.52) 50%, rgba(31, 26, 22, 0) 100%);
+}
+.unfolded__inner { min-height: min(92svh, 860px); padding-top: var(--spacing-9); padding-bottom: var(--spacing-9); }
+.unfolded__head { grid-column: 1 / 7; }
+.unfolded__eyebrow { opacity: 0.8; margin-bottom: var(--spacing-3); }
+.unfolded__title {
+  max-width: 9em; margin-left: -0.03em;
+  font-size: clamp(1.9rem, 1.15rem + 3.1vw, 4.1rem); /* about 35% smaller than before */
+  line-height: 1; letter-spacing: -0.03em;
+}
+.unfolded__body { grid-column: 8 / 13; }
+
+.closer {
+  margin: 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: var(--spacing-8); row-gap: var(--spacing-8);
+  align-items: start;
+}
+.closer__item dt {
+  margin-bottom: var(--spacing-2);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+  line-height: 1.2; opacity: 0.72;
+}
+.closer__item dd {
+  margin: 0;
+  font-family: var(--font-display); font-size: var(--font-size-h3); line-height: 1.3; letter-spacing: -0.01em;
+}
+/* Shipping: a real disclosure, in the same type as the other values */
+.closer__more summary {
+  display: inline-flex; align-items: baseline; gap: 0.4em;
+  list-style: none; cursor: pointer;
+  /* a tall hit area without moving the baseline off the grid */
+  padding: 12px 0; margin: -12px 0;
+}
+.closer__more summary::-webkit-details-marker { display: none; }
+.closer__more summary::after { content: "+"; }
+.closer__more[open] summary::after { content: "–"; }
+.closer__more summary:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.closer__panel { margin-top: var(--spacing-3); font-family: var(--font-body); font-size: 14px; line-height: 1.5; letter-spacing: 0; }
+.closer__panel p + p { margin-top: var(--spacing-2); }
+.closer__panel span { opacity: 0.72; }
+
+@media (max-width: 1023px) {
+  .unfolded__body { grid-column: 4 / 13; }
+  .closer { column-gap: var(--spacing-7); row-gap: var(--spacing-7); }
+}
+@media (max-width: 767px) {
+  /* Heading at the top, details at the bottom: the middle of the photograph stays clear */
+  .unfolded__inner { min-height: 100svh; padding-top: var(--spacing-8); padding-bottom: var(--spacing-8); }
+  .unfolded__scrim {
+    background:
+      linear-gradient(to bottom, rgba(31, 26, 22, 0.66) 0%, rgba(31, 26, 22, 0) 30%),
+      linear-gradient(to top, rgba(31, 26, 22, 0.84) 0%, rgba(31, 26, 22, 0.5) 30%, rgba(31, 26, 22, 0) 52%);
+  }
+  .closer { column-gap: var(--spacing-5); row-gap: var(--spacing-6); }
+  .closer__item dd { font-size: 16px; }
 }

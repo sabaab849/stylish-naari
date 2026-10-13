@@ -1,8 +1,12 @@
 # Craft films
 
-The Art of Banarasi section plays one silent black-and-white loop beside the text.
+The homepage craft section ("The art of Indian craftsmanship") plays one silent film full-width behind the text.
 
-## Current file (interim)
+## Current files (interim)
+
+`craft-film.mp4` (1920×1080, about 3.9 MB) and `craft-film-720.mp4` (1280×720, about 1.9 MB, served to phones) are the homepage film: one unbroken 12 s take (22–34 s of the source below) in colour with a light warm grade. `assets/images/craft-film-poster.jpg` is the still shown until it plays. Re-cut with `_tools/encode-film.html`.
+
+`craft-loom-bw.mp4` is the earlier black-and-white cut. The homepage no longer uses it.
 
 | File | Source | Licence |
 |---|---|---|

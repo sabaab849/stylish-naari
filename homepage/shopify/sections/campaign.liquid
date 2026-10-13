@@ -1,0 +1,331 @@
+{%- comment -%}
+  Campaign — full-bleed editorial section (Stylish Naari).
+  The Shopify version of homepage/render/campaign.mjs + the "Campaign" blocks in homepage.css and homepage.js.
+  Keep the three in step.
+
+  Self-contained on purpose: the styles and script live in this file, every design token has a fallback,
+  and nothing depends on a class on <html> or on another theme script. Copy this one file into the
+  theme's sections/ folder and add "Campaign" from the theme editor.
+
+  Animation notes for Shopify
+  - The sparkles are pure CSS and run without JavaScript.
+  - The script adds three things: pausing sparkles off screen, moving them with the scroll, and the
+    star cursor. It starts on page load and again on shopify:section:load, so it also works while
+    the section is being added, edited or reordered in the theme editor.
+  - Touch devices never get the cursor; prefers-reduced-motion stops the sparkles and the scroll shift.
+{%- endcomment -%}
+
+{%- liquid
+  assign image = section.settings.image
+  assign edit = section.settings.collection
+  assign heading = section.settings.heading | default: edit.title
+  assign text = section.settings.text
+  if text == blank and edit != blank
+    assign text = edit.description | strip_html | truncate: 140
+  endif
+  assign link_url = section.settings.link | default: edit.url
+  assign image_style = image.presentation.focal_point | prepend: 'object-position: '
+  assign star_path = 'M12 0C12.6 7.6 16.4 11.4 24 12 16.4 12.6 12.6 16.4 12 24 11.4 16.4 7.6 12.6 0 12 7.6 11.4 11.4 7.6 12 0Z'
+-%}
+
+<div
+  class="sn-campaign"
+  data-sn-campaign
+  aria-labelledby="sn-campaign-title-{{ section.id }}"
+  role="region"
+  style="--cc: {{ section.settings.background }}; --ink: {{ section.settings.text_color }};"
+>
+  <div class="sn-campaign__media">
+    {%- if image != blank -%}
+      {{
+        image
+        | image_url: width: 2400
+        | image_tag:
+          loading: 'lazy',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '(min-width: 1024px) 64vw, 100vw',
+          style: image_style
+      }}
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'sn-campaign__placeholder' }}
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} Sparkles: position, size, drift and timing are derived from the loop index, so they are stable between renders {%- endcomment -%}
+  <div class="sn-campaign__sparks" aria-hidden="true">
+    {%- for i in (1..section.settings.sparkles) -%}
+      {%- liquid
+        assign x = i | times: 37 | modulo: 97 | plus: 1
+        assign y = i | times: 53 | modulo: 91 | plus: 4
+        assign depth = i | times: 29 | modulo: 10
+        assign d = depth | times: 0.33 | plus: 1.5
+        assign o = depth | times: 0.055 | plus: 0.25
+        assign dx = i | times: 61 | modulo: 161 | minus: 80
+        assign dy = i | times: 43 | modulo: 101 | plus: 40 | times: -1
+        assign jitter = i | times: 7 | modulo: 4
+        assign t = depth | times: -0.75 | plus: 17 | plus: jitter
+        assign g = i | times: 11 | modulo: 5 | plus: 3
+        assign delay = i | times: 17 | modulo: 30
+        assign p = depth | times: 11 | plus: 20 | times: -1
+      -%}
+      <span class="sn-spark" style="--x:{{ x }}%; --y:{{ y }}%; --d:{{ d }}px; --o:{{ o }}; --dx:{{ dx }}px; --dy:{{ dy }}px; --t:{{ t }}s; --g:{{ g }}s; --delay:-{{ delay }}s; --p:{{ p }}px"></span>
+    {%- endfor -%}
+  </div>
+
+  <div class="sn-campaign__content">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="sn-campaign__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    <h2 class="sn-campaign__title" id="sn-campaign-title-{{ section.id }}">
+      {%- if link_url != blank -%}
+        <a class="sn-campaign__link" href="{{ link_url }}">{{ heading | escape }}</a>
+      {%- else -%}
+        {{ heading | escape }}
+      {%- endif -%}
+    </h2>
+    {%- if text != blank -%}
+      <p class="sn-campaign__line">{{ text | escape }}</p>
+    {%- endif -%}
+    {%- if link_url != blank and section.settings.link_label != blank -%}
+      <span class="sn-campaign__cta" aria-hidden="true">
+        <span class="sn-campaign__cta-label">{{ section.settings.link_label | escape }}</span>
+        <span class="sn-campaign__cta-arrow">→</span>
+      </span>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.star_cursor -%}
+    <svg class="sn-campaign__cursor sn-campaign__cursor--star" data-sn-cursor viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="{{ star_path }}"/></svg>
+    <svg class="sn-campaign__cursor sn-campaign__cursor--sparkle" data-sn-cursor-trail viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="{{ star_path }}"/></svg>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .sn-campaign {
+    --sn-ivory: var(--color-ivory, #F6F1EA);
+    --sn-margin: var(--page-margin, clamp(16px, 3.4vw, 48px));
+    --sn-display: var(--font-display, "Inter Tight", "Helvetica Neue", Arial, sans-serif);
+    --sn-ease: var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+    position: relative; isolation: isolate; overflow: hidden;
+    height: min(100svh, 900px); min-height: 600px;
+    background: var(--cc, #6A4A36); color: var(--ink, var(--sn-ivory));
+  }
+  .sn-campaign p, .sn-campaign h2 { margin: 0; }
+
+  /* The portrait fills the right of the frame and dissolves into the colour field on its left */
+  .sn-campaign__media {
+    position: absolute; top: 0; right: 0; bottom: 0; width: 64%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 36%);
+            mask-image: linear-gradient(to right, transparent 0%, #000 36%);
+  }
+  .sn-campaign__media img, .sn-campaign__placeholder {
+    display: block; width: 100%; height: 100%; max-width: none; object-fit: cover;
+    transition: transform 1200ms var(--sn-ease);
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .sn-campaign:hover .sn-campaign__media img { transform: scale(1.03); }
+  }
+
+  .sn-campaign__content {
+    position: absolute; left: 0; right: 0; bottom: 64px; z-index: 2;
+    max-width: calc(var(--container-width, 1440px) + 2 * var(--sn-margin));
+    margin: 0 auto; padding: 0 var(--sn-margin);
+  }
+  .sn-campaign__eyebrow {
+    margin-bottom: 12px;
+    font-family: var(--sn-display); font-weight: 500; font-size: 12px; line-height: 1.2;
+    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.8;
+  }
+  .sn-campaign__title {
+    max-width: 5em;
+    font-family: var(--sn-display); font-weight: 400;
+    font-size: clamp(2.5rem, 1.4rem + 4.4vw, 5.5rem);
+    line-height: 0.94; letter-spacing: -0.03em; text-transform: uppercase;
+  }
+  .sn-campaign__link { color: inherit; text-decoration: none; }
+  /* The whole section is the link */
+  .sn-campaign__link::after { content: ""; position: absolute; inset: -200vh -100vw; z-index: 1; }
+  .sn-campaign__link:focus-visible { outline: none; }
+  .sn-campaign:has(.sn-campaign__link:focus-visible) { outline: 2px solid var(--sn-ivory); outline-offset: -8px; }
+  .sn-campaign__line { margin-top: 16px; max-width: 22em; font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem); line-height: 1.6; }
+  .sn-campaign__cta {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-top: 12px;
+    font-family: var(--sn-display); font-weight: 500; font-size: 14px; letter-spacing: 0.01em;
+  }
+  .sn-campaign__cta-label {
+    padding-bottom: 2px;
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+    transition: background-size 400ms var(--sn-ease);
+  }
+  .sn-campaign__cta-arrow { display: inline-block; transition: transform 400ms var(--sn-ease); }
+  .sn-campaign:hover .sn-campaign__cta-label, .sn-campaign:focus-within .sn-campaign__cta-label { background-size: 100% 1px; }
+  .sn-campaign:hover .sn-campaign__cta-arrow, .sn-campaign:focus-within .sn-campaign__cta-arrow { transform: translateX(4px); }
+
+  /* Sparkles: drift + glow run in CSS; the script only shifts them with the scroll (--scroll × --p) */
+  .sn-campaign__sparks { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .sn-spark {
+    position: absolute; left: var(--x); top: var(--y);
+    width: var(--d); height: var(--d); border-radius: 50%;
+    background: var(--sn-ivory);
+    box-shadow: 0 0 calc(var(--d) * 2) calc(var(--d) * 0.5) rgba(246, 241, 234, 0.3);
+    opacity: var(--o);
+    translate: 0 calc(var(--scroll, 0) * var(--p, 0px));
+    transition: translate 800ms var(--sn-ease);
+    animation:
+      sn-spark-drift var(--t) cubic-bezier(0.65, 0, 0.35, 1) var(--delay) infinite alternate,
+      sn-spark-glow var(--g) ease-in-out var(--delay) infinite alternate;
+  }
+  @keyframes sn-spark-drift { to { transform: translate3d(var(--dx), var(--dy), 0); } }
+  @keyframes sn-spark-glow { from { opacity: calc(var(--o) * 0.3); } to { opacity: var(--o); } }
+  /* .is-ready is added by the script; without the script the sparkles simply always run */
+  .sn-campaign.is-ready:not(.is-live) .sn-spark { animation-play-state: paused; }
+
+  /* Cursor: a four-point star on the pointer, a smaller sparkle trailing it. Fine pointers only. */
+  .sn-campaign__cursor {
+    position: absolute; top: 0; left: 0; z-index: 3;
+    display: none; fill: var(--sn-ivory);
+    filter: drop-shadow(0 0 3px rgba(31, 26, 22, 0.5));
+    pointer-events: none;
+    opacity: 0; transition: opacity 200ms var(--sn-ease);
+    will-change: translate;
+  }
+  .sn-campaign__cursor--star { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+  .sn-campaign__cursor--sparkle { width: 11px; height: 11px; margin: -24px 0 0 10px; }
+  .sn-campaign.has-cursor, .sn-campaign.has-cursor a { cursor: none; }
+  .sn-campaign.has-cursor .sn-campaign__cursor { display: block; }
+  .sn-campaign.is-pointing .sn-campaign__cursor { opacity: 1; }
+  .sn-campaign.is-pointing .sn-campaign__cursor--sparkle { animation: sn-cursor-twinkle 1.8s ease-in-out infinite alternate; }
+  @keyframes sn-cursor-twinkle { from { opacity: 0.35; scale: 0.7; } to { opacity: 1; scale: 1; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sn-spark { animation: none; translate: none; }
+    .sn-campaign.is-pointing .sn-campaign__cursor--sparkle { animation: none; }
+  }
+
+  /* Tablet: the portrait fills the frame and fades into the colour under the text */
+  @media (max-width: 1023px) {
+    .sn-campaign { height: 86svh; min-height: 520px; }
+    .sn-campaign__media {
+      width: 100%;
+      -webkit-mask-image: linear-gradient(to bottom, #000 48%, transparent 96%);
+              mask-image: linear-gradient(to bottom, #000 48%, transparent 96%);
+    }
+    .sn-campaign__content { bottom: 48px; }
+  }
+  /* Phone: the portrait on top, the words below it on the colour */
+  @media (max-width: 767px) {
+    .sn-campaign { height: auto; min-height: 0; }
+    .sn-campaign__media {
+      position: relative; aspect-ratio: 4 / 5;
+      -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+              mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+    }
+    .sn-campaign__content { position: relative; bottom: auto; padding-top: 12px; padding-bottom: 48px; }
+    .sn-campaign__line { font-size: 1rem; }
+    .sn-spark:nth-child(even) { display: none; }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    'use strict';
+
+    function initCampaign(el) {
+      if (el.snCampaignReady) return;
+      el.snCampaignReady = true;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Sparkles animate only while the section is on screen
+      el.classList.add('is-ready');
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          el.classList.toggle('is-live', entries[0].isIntersecting);
+        }).observe(el);
+      } else {
+        el.classList.add('is-live');
+      }
+
+      // Scroll position → --scroll, from -1 (entering at the bottom) to 1 (leaving at the top)
+      if (!reduceMotion) {
+        var tick = false;
+        var setScroll = function () {
+          tick = false;
+          if (!el.isConnected) return;
+          var box = el.getBoundingClientRect();
+          var vh = window.innerHeight;
+          if (box.bottom < 0 || box.top > vh) return;
+          var p = (vh / 2 - (box.top + box.height / 2)) / ((vh + box.height) / 2);
+          el.style.setProperty('--scroll', Math.max(-1, Math.min(1, p)).toFixed(3));
+        };
+        window.addEventListener('scroll', function () {
+          if (!tick) { tick = true; window.requestAnimationFrame(setScroll); }
+        }, { passive: true });
+        window.addEventListener('resize', setScroll);
+        setScroll();
+      }
+
+      // Star cursor: mouse and trackpad only
+      var star = el.querySelector('[data-sn-cursor]');
+      var trail = el.querySelector('[data-sn-cursor-trail]');
+      if (!star || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      var pointerX = 0, pointerY = 0, frame = 0, placed = false;
+      var marks = [{ el: star, x: 0, y: 0, follow: reduceMotion ? 1 : 0.6 }];
+      if (trail) marks.push({ el: trail, x: 0, y: 0, follow: reduceMotion ? 1 : 0.16 });
+      var move = function () {
+        var box = el.getBoundingClientRect();
+        var x = pointerX - box.left, y = pointerY - box.top;
+        marks.forEach(function (m) {
+          if (placed) { m.x += (x - m.x) * m.follow; m.y += (y - m.y) * m.follow; }
+          else { m.x = x; m.y = y; }
+          m.el.style.translate = m.x.toFixed(1) + 'px ' + m.y.toFixed(1) + 'px';
+        });
+        placed = true;
+        frame = window.requestAnimationFrame(move);
+      };
+      var stop = function () {
+        el.classList.remove('is-pointing');
+        window.cancelAnimationFrame(frame);
+        frame = 0; placed = false;
+      };
+      el.classList.add('has-cursor');
+      el.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch') return;
+        pointerX = e.clientX; pointerY = e.clientY;
+        if (!frame) { el.classList.add('is-pointing'); frame = window.requestAnimationFrame(move); }
+      });
+      el.addEventListener('pointerleave', stop);
+      window.addEventListener('blur', stop);
+    }
+
+    function initAll(root) {
+      (root || document).querySelectorAll('[data-sn-campaign]').forEach(initCampaign);
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { initAll(); });
+    else initAll();
+    // Theme editor: a section that is added or re-rendered arrives as new markup
+    document.addEventListener('shopify:section:load', function (e) { initAll(e.target); });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Campaign",
+  "tag": "section",
+  "class": "section-campaign",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Portrait", "info": "Set the focal point on the image so the model stays in frame at every width." },
+    { "type": "collection", "id": "collection", "label": "Edit (collection)", "info": "Supplies the heading, text and link unless they are filled in below." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The campaign" },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Leave empty to use the collection title." },
+    { "type": "text", "id": "text", "label": "Text", "info": "Leave empty to use the collection description." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Explore the edit" },
+    { "type": "url", "id": "link", "label": "Link", "info": "Leave empty to link to the collection." },
+    { "type": "color", "id": "background", "label": "Background", "default": "#6A4A36" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#F6F1EA" },
+    { "type": "range", "id": "sparkles", "label": "Sparkles", "min": 0, "max": 30, "step": 2, "default": 22 },
+    { "type": "checkbox", "id": "star_cursor", "label": "Star cursor on desktop", "default": true }
+  ],
+  "presets": [{ "name": "Campaign" }]
+}
+{% endschema %}

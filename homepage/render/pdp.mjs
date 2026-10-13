@@ -1,12 +1,15 @@
 // Product detail page renderer — the prototype's equivalent of Shopify's product template.
 // Each render* function is one reusable section; sections with no data return '' rather than placeholders.
 
-const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+export const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pad2 = (n) => String(n).padStart(2, '0');
 export const formatPrice = (n) => (n == null ? '' : '₹ ' + Number(n).toLocaleString('en-IN'));
 
 const arrow = '<span class="link__arrow" aria-hidden="true">→</span>';
-const link = (label, href = '#', extra = '') => `<a class="link${extra}" href="${esc(href)}"><span class="link__label">${esc(label)}</span>${arrow}</a>`;
+export const link = (label, href = '#', extra = '') => `<a class="link${extra}" href="${esc(href)}"><span class="link__label">${esc(label)}</span>${arrow}</a>`;
+
+/* Inline style for a product photo's focus crop (zoom + focal point), plus its object-position. */
+const focusStyle = (img) => [img.focus ? `--s:${img.focus.s}; --ox:${img.focus.ox}; --oy:${img.focus.oy}` : '', img.pos ? `object-position:${img.pos}` : ''].filter(Boolean).join('; ');
 
 /* An image cropped from a product photo. Mirrors a Shopify focal point + zoom. */
 function cropImg(product, crop, { alt = '', loading = 'lazy', cls = '' } = {}) {
@@ -23,21 +26,41 @@ function cropImg(product, crop, { alt = '', loading = 'lazy', cls = '' } = {}) {
 
 /* ─── 01 Hero: gallery + sticky product information ───────── */
 function renderGallery(p) {
-  const many = p.images.length > 1;
-  const slides = p.images.map((img, i) => `
-        <figure class="pdp-gallery__slide${i === 0 ? ' is-active' : ''}" data-gallery-slide aria-label="Image ${i + 1} of ${p.images.length}"${i ? ' aria-hidden="true"' : ''}>
-          <img src="${esc(img.src)}" alt="${esc(img.alt)}" width="${img.width}" height="${img.height}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+  // Views: each photograph, then closer views of the fall, pallu and border cut from those photographs.
+  // (These replaced the separate "On the body" section, so the rail has more than one or two images.)
+  const cropStyle = (c) => [c.s ? `--s:${c.s}` : '', c.ox ? `--ox:${c.ox}` : '', c.oy ? `--oy:${c.oy}` : '', c.op ? `object-position:${c.op}` : ''].filter(Boolean).join('; ');
+  const views = p.images.map((img) => ({ img, style: focusStyle(img), alt: img.alt }));
+  // Closer views are cut from the fabric close-up photo where one exists (sharp, and never a cropped body).
+  // Sarees with a single photo get two fabric-only close-ups from it. Zoom is capped so they stay sharp.
+  const hasDetail = p.images.length > 1 && (p.crops?.motif?.img ?? 0) > 0;
+  const extra = hasDetail ? [['motif', 'the motif'], ['borderDetail', 'the border']] : (p.images.length > 1 ? [] : [['border', 'the border'], ['swatch', 'the fabric']]);
+  for (const [key, label] of extra) {
+    const c = p.crops?.[key];
+    const img = c && p.images[c.img ?? 0];
+    if (img) views.push({ img, style: cropStyle({ ...c, s: Math.min(c.s ?? 1, 2.4) }), alt: `${p.name}: ${label}` });
+  }
+  const many = views.length > 1;
+  const slides = views.map((v, i) => `
+        <figure class="pdp-gallery__slide${i === 0 ? ' is-active' : ''}" data-gallery-slide aria-label="Image ${i + 1} of ${views.length}"${i ? ' aria-hidden="true"' : ''}>
+          <img class="crop" src="${esc(v.img.src)}" alt="${esc(v.alt)}" width="${v.img.width}" height="${v.img.height}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" style="${esc(v.style)}">
         </figure>`).join('');
+  // A rail of thumbnails beside the image, and a round arrow on each side of it
+  const thumbs = many ? `
+      <ul class="pdp-gallery__thumbs">${views.map((v, i) => `
+        <li><button class="pdp-gallery__thumb${i === 0 ? ' is-active' : ''}" type="button" data-gallery-thumb aria-label="Show image ${i + 1} of ${views.length}"${i === 0 ? ' aria-current="true"' : ''}>
+          <img class="crop" src="${esc(v.img.src)}" alt="" width="${v.img.width}" height="${v.img.height}" loading="lazy" decoding="async" style="${esc(v.style)}">
+        </button></li>`).join('')}
+      </ul>` : '';
+  const chevron = (d) => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="${d}"/></svg>`;
   const controls = many ? `
-      <div class="pdp-gallery__controls">
-        <button class="pdp-gallery__btn" type="button" data-gallery-prev aria-label="Previous image">←</button>
-        <p class="pdp-gallery__count" aria-live="polite"><span data-gallery-index>01</span> / ${pad2(p.images.length)}</p>
-        <button class="pdp-gallery__btn" type="button" data-gallery-next aria-label="Next image">→</button>
-      </div>` : '';
+        <button class="pdp-gallery__btn pdp-gallery__btn--prev" type="button" data-gallery-prev aria-label="Previous image">${chevron('M14.5 6l-6 6 6 6')}</button>
+        <button class="pdp-gallery__btn pdp-gallery__btn--next" type="button" data-gallery-next aria-label="Next image">${chevron('M9.5 6l6 6-6 6')}</button>` : '';
   return `
-    <section class="pdp-gallery${many ? ' pdp-gallery--many' : ''}" aria-label="${esc(p.name)} images" data-gallery tabindex="-1">
-      <div class="pdp-gallery__stage" data-gallery-track style="--ratio:${p.images[0].width} / ${p.images[0].height}">${slides}
-      </div>${controls}
+    <section class="pdp-gallery${many ? ' pdp-gallery--many' : ''}" aria-label="${esc(p.name)} images" data-gallery tabindex="-1">${thumbs}
+      <div class="pdp-gallery__main">
+        <div class="pdp-gallery__stage" data-gallery-track style="--ratio:4 / 5">${slides}
+        </div>${controls}
+      </div>
     </section>`;
 }
 
@@ -109,6 +132,62 @@ export function renderSareeSwatch(p, index, total) {
         ${meta ? `<span class="saree-swatch__meta">${esc(meta)}</span>` : ''}
       </figcaption>
     </figure>`;
+}
+/* ─── 02b In detail — circular features ───────────────────
+   Up to four circles, each a different crop of the saree's own photographs with a heading and one line.
+   Every line is product data: colourway + fabric + weave, the border, the motif, and the styling
+   visible in the portrait. A feature with no crop or no data is left out; fewer than two hides the section. */
+const FEATURE_ZOOM_MAX = 3.6; // the first-shoot photos are ~1,100px wide; a deeper zoom goes soft in a circle
+const pct = (v) => parseFloat(v ?? '50') / 100;
+/* The crops in products.json were framed for portrait boxes (frame = height / width) and some zoom
+   further than a circle can show sharply. This keeps the middle of each crop where it was authored
+   while the zoom is capped and the box becomes a square. Crops with their own object-position
+   (crops.styling) were framed for the circle and pass through. */
+function circleCrop(p, crop, frame) {
+  const img = p.images[crop.img ?? 0];
+  const from = crop.s ?? 1;
+  const s = Math.min(from, FEATURE_ZOOM_MAX);
+  if (!img || crop.op || s <= 1) return { ...crop, s };
+  const middle = (o) => o * (1 - 1 / from) + 0.5 / from; // centre of the authored view, 0…1 across its box
+  const origin = (c) => Math.round(Math.min(Math.max((c - 0.5 / s) / (1 - 1 / s), 0), 1) * 100) + '%';
+  const aspect = Math.max(img.height / img.width, 1);
+  const seen = Math.min(frame / aspect, 1); // share of the photo's height the portrait box showed
+  const y = (1 - seen) / 2 + seen * middle(pct(crop.oy)); // the same point, as a share of the photo's height
+  return { ...crop, s, ox: origin(middle(pct(crop.ox))), oy: origin((y - (1 - 1 / aspect) / 2) * aspect) };
+}
+const sameSpot = (a, b) => a && b && (a.img ?? 0) === (b.img ?? 0) && Math.abs(pct(a.ox) - pct(b.ox)) < 0.12 && Math.abs(pct(a.oy) - pct(b.oy)) < 0.12;
+function renderFeatures(p) {
+  const a = p.attributes;
+  const crops = p.crops || {};
+  const sentence = (t) => (t && !/[.!?]$/.test(t) ? t + '.' : t);
+  const cloth = [a.colourway || p.colours[0]?.name, a.fabric?.toLowerCase(), a.weave?.toLowerCase()].filter(Boolean).join(' ');
+  const border = crops.borderDetail || crops.border;
+  // The fabric circle never shows the same spot as the border or motif circle: it falls back to a wider crop
+  const fabric = [crops.swatch, crops.colour, crops.weave].find((c) => c && !sameSpot(c, border) && !sameSpot(c, crops.motif));
+  const items = [
+    [fabric && circleCrop(p, fabric, 5 / 4), a.fabric || a.weave ? 'Fabric & colour' : 'Colour', cloth],
+    [border && circleCrop(p, border, 4 / 3), 'The border', a.border],
+    [crops.motif && circleCrop(p, crops.motif, 4 / 3), 'The motif', a.motif],
+    [crops.styling && circleCrop(p, crops.styling), 'As styled', p.styling],
+  ].filter(([crop, , text]) => crop && text);
+  if (items.length < 2) return '';
+  const features = items.map(([crop, title, text]) => `
+        <li class="feature" data-reveal>
+          <div class="media feature__media">${cropImg(p, crop, { alt: `${p.name}: ${title.toLowerCase()}` })}</div>
+          <h3 class="feature__title">${esc(title)}</h3>
+          <p class="feature__text">${esc(sentence(text))}</p>
+        </li>`).join('');
+  return `
+  <section class="features section" aria-labelledby="features-title">
+    <div class="container">
+      <header class="features__head" data-reveal>
+        <p class="eyebrow">In detail</p>
+        <h2 class="t-h2" id="features-title">${esc(p.name)}, up close.</h2>
+      </header>
+      <ul class="features__grid features__grid--${items.length}">${features}
+      </ul>
+    </div>
+  </section>`;
 }
 /* ─── 03 The drape study — only what the colour chapter doesn't show ─
    The chapter already shows the colour crop, the full silhouette and the weave, so this section
@@ -187,64 +266,65 @@ function renderColourChapter(p) {
     </div>
   </section>`;
 }
-/* ─── 05 The craft — macro details (the weave is shown in the colour chapter, so it isn't repeated) ─ */
-function renderCraft(p) {
-  const a = p.attributes;
-  const items = [
-    ['zari', 'The zari', /zari/i.test(a.border || '') ? a.border : null],
-    ['borderDetail', 'The border', a.border],
-    ['motif', 'The motif', a.motif],
-  ].filter(([k, , caption]) => p.crops?.[k] && (k !== 'zari' || caption)); // never label something zari unless the data says so
-  if (!items.length) return '';
-  const figures = items.map(([k, label, caption], i) => `
-        <figure class="macro" data-reveal>
-          <div class="media macro__media">${cropImg(p, p.crops[k], { alt: `${p.name}: ${label.toLowerCase()}, close-up` })}</div>
-          <figcaption><span class="macro__label">${pad2(i + 1)} — ${esc(label)}</span>${caption ? `<span class="macro__caption">${esc(caption)}</span>` : ''}</figcaption>
-        </figure>`).join('');
-  return `
-  <section class="pdp-craft" aria-labelledby="pdp-craft-title">
-    <div class="container">
-      <header class="pdp-craft__head" data-reveal>
-        <p class="eyebrow">The craft</p>
-        <h2 class="t-h2" id="pdp-craft-title">${esc(p.name)}, up close.</h2>
-      </header>
-      <div class="pdp-craft__grid pdp-craft__grid--${items.length}">${figures}
-      </div>
-    </div>
-  </section>`;
+/* ─── 06 Product details ──────────────────────────────────── */
+/* The photograph behind "The Saree, Unfolded": the saree's own picture, chosen per product in
+   products.json (backdrop.img = which of its images, pos / posMobile = object-position, wide = an
+   optional landscape file of the same saree for desktop). Without a backdrop it uses the last image. */
+function backdropPicture(p) {
+  const b = p.backdrop || {};
+  const img = p.images[b.img ?? p.images.length - 1];
+  if (!img) return '';
+  const vars = [b.pos ? `--pos:${b.pos}` : '', b.posMobile ? `--pos-m:${b.posMobile}` : ''].filter(Boolean).join('; ');
+  return `<picture>
+        ${b.wide ? `<source media="(min-width: 768px)" srcset="${esc(b.wide.src)}" width="${b.wide.width}" height="${b.wide.height}">` : ''}
+        <img src="${esc(img.src)}" alt="${esc(img.alt)}" width="${img.width}" height="${img.height}" loading="lazy" decoding="async"${vars ? ` style="${esc(vars)}"` : ''}>
+      </picture>`;
 }
 
-/* ─── 06 Product details ──────────────────────────────────── */
+/* "A closer look": one reusable section for every saree. The photograph, heading and attributes all come
+   from that product's record (backdrop, closer); the fourth cell is the shipping accordion, filled from
+   the store's policy data. Anything missing is left out rather than filled in. */
 function renderDetails(p, data) {
-  const rows = specRows(p);
-  const panels = [
-    ['Care', p.care ?? data.store.care],
+  const a = p.attributes;
+  const fallback = [['Colour', a.colourway || p.colours[0]?.name], ['Motif', a.motif], ['Border', a.border]];
+  const items = (p.closer?.items || fallback).filter(([, v]) => v).slice(0, 3);
+  const heading = p.closer?.heading || `${p.colours[0]?.name || p.name}, up close.`;
+  const policies = [
     ['Shipping', p.shipping ?? data.store.shipping],
     ['Returns', p.returns ?? data.store.returns],
+    ['Care', p.care ?? data.store.care],
   ].filter(([, v]) => v);
-  if (!rows.length && !panels.length) return '';
+  if (!items.length && !policies.length) return '';
   return `
-  <section class="pdp-details section" aria-labelledby="details-title">
-    <div class="container pdp-details__grid">
-      <header class="pdp-details__head" data-reveal>
-        <p class="eyebrow">${esc(p.name)}</p>
-        <h2 class="t-h2" id="details-title">About the saree</h2>
+  <section class="unfolded" aria-labelledby="details-title" data-unfolded style="--pc:${esc(p.colours[0]?.hex || 'var(--color-ink)')}">
+    <div class="unfolded__media" data-unfolded-media>
+      ${backdropPicture(p)}
+    </div>
+    <div class="unfolded__scrim" aria-hidden="true"></div>
+    <div class="container unfolded__inner">
+      <header class="unfolded__head" data-reveal>
+        <p class="eyebrow unfolded__eyebrow">A closer look</p>
+        <h2 class="unfolded__title" id="details-title">${esc(heading)}</h2>
       </header>
-      <div class="pdp-details__body" data-reveal>
-        ${rows.length ? `<dl class="spec">${rows.map(([k, v], i) => `
-          <div class="spec__row"><dt><span>${pad2(i + 1)}</span> — ${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}
-        </dl>` : ''}
-        ${panels.length ? `<div class="accordion">${panels.map(([k, v]) => `
-          <details class="accordion__item">
-            <summary class="accordion__summary">${esc(k)}</summary>
-            <div class="accordion__panel"><p>${esc(v)}</p></div>
-          </details>`).join('')}
-        </div>` : ''}
+      <div class="unfolded__body" data-reveal>
+        <dl class="closer">${items.map(([k, v]) => `
+          <div class="closer__item"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}${policies.length ? `
+          <div class="closer__item closer__item--policy">
+            <dt>Shipping</dt>
+            <dd>
+              <details class="closer__more">
+                <summary>Shipping details</summary>
+                <div class="closer__panel">${policies.map(([k, v]) => `
+                  <p>${policies.length > 1 ? `<span>${esc(k)}</span> ` : ''}${esc(v)}</p>`).join('')}
+                </div>
+              </details>
+            </dd>
+          </div>` : ''}
+        </dl>
       </div>
     </div>
   </section>`;
 }
-
 /* ─── 07 Style it — renders only when styling images exist ─ */
 function renderStyleIt(p) {
   const looks = (p.looks || []).filter((l) => l && l.src);
@@ -271,7 +351,7 @@ export function productCard(p) {
           <li class="product-card" data-reveal>
             <a href="/products/${esc(p.slug)}" class="product-card__link">
               <div class="media media--3-4 product-card__media">
-                <img class="product-card__img" src="${esc(main.src)}" alt="${esc(main.alt)}" width="${main.width}" height="${main.height}" loading="lazy" decoding="async">
+                <img class="product-card__img crop" src="${esc(main.src)}" alt="${esc(main.alt)}" width="${main.width}" height="${main.height}" loading="lazy" decoding="async" style="${esc(focusStyle(main))}">
                 ${detail ? cropImg(p, detail, { cls: 'product-card__detail' }) : ''}
               </div>
               <h3 class="product-card__title">${esc(p.name)}</h3>
@@ -294,7 +374,7 @@ function renderRelated(p, data) {
     <div class="container">
       <header class="section-head" data-reveal>
         <h2 class="t-h2" id="related-title">${esc(title)}</h2>
-        ${link(shared.length ? 'Shop the edit' : 'View all', '/#edits')}
+        ${link(shared.length ? 'Shop the edit' : 'View all', shared.length ? `/edits/${sharedKey}` : '/sarees')}
       </header>
       <ul class="product-row" data-product-row>${list.map(productCard).join('')}
       </ul>
@@ -314,7 +394,7 @@ function renderBuyBar(p) {
 }
 
 /* ─── Page ────────────────────────────────────────────────── */
-function page({ title, description, body, preload = '', ogImage = '' }) {
+export function page({ title, description, body, preload = '', ogImage = '', mainClass = 'pdp' }) {
   return `<!doctype html>
 <html lang="en-IN">
 <head>
@@ -338,7 +418,7 @@ function page({ title, description, body, preload = '', ogImage = '' }) {
 
   <!-- include:header -->
 
-  <main id="main" class="pdp">${body}
+  <main id="main" class="${mainClass}">${body}
   </main>
 
   <!-- include:footer -->
@@ -360,9 +440,8 @@ export function renderProduct(slug, data) {
     ${renderGallery(p)}
     ${renderInfo(p, data, index, data.products.length)}
   </div>
-  ${renderDrape(p)}
+  ${renderFeatures(p)}
   ${renderColourChapter(p)}
-  ${renderCraft(p)}
   ${renderDetails(p, data)}
   ${renderStyleIt(p)}
   ${renderRelated(p, data)}
@@ -384,7 +463,7 @@ export function renderNotFound() {
   <section class="pdp-404 container">
     <p class="eyebrow">404</p>
     <h1 class="t-h1">This page has unravelled.</h1>
-    ${link('Back to the collection', '/#new-arrivals')}
+    ${link('Back to the collection', '/sarees')}
   </section>`,
   });
 }

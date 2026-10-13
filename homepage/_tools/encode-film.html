@@ -1,0 +1,38 @@
+<!doctype html>
+<html><body>
+<canvas id="c"></canvas>
+<script>
+// Cuts the homepage craft film from the full-length source: one unbroken take with a light warm grade.
+// ?w=1920&bps=3200000 for desktop, ?w=1280&bps=1500000 for phones. Run through the encode runner.
+const q = new URLSearchParams(location.search);
+const W = +(q.get('w') || 1920), H = Math.round(W * 9 / 16), BPS = +(q.get('bps') || 3200000), FPS = 25;
+const SHOTS = [[22, 12]]; // [start, length] in seconds. The source is one continuous shot of the loom, so the film is one unbroken take.
+const GRADE = 'saturate(0.9) sepia(0.14) contrast(1.06) brightness(0.97)';
+const v = document.createElement('video');
+v.src = q.get('src') || './_film-source.tmp.mp4'; // a temporary copy of _source-footage (that folder is not served) v.muted = true; v.playsInline = true; v.preload = 'auto';
+const c = document.getElementById('c'); c.width = W; c.height = H; const g = c.getContext('2d');
+window.status_ = 'loading';
+const mime = ['video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm'].find(t => MediaRecorder.isTypeSupported(t));
+window.mime = mime;
+const seek = (t) => new Promise(r => { v.onseeked = r; v.currentTime = t; });
+const paint = () => { g.filter = GRADE; g.drawImage(v, 0, 0, W, H); };
+v.addEventListener('loadeddata', async () => {
+  await seek(SHOTS[0][0]); paint();
+  const rec = new MediaRecorder(c.captureStream(FPS), { mimeType: mime, videoBitsPerSecond: BPS });
+  const chunks = []; rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+  rec.onstop = async () => {
+    const buf = new Uint8Array(await new Blob(chunks).arrayBuffer());
+    let s = ''; for (let i = 0; i < buf.length; i += 0x8000) s += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
+    window.result = btoa(s); window.status_ = 'done';
+  };
+  rec.start(500); window.status_ = 'recording';
+  for (let i = 0; i < SHOTS.length; i++) {
+    const [start, len] = SHOTS[i];
+    if (i) { rec.pause(); await seek(start); paint(); rec.resume(); } // no frozen frames across the cut
+    await v.play();
+    await new Promise(done => { const tick = () => { paint(); (v.currentTime < start + len && !v.ended) ? requestAnimationFrame(tick) : done(); }; tick(); });
+    v.pause();
+  }
+  rec.stop();
+});
+</script></body></html>
