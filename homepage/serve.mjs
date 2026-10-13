@@ -13,13 +13,10 @@
 import { createServer } from 'node:http';
 import { createReadStream, statSync, readFileSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { renderProduct, renderNotFound } from './render/pdp.mjs';
-import { renderCollection, renderNewArrivals } from './render/collection.mjs';
-import { renderCampaign } from './render/campaign.mjs';
-import { renderTextureBanner } from './render/texture-banner.mjs';
+import { renderCollection } from './render/collection.mjs';
+import { root, readData, withIncludes } from './render/includes.mjs';
 
-const root = fileURLToPath(new URL('.', import.meta.url));
 const port = Number(process.env.PORT) || 4321;
 const types = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
@@ -28,25 +25,7 @@ const types = {
   '.mp4': 'video/mp4', '.webm': 'video/webm', '.md': 'text/plain; charset=utf-8',
 };
 
-// Read fresh on every request so edits show on refresh without restarting.
-const readData = () => JSON.parse(readFileSync(join(root, 'assets/data/products.json'), 'utf8'));
-// Includes rendered from data rather than read from partials/ (Shopify: a section bound to a collection)
-const dataIncludes = {
-  'new-arrivals': () => renderNewArrivals(readData()),
-  // The homepage campaign: one edit, shown through one saree's portrait, on the studio colour behind it
-  campaign: () => renderCampaign(readData(), { edit: 'soft', product: 'kasni', position: '50% 42%' }),
-  // The texture banner: Panna's close-up, edge to edge. Each position picks the band of the
-  // portrait photo that the banner shows at that width (jaal on the left, zari border, paisleys on the right).
-  texture: () => renderTextureBanner(readData(), {
-    product: 'panna', image: 1, href: '/sarees',
-    eyebrow: 'Texture first', title: 'An art of its own.', line: 'Every weave has a story.', cta: 'Discover the collection',
-    position: '50% 74%', positionTablet: '50% 80%', positionMobile: '50% 100%',
-  }),
-};
-const withIncludes = (html) =>
-  html.replace(/<!-- include:([a-z-]+) -->/g, (m, name) => {
-    try { return dataIncludes[name] ? dataIncludes[name]() : readFileSync(join(root, 'partials', `${name}.html`), 'utf8'); } catch { return m; }
-  });
+// Product data and the <!-- include:name --> markers are handled in render/includes.mjs (shared with build.mjs).
 const sendHtml = (res, status, html) => {
   res.writeHead(status, { 'Content-Type': types['.html'], 'Cache-Control': 'no-cache' });
   res.end(withIncludes(html));

@@ -1,0 +1,13 @@
+{
+  "name": "stylish-naari",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stylish Naari storefront prototype: a dependency-free Node renderer, exported to static files for hosting.",
+  "scripts": {
+    "dev": "node homepage/serve.mjs",
+    "build": "node homepage/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
