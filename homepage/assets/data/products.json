@@ -1,7 +1,7 @@
 {
   "_notes": {
     "source": "Every value here comes from content already in the project: the homepage product cards, brand-guidelines.md (§5.2 image inventory, §15.5 product naming, §9.4 content colours) and the photographs themselves.",
-    "price": "Prices are the homepage PLACEHOLDERS (priceIsPlaceholder: true). Bagh has no price anywhere in the project, so it is null and cannot be added to the bag. Replace with real prices before launch.",
+    "price": "EVERY price is a PLACEHOLDER (priceIsPlaceholder: true): none has been supplied by the client. They are set in a plausible range for these sarees so the bag, Quick add, the price filter and price sorting can be used. Replace every one with the real price before launch.",
     "description": "descriptionStatus 'guideline' = text from brand-guidelines.md. 'draft' = a sentence assembled only from documented visual attributes (colour, border, motif). Approve or rewrite before launch.",
     "nulls": "null = not documented anywhere yet. The PDP hides any row or section whose data is null. Nothing is invented to fill gaps.",
     "crops": "Crops are zooms of the existing photos (s = scale, ox/oy = focal point, op = object-position). They stand in for dedicated drape and macro photography, which hasn't been shot yet.",
@@ -9,12 +9,49 @@
     "focus": "images[].pos / images[].focus frame each photograph in the 3:4 gallery and card frame. The whole figure stays in frame; zoom is used only where the model is small in the photo.",
     "styling": "styling = one line listing only what is visible in the saree's own portrait (hair, jewellery, blouse). stylingStatus 'draft': approve or rewrite before launch. null hides the 'As styled' feature on the PDP. crops.styling frames that part of the portrait.",
     "backdrop": "backdrop = the photograph behind 'The Saree, Unfolded' on the PDP. img = which of the saree's own images; pos / posMobile = object-position on desktop / phone; wide = an optional landscape file of the same saree, used from tablet up.",
-    "closer": "product.closer drives the \"A closer look\" section: a per-saree heading (draft copy) and up to three attribute pairs drawn from that saree's attributes. Without it the section falls back to the attributes directly."
+    "closer": "product.closer drives the \"A closer look\" section: a per-saree heading (draft copy) and up to three attribute pairs drawn from that saree's attributes. Without it the section falls back to the attributes directly.",
+    "trust": "store.checkout and store.assurances appear under Add to bag on every product page. They are the wording requested for the site, NOT verified facts: confirm each payment method, the Silk Mark certification, the weave warranty and the shipping insurance before launch, and delete any line that isn't true. An assurance with a 'fabric' only shows on sarees recorded as that fabric.",
+    "shipping": "store.shipping is PLACEHOLDER copy (store.shippingIsPlaceholder: true): the client has not supplied shipping terms. Dispatch time, delivery time, the \"complimentary\" claim and the insurance claim all need confirming, here, in the announcement bar (partials/header.html) and in store.assurances.",
+    "filters": "store.filters.fabrics lists the fabrics the Fabric filter always offers, in this order, including ones with no sarees yet (shown as \"Soon\" and not selectable). A fabric a saree has that is not listed is added after them.",
+    "categories": "categories: the client's shop categories, in their order. Regional ones show as tiles on the homepage; image stays null until their photograph is supplied. Assign a saree with product.categories = [\"banaras-ki-bunkari\", …].",
+    "productShots": "images[].role: \"detail\" = the fabric close-up photo; \"product\" = the flat product shot, shown whole on its backdrop colour. Gallery order: portrait, print detail, border detail, product shot.",
+    "thirdShoot": "Sarees 13–18 (Rangoli, Anaar, Saanjh, Sindoor, Kahani, Leela) come from the third shoot. Names and copy are proposals; fabric is unknown; categories are assigned from the visible style (ikat → Gujarat, bandhani → Rajasthan, Kalamkari → Pedana) and should be confirmed with the client."
   },
   "store": {
-    "shipping": "Complimentary shipping across India",
+    "shipping": "Complimentary shipping across India. Orders are dispatched within 2–4 working days and usually arrive within 5–8 working days. Every parcel is insured in transit.",
     "returns": null,
-    "care": null
+    "care": null,
+    "checkout": {
+      "label": "Secure, encrypted checkout",
+      "methods": [
+        "UPI",
+        "Visa",
+        "Mastercard",
+        "RuPay",
+        "Net banking"
+      ]
+    },
+    "assurances": [
+      {
+        "title": "Handwoven Silk Mark Certified",
+        "fabric": "Silk"
+      },
+      {
+        "title": "Authentic Banarasi Weave Warranty"
+      },
+      {
+        "title": "Complimentary Insured Shipping"
+      }
+    ],
+    "shippingIsPlaceholder": true,
+    "filters": {
+      "fabrics": [
+        "Banarasi silk",
+        "Silk",
+        "Organza",
+        "Brocade"
+      ]
+    }
   },
   "edits": {
     "jewel": {
@@ -181,6 +218,12 @@
             "Gold zari"
           ]
         ]
+      },
+      "categories": [
+        "banaras-ki-bunkari"
+      ],
+      "categoryEvidence": {
+        "banaras-ki-bunkari": "Original brief: the brand's Banarasi sarees (first shoot)"
       }
     },
     {
@@ -322,6 +365,12 @@
             "Rose zari"
           ]
         ]
+      },
+      "categories": [
+        "banaras-ki-bunkari"
+      ],
+      "categoryEvidence": {
+        "banaras-ki-bunkari": "Original brief: first shoot"
       }
     },
     {
@@ -462,6 +511,12 @@
             "Aqua-silver"
           ]
         ]
+      },
+      "categories": [
+        "banaras-ki-bunkari"
+      ],
+      "categoryEvidence": {
+        "banaras-ki-bunkari": "Original brief: first shoot"
       }
     },
     {
@@ -475,8 +530,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with jasmine in the hair, gold earrings and wide gold cuffs.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 32500,
+      "priceIsPlaceholder": true,
       "edits": [
         "jewel",
         "contrast",
@@ -614,6 +669,12 @@
             "Marigold"
           ]
         ]
+      },
+      "categories": [
+        "banaras-ki-bunkari"
+      ],
+      "categoryEvidence": {
+        "banaras-ki-bunkari": "Original brief: first shoot"
       }
     },
     {
@@ -627,8 +688,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a gold necklace, a maang tikka and stacked bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 29500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "contrast",
@@ -664,7 +725,18 @@
           "src": "/assets/images/kajal-detail.jpg",
           "width": 1594,
           "height": 2390,
-          "alt": "Kajal up close: a lion motif and floral border in gold and silver on black silk"
+          "alt": "Kajal up close: a lion motif and floral border in gold and silver on black silk",
+          "role": "detail"
+        },
+        {
+          "src": "/assets/images/kajal-product.jpg",
+          "width": 1549,
+          "height": 1015,
+          "alt": "Kajal, laid flat: black silk with lion motifs and a floral border in gold and silver",
+          "role": "product",
+          "fit": "contain",
+          "bg": "#F7F2EC",
+          "source": "Black Saree with Elephant Embroidery.png"
         }
       ],
       "crops": {
@@ -760,8 +832,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with the pallu worn open across the back and the hair left long.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 34900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -797,7 +869,18 @@
           "src": "/assets/images/panna-detail.jpg",
           "width": 1594,
           "height": 2392,
-          "alt": "Panna up close: floral jaal, gold zari border and paisley motifs on emerald silk"
+          "alt": "Panna up close: floral jaal, gold zari border and paisley motifs on emerald silk",
+          "role": "detail"
+        },
+        {
+          "src": "/assets/images/panna-product.jpg",
+          "width": 1530,
+          "height": 1028,
+          "alt": "Panna, laid flat: emerald silk with a floral jaal and a paisley pallu",
+          "role": "product",
+          "fit": "contain",
+          "bg": "#F7F2EC",
+          "source": "Emerald Banarasi Saree with Paisley Border.png"
         }
       ],
       "crops": {
@@ -890,6 +973,12 @@
             "Gold zari"
           ]
         ]
+      },
+      "categories": [
+        "banaras-ki-bunkari"
+      ],
+      "categoryEvidence": {
+        "banaras-ki-bunkari": "Product photo filename: \"Emerald Banarasi Saree with Paisley Border\""
       }
     },
     {
@@ -903,8 +992,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with the hair worn loose and small gold earrings.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 31500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -940,7 +1029,18 @@
           "src": "/assets/images/phalsa-detail.jpg",
           "width": 1594,
           "height": 2391,
-          "alt": "Phalsa up close: gold elephants, vines and a floral border on plum silk"
+          "alt": "Phalsa up close: gold elephants, vines and a floral border on plum silk",
+          "role": "detail"
+        },
+        {
+          "src": "/assets/images/phalsa-product.jpg",
+          "width": 1445,
+          "height": 1089,
+          "alt": "Phalsa, folded flat: plum silk with gold elephants, vines and a floral border",
+          "role": "product",
+          "fit": "contain",
+          "bg": "#F7F2EC",
+          "source": "Purple Brocade Saree on Ivory.png"
         }
       ],
       "crops": {
@@ -1036,8 +1136,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a low bun dressed in jasmine, gold earrings and embroidered flats.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 27500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "bright"
@@ -1077,7 +1177,8 @@
           "src": "/assets/images/moonga-detail.jpg",
           "width": 1593,
           "height": 2390,
-          "alt": "Moonga up close: flowering branches and birds on the coral pallu, edged in gold"
+          "alt": "Moonga up close: flowering branches and birds on the coral pallu, edged in gold",
+          "role": "detail"
         }
       ],
       "crops": {
@@ -1177,8 +1278,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a maang tikka and gold bangles, the hair worn loose.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 18900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft"
@@ -1213,7 +1314,18 @@
           "src": "/assets/images/chameli-detail.jpg",
           "width": 1594,
           "height": 2391,
-          "alt": "Chameli up close: embroidered roses and tone-on-tone lacework on ivory"
+          "alt": "Chameli up close: embroidered roses and tone-on-tone lacework on ivory",
+          "role": "detail"
+        },
+        {
+          "src": "/assets/images/chameli-product.jpg",
+          "width": 1105,
+          "height": 1423,
+          "alt": "Chameli, folded flat: ivory embroidered with roses, with a tone-on-tone border",
+          "role": "product",
+          "fit": "contain",
+          "bg": "#F7F2EB",
+          "source": "Blush Ivory Floral Embroidered Textile.png"
         }
       ],
       "crops": {
@@ -1313,8 +1425,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a braided bun dressed in pink flowers, a beaded choker and floral earrings.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 23500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft"
@@ -1353,7 +1465,18 @@
           "src": "/assets/images/kasni-detail.jpg",
           "width": 1594,
           "height": 2392,
-          "alt": "Kasni up close: lavender brocade pleats, pink-striped border and floral pallu panels"
+          "alt": "Kasni up close: lavender brocade pleats, pink-striped border and floral pallu panels",
+          "role": "detail"
+        },
+        {
+          "src": "/assets/images/kasni-product.jpg",
+          "width": 1459,
+          "height": 1078,
+          "alt": "Kasni, folded flat: lavender brocade with a pink-striped border and floral pallu panels",
+          "role": "product",
+          "fit": "contain",
+          "bg": "#F7F2EC",
+          "source": "Lavender Brocade Saree on Ivory.png"
         }
       ],
       "crops": {
@@ -1449,8 +1572,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with jasmine in the hair, silver earrings and stacked silver bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 16900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft",
@@ -1490,7 +1613,18 @@
           "src": "/assets/images/mehendi-detail.jpg",
           "width": 1747,
           "height": 2182,
-          "alt": "Mehendi up close: pale floral jaal on olive, with a gold border edged in pink"
+          "alt": "Mehendi up close: pale floral jaal on olive, with a gold border edged in pink",
+          "role": "detail"
+        },
+        {
+          "src": "/assets/images/mehendi-product.jpg",
+          "width": 1507,
+          "height": 1044,
+          "alt": "Mehendi, folded flat: olive floral jaal with a gold border edged in pink",
+          "role": "product",
+          "fit": "contain",
+          "bg": "#F8F3EC",
+          "source": "Folded Olive Floral Jacquard Saree.png"
         }
       ],
       "crops": {
@@ -1586,8 +1720,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a low bun, cluster earrings and a matching embroidered blouse.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 17500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft"
@@ -1621,7 +1755,18 @@
           "src": "/assets/images/kamal-detail.jpg",
           "width": 1593,
           "height": 2390,
-          "alt": "Kamal up close: white embroidery along the border of the pink saree"
+          "alt": "Kamal up close: white embroidery along the border of the pink saree",
+          "role": "detail"
+        },
+        {
+          "src": "/assets/images/kamal-product.jpg",
+          "width": 1489,
+          "height": 1056,
+          "alt": "Kamal, folded flat: pink with a white embroidered border and scattered flowers",
+          "role": "product",
+          "fit": "contain",
+          "bg": "#F5F0EA",
+          "source": "Embroidered Peach Fabric on Ivory.png"
         }
       ],
       "crops": {
@@ -1705,6 +1850,827 @@
           ]
         ]
       }
+    },
+    {
+      "slug": "rangoli",
+      "name": "Rangoli",
+      "nameMeaning": "floor patterns drawn for festivals",
+      "descriptor": "Multicolour ikat with red and gold border",
+      "description": "Rangoli is a multicolour ikat in pink, teal and mustard, framed by a broad red and gold border.",
+      "descriptionStatus": "draft",
+      "colourLine": "Pink, teal and mustard, held by a red and gold border.",
+      "colourLineStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "festive",
+        "bright"
+      ],
+      "categories": [
+        "gujarat-ki-garima"
+      ],
+      "colours": [
+        {
+          "name": "Rani pink",
+          "hex": "#B8336A",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Teal",
+          "hex": "#2F6B6B",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Rani pink",
+        "border": "Broad red and gold border",
+        "motif": "Ikat flowers and paisleys",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/rangoli.jpg",
+          "width": 1122,
+          "height": 1402,
+          "alt": "Rangoli — a multicolour ikat saree in pink, teal and mustard with a red and gold border, worn standing against a plaster wall",
+          "source": "Heritage Saree Portrait in Warm Studio Light (1).png"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "55%",
+          "oy": "88%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.5,
+          "ox": "62%",
+          "oy": "45%"
+        },
+        "border": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "68%",
+          "oy": "86%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "50%",
+          "oy": "76%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 2,
+          "ox": "47%",
+          "oy": "62%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "56%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Pink, in every colour.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Pink, teal and mustard"
+          ],
+          [
+            "Motif",
+            "Ikat flowers and paisleys"
+          ],
+          [
+            "Border",
+            "Red and gold"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "anaar",
+      "name": "Anaar",
+      "nameMeaning": "pomegranate",
+      "descriptor": "Maroon bandhani with gold border",
+      "description": "Anaar is maroon bandhani, tied in fine dots, with a gold border and a floral pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Deep maroon, dotted in gold.",
+      "colourLineStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "jewel",
+        "festive"
+      ],
+      "categories": [
+        "rajasthan-ki-rajshahi"
+      ],
+      "colours": [
+        {
+          "name": "Maroon",
+          "hex": "#6E2530",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Olive gold",
+          "hex": "#918259",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Maroon",
+        "border": "Gold border",
+        "motif": "Bandhani dots, floral pallu",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/anaar.jpg",
+          "width": 1024,
+          "height": 1536,
+          "alt": "Anaar — a maroon bandhani saree with a gold border, the floral pallu swinging out as she turns, in a lamplit room",
+          "pos": "50% 62%",
+          "source": "Moody Maroon Saree Editorial Interior (2).png"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "40%",
+          "oy": "86%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "68%",
+          "oy": "62%"
+        },
+        "border": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "88%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "30%",
+          "oy": "76%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 2,
+          "ox": "35%",
+          "oy": "60%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "45%",
+          "oy": "60%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 60%",
+        "posMobile": "50% 60%"
+      },
+      "closer": {
+        "heading": "Maroon, tied in gold.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Maroon"
+          ],
+          [
+            "Motif",
+            "Bandhani dots"
+          ],
+          [
+            "Border",
+            "Gold"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "saanjh",
+      "name": "Saanjh",
+      "nameMeaning": "dusk",
+      "descriptor": "Indigo ikat with elephants",
+      "description": "Saanjh is indigo ikat patterned with elephants and flowers, edged in gold, with a tasselled pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Indigo, at the edge of night.",
+      "colourLineStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "jewel"
+      ],
+      "categories": [
+        "gujarat-ki-garima"
+      ],
+      "colours": [
+        {
+          "name": "Indigo",
+          "hex": "#2A3270",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Indigo",
+        "border": "Gold border, tasselled pallu",
+        "motif": "Ikat elephants and flowers",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/saanjh.jpg",
+          "width": 1117,
+          "height": 1409,
+          "alt": "Saanjh — an indigo ikat saree patterned with elephants, with a gold border and tasselled pallu, worn standing before draped linen",
+          "source": "Moody Portrait in a Patterned Indigo Saree (2).png"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "86%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.5,
+          "ox": "70%",
+          "oy": "55%"
+        },
+        "border": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "72%",
+          "oy": "68%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "45%",
+          "oy": "72%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 2,
+          "ox": "45%",
+          "oy": "48%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "55%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Indigo, at dusk.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Indigo"
+          ],
+          [
+            "Motif",
+            "Ikat elephants and flowers"
+          ],
+          [
+            "Border",
+            "Gold, tasselled pallu"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "sindoor",
+      "name": "Sindoor",
+      "nameMeaning": "vermilion",
+      "descriptor": "Red with ikat border",
+      "description": "Sindoor is red with a deep ikat border of elephants, parrots and dancers, finished in gold.",
+      "descriptionStatus": "draft",
+      "colourLine": "Vermilion, bordered with a story.",
+      "colourLineStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "festive",
+        "contrast"
+      ],
+      "categories": [
+        "gujarat-ki-garima"
+      ],
+      "colours": [
+        {
+          "name": "Vermilion",
+          "hex": "#9E2229",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Vermilion",
+        "border": "Ikat border, finished in gold",
+        "motif": "Elephants, parrots and dancers",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/sindoor.jpg",
+          "width": 1122,
+          "height": 1402,
+          "alt": "Sindoor — a red saree with an ikat border of elephants, parrots and dancers, worn standing against a painted green wall",
+          "source": "Traditional Saree Portrait with Jasmine Adornment (1).png"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "55%",
+          "oy": "88%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.5,
+          "ox": "73%",
+          "oy": "70%"
+        },
+        "border": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "92%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "72%",
+          "oy": "78%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 2,
+          "ox": "72%",
+          "oy": "73%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "55%",
+          "oy": "60%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Red, bordered in stories.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Vermilion"
+          ],
+          [
+            "Motif",
+            "Elephants, parrots, dancers"
+          ],
+          [
+            "Border",
+            "Ikat and gold"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "kahani",
+      "name": "Kahani",
+      "nameMeaning": "a story",
+      "descriptor": "Black Kalamkari with mustard border",
+      "description": "Kahani is black Kalamkari painted with cattle and a flute player on the pallu, edged in mustard.",
+      "descriptionStatus": "draft",
+      "colourLine": "Black, painted with a story.",
+      "colourLineStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "contrast"
+      ],
+      "categories": [
+        "pedana-ki-kalamkari"
+      ],
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#23201F",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Mustard",
+          "hex": "#C08A2E",
+          "text": "#1F1A16"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Black",
+        "border": "Mustard border",
+        "motif": "Kalamkari: cattle, flute-player pallu",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/kahani.jpg",
+          "width": 1024,
+          "height": 1536,
+          "alt": "Kahani — a black Kalamkari saree with a mustard border and a painted pallu, worn seated in a whitewashed alcove",
+          "pos": "50% 55%",
+          "source": "Contemplative Woman in a Haveli Alcove (1).png"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "75%",
+          "oy": "86%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.5,
+          "ox": "75%",
+          "oy": "76%"
+        },
+        "border": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "72%",
+          "oy": "86%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 1.8,
+          "ox": "52%",
+          "oy": "64%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 2,
+          "ox": "55%",
+          "oy": "50%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "60%",
+          "oy": "60%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 62%",
+        "posMobile": "50% 62%"
+      },
+      "closer": {
+        "heading": "Black, told in pictures.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Black and mustard"
+          ],
+          [
+            "Motif",
+            "Painted Kalamkari scenes"
+          ],
+          [
+            "Border",
+            "Mustard"
+          ]
+        ]
+      }
+    },
+    {
+      "slug": "leela",
+      "name": "Leela",
+      "nameMeaning": "divine play",
+      "descriptor": "Kalamkari with mustard and red border",
+      "description": "Leela is Kalamkari painted with figurative panels in blue, ochre and green, framed by a mustard and red border.",
+      "descriptionStatus": "draft",
+      "colourLine": "Turmeric, opened like a scroll.",
+      "colourLineStatus": "draft",
+      "price": null,
+      "priceIsPlaceholder": false,
+      "isNew": true,
+      "edits": [
+        "bright"
+      ],
+      "categories": [
+        "pedana-ki-kalamkari"
+      ],
+      "colours": [
+        {
+          "name": "Turmeric",
+          "hex": "#D08F2C",
+          "text": "#1F1A16"
+        },
+        {
+          "name": "Blue",
+          "hex": "#3E6EA8",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": null,
+        "colourway": "Turmeric",
+        "border": "Mustard and red border",
+        "motif": "Kalamkari figurative panels",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "images": [
+        {
+          "src": "/assets/images/leela.jpg",
+          "width": 1024,
+          "height": 1536,
+          "alt": "Leela — a Kalamkari saree with painted figurative panels and a mustard and red border, the pallu held open against a blue backdrop",
+          "source": "Editorial Saree Portrait in Blue Studio.png"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "fall": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "55%",
+          "oy": "86%"
+        },
+        "pallu": {
+          "img": 0,
+          "s": 1.4,
+          "ox": "35%",
+          "oy": "55%"
+        },
+        "border": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "25%",
+          "oy": "64%"
+        },
+        "swatch": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "40%",
+          "oy": "55%"
+        },
+        "weave": {
+          "img": 0,
+          "s": 2,
+          "ox": "40%",
+          "oy": "55%"
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "55%"
+        }
+      },
+      "looks": [],
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "closer": {
+        "heading": "Turmeric, opened wide.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Turmeric and blue"
+          ],
+          [
+            "Motif",
+            "Painted figurative panels"
+          ],
+          [
+            "Border",
+            "Mustard and red"
+          ]
+        ]
+      }
+    }
+  ],
+  "categories": [
+    {
+      "slug": "banaras-ki-bunkari",
+      "name": "Banaras ki Bunkari",
+      "group": "region",
+      "place": "Banaras",
+      "region": "Uttar Pradesh",
+      "image": {
+        "src": "/assets/images/panna.jpg",
+        "width": 1750,
+        "height": 3109,
+        "alt": "Banaras ki Bunkari: Panna",
+        "pos": "50% 80%"
+      }
+    },
+    {
+      "slug": "kolkata-ki-kalakari",
+      "name": "Kolkata ki Kalakari",
+      "group": "region",
+      "place": "Kolkata",
+      "region": "West Bengal",
+      "image": null
+    },
+    {
+      "slug": "rajasthan-ki-rajshahi",
+      "name": "Rajasthan ki Rajshahi",
+      "group": "region",
+      "place": "Rajasthan",
+      "region": "Rajasthan",
+      "image": {
+        "src": "/assets/images/anaar.jpg",
+        "width": 1024,
+        "height": 1536,
+        "alt": "Rajasthan ki Rajshahi: Anaar",
+        "pos": "50% 40%"
+      }
+    },
+    {
+      "slug": "gujarat-ki-garima",
+      "name": "Gujarat ki Garima",
+      "group": "region",
+      "place": "Gujarat",
+      "region": "Gujarat",
+      "image": {
+        "src": "/assets/images/rangoli.jpg",
+        "width": 1122,
+        "height": 1402,
+        "alt": "Gujarat ki Garima: Rangoli",
+        "pos": "50% 45%"
+      }
+    },
+    {
+      "slug": "pedana-ki-kalamkari",
+      "name": "Pedana ki Kalamkari",
+      "group": "region",
+      "place": "Pedana",
+      "region": "Andhra Pradesh",
+      "image": {
+        "src": "/assets/images/leela.jpg",
+        "width": 1024,
+        "height": 1536,
+        "alt": "Pedana ki Kalamkari: Leela",
+        "pos": "50% 45%"
+      }
+    },
+    {
+      "slug": "handloom-mark-sarees",
+      "name": "Handloom Mark sarees",
+      "group": "mark",
+      "place": null,
+      "region": null,
+      "image": null
+    },
+    {
+      "slug": "silk-mark-sarees",
+      "name": "Silk Mark certified sarees",
+      "group": "mark",
+      "place": null,
+      "region": null,
+      "image": null
+    },
+    {
+      "slug": "designer-fusion-sarees",
+      "name": "Designer fusion sarees",
+      "group": "more",
+      "place": null,
+      "region": null,
+      "image": null
+    },
+    {
+      "slug": "bihar-ki-bahar",
+      "name": "Bihar ki Bahar",
+      "group": "region",
+      "place": "Bihar",
+      "region": "Bihar",
+      "image": null
+    },
+    {
+      "slug": "madhya-pradesh-ki-chanderi",
+      "name": "Madhya Pradesh ki Chanderi",
+      "group": "region",
+      "place": "Madhya Pradesh",
+      "region": "Madhya Pradesh",
+      "image": null
+    },
+    {
+      "slug": "blouses",
+      "name": "Blouses",
+      "group": "more",
+      "place": null,
+      "region": null,
+      "image": null
+    },
+    {
+      "slug": "jewellery",
+      "name": "Jewellery",
+      "group": "more",
+      "place": null,
+      "region": null,
+      "image": null
+    },
+    {
+      "slug": "others",
+      "name": "Others",
+      "group": "more",
+      "place": null,
+      "region": null,
+      "image": null
     }
   ]
 }

@@ -184,13 +184,14 @@
 }
 .drape { padding-bottom: calc(var(--spacing-11) + var(--spacing-6)); }
 /* ─── 04 Colour chapter — pinned, scroll-driven ───────────
-   The section is tall; .chapter__sticky pins for its length. pdp.js maps scroll position to:
-   --ch-r (colour spread radius), --ch-bg / --ch-text (tonal palette), --ch-geo (disc), and
-   inline transforms on the frame, images, disc and state text. Nothing intercepts scrolling. */
+   The section is tall; .chapter__sticky pins for its length. pdp.js maps scroll position to inline
+   styles on the elements themselves: the background's colour and circular clip, the text colour,
+   the disc, and transforms on the frame, images and state text. The --ch-* values below are only
+   the starting state, before the script's first frame. Nothing intercepts scrolling. */
 .chapter { position: relative; margin-top: var(--spacing-9); }
 /* the chapter leaves still filled with colour, so the photograph below follows it with no gap */
 .chapter + .unfolded { margin-top: 0; }
-.chapter__sticky { position: relative; min-height: 100svh; overflow: hidden; }
+.chapter__sticky { position: relative; min-height: 100svh; overflow: hidden; contain: layout paint; }
 .chapter__bg {
   position: absolute; inset: 0;
   background: var(--ch-bg, var(--pc));
@@ -259,7 +260,7 @@
 .chapter__hex { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 12px; opacity: 0.85; }
 
 /* Scroll length: only applied when JS is running, so without JS it is a normal colour section */
-.js .chapter { height: 370vh; --ch-r: 0%; } /* pdp.js overrides --ch-r inline on .chapter */
+.js .chapter { height: 370vh; --ch-r: 0%; } /* starts closed; pdp.js then sets the clip on .chapter__bg itself */
 .js .chapter__sticky { position: sticky; top: 0; height: 100svh; }
 .js .chapter__inner { opacity: 0; }
 /* ─── 06 Product details ───────────────────────────────── */
@@ -570,3 +571,11 @@
   .closer { column-gap: var(--spacing-5); row-gap: var(--spacing-6); }
   .closer__item dd { font-size: 16px; }
 }
+
+/* ═══ Chapter → "A closer look": no empty page between them ═════
+   The photo section is pulled up under the chapter's last screen, and pdp.js holds it at the top of the
+   screen while the chapter is pinned. The closing circle then uncovers the photograph itself, and
+   scrolling back up the circle opens over it. Only applied when pdp.js is running the chapter. */
+.has-chapter-reveal .chapter { z-index: 2; }
+.has-chapter-reveal .chapter + .unfolded { position: relative; z-index: 1; margin-top: -100svh; will-change: transform; }
+.has-chapter-reveal .chapter + .unfolded .unfolded__inner { min-height: 100svh; }

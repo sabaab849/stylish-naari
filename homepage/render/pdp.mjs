@@ -29,16 +29,28 @@ function renderGallery(p) {
   // Views: each photograph, then closer views of the fall, pallu and border cut from those photographs.
   // (These replaced the separate "On the body" section, so the rail has more than one or two images.)
   const cropStyle = (c) => [c.s ? `--s:${c.s}` : '', c.ox ? `--ox:${c.ox}` : '', c.oy ? `--oy:${c.oy}` : '', c.op ? `object-position:${c.op}` : ''].filter(Boolean).join('; ');
-  const views = p.images.map((img) => ({ img, style: focusStyle(img), alt: img.alt }));
-  // Closer views are cut from the fabric close-up photo where one exists (sharp, and never a cropped body).
-  // Sarees with a single photo get two fabric-only close-ups from it. Zoom is capped so they stay sharp.
-  const hasDetail = p.images.length > 1 && (p.crops?.motif?.img ?? 0) > 0;
-  const extra = hasDetail ? [['motif', 'the motif'], ['borderDetail', 'the border']] : (p.images.length > 1 ? [] : [['border', 'the border'], ['swatch', 'the fabric']]);
-  for (const [key, label] of extra) {
+  // Order: the portrait(s) → one print detail → one border detail → the product shot.
+  //   print detail  = the fabric close-up photo itself, uncropped (full resolution, so it stays sharp)
+  //   border detail = a modest crop of that close-up (zoom capped at 1.6 so it stays sharp too)
+  //   product shot  = the saree laid flat, shown whole on its own backdrop colour
+  // Sarees with only a portrait get two fabric-only close-ups cut from it instead.
+  const portraits = p.images.filter((im) => !im.role);
+  const detail = p.images.find((im) => im.role === 'detail');
+  const products = p.images.filter((im) => im.role === 'product');
+  const views = portraits.map((img) => ({ img, style: focusStyle(img), alt: img.alt }));
+  const cropView = (key, label, maxZoom) => {
     const c = p.crops?.[key];
     const img = c && p.images[c.img ?? 0];
-    if (img) views.push({ img, style: cropStyle({ ...c, s: Math.min(c.s ?? 1, 2.4) }), alt: `${p.name}: ${label}` });
+    if (img) views.push({ img, style: cropStyle({ ...c, s: Math.min(c.s ?? 1, maxZoom) }), alt: `${p.name}: ${label}` });
+  };
+  if (detail) {
+    views.push({ img: detail, style: '', alt: `${p.name}: the print, up close` });
+    cropView('borderDetail', 'the border', 1.6);
+  } else if (portraits.length === 1) {
+    cropView('border', 'the border', 2.4);
+    cropView('swatch', 'the fabric', 2.4);
   }
+  for (const img of products) views.push({ img, style: `object-fit:contain; background:${img.bg || 'transparent'}`, alt: img.alt, bg: img.bg });
   const many = views.length > 1;
   const slides = views.map((v, i) => `
         <figure class="pdp-gallery__slide${i === 0 ? ' is-active' : ''}" data-gallery-slide aria-label="Image ${i + 1} of ${views.length}"${i ? ' aria-hidden="true"' : ''}>
@@ -98,11 +110,31 @@ function renderInfo(p, data, index, total) {
       ${p.description ? `<p class="pdp-info__description">${esc(p.description)}</p>` : ''}
       <div class="pdp-info__actions" data-pdp-cta>
         ${button}
-      </div>
+      </div>${renderTrust(p, data)}
       ${meta ? `<dl class="pdp-info__meta">${meta}</dl>` : ''}
-      ${data.store.shipping ? `<p class="pdp-info__shipping">${esc(data.store.shipping)}</p>` : ''}
+      ${data.store.shipping && !data.store.assurances?.length ? `<p class="pdp-info__shipping">${esc(data.store.shipping)}</p>` : ''}
       ${renderSareeSwatch(p, index, total)}
     </div>`;
+}
+
+/* ─── Checkout + assurances, under Add to bag ─────────────
+   Everything here is store data (products.json → store.checkout, store.assurances); nothing is
+   written in the template. An assurance marked for one fabric only shows on sarees of that fabric. */
+const lock = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="9.5" rx="1"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg>';
+const tick = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+function renderTrust(p, data) {
+  const checkout = data.store.checkout;
+  const fabric = (p.attributes.fabric || '').toLowerCase();
+  const assurances = (data.store.assurances || []).filter((a) => a && a.title && (!a.fabric || a.fabric.toLowerCase() === fabric));
+  if (!checkout && !assurances.length) return '';
+  return `
+      <div class="pdp-trust">
+        ${checkout ? `<div class="pdp-trust__secure">
+          <span class="pdp-trust__label">${lock}${esc(checkout.label)}</span>
+          ${checkout.methods?.length ? `<ul class="pdp-trust__methods" aria-label="Ways to pay">${checkout.methods.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>` : ''}
+        </div>` : ''}
+        ${assurances.length ? `<ul class="pdp-trust__list">${assurances.map((a) => `<li>${tick}${esc(a.title)}</li>`).join('')}</ul>` : ''}
+      </div>`;
 }
 
 /* ─── 02 The Saree Swatch ─────────────────────────────────
@@ -344,11 +376,36 @@ function renderStyleIt(p) {
 }
 
 /* ─── 08 Complete the story / From the edit ───────────────── */
-export function productCard(p) {
+/* Values the collection filters read from each card (assets/js/shop.js) */
+export const slugify = (v) => String(v ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+export const PRICE_BANDS = [
+  ['under-25000', 'Under ₹ 25,000', (n) => n < 25000],
+  ['25000-50000', '₹ 25,000 – ₹ 50,000', (n) => n >= 25000 && n <= 50000],
+  ['over-50000', 'Over ₹ 50,000', (n) => n > 50000],
+];
+export const priceBand = (p) => (p.price == null ? 'to-be-confirmed' : PRICE_BANDS.find(([, , test]) => test(p.price))[0]);
+export const fabricOf = (p) => p.attributes.fabric || p.attributes.weave || null;
+
+const heart = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.5S3.5 15.4 3.5 9.3A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 8.5 1.7c0 6.1-8.5 11.2-8.5 11.2Z"/></svg>';
+
+/* One card = one link, plus two controls laid over the photograph as its siblings: a wishlist heart
+   and, for a saree that has a price, Quick add (bag.js picks up data-add-to-bag). The index is the
+   card's place in the editorial order, which "Featured" sorts back to. */
+export function productCard(p, index = 0, { wishlist = true } = {}) {
   const main = p.images[0];
   const detail = p.crops?.border;
+  const colour = p.colours[0];
+  const facts = [
+    `data-order="${index}"`,
+    colour ? `data-colour="${esc(slugify(colour.name))}"` : '',
+    fabricOf(p) ? `data-fabric="${esc(slugify(fabricOf(p)))}"` : '',
+    `data-edit="${esc(p.edits.join(' '))}"`,
+    `data-price-band="${priceBand(p)}"`,
+    `data-price="${p.price ?? ''}"`,
+    p.isNew ? 'data-new' : '',
+  ].filter(Boolean).join(' ');
   return `
-          <li class="product-card" data-reveal>
+          <li class="product-card" data-reveal data-product ${facts}>
             <a href="/products/${esc(p.slug)}" class="product-card__link">
               <div class="media media--3-4 product-card__media">
                 <img class="product-card__img crop" src="${esc(main.src)}" alt="${esc(main.alt)}" width="${main.width}" height="${main.height}" loading="lazy" decoding="async" style="${esc(focusStyle(main))}">
@@ -358,6 +415,10 @@ export function productCard(p) {
               <p class="product-card__descriptor">${esc(p.descriptor)}</p>
               ${p.price != null ? `<p class="product-card__price">${formatPrice(p.price)}</p>` : ''}
             </a>
+            <div class="product-card__actions">
+              ${!wishlist ? '' : `<button class="product-card__save" type="button" data-wishlist="${esc(p.slug)}" data-name="${esc(p.name)}" aria-pressed="false" aria-label="Save ${esc(p.name)} to your wishlist">${heart}</button>`}
+              ${p.price != null ? `<button class="product-card__quick" type="button" data-add-to-bag="${esc(p.slug)}" data-add-label="Quick add" aria-label="Quick add ${esc(p.name)} to your bag">Quick add</button>` : ''}
+            </div>
           </li>`;
 }
 
@@ -376,7 +437,7 @@ function renderRelated(p, data) {
         <h2 class="t-h2" id="related-title">${esc(title)}</h2>
         ${link(shared.length ? 'Shop the edit' : 'View all', shared.length ? `/edits/${sharedKey}` : '/sarees')}
       </header>
-      <ul class="product-row" data-product-row>${list.map(productCard).join('')}
+      <ul class="product-row" data-product-row>${list.map((x, i) => productCard(x, i, { wishlist: false })).join('')}
       </ul>
       <div class="row-progress" aria-hidden="true"><span data-row-progress></span></div>
     </div>
@@ -411,6 +472,7 @@ export function page({ title, description, body, preload = '', ogImage = '', mai
   <link rel="stylesheet" href="/assets/css/homepage.css">
   <link rel="stylesheet" href="/assets/css/bag.css">
   <link rel="stylesheet" href="/assets/css/pdp.css">
+  <link rel="stylesheet" href="/assets/css/shop.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="page--solid-header">
@@ -425,6 +487,7 @@ export function page({ title, description, body, preload = '', ogImage = '', mai
 
   <script src="/assets/js/homepage.js" defer></script>
   <script src="/assets/js/bag.js" defer></script>
+  <script src="/assets/js/shop.js" defer></script>
   <script src="/assets/js/pdp.js" defer></script>
 </body>
 </html>

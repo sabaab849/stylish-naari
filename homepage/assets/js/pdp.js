@@ -155,13 +155,57 @@
     });
     var pct = function (v) { return parseFloat(v); };
 
-    function render() {
+    // Write a style only when its value has changed, so a held state costs the browser nothing
+    var written = new Map();
+    var put = function (el, prop, value) {
+      var seen = written.get(el);
+      if (!seen) { seen = {}; written.set(el, seen); }
+      if (seen[prop] === value) return;
+      seen[prop] = value;
+      el.style[prop] = value;
+    };
+
+    /* Smoothing: the picture eases toward the scroll position instead of jumping to it, so a mouse
+       wheel (which moves the page in steps) reads as one continuous movement. EASE_MS is roughly how
+       long it takes to close most of the gap. Nothing is delayed for long, and scrolling itself is untouched. */
+    var under = chapter.nextElementSibling && chapter.nextElementSibling.classList.contains('unfolded') ? chapter.nextElementSibling : null;
+    if (under) document.documentElement.classList.add('has-chapter-reveal');
+
+    var EASE_MS = 120;
+    var shown = null, lastTime = 0; // shown = the { entry, p } currently on screen
+
+    // Draws one frame. Returns true once the picture has caught up with the scroll position.
+    function render(now) {
       var rect = chapter.getBoundingClientRect();
       var vh = window.innerHeight;
-      var entry = clamp((vh - rect.top) / vh, 0, 1);                 // 0 → 1 as the chapter arrives
-      var p = clamp(-rect.top / Math.max(1, rect.height - vh), 0, 1); // 0 → 1 across the pinned scroll
       var still = reduce.matches;
       var gentle = compact.matches;
+
+      // The section after the chapter ("A closer look") overlaps the chapter's last screen in the layout.
+      // While the chapter is pinned, hold that section at the top of the screen underneath it, so the closing
+      // circle uncovers the photograph rather than an empty page. This follows the real scroll position (not
+      // the smoothed one); at the end of the pin the offset is zero and the two scroll on together.
+      if (under) {
+        var lead = rect.top + (rect.height - vh); // how far below the top of the screen the section naturally sits
+        put(under, 'transform', rect.top <= 0 && lead > 0 ? 'translate3d(0,' + (-lead).toFixed(1) + 'px,0)' : '');
+      }
+
+      var target = {
+        entry: clamp((vh - rect.top) / vh, 0, 1),                 // 0 → 1 as the chapter arrives
+        p: clamp(-rect.top / Math.max(1, rect.height - vh), 0, 1), // 0 → 1 across the pinned scroll
+      };
+      var settled = true;
+      if (still || !shown || typeof now !== 'number') shown = target;
+      else {
+        var k = 1 - Math.exp(-Math.min(now - lastTime, 64) / EASE_MS);
+        ['entry', 'p'].forEach(function (key) {
+          var gap = target[key] - shown[key];
+          if (Math.abs(gap) < 0.0004) shown[key] = target[key];
+          else { shown[key] += gap * k; settled = false; }
+        });
+      }
+      lastTime = typeof now === 'number' ? now : performance.now();
+      var entry = shown.entry, p = shown.p;
 
       var sp = statePos(p);
       if (still) sp = Math.round(sp);
@@ -178,21 +222,24 @@
       var text = mix(pc[0].text, pc[1].text, pc[2]);
       var geo = geoFixed || (lum(bg) > 0.1 ? mix(bg, BLACK, 0.2) : mix(bg, WHITE, 0.14));
 
-      chapter.style.setProperty('--ch-r', radius.toFixed(2) + '%');
-      chapter.style.setProperty('--ch-bg', css(bg));
-      chapter.style.setProperty('--ch-text', css(text));
-      chapter.style.setProperty('--ch-geo', css(geo));
+      // Each value goes straight onto the one element that uses it (not onto a variable on the whole
+      // chapter, which made the browser restyle everything inside it on every frame). Once the colour
+      // covers the screen the circular clip is dropped altogether: an unclipped fill is far cheaper.
+      put(bgEl, 'clipPath', radius >= 70.99 ? 'none' : 'circle(' + radius.toFixed(2) + '% at 50% 50%)');
+      put(bgEl, 'backgroundColor', css(bg));
+      put(inner, 'color', css(text));
+      put(disc, 'backgroundColor', css(geo));
 
       // Content arrives once the colour has mostly spread
       var contentIn = still ? (entry > 0.3 ? 1 : 0) : clamp((entry - 0.3) / 0.35, 0, 1);
       // …and leaves just before the colour closes
       var contentOut = still ? (p < 0.92 ? 1 : 0) : 1 - clamp((p - 0.84) / 0.06, 0, 1);
-      inner.style.opacity = Math.min(contentIn, contentOut).toFixed(3);
+      put(inner, 'opacity', Math.min(contentIn, contentOut).toFixed(3));
 
-      // Frame shape
+      // Frame shape (left unclipped while it is a plain rectangle)
       var sh = at(SHAPES, sp);
       var top = lerp(sh[0][0], sh[1][0], sh[2]), side = lerp(sh[0][1], sh[1][1], sh[2]), round = lerp(sh[0][2], sh[1][2], sh[2]);
-      frame.style.setProperty('--ch-clip', 'inset(' + top.toFixed(2) + '% ' + side.toFixed(2) + '% round ' + round.toFixed(2) + '%)');
+      put(frame, 'clipPath', top + side + round < 0.01 ? 'none' : 'inset(' + top.toFixed(2) + '% ' + side.toFixed(2) + '% round ' + round.toFixed(2) + '%)');
 
       // Images: interpolate zoom + focal point; crossfade between different photographs
       var drift = still || gentle ? 1 : 1 + 0.035 * p; // a slow push-in through the whole chapter
@@ -201,18 +248,21 @@
         var id = Number(el.getAttribute('data-chapter-img'));
         var o0 = crops[Math.floor(sp)].img === id ? 1 : 0;
         var o1 = crops[Math.min(Math.floor(sp) + 1, n - 1)].img === id ? 1 : 0;
-        el.style.opacity = lerp(o0, o1, lc[2]).toFixed(3);
+        var opacity = lerp(o0, o1, lc[2]);
+        put(el, 'opacity', opacity.toFixed(3));
+        put(el, 'visibility', opacity < 0.001 ? 'hidden' : 'visible'); // a hidden photograph is not drawn or moved at all
+        if (opacity < 0.001) return;
         var s = lerp(lc[0].s, lc[1].s, lc[2]) * drift;
-        el.style.transformOrigin = lerp(pct(lc[0].ox), pct(lc[1].ox), lc[2]).toFixed(2) + '% ' + lerp(pct(lc[0].oy), pct(lc[1].oy), lc[2]).toFixed(2) + '%';
-        el.style.objectPosition = (lc[2] < 0.5 ? lc[0].op : lc[1].op) || '50% 50%';
-        el.style.transform = 'scale(' + s.toFixed(4) + ')';
+        put(el, 'transformOrigin', lerp(pct(lc[0].ox), pct(lc[1].ox), lc[2]).toFixed(2) + '% ' + lerp(pct(lc[0].oy), pct(lc[1].oy), lc[2]).toFixed(2) + '%');
+        put(el, 'objectPosition', (lc[2] < 0.5 ? lc[0].op : lc[1].op) || '50% 50%');
+        put(el, 'transform', 'scale(' + s.toFixed(4) + ')');
       });
 
       // The disc drifts up and grows a little: one shape, moving slowly
-      if (still) disc.style.transform = 'none';
+      if (still) put(disc, 'transform', 'none');
       else {
         var travel = gentle ? 4 : 10;
-        disc.style.transform = 'translate3d(0,' + lerp(travel, -travel, p).toFixed(2) + '%,0) scale(' + lerp(0.9, 1.06, p).toFixed(4) + ')';
+        put(disc, 'transform', 'translate3d(0,' + lerp(travel, -travel, p).toFixed(2) + '%,0) scale(' + lerp(0.9, 1.06, p).toFixed(4) + ')');
       }
 
       // State text: crossfade with a short rise
@@ -220,27 +270,44 @@
       stateEls.forEach(function (el, k) {
         var d = sp - k;
         var o = clamp(1 - Math.abs(d) * 2.2, 0, 1);
-        el.style.opacity = o.toFixed(3);
-        el.style.transform = still ? 'none' : 'translate3d(0,' + (-d * 28).toFixed(1) + 'px,0)';
+        put(el, 'opacity', o.toFixed(3));
+        put(el, 'transform', still ? 'none' : 'translate3d(0,' + (-d * 28).toFixed(1) + 'px,0)');
         el.classList.toggle('is-active', k === active);
       });
-      if (counter) counter.textContent = String(active + 1).padStart(2, '0');
+      var count = String(active + 1).padStart(2, '0');
+      if (counter && counter.textContent !== count) counter.textContent = count;
+      return settled;
     }
 
     var running = false, queued = false;
-    var frameTick = function () { queued = false; render(); };
+    // Keeps drawing frames after the last scroll event until the picture has caught up
+    var frameTick = function (now) {
+      queued = false;
+      if (!render(now) && running) { queued = true; requestAnimationFrame(frameTick); }
+    };
     var onScroll = function () { if (running && !queued) { queued = true; requestAnimationFrame(frameTick); } };
+    // The photographs are large. Decode them before the chapter arrives, not in the middle of the scroll.
+    var decoded = false;
+    var decodeAhead = function () {
+      if (decoded) return;
+      decoded = true;
+      layers.forEach(function (el) {
+        el.loading = 'eager';
+        if (el.decode) el.decode().catch(function () {});
+      });
+    };
     // Only work while the chapter is within a screen of the viewport
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
         running = entries[0].isIntersecting;
-        if (running) onScroll();
+        if (running) { shown = null; decodeAhead(); onScroll(); } // start from the true position, not a stale one
       }, { rootMargin: '100% 0px 100% 0px' }).observe(chapter);
-    } else running = true;
+    } else { running = true; decodeAhead(); }
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', function () { if (running) render(); });
-    if (reduce.addEventListener) reduce.addEventListener('change', render);
-    render();
+    var redraw = function () { shown = null; render(); }; // jump straight to the right state, no easing
+    window.addEventListener('resize', function () { if (running) redraw(); });
+    if (reduce.addEventListener) reduce.addEventListener('change', redraw);
+    redraw();
   }
 
   /* ─── Buy bar: appears once the main Add to bag has scrolled away ─ */

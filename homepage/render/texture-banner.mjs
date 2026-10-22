@@ -8,6 +8,8 @@ export function renderTextureBanner(data, {
   product: slug, image = 0, href = '/sarees',
   eyebrow = '', title = '', line = '', cta = '',
   position = '', positionTablet = '', positionMobile = '',
+  wide = null,   // { src, width, height }: a landscape file of the same photograph, used from tablet up
+  shade = '',    // 'r, g, b' of the shade behind the words, taken from the saree's darkest tone
 } = {}) {
   const p = data.products.find((x) => x.slug === slug);
   const img = p?.images[image];
@@ -17,10 +19,11 @@ export function renderTextureBanner(data, {
     positionTablet ? `--pos-tablet:${esc(positionTablet)}` : '',
     positionMobile ? `--pos-mobile:${esc(positionMobile)}` : '',
   ].filter(Boolean).join('; ');
+  const source = wide ? `<source media="(min-width: 768px)" srcset="${esc(wide.src)}" width="${wide.width}" height="${wide.height}">` : '';
   return `
-    <section class="texture-banner" aria-labelledby="texture-title">
+    <section class="texture-banner" aria-labelledby="texture-title"${shade ? ` style="--shade:${esc(shade)}"` : ''}>
       <div class="texture-banner__media">
-        <img src="${esc(img.src)}" alt="${esc(img.alt)}" width="${img.width}" height="${img.height}" loading="lazy" decoding="async"${pos ? ` style="${pos}"` : ''}>
+        <picture>${source}<img src="${esc(img.src)}" alt="${esc(img.alt)}" width="${img.width}" height="${img.height}" loading="lazy" decoding="async"${pos ? ` style="${pos}"` : ''}></picture>
       </div>
       <div class="texture-banner__scrim" aria-hidden="true"></div>
       <div class="container texture-banner__content" data-reveal>

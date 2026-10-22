@@ -6,6 +6,7 @@
 //   /products/<slug>     product page rendered from assets/data/products.json (render/pdp.mjs)
 //   /sarees              every saree (render/collection.mjs)
 //   /edits/<key>         the sarees in one edit
+//   /wishlist            the sarees saved in this browser
 //   everything else      static files
 //
 // HTML responses get shared partials inserted: <!-- include:header --> → partials/header.html, etc.
@@ -14,7 +15,8 @@ import { createServer } from 'node:http';
 import { createReadStream, statSync, readFileSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
 import { renderProduct, renderNotFound } from './render/pdp.mjs';
-import { renderCollection } from './render/collection.mjs';
+import { renderCollection, renderWishlist } from './render/collection.mjs';
+import { renderCategory } from './render/categories.mjs';
 import { root, readData, withIncludes } from './render/includes.mjs';
 
 const port = Number(process.env.PORT) || 4321;
@@ -59,6 +61,22 @@ createServer((req, res) => {
     }
     return;
   }
+
+  // Category pages
+  const category = urlPath.match(/^\/categories\/([a-z0-9-]+)\/?$/);
+  if (category) {
+    try {
+      const html = renderCategory(readData(), category[1]);
+      sendHtml(res, html ? 200 : 404, html || renderNotFound());
+    } catch (err) {
+      console.error(err);
+      res.writeHead(500, { 'Content-Type': 'text/plain' }).end('Category render failed: ' + err.message);
+    }
+    return;
+  }
+
+  // Wishlist
+  if (/^\/wishlist\/?$/.test(urlPath)) { sendHtml(res, 200, renderWishlist(readData())); return; }
 
   // Keep internal folders private
   if (/^\/(render|partials|_source-footage)\//.test(urlPath) || urlPath === '/serve.mjs') {

@@ -433,6 +433,8 @@ The collection grew from four sarees to twelve. Sarees 05–12 each have a portr
 
 **Changes to the homepage (§8):** New arrivals is a scrolling row of the eight new sarees. Shop by Edit has four edits (The Soft Edit is new) in two mirrored rows. Colour Story has six fields, each opening onto a real fabric close-up and linking to its saree. Festive uses Panna. `/sarees` and `/edits/<key>` are real collection pages.
 
+**Shop by region (added October 2026):** between New arrivals and Shop by Edit, the client's shop categories. The seven regional traditions (Banaras ki Bunkari, Kolkata ki Kalakari, Rajasthan ki Rajshahi, Gujarat ki Garima, Pedana ki Kalamkari, Bihar ki Bahar, Madhya Pradesh ki Chanderi) are portrait tiles; certified sarees (Handloom Mark, Silk Mark) and other categories (Designer fusion, Blouses, Jewellery, Others) are text links beneath, so no more than seven choices compete at once. Until a category's photograph is supplied, its tile is a plain stone panel with the place name in the display face. Categories live in `products.json` → `categories`; each has a page at `/categories/<slug>`.
+
 **Where this shoot departs from §6:** it is softer and more set-dressed than the first (candles, brass, flowers, heavier jewellery, shallow focus). The UI rules are unchanged; the photography direction in §6 should be revisited if this becomes the house style.
 
 ---
@@ -676,6 +678,15 @@ Minimum touch target: 44×44px, including padding on text links.
 - Hover: image scale 1.03 (1200ms), optional crossfade to detail image (600ms).
 - Permitted overlay: `Sold out` only. No `New`, `Bestseller`, `% off`, hearts, quick-view.
 - Whole card is one link; the wishlist (if ever added) is text on the PDP, not an icon on the card.
+
+### 12.2a Shopping tools (approved exceptions to §12.2 and §8 "Excluded")
+
+Added at the owner's request, each held to one flat ivory chip or a line of text: no colour, shadows, pills or brand artwork.
+
+- **Wishlist heart** on every product card, top-right of the photograph. Outline when off, filled Ink when saved.
+- **Quick add** across the foot of the photograph, only on sarees that have a price. Appears on hover or focus with a mouse; always visible on touch.
+- **Filter and sort bar** on collection pages: Colour (swatches), Fabric, Edit and Price, plus Sort by. Options and counts are built from the sarees on the page. It sticks below the header.
+- **Checkout and assurances** under Add to bag on the product page: a lock line, the payment methods as text chips (no card-brand logos), and a short hairline list. The wording lives in `products.json` → `store.checkout` / `store.assurances` and must be true before launch.
 
 ### 12.3 Editorial collection card
 

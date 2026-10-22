@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/homepage.css">
   <link rel="stylesheet" href="assets/css/bag.css">
+  <link rel="stylesheet" href="assets/css/shop.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="home">
@@ -53,6 +54,9 @@
         <div class="row-progress" aria-hidden="true"><span data-row-progress></span></div>
       </div>
     </section>
+
+    <!-- ─── 02b Shop by region — the client's categories, rendered from products.json ─ -->
+<!-- include:categories -->
 
     <!-- ─── 03 Shop by edit — intro on the left, a row of equal tiles on the right ─ -->
     <section class="section edits" id="edits" aria-labelledby="edits-title">
@@ -184,9 +188,6 @@
           <img src="assets/images/panna.jpg" alt="A woman in an emerald silk saree seen from behind on a candlelit staircase, the paisley pallu spread across the steps" loading="lazy">
         </div>
         <div class="festive__aside">
-          <div class="festive__detail media media--1-1" data-reveal>
-            <img src="assets/images/panna-detail.jpg" alt="" loading="lazy" style="object-position:62% 45%">
-          </div>
           <div class="festive__text" data-reveal>
             <p class="eyebrow">The festive edit</p>
             <h2 class="t-h2" id="festive-title">For evenings, celebrations and everything worth dressing for.</h2>
@@ -204,5 +205,6 @@
 
   <script src="assets/js/homepage.js" defer></script>
   <script src="assets/js/bag.js" defer></script>
+  <script src="assets/js/shop.js" defer></script>
 </body>
 </html>

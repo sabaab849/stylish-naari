@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderNewArrivals } from './collection.mjs';
+import { renderCategories } from './categories.mjs';
 import { renderCampaign } from './campaign.mjs';
 import { renderTextureBanner } from './texture-banner.mjs';
 
@@ -15,14 +16,19 @@ export const readData = () => JSON.parse(readFileSync(join(root, 'assets/data/pr
 // Includes rendered from data rather than read from partials/ (Shopify: a section bound to a collection)
 const dataIncludes = {
   'new-arrivals': () => renderNewArrivals(readData()),
+  // Shop by region: the client's saree categories (data.categories); tiles fill in as photographs arrive
+  categories: () => renderCategories(readData()),
   // The homepage campaign: one edit, shown through one saree's portrait, on the studio colour behind it
   campaign: () => renderCampaign(readData(), { edit: 'soft', product: 'kasni', position: '50% 42%' }),
-  // The texture banner: Panna's close-up, edge to edge. Each position picks the band of the
-  // portrait photo that the banner shows at that width (jaal on the left, zari border, paisleys on the right).
+  // The texture banner: Phalsa's close-up, edge to edge. From tablet up it uses a landscape file of
+  // the same photograph (the cloth turned on its side, 2,391px wide) so the weave stays sharp at full
+  // width; phones use the portrait original. The shade behind the words is Phalsa's plum, near black.
   texture: () => renderTextureBanner(readData(), {
-    product: 'panna', image: 1, href: '/sarees',
+    product: 'phalsa', image: 1, href: '/sarees',
     eyebrow: 'Texture first', title: 'An art of its own.', line: 'Every weave has a story.', cta: 'Discover the collection',
-    position: '50% 74%', positionTablet: '50% 80%', positionMobile: '50% 100%',
+    wide: { src: '/assets/images/phalsa-texture-wide.jpg', width: 2391, height: 1594 },
+    shade: '22, 9, 18',
+    position: '50% 50%', positionTablet: '50% 50%', positionMobile: '50% 40%',
   }),
 };
 

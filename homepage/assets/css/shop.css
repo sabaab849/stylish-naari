@@ -1,0 +1,169 @@
+/* Stylish Naari — shopping tools: wishlist + quick add on product cards, the collection filter bar,
+   and the checkout / assurance block on the product page.
+   Loaded on every page after homepage.css. Tokens only; no new colours or fonts.
+   These are approved exceptions to the "nothing on the card" rule (brand-guidelines.md §12.2a): each
+   control is one flat ivory chip or a line of text, with no shadows, pills or colour. */
+
+/* ─── Product card: wishlist + quick add ─────────────────────
+   The card stays one link. The controls sit in a layer the exact size of the 3:4 photograph, as
+   siblings of the link (a button inside a link is invalid), and only they take the pointer. */
+.product-card { position: relative; }
+.product-card__actions {
+  position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 3 / 4;
+  pointer-events: none;
+}
+.product-card__actions > * { pointer-events: auto; }
+
+.product-card__save {
+  position: absolute; top: 0; right: 0;
+  width: 44px; height: 44px; /* touch target; the visible chip is the 32px square inside it */
+  display: grid; place-items: center;
+}
+.product-card__save::before {
+  content: ""; position: absolute; inset: 6px;
+  background: rgba(246, 241, 234, 0.88); border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+.product-card__save svg {
+  position: relative; width: 16px; height: 16px;
+  fill: none; stroke: var(--color-ink); stroke-width: 1.5; stroke-linejoin: round;
+  transition: fill var(--duration-fast) var(--ease-out);
+}
+.product-card__save:hover::before { background: var(--color-ivory); }
+.product-card__save[aria-pressed="true"] svg { fill: var(--color-ink); }
+
+.product-card__quick {
+  position: absolute; left: var(--spacing-2); right: var(--spacing-2); bottom: var(--spacing-2);
+  min-height: 40px; padding: 0 var(--spacing-3);
+  background: rgba(246, 241, 234, 0.92); color: var(--color-ink);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-button); letter-spacing: var(--letter-spacing-button);
+  transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-base) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+}
+.product-card__quick:hover { background: var(--color-ivory); }
+.product-card__quick.is-added { background: var(--color-ink); color: var(--color-ivory); }
+/* With a mouse the quick-add bar waits for the card to be hovered or focused; on touch it is always there */
+@media (hover: hover) {
+  .product-card__quick { opacity: 0; transform: translateY(6px); }
+  .product-card:hover .product-card__quick,
+  .product-card:focus-within .product-card__quick,
+  .product-card__quick.is-added { opacity: 1; transform: none; }
+  /* keep the photograph's hover zoom while the pointer is on a control, not only on the link */
+  .product-card:hover .product-card__img { transform: scale(var(--hover-zoom)); }
+  .product-card:hover .product-card__img.crop { transform: scale(calc(var(--s) * var(--hover-zoom))); }
+  .product-card:hover .product-card__detail { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .product-card__quick { transform: none; } }
+
+/* ─── Collection: filter + sort bar ──────────────────────────
+   Needs JavaScript, so it only appears when the script is running. Sticks to the top of the screen
+   and steps down below the header whenever the header is showing. */
+.filters { display: none; }
+.js .filters {
+  display: block; position: sticky; top: 0; z-index: 20;
+  margin-bottom: var(--spacing-7);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  transition: top var(--duration-base) var(--ease-in-out);
+}
+/* the ivory runs edge to edge behind the bar, without clipping the panels that hang below it */
+.js .filters::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(-1 * var(--bleed)); right: calc(-1 * var(--bleed)); background: var(--color-bg); }
+body:has(.site-header:not(.is-hidden)) .filters { top: var(--header-height); }
+.js .collection__tabs--filtered { margin-bottom: 0; }
+
+.filters__bar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-5); min-height: 56px; }
+.filters__groups { display: flex; flex-wrap: wrap; gap: 0 var(--spacing-6); }
+.filter { position: relative; }
+.filter__summary {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 56px;
+  list-style: none; cursor: pointer; user-select: none;
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 14px;
+}
+.filter__summary::-webkit-details-marker { display: none; }
+.filter__summary::after { content: "+"; font-weight: 400; font-size: 16px; line-height: 1; }
+.filter[open] .filter__summary::after { content: "–"; }
+.filter__count { font-size: 11px; font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
+.filter__panel {
+  position: absolute; top: 100%; left: calc(-1 * var(--spacing-4)); z-index: 2;
+  min-width: 260px; padding: var(--spacing-3) var(--spacing-4);
+  background: var(--color-bg);
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+.filter__option {
+  display: flex; align-items: center; gap: var(--spacing-3); min-height: 40px; cursor: pointer;
+  font-size: 14px;
+}
+.filter__option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+/* the tick box, drawn */
+.filter__box { flex: none; width: 16px; height: 16px; box-shadow: inset 0 0 0 1px var(--color-border-strong); }
+.filter__option input:checked ~ .filter__box { background: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-ink), inset 0 0 0 4px var(--color-bg); }
+.filter__option input:focus-visible ~ .filter__box { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.filter__swatch { flex: none; width: 18px; height: 18px; box-shadow: 0 0 0 1px rgba(31, 26, 22, 0.18); }
+.filter__option input:checked ~ .filter__name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.filter__n { margin-left: auto; padding-left: var(--spacing-4); font-size: 11px; font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
+
+.filters__sort { display: inline-flex; align-items: center; gap: var(--spacing-2); flex: none; font-size: 14px; color: var(--color-text-muted); }
+.filters__sort select {
+  appearance: none; -webkit-appearance: none;
+  min-height: 44px; padding: 0 18px 0 0; border: 0; border-radius: 0; background: transparent;
+  font: inherit; font-family: var(--font-display); font-weight: var(--font-weight-medium); color: var(--color-text);
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 5px) 55%, 100% 55%; background-size: 5px 5px; background-repeat: no-repeat;
+}
+
+.filters__status {
+  display: flex; align-items: center; gap: var(--spacing-4); min-height: 36px; padding-bottom: var(--spacing-2);
+  font-size: var(--font-size-caption); color: var(--color-text-muted);
+}
+.filters__clear { min-height: 32px; color: var(--color-text); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+/* A filtered or sorted grid is a plain grid: the staggered offsets only make sense in the editorial order */
+.collection__grid.is-arranged > :nth-child(n) { margin-top: 0; }
+.collection__empty { padding: var(--spacing-9) 0 var(--spacing-11); font-family: var(--font-display); font-size: var(--font-size-h3); }
+
+@media (max-width: 767px) {
+  .filters__bar { flex-wrap: wrap; gap: 0 var(--spacing-4); }
+  .filters__groups { gap: 0 var(--spacing-5); }
+  .filter { position: static; } /* the panel spans the bar instead of hanging from its own button */
+  .filter__summary { min-height: 48px; }
+  .filter__panel { left: 0; right: 0; min-width: 0; }
+  .filters__sort { width: 100%; justify-content: space-between; border-top: 1px solid var(--color-border); }
+}
+
+/* ─── Product page: checkout + assurances, under Add to bag ─── */
+.pdp-trust { margin-top: var(--spacing-5); }
+.pdp-trust__secure {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-caption); color: var(--color-text-muted);
+}
+.pdp-trust__label { display: inline-flex; align-items: center; gap: 6px; color: var(--color-text); }
+.pdp-trust svg { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.pdp-trust__methods { display: flex; flex-wrap: wrap; gap: 6px; }
+.pdp-trust__methods li {
+  padding: 3px 7px; border-radius: var(--radius-sm);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 11px; letter-spacing: 0.02em; line-height: 1.3;
+  color: var(--color-text-secondary);
+}
+.pdp-trust__list { margin-top: var(--spacing-5); border-top: 1px solid var(--color-border); }
+.pdp-trust__list li {
+  display: flex; align-items: center; gap: var(--spacing-3); min-height: 44px;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 14px;
+}
+.pdp-trust__list svg { color: var(--color-text-muted); }
+
+/* A fabric the store lists but has no sarees in yet: visible, marked "Soon", not selectable */
+.filter__option.is-empty { color: var(--color-text-muted); cursor: default; }
+.filter__option.is-empty .filter__box { box-shadow: inset 0 0 0 1px var(--color-border); }
+
+/* ─── Wishlist page ──────────────────────────────────────────
+   Every saree's card is on the page; only the saved ones are displayed (shop.js adds .is-saved). */
+.wishlist__grid > .product-card { display: none; }
+.wishlist__grid > .product-card.is-saved { display: block; }
+.wishlist__grid:not(:has(.is-saved)) { display: none; } /* nothing saved: no empty grid above the message */
+.wishlist__empty { padding: var(--spacing-6) 0 var(--spacing-11); font-family: var(--font-display); font-size: var(--font-size-h3); }
+.wishlist__empty p { max-width: 24em; }
+.wishlist__empty .link { margin-top: var(--spacing-4); font-size: var(--font-size-button); }
