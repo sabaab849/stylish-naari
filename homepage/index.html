@@ -7,7 +7,7 @@
   <meta name="description" content="Sarees in plum, emerald, coral, lavender and more. Tradition, reimagined for today.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/images/hero-bagh-wide.jpg" media="(min-width: 768px)">
   <link rel="preload" as="image" href="assets/images/bagh-back.jpg" media="(max-width: 767px)">
   <link rel="stylesheet" href="assets/css/tokens.css">
@@ -153,8 +153,27 @@
         </ul>
       </div>
     </section>
-    <!-- ─── Texture banner — one fabric close-up, edge to edge (render/texture-banner.mjs) ─ -->
-<!-- include:texture -->
+
+    <!-- ─── Campaign banner — "Tradition in every thread". The photograph carries no lettering: the
+         headline is live text in the site's own type (Inter Tight caps, as in the hero; Inter for the line),
+         so it stays sharp, translatable and readable at every width. Desktop shows the whole photograph at its
+         own proportions with the words over the soft backdrop on the left; phones get a crop of the model and
+         the pallu with the words under it. Lossless WebP keeps the Kalamkari print exactly as shot; JPEG for
+         older browsers. The whole banner is one link. ─ -->
+    <section class="thread-banner" aria-labelledby="thread-title">
+      <picture class="thread-banner__media">
+        <source media="(max-width: 767px)" type="image/webp" srcset="assets/images/hero-tradition-phone.webp" width="880" height="770">
+        <source media="(max-width: 767px)" srcset="assets/images/hero-tradition-phone.jpg" width="880" height="770">
+        <source type="image/webp" srcset="assets/images/hero-tradition.webp" width="2042" height="770">
+        <img src="assets/images/hero-tradition.jpg" width="2042" height="770" loading="lazy" decoding="async"
+             alt="A woman in a Kalamkari saree with a mustard and red border and gold jhumkas, looking back over her shoulder as she holds the pallu open across the frame">
+      </picture>
+      <div class="container thread-banner__content" data-reveal>
+        <h2 class="thread-banner__title" id="thread-title"><span>Tradition</span> <span>in every thread</span></h2>
+        <p class="thread-banner__line">Rooted in heritage, woven for today.</p>
+        <a class="link link--on-dark thread-banner__link" href="/sarees"><span class="link__label">Shop the collection</span><span class="link__arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
 
     <!-- ─── 05 The art of Indian craftsmanship — a full-bleed film with the copy over it ───
          Film: one unbroken 12s take of a silk handloom (silent, warm grade), 1080p for desktop and 720p for
@@ -175,7 +194,7 @@
           <p class="eyebrow craft-film__eyebrow">The art of Indian craftsmanship</p>
           <h2 class="craft-film__title" id="craft-title">Woven with heritage. <em class="serif">Crafted with soul.</em></h2>
           <p class="craft-film__body">Discover the beauty of India’s timeless textile traditions, where every weave tells a story of artistry, culture, and generations of craftsmanship.</p>
-          <a class="link link--on-dark" href="#"><span class="link__label">Explore our crafts</span><span class="link__arrow" aria-hidden="true">→</span></a>
+          <a class="link link--on-dark" href="/craft"><span class="link__label">Explore our crafts</span><span class="link__arrow" aria-hidden="true">→</span></a>
         </div>
         <button class="craft-film__toggle" type="button" data-craft-toggle aria-pressed="false">Pause</button>
       </div>

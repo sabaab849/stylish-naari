@@ -1,5 +1,30 @@
 # Craft films
 
+## Craft page hero: `craft-hero-loop.mp4`
+
+The top of `/craft` plays this one video behind the title. It's a 24-second seamless loop with a new craft scene
+every 3 seconds, cross-fades baked in:
+
+| Time | Scene |
+|---|---|
+| 0–3 s | Kalamkari: the painted pallu |
+| 3–6 s | Handloom: the shuttle and the weaver's hands |
+| 6–9 s | Zari woven into silk |
+| 9–12 s | Silk yarn worked by hand |
+| 12–15 s | Kalamkari: painted panels |
+| 15–18 s | Handloom: closer on the warp |
+| 18–21 s | Zari border |
+| 21–24 s | Silk yarn on the frame |
+
+- `craft-hero-loop.mp4`: 1920×1080, about 7.4 MB.
+- `craft-hero-loop-720.mp4`: 1280×720, about 3.4 MB, served to phones.
+- `assets/images/craft-hero-loop.jpg`: the poster frame.
+
+Built by `_tools/build-craft-loop.mjs` from licensed footage (see `_source-footage/README.md`) and slow camera moves
+across our own saree photographs. No free, commercially licensed footage of Kalamkari painting or zari work could be
+found, so those scenes use photographs. When real footage arrives, add it to `_source-footage/`, change the scene in
+the script and re-run it. Prompts for generating clips are in [`craft-reel/README.md`](craft-reel/README.md).
+
 The homepage craft section ("The art of Indian craftsmanship") plays one silent film full-width behind the text.
 
 ## Current files (interim)

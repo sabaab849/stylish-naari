@@ -1,0 +1,8 @@
+<!doctype html><html><body style="margin:0;overflow:hidden;background:#000"><canvas id="c" width="720" height="1280" style="display:block"></canvas>
+<script>
+// One frame of a reel (?src=, ?t=) at full size, saved as its poster.
+const q = new URLSearchParams(location.search), v = document.createElement('video');
+v.src = q.get('src'); v.muted = true; v.preload = 'auto';
+v.addEventListener('loadedmetadata', () => { document.title = v.duration.toFixed(1); v.currentTime = +(q.get('t') || 2); });
+v.addEventListener('seeked', () => document.getElementById('c').getContext('2d').drawImage(v, 0, 0, 720, 1280));
+</script></body></html>

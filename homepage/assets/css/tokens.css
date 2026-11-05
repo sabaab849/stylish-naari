@@ -5,6 +5,7 @@
   /* ─── Colour: foundation ─────────────────────────── */
   --color-bg:               #F6F1EA; /* Ivory — page */
   --color-surface:          #EDE5DA; /* Stone — secondary background */
+  --color-warm-white:       #FAF8F5; /* Warm White — raised surfaces on Ivory: the floating header */
   --color-surface-2:        #E2D7C8; /* Sand — hover on surface, skeletons */
   --color-text:             #1F1A16; /* Ink */
   --color-text-secondary:   #4A413A; /* Umber */
@@ -56,6 +57,7 @@
 
   --font-weight-regular: 400;
   --font-weight-medium:  500;
+  --font-weight-semibold: 600; /* the header navigation only (client request, Nov 2026); see CLAUDE.md */
 
   /* ─── Typography: fluid sizes (mobile → desktop) ── */
   --font-size-display:  clamp(3rem,      2rem + 5vw,       6.5rem);
@@ -66,9 +68,11 @@
   --font-size-body:     clamp(0.9375rem, 0.9rem + 0.1vw,   1rem);
   --font-size-caption:  clamp(0.75rem,   0.72rem + 0.1vw,  0.8125rem);
   --font-size-nav:      0.875rem;
+  --font-size-header-nav: clamp(0.875rem, 0.78rem + 0.2vw, 0.9375rem); /* header links: 14px (tablet) → 15px (1280 and up) */
   --font-size-product:  clamp(0.875rem,  0.85rem + 0.1vw,  0.9375rem);
   --font-size-button:   0.875rem;
   --font-size-eyebrow:  clamp(0.6875rem, 0.66rem + 0.1vw,  0.75rem);
+  --font-size-headline-caps: clamp(2rem, 1.2rem + 3vw,   3.75rem); /* uppercase campaign headlines: hero, banners */
 
   --line-height-display: 0.95;
   --line-height-h1:      1.0;
@@ -94,12 +98,26 @@
   --spacing-7:  40px;
   --spacing-8:  48px;
   --spacing-9:  64px;
-  --spacing-10: 96px;
-  --spacing-11: 128px;
+  --spacing-10: clamp(64px, 3rem + 2.5vw, 96px);   /* large steps scale with the screen, so phones and laptops */
+  --spacing-11: clamp(80px, 3.5rem + 3.5vw, 112px); /* don't carry desktop-sized gaps */
   --spacing-12: 160px;
 
-  --section-spacing:    clamp(80px, 4rem + 6vw, 160px);
-  --section-header-gap: clamp(24px, 1rem + 2vw, 48px);
+  /* Responsive spacing scale (4px base). Each step grows smoothly from phone to desktop; use these for
+     gutters, gaps, component padding, image-to-text and type spacing instead of one-off values.
+     The fixed --spacing-1…12 steps above stay for existing rules. */
+  --space-2xs: 4px;
+  --space-xs:  clamp(8px,  0.4rem + 0.2vw, 12px);
+  --space-sm:  clamp(12px, 0.6rem + 0.3vw, 16px);
+  --space-md:  clamp(16px, 0.8rem + 0.6vw, 24px);
+  --space-lg:  clamp(24px, 1.2rem + 0.8vw, 32px);
+  --space-xl:  clamp(32px, 1.6rem + 1.2vw, 48px);
+  --space-2xl: clamp(40px, 2rem + 1.8vw, 64px);
+  --space-3xl: clamp(48px, 2.2rem + 2.6vw, 80px);
+
+  /* Between sections and between a section heading and its content. One rhythm for every page
+     (it was 160px at the top end, which left whole screens of empty Ivory between sections). */
+  --section-spacing:    clamp(56px, 2.5rem + 3vw, 96px);
+  --section-header-gap: clamp(20px, 1rem + 1vw, 32px);
 
   /* ─── Radius ─────────────────────────────────────── */
   --radius-none: 0;
@@ -111,7 +129,8 @@
   --grid-columns:      12;
   --page-margin:       48px;
   --grid-gutter:       24px;
-  --header-height:     72px;
+  --header-height:     80px;  /* the header at the top of the page; content below a solid header is offset by this (72px until Nov 2026) */
+  --header-height-compact: 56px; /* after the hero has scrolled away */
   --announcement-height: 36px;
 
   /* ─── Motion ─────────────────────────────────────── */
@@ -131,7 +150,7 @@
   :root { --grid-columns: 8; --page-margin: 32px; --grid-gutter: 16px; }
 }
 @media (max-width: 767px) {
-  :root { --grid-columns: 4; --page-margin: 16px; --grid-gutter: 12px; --header-height: 56px; }
+  :root { --grid-columns: 4; --page-margin: 16px; --grid-gutter: 12px; --header-height: 56px; --header-height-compact: 48px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

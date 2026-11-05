@@ -7,6 +7,8 @@
 //   /sarees              every saree (render/collection.mjs)
 //   /edits/<key>         the sarees in one edit
 //   /wishlist            the sarees saved in this browser
+//   /faq /shipping /returns /care /contact   help pages (render/info.mjs)
+//   /craft               the Craft page (render/craft.mjs)
 //   everything else      static files
 //
 // HTML responses get shared partials inserted: <!-- include:header --> → partials/header.html, etc.
@@ -14,8 +16,10 @@
 import { createServer } from 'node:http';
 import { createReadStream, statSync, readFileSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
-import { renderProduct, renderNotFound } from './render/pdp.mjs';
+import { aliasTarget, renderProduct, renderNotFound } from './render/pdp.mjs';
 import { renderCollection, renderWishlist } from './render/collection.mjs';
+import { renderInfoPage, INFO_PAGES } from './render/info.mjs';
+import { renderCraftPage } from './render/craft.mjs';
 import { renderCategory } from './render/categories.mjs';
 import { root, readData, withIncludes } from './render/includes.mjs';
 
@@ -40,7 +44,10 @@ createServer((req, res) => {
   const product = urlPath.match(/^\/products\/([a-z0-9-]+)\/?$/);
   if (product) {
     try {
-      const html = renderProduct(product[1], readData());
+      const data = readData();
+      const moved = aliasTarget(product[1], data);
+      if (moved) { res.writeHead(301, { Location: moved }).end(); return; }
+      const html = renderProduct(product[1], data);
       sendHtml(res, html ? 200 : 404, html || renderNotFound());
     } catch (err) {
       console.error(err);
@@ -74,6 +81,13 @@ createServer((req, res) => {
     }
     return;
   }
+
+  // Craft page
+  if (/^\/craft\/?$/.test(urlPath)) { sendHtml(res, 200, renderCraftPage(readData())); return; }
+
+  // Help pages: /faq, /shipping, /returns, /care, /contact (render/info.mjs)
+  const info = urlPath.match(/^\/([a-z]+)\/?$/);
+  if (info && INFO_PAGES[info[1]]) { sendHtml(res, 200, renderInfoPage(info[1], readData())); return; }
 
   // Wishlist
   if (/^\/wishlist\/?$/.test(urlPath)) { sendHtml(res, 200, renderWishlist(readData())); return; }

@@ -1,0 +1,455 @@
+/* Stylish Naari — the Craft page (/craft). Loaded only there (render/craft.mjs).
+   Type follows CLAUDE.md → Typography: display size for the hero title, h2 for section heads,
+   body-lg / body for the short lines. Photographs carry the page; motion is the site's own reveal and
+   1.03 hover zoom, plus the loom film. */
+
+/* The hero sits under the see-through header (it carries data-hero), so the page starts at the very top */
+.page--solid-header .craft-page { padding-top: 0; }
+
+/* ─── 1. Hero: one craft film, an editorial composition over it ─────
+   Frame: 16:9 across the page width, never taller than the screen below the announcement bar, never shorter than
+   --hero-min; phones get a taller frame (phone block). Every colour, type style, radius, space and timing comes from
+   tokens.css: shades are Ink made see-through (color-mix). Literal values are frame geometry (the windows' places
+   in cqw / cqh, shares of the frame) and the brass and wood colours of the windows (see Cards).
+   Film: one video covering the frame (object-fit: cover, centred: every scene is framed for the centre).
+   Cards: FIXED. Each has a place, a size, a window frame and one photograph, and none of them change: the film is
+   the only thing that moves. No hover, no pointer events, no animation.
+   This section is the one deliberate exception to the site's no-decoration rule (client brief, Nov 2026): the carved
+   window frames are part of the art direction. */
+.craft-hero {
+  --hero-ink: var(--color-ink);
+  --hero-ivory: var(--color-ivory);
+  --hero-min: calc(var(--spacing-12) * 3.5);            /* 560px */
+  --hero-grain: var(--duration-base);
+  position: relative; isolation: isolate; overflow: hidden;
+  container-type: size; /* cards are placed and sized in shares of the frame (cqw / cqh) */
+  width: 100%; aspect-ratio: 16 / 9;
+  max-height: calc(100svh - var(--announcement-height)); min-height: var(--hero-min);
+  background: var(--color-studio-umber) center / cover no-repeat; color: var(--hero-ivory);
+}
+
+/* Film */
+.craft-hero__film { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+.craft-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.craft-hero__grain {
+  position: absolute; inset: calc(-1 * var(--spacing-9)); pointer-events: none; opacity: 0.22; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+}
+.js .craft-hero__grain { animation: craft-hero-grain var(--hero-grain) steps(4) infinite; }
+@keyframes craft-hero-grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(calc(-1 * var(--spacing-5)), var(--spacing-3)); }
+  50% { transform: translate(var(--spacing-4), calc(-1 * var(--spacing-5))); }
+  75% { transform: translate(calc(-1 * var(--spacing-2)), var(--spacing-5)); }
+  100% { transform: translate(0, 0); }
+}
+.craft-hero.is-paused .craft-hero__grain { animation-play-state: paused; }
+
+/* Shade behind the words: Ink, see-through (a shade, never a box). ::before darkens the top (behind the header) and
+   the left (behind the words); ::after darkens the bottom (behind the words). On laptops and desktops the words stay
+   in the left ~60% of the frame, so the bottom shade eases off across the right third, where there are no words: the
+   craft footage around the windows stays clear. Under the words the shade is unchanged. */
+.craft-hero::before, .craft-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.craft-hero::before {
+  background:
+    linear-gradient(to bottom, color-mix(in srgb, var(--hero-ink) 45%, transparent) 0%, transparent 22%),
+    linear-gradient(to right, color-mix(in srgb, var(--hero-ink) 40%, transparent) 0%, transparent 55%);
+}
+.craft-hero::after {
+  background: linear-gradient(to top, color-mix(in srgb, var(--hero-ink) 80%, transparent) 0%, color-mix(in srgb, var(--hero-ink) 45%, transparent) 38%, transparent 66%);
+}
+@media (min-width: 1024px) {
+  .craft-hero::after {
+    -webkit-mask-image: linear-gradient(to right, #000 66%, rgba(0, 0, 0, 0.45) 100%);
+    mask-image: linear-gradient(to right, #000 66%, rgba(0, 0, 0, 0.45) 100%);
+  }
+}
+
+/* Cards: three carved Indian windows (render/craft-windows.mjs draws each frame as an SVG over its photograph).
+   Windows hang straight. Material colours are the one literal palette in this hero: they depict brass and wood,
+   like the colours inside a photograph, and are matched to the photos each window holds. */
+.craft-hero__cards { position: absolute; inset: 0; pointer-events: none; }
+/* Depth: the carving is lit from the top left, so each window's shadow falls down and to the right, as on a wall: a
+   soft drop shadow pulled in at the edges plus a tight contact shadow. --depth scales both, so the small windows sit
+   a little closer to the wall than the jharokha. */
+.craft-window {
+  --depth: 1;
+  position: absolute; aspect-ratio: var(--win);
+  box-shadow:
+    calc(var(--spacing-1) * var(--depth)) calc(var(--spacing-4) * var(--depth)) calc(var(--spacing-8) * var(--depth)) calc(var(--spacing-3) * var(--depth) * -1) color-mix(in srgb, var(--color-ink) 60%, transparent),
+    calc(var(--spacing-1) * var(--depth) / 2) calc(var(--spacing-1) * var(--depth)) calc(var(--spacing-2) * var(--depth)) color-mix(in srgb, var(--color-ink) 35%, transparent);
+}
+.craft-hero__card--motif, .craft-hero__card--detail { --depth: 0.6; }
+.craft-window--jharokha { --m-hi: #EBCB85; --m-base: #A9833B; --m-lo: #5E431B; --m-inlay: var(--color-ivory); } /* aged brass */
+.craft-window--teak     { --m-hi: #C38C55; --m-base: #87552B; --m-lo: #432711; --m-inlay: var(--color-studio-plaster); } /* teak, bone inlay */
+.craft-window--walnut   { --m-hi: #85603F; --m-base: #563724; --m-lo: #24160D; --m-inlay: #C9A35E; } /* walnut, brass pins */
+.craft-window__art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.craft-hero__frame { position: absolute; overflow: hidden; background: var(--color-studio-umber); }
+.craft-hero__frame::after { /* the opening sits back inside the frame */
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  box-shadow: inset var(--spacing-1) var(--spacing-2) var(--spacing-4) color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+.craft-hero__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* One small gallery group, to the right of the words, as in the client's reference: the walnut square high on the
+   left, the brass jharokha in the middle, the teak window lower on the right. The jharokha (the saree worn) is the
+   main piece; the two Kalamkari windows are small supporting pieces hung either side of it, --gap apart: the walnut
+   square level with its top edge, the teak window level with its bottom edge. The group's right edge lines up with
+   the page margin (the header's right edge). Breakpoints change only the variables:
+     --w-main   the jharokha's width (capped by the frame's height, cqh, so short wide screens keep it inside)
+     --top      the jharokha's top edge        --gap   the space between windows
+     --k-motif / --k-detail   the small windows' widths as shares of the jharokha's
+   Each window's shape (--hw-*, height ÷ width) is set on .craft-hero__cards by craft.mjs from craft-windows.mjs. */
+.craft-hero__cards {
+  --edge: max(var(--page-margin), calc((100cqw - var(--container-width)) / 2));
+  --w-main: min(21cqw, 42cqh);
+  --top: 17cqh;
+  --gap: 1.5cqw;
+  --k-motif: 0.42;
+  --k-detail: 0.4;
+  --w-motif: calc(var(--w-main) * var(--k-motif));
+  --w-detail: calc(var(--w-main) * var(--k-detail));
+  --h-main: calc(var(--w-main) * var(--hw-worn, 1.24));
+  --h-detail: calc(var(--w-detail) * var(--hw-detail, 1.15));
+  --main-right: calc(var(--edge) + var(--w-detail) + var(--gap));
+}
+.craft-hero__card--worn   { right: var(--main-right); top: var(--top); width: var(--w-main); }
+.craft-hero__card--motif  { right: calc(var(--main-right) + var(--w-main) + var(--gap)); top: var(--top); width: var(--w-motif); }
+.craft-hero__card--detail { right: var(--edge); top: calc(var(--top) + var(--h-main) - var(--h-detail)); width: var(--w-detail); }
+/* Wide screens (1600 and up): the group lines up with the centred page, so it would grow toward the title; it stays
+   a little smaller and higher, so the jharokha ends above the title's first line */
+@media (min-width: 1600px) {
+  .craft-hero__cards { --w-main: min(19cqw, 40cqh); --top: 14cqh; }
+}
+/* Laptop and small desktop (1024–1359): the title runs further right (to about 64% of the frame), so the group is
+   smaller and higher; the walnut square sits above the end of the title */
+@media (min-width: 1024px) and (max-width: 1359px) {
+  .craft-hero__cards { --w-main: min(17.5cqw, 40cqh); --top: 12cqh; --gap: 1.4cqw; }
+}
+
+/* Words: the site's type roles (eyebrow, display + accent serif, body-lg, button, text link) */
+.craft-hero__content { position: absolute; left: 0; right: 0; bottom: var(--spacing-10); }
+.craft-hero__eyebrow { color: inherit; opacity: 0.85; }
+.craft-hero__title {
+  max-width: 9em;
+  font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-display); line-height: var(--line-height-display); letter-spacing: var(--letter-spacing-display);
+}
+.craft-hero__title .serif { white-space: nowrap; } /* "the saree" never splits; family, style and size come from .serif */
+.craft-hero__line { margin-top: var(--spacing-5); max-width: 28em; font-family: var(--font-body); font-size: var(--font-size-body-lg); line-height: var(--line-height-body); }
+.craft-hero__actions { margin-top: var(--spacing-7); display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-5) var(--spacing-7); }
+/* the site's hairline button on photographs: Ivory outline, fills Ivory on hover */
+.craft-hero__cta {
+  gap: var(--spacing-3); color: var(--hero-ivory); box-shadow: inset 0 0 0 1px var(--hero-ivory);
+  transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+}
+.craft-hero__arrow { display: inline-block; transition: transform var(--duration-base) var(--ease-out); }
+.craft-hero__cta:hover, .craft-hero__cta:focus-visible { background: var(--hero-ivory); color: var(--color-ink); }
+.craft-hero__cta:hover .craft-hero__arrow, .craft-hero__cta:focus-visible .craft-hero__arrow { transform: translateX(var(--spacing-1)); }
+.craft-hero__cta:focus-visible { outline: 2px solid var(--hero-ivory); outline-offset: 3px; }
+
+/* Pause: for keyboard users only. Off screen until focused (like a skip link), then it appears bottom right. */
+.craft-hero__pause {
+  position: absolute; right: var(--page-margin); bottom: var(--spacing-5); z-index: 3;
+  min-height: var(--spacing-8); padding: 0 var(--spacing-4); border-radius: var(--radius-sm);
+  background: var(--hero-ivory); color: var(--color-ink);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-button); letter-spacing: var(--letter-spacing-button);
+  transform: translateY(calc(100% + var(--spacing-8)));
+}
+.craft-hero__pause:focus-visible { transform: none; outline: 2px solid var(--hero-ivory); outline-offset: 2px; }
+html:not(.js) .craft-hero__pause { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .craft-hero__grain { animation: none; }
+}
+
+/* ─── 2. Lookbook: one model shot, pins on the saree's details ────────
+   A wide band, full width: 2.4 : 1, at most 72% of the screen tall, never under 420px (so a card always fits beside
+   a pin). The photo is cropped top and bottom around her (--focus); phones get a 4 : 5 frame cropped left and right
+   (--focus-phone). Pins: a small ivory disc with a "+", a slow pulse ring behind it (staggered, off under reduced
+   motion). The card: a close-up of the saree beside the words, on frosted Ivory (blur behind it), a hairline edge,
+   2px corners and no shadow (the UI stays flat). It grows out of its pin and floats over the photograph, so nothing
+   on the page moves. */
+.lookbook__head { margin-bottom: var(--section-header-gap); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--grid-gutter); align-items: end; }
+.lookbook__head .eyebrow, .lookbook__head .t-h2 { grid-column: 1 / 8; }
+.lookbook__hint { grid-column: 9 / 13; grid-row: 2; justify-self: end; font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+.lookbook__hint-touch { display: none; }
+@media (hover: none) { .lookbook__hint-hover { display: none; } .lookbook__hint-touch { display: inline; } }
+.no-js .lookbook__hint, .no-js .lookbook__pins { display: none; }
+.lookbook__frame {
+  position: relative; margin: 0; overflow: hidden; width: 100%;
+  aspect-ratio: 12 / 5; min-height: 420px; max-height: 72svh;
+  background: var(--color-studio-umber);
+}
+.lookbook__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); }
+.lookbook__pins { position: absolute; inset: 0; pointer-events: none; }
+.lookbook__pin {
+  position: absolute; left: var(--x); top: var(--y); width: 44px; height: 44px; margin: -22px 0 0 -22px;
+  display: grid; place-items: center; border-radius: 50%; pointer-events: auto; color: var(--color-ink);
+  isolation: isolate; z-index: 1; /* keeps the disc and pulse (z-index -1 / -2) above the photograph */
+  opacity: 0; transition: opacity var(--duration-slow) var(--ease-out);
+}
+.js .lookbook.is-ready .lookbook__pin { opacity: 1; }
+.lookbook__pin::before { /* the disc */
+  content: ""; position: absolute; width: 26px; height: 26px; border-radius: 50%; z-index: -1;
+  background: rgba(246, 241, 234, 0.92); box-shadow: 0 0 0 1px rgba(31, 26, 22, 0.12);
+  transition: transform var(--duration-base) var(--ease-out), background-color var(--duration-base) var(--ease-out);
+}
+.lookbook__pin::after { /* the pulse */
+  content: ""; position: absolute; width: 26px; height: 26px; border-radius: 50%; z-index: -2;
+  box-shadow: 0 0 0 1px rgba(246, 241, 234, 0.9);
+  animation: lookbook-pulse 2.8s var(--ease-out) infinite; animation-delay: calc(var(--i) * 0.45s);
+}
+@keyframes lookbook-pulse { 0% { transform: scale(1); opacity: 0.9; } 70%, 100% { transform: scale(2.3); opacity: 0; } }
+.lookbook__pin svg { transition: transform var(--duration-base) var(--ease-out); }
+.lookbook__pin:hover::before { transform: scale(1.12); }
+.lookbook__pin[aria-expanded="true"]::before { background: var(--color-ink); transform: scale(1.12); }
+.lookbook__pin[aria-expanded="true"] { color: var(--color-ivory); }
+.lookbook__pin[aria-expanded="true"] svg { transform: rotate(45deg); }
+.lookbook__pin[aria-expanded="true"]::after { animation: none; opacity: 0; }
+.lookbook__pin:focus-visible { outline: 2px solid var(--color-ivory); outline-offset: -4px; }
+
+.lookbook__card {
+  position: absolute; left: 0; top: 0; z-index: 2;
+  width: min(300px, calc(100% - 2 * var(--space-md)));
+  pointer-events: auto; /* the pins layer lets the pointer through to the photograph; the card takes it */
+  overflow: hidden;
+  background: rgba(246, 241, 234, 0.8); color: var(--color-text);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3); backdrop-filter: blur(18px) saturate(1.3);
+  border-radius: var(--radius-sm); box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45);
+  opacity: 0; transform: scale(0.94); transform-origin: var(--origin, 0 50%); /* --origin: the pin, set by homepage.js */
+  transition: opacity 220ms var(--ease-out), transform 280ms var(--ease-out);
+}
+.lookbook__card.has-media {
+  display: grid; grid-template-columns: clamp(104px, 8vw, 132px) minmax(0, 1fr);
+  width: min(clamp(340px, 27vw, 420px), calc(100% - 2 * var(--space-md)));
+}
+.lookbook__card.is-open { opacity: 1; transform: none; }
+.lookbook__card:not(.is-open) { pointer-events: none; } /* while it fades out it never catches the pointer */
+/* the close-up fills the left column at the card's full height; it settles from a slight zoom as the card opens */
+.lookbook__card-media { position: relative; overflow: hidden; background: var(--color-surface-2); }
+.lookbook__card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; --z: 1.08; transition: transform var(--duration-slow) var(--ease-out); }
+.lookbook__card.is-open .lookbook__card-img { --z: 1; }
+.lookbook__card-body { min-width: 0; padding: var(--space-md); }
+.lookbook__card-eyebrow {
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); line-height: 1.2; letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase; color: var(--color-text-secondary);
+}
+.lookbook__card-title { margin-top: var(--space-xs); padding-right: var(--space-lg); font-family: var(--font-display); font-weight: var(--font-weight-regular); font-size: var(--font-size-h3); line-height: var(--line-height-h3); letter-spacing: var(--letter-spacing-h3); }
+.lookbook__card-text { margin-top: var(--space-xs); font-size: var(--font-size-body); line-height: 1.5; color: var(--color-text-secondary); }
+.lookbook__card-link { margin-top: var(--space-sm); }
+.lookbook__card-close { position: absolute; top: 0; right: 0; width: 44px; height: 44px; display: grid; place-items: center; color: var(--color-text); }
+.lookbook__card-close svg { transform: rotate(45deg); }
+.lookbook__card-close:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -8px; }
+.lookbook__caption { margin-top: var(--spacing-4); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+.lookbook__caption span { font-family: var(--font-display); font-weight: var(--font-weight-medium); color: var(--color-text); }
+@media (prefers-reduced-motion: reduce) {
+  .lookbook__pin::after { animation: none; opacity: 0; }
+  .lookbook__pin, .lookbook__pin::before, .lookbook__pin svg, .lookbook__card, .lookbook__card-img { transition: none; }
+  .lookbook__card { transform: none; }
+}
+
+/* ─── 3. Kalamkari: one craft, told in depth ─────────────────────
+   Ivory throughout; the colour comes from the textiles (brand §9.4). Like an exhibition wall: large details,
+   generous space, a smaller detail laid over each larger one with an Ivory margin between them (the page showing
+   through, not a frame). Type: the opening headline at --font-size-h1 (a chapter title), section heads at h2,
+   tradition facts as eyebrow labels with body values, captions at caption size. Photographs settle from a slight
+   zoom as they reveal (a slow settle, like the hero stills), staggered within each pair by the site's reveal. */
+.kalamkari { padding-top: var(--section-spacing); }
+.kalamkari + .craft-mark--handloom { margin-top: var(--section-spacing); }
+
+.kalamkari__frame { position: relative; overflow: hidden; aspect-ratio: var(--ar); background: var(--color-surface); }
+.kalamkari__frame img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1600ms var(--ease-out); }
+.js [data-reveal]:not(.is-visible) .kalamkari__frame img { transform: scale(1.06); }
+.kalamkari__caption { margin-top: var(--spacing-2); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+/* the smaller detail sits over the larger one; the Ivory ring is the page between two laid-down cloths */
+.kalamkari-open__inset, .kalamkari-art__inset { position: absolute; z-index: 1; margin: 0; }
+.kalamkari-open__inset .kalamkari__frame, .kalamkari-art__inset .kalamkari__frame { box-shadow: 0 0 0 var(--spacing-2) var(--color-bg); }
+.kalamkari figure { margin: 0; }
+
+/* Opening: words on the left, Leela worn (bleeding off the right edge) with her medallion laid over the corner */
+.kalamkari-open { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--grid-gutter); align-items: center; }
+.kalamkari-open__text { grid-column: 1 / 6; }
+.kalamkari-open__title {
+  max-width: 9em; font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-h1); line-height: var(--line-height-h1); letter-spacing: var(--letter-spacing-h1);
+}
+.kalamkari-open__title span, .kalamkari-open__title .serif { display: block; } /* three lines: name, "stories painted", "by hand" */
+.kalamkari-open__intro { margin-top: var(--spacing-6); max-width: 30em; font-size: var(--font-size-body-lg); line-height: 1.55; color: var(--color-text-secondary); }
+.kalamkari-open__name { margin-top: var(--spacing-5); max-width: 30em; font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+.kalamkari-open__media { grid-column: 7 / 13; position: relative; margin-right: calc(-1 * var(--bleed)); padding-bottom: var(--spacing-10); }
+.kalamkari-open__main .kalamkari__frame { aspect-ratio: 4 / 5; }
+.kalamkari-open__main .kalamkari__caption { display: none; }
+.kalamkari-open__inset { left: calc(-1 * var(--spacing-10)); bottom: 0; width: 38%; }
+
+/* The two traditions: mirrored spreads, the detail and its text sharing the row */
+.kalamkari-arts { margin-top: var(--section-spacing); }
+.kalamkari-arts__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--spacing-2) var(--spacing-6); margin-bottom: var(--spacing-9); }
+.kalamkari-arts__head .eyebrow { margin-bottom: 0; }
+.kalamkari-arts__note { font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+.kalamkari-art { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--grid-gutter); align-items: center; }
+.kalamkari-art + .kalamkari-art { margin-top: var(--section-spacing); }
+.kalamkari-art__media { grid-column: 1 / 7; grid-row: 1; position: relative; }
+.kalamkari-art__media.has-inset { padding-bottom: var(--spacing-11); }
+.kalamkari-art__media.has-inset .kalamkari-art__main { width: 86%; }
+.kalamkari-art__inset { right: 0; bottom: 0; width: 46%; }
+.kalamkari-art__media.has-inset .kalamkari-art__main .kalamkari__caption { max-width: 54%; } /* stays clear of the inset */
+.kalamkari-art__text { grid-column: 8 / 13; grid-row: 1; }
+.kalamkari-art--mirror .kalamkari-art__media { grid-column: 8 / 12; }
+.kalamkari-art--mirror .kalamkari-art__text { grid-column: 1 / 6; }
+.kalamkari-art__index { display: inline-flex; gap: var(--spacing-2); }
+.kalamkari-art__index span:first-child { font-variant-numeric: tabular-nums; color: var(--color-text); }
+.kalamkari-art__title .serif { letter-spacing: -0.01em; }
+.kalamkari-art__body { margin-top: var(--spacing-5); max-width: 32em; font-size: var(--font-size-body); line-height: var(--line-height-body, 1.6); color: var(--color-text-secondary); }
+.kalamkari-art__facts { margin: var(--spacing-6) 0 0; display: grid; gap: var(--spacing-3); max-width: 32em; }
+.kalamkari-art__facts div { display: grid; grid-template-columns: 8.5rem 1fr; column-gap: var(--spacing-4); align-items: baseline; }
+.kalamkari-art__facts dt {
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-eyebrow);
+  line-height: 1.2; letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase; color: var(--color-text-muted);
+}
+.kalamkari-art__facts dd { margin: 0; font-size: var(--font-size-body); line-height: 1.5; color: var(--color-text); }
+.kalamkari-art__link { margin-top: var(--spacing-6); }
+
+/* The process: Kahani worn (bleeding off the left edge) beside four numbered steps */
+.kalamkari-process { margin-top: var(--section-spacing); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--grid-gutter); align-items: center; }
+.kalamkari-process__media { grid-column: 1 / 6; margin-left: calc(-1 * var(--bleed)); }
+.kalamkari-process__figure .kalamkari__frame { aspect-ratio: 4 / 5; }
+.kalamkari-process__text { grid-column: 7 / 13; }
+.kalamkari-process__steps { margin: var(--spacing-8) 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-8) var(--grid-gutter); }
+.kalamkari-process__no { display: block; font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
+.kalamkari-process__name { margin: var(--spacing-3) 0 0; font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-h3); line-height: var(--line-height-h3); letter-spacing: var(--letter-spacing-h3); }
+.kalamkari-process__line { margin-top: var(--spacing-2); max-width: 24em; font-size: var(--font-size-body); line-height: 1.55; color: var(--color-text-secondary); }
+.kalamkari-process__note { margin-top: var(--spacing-8); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .kalamkari__frame img { transition: none; }
+  .js [data-reveal]:not(.is-visible) .kalamkari__frame img { transform: none; }
+}
+
+/* ─── 4. The Handloom Mark: the loom film and a short explanation ── */
+.craft-mark { padding-top: var(--section-spacing); }
+.lookbook + .craft-mark--handloom { margin-top: var(--section-spacing); }
+.craft-mark--handloom { padding-bottom: var(--section-spacing); background: var(--color-surface); }
+.craft-mark__grid { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--grid-gutter); align-items: center; }
+.craft-mark__media { position: relative; margin: 0; overflow: hidden; background: var(--color-surface-2); }
+.craft-mark__media img, .craft-mark__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.craft-mark__media--film { grid-column: 1 / 8; margin-left: calc(-1 * var(--bleed)); aspect-ratio: 16 / 10; }
+.craft-mark--handloom .craft-mark__text { grid-column: 9 / 13; }
+.craft-mark__body { margin-top: var(--spacing-4); font-size: var(--font-size-body-lg); line-height: 1.55; color: var(--color-text-secondary); max-width: 26em; }
+.craft-mark__text .link { margin-top: var(--spacing-4); }
+.craft-mark__none { margin-top: var(--spacing-4); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); max-width: 28em; }
+
+/* Pause/play for the film: appears once it is actually playing (homepage.js adds .has-video) */
+.craft-mark__toggle {
+  position: absolute; right: var(--spacing-4); bottom: var(--spacing-4);
+  min-height: 32px; padding: 0 var(--spacing-3); border-radius: var(--radius-sm);
+  background: rgba(246, 241, 234, 0.88); color: var(--color-text);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 12px;
+  opacity: 0; pointer-events: none; transition: opacity var(--duration-base) var(--ease-out);
+}
+.has-video .craft-mark__toggle { opacity: 1; pointer-events: auto; }
+
+/* ─── 5. Closing ──────────────────────────────────────────── */
+.craft-close {
+  position: relative; isolation: isolate; overflow: hidden; margin-top: var(--section-spacing);
+  aspect-ratio: 2731 / 1536; max-height: 86svh; min-height: 480px; width: 100%;
+  background: var(--color-studio-umber); color: var(--color-ivory);
+}
+.craft-close__media, .craft-close__media img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; }
+.craft-close__media img { object-fit: cover; object-position: 72% 50%; }
+.craft-close::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to top, rgba(31, 26, 22, 0.6) 0%, rgba(31, 26, 22, 0) 48%);
+}
+.craft-close__content { position: absolute; left: 0; right: 0; bottom: var(--spacing-10); }
+.craft-close__eyebrow { color: inherit; opacity: 0.85; }
+.craft-close__title {
+  font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-headline-caps); line-height: 0.98; letter-spacing: -0.015em; text-transform: uppercase;
+  margin-bottom: var(--spacing-4);
+}
+.craft-close__link::after { content: ""; position: absolute; inset: -100vh -100vw; } /* the whole picture is the link */
+.craft-close__link:focus-visible { outline: none; }
+.craft-close:has(.craft-close__link:focus-visible) { outline: 2px solid var(--color-ivory); outline-offset: -8px; }
+.craft-close:hover .link__label { background-size: 100% 1px; }
+.craft-close:hover .link__arrow { transform: translateX(4px); }
+
+/* the closing picture runs straight into the footer, with no ivory strip between them */
+main.craft-page + .site-footer { margin-top: 0; }
+
+/* ─── Tablet ≤1023 ────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  /* hero: the frame is short and the title runs wide, so the group sits small at the top right, above the title */
+  .craft-hero__cards { --w-main: min(14cqw, 23cqh); --top: 12cqh; --k-motif: 0.5; --k-detail: 0.5; }
+
+
+  .craft-mark__grid { grid-template-columns: 1fr; row-gap: var(--spacing-7); }
+  .craft-mark__media--film { grid-column: 1; grid-row: auto; margin: 0 calc(-1 * var(--page-margin)); }
+  .craft-mark--handloom .craft-mark__text { grid-column: 1; grid-row: auto; }
+
+  /* Kalamkari: one column; each picture keeps its overlap, words above or below it */
+  .kalamkari-open, .kalamkari-art, .kalamkari-process { grid-template-columns: minmax(0, 1fr); row-gap: var(--spacing-8); }
+  .kalamkari-open__text, .kalamkari-art__text, .kalamkari-art--mirror .kalamkari-art__text, .kalamkari-process__text { grid-column: 1; grid-row: auto; }
+  .kalamkari-open__media { grid-column: 1; margin-right: calc(-1 * var(--page-margin)); margin-left: 22%; }
+  .kalamkari-open__inset { left: -22%; width: 46%; }
+  .kalamkari-art__media, .kalamkari-art--mirror .kalamkari-art__media { grid-column: 1; grid-row: auto; }
+  .kalamkari-art__media { max-width: 680px; }
+  .kalamkari-art--mirror .kalamkari-art__media { max-width: 440px; }
+  .kalamkari-process__media { grid-column: 1; margin-left: calc(-1 * var(--page-margin)); max-width: 72%; }
+}
+
+/* ─── Phone ≤767 ──────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* hero: a taller frame (a 16:9 strip is too short for the words on a phone), a deeper shade so the words stay
+     above 4.5:1 on any frame, and the cut-outs moved into the top half */
+  .craft-hero { aspect-ratio: auto; height: calc(100svh - var(--announcement-height)); max-height: none; }
+  .craft-hero::before {
+    background:
+      linear-gradient(to bottom, color-mix(in srgb, var(--hero-ink) 45%, transparent) 0%, transparent 20%),
+      linear-gradient(to top, color-mix(in srgb, var(--hero-ink) 90%, transparent) 0%, color-mix(in srgb, var(--hero-ink) 60%, transparent) 46%, transparent 72%);
+  }
+  .craft-hero__content { bottom: var(--spacing-9); }
+  .craft-hero__actions { gap: var(--spacing-4) var(--spacing-6); }
+  /* the words span the frame here, so the bottom shade stays full width (it is part of ::before above) */
+  .craft-hero::after { content: none; }
+  /* two windows only, in the space above the words: the jharokha, with the walnut square beside it */
+  .craft-hero__cards { --w-main: 40cqw; --top: 12cqh; --gap: 3cqw; --k-motif: 0.5; --main-right: var(--edge); }
+  .craft-hero__card--detail { display: none; }
+
+  .lookbook__head { display: block; margin-bottom: var(--spacing-5); }
+  .lookbook__hint { margin-top: var(--spacing-3); }
+  .lookbook__frame { aspect-ratio: 4 / 5; min-height: 0; max-height: none; }
+  .lookbook__img { object-position: var(--focus-phone, var(--focus, 50% 50%)); }
+  /* the card spans the photograph along the bottom, or along the top when its pin is in the lower half (.is-top) */
+  .lookbook__card, .lookbook__card.has-media { left: var(--space-sm); right: var(--space-sm); top: auto; bottom: var(--space-sm); width: auto; transform-origin: 50% 100%; }
+  .lookbook__card.is-top { top: var(--space-sm); bottom: auto; transform-origin: 50% 0; }
+  .lookbook__card.has-media { grid-template-columns: 112px minmax(0, 1fr); }
+  .lookbook__caption { margin-top: var(--spacing-3); }
+
+  .kalamkari-open__media { margin-left: 14%; padding-bottom: var(--spacing-9); }
+  .kalamkari-open__inset { left: -14%; width: 48%; }
+  .kalamkari-arts__head { margin-bottom: var(--spacing-7); }
+  .kalamkari-art__media.has-inset { padding-bottom: var(--spacing-10); }
+  .kalamkari-art__media.has-inset .kalamkari-art__main { width: 92%; }
+  .kalamkari-art__inset { width: 52%; }
+  .kalamkari-art__media.has-inset .kalamkari-art__main .kalamkari__caption { max-width: 48%; }
+  .kalamkari-art--mirror .kalamkari-art__media { max-width: 82%; }
+  .kalamkari-art__facts div { grid-template-columns: 7rem minmax(0, 1fr); }
+  .kalamkari-process__media { max-width: none; margin-right: calc(-1 * var(--page-margin)); }
+  .kalamkari-process__steps { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-6); margin-top: var(--spacing-6); }
+
+  .craft-close { aspect-ratio: 4 / 5; max-height: none; min-height: 0; }
+  .craft-close__media img { object-position: 74% 40%; }
+  .craft-close::before { background: linear-gradient(to top, rgba(31, 26, 22, 0.72) 0%, rgba(31, 26, 22, 0) 55%); }
+  .craft-close__content { bottom: var(--spacing-8); }
+}
+
+/* ─── Short phones (≤760px tall): the words sit higher, so the hero cards get smaller ── */
+@media (max-width: 767px) and (max-height: 760px) {
+  .craft-hero__cards { --w-main: 32cqw; --top: 10cqh; }
+}
+/* Very short phones (≤700px tall, e.g. iPhone SE): the words fill the frame, so the film plays without cards */
+@media (max-width: 767px) and (max-height: 700px) {
+  .craft-hero__cards { display: none; }
+}

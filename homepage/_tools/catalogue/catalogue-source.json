@@ -1,0 +1,1787 @@
+{
+ "_about": "Extracted from \"Stylish Nari Saree Catalog.xlsx\" (sheet Sarees) and images/images. highRes = the full-size extra_photo that is the same photograph as imageFile (24x24 colour-fingerprint match: score = mean difference, nextBest = the runner-up; a real match is under 10, unrelated photos score 17+). unmatched = extra photos (sheet \"Photos without details\") that match no catalogue photo.",
+ "sheetNotes": [
+  "D1: Read from the last number in the WhatsApp message. Check against the original message if anything looks off.",
+  "E1: Based on the seller's message \"Here onwards semi premium banarasi silk sarees I'm sharing\": everything described before it is Premium, everything after it is Semi-premium.",
+  "F1: Full-size photo with this name is in the images folder next to this file.",
+  "C1: These photos were sent in the catalog batches but no description was replied to them. They may be extra angles of a saree on the Sarees sheet. Fill in the yellow cells if needed."
+ ],
+ "rows": [
+  {
+   "row": 1,
+   "description": "Pure kora silk handwoven chauthera meenakari floral trimmed jamdani",
+   "price": 39500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_001.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora silk handwoven chauthera meenakari  floral trimmed jamdani \n\nPrice 39500",
+   "highRes": {
+    "file": "extra_photo_003.jpg",
+    "score": 3.5,
+    "nextBest": 27
+   },
+   "output": {
+    "row": 1,
+    "out": "sn-001.jpg",
+    "from": "extra_photo_003.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 2,
+   "description": "Pure katan silk plain base with designer alfi lion motifs floral border weave",
+   "price": 29500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_002.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk plain base with designer alfi lion motifs floral border weave \n\nPrice  29500",
+   "highRes": {
+    "file": "extra_photo_001.jpg",
+    "score": 6,
+    "nextBest": 56.7
+   },
+   "output": {
+    "row": 2,
+    "out": "sn-002.jpg",
+    "from": "extra_photo_001.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 3,
+   "description": "Pure katan silk designer banarasi animal motifs weave banarasi patola saree",
+   "price": 26500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_003.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk designer banarasi animal motifs weave banarasi patola saree\nPrice26500",
+   "highRes": {
+    "file": "extra_photo_002.jpg",
+    "score": 5.6,
+    "nextBest": 44.6
+   },
+   "output": {
+    "row": 3,
+    "out": "sn-003.jpg",
+    "from": "extra_photo_002.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 4,
+   "description": "Pure kora with light gold zari strips and moticolor embroidery work on border and pallu",
+   "price": 14500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_004.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora with light gold zari strips and moticolor embroidery work on border and pallu \n\nPrice 14500",
+   "highRes": {
+    "file": "extra_photo_004.jpg",
+    "score": 2.6,
+    "nextBest": 24.8
+   },
+   "output": {
+    "row": 4,
+    "out": "sn-004.jpg",
+    "from": "extra_photo_004.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 5,
+   "description": "Pure kora with embroidery work scallope broder",
+   "price": 13999,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_005.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora with embroidery work scallope broder \n\nPrice 13999",
+   "highRes": {
+    "file": "extra_photo_014.jpg",
+    "score": 1.7,
+    "nextBest": 24.6
+   },
+   "output": {
+    "row": 5,
+    "out": "sn-005.jpg",
+    "from": "extra_photo_014.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 6,
+   "description": "Pure katan silk with tissue tanchoi brocade base and multicolor shikargah motifs skirt paithani weave",
+   "price": 52500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_006.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk with tissue tanchoi brocade base and multicolor shikargah motifs skirt paithani weave \n\nPrice 52500",
+   "highRes": {
+    "file": "extra_photo_007.jpg",
+    "score": 4.3,
+    "nextBest": 33.7
+   },
+   "output": {
+    "row": 6,
+    "out": "sn-006.jpg",
+    "from": "extra_photo_007.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 7,
+   "description": "Pure katan silk banarasi paithani saree",
+   "price": 31500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_007.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk banarasi paithani saree price 31500",
+   "highRes": {
+    "file": "extra_photo_005.jpg",
+    "score": 5,
+    "nextBest": 40
+   },
+   "output": {
+    "row": 7,
+    "out": "sn-007.jpg",
+    "from": "extra_photo_005.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 8,
+   "description": "Kora silk with peacock skirt paithani exclusive piece",
+   "price": 42500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_008.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Kora silk with peacock skirt paithani exclusive piece \n\nPrice 42500",
+   "highRes": {
+    "file": "extra_photo_025.jpg",
+    "score": 4.2,
+    "nextBest": 29.4
+   },
+   "output": {
+    "row": 8,
+    "out": "sn-008.jpg",
+    "from": "extra_photo_025.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 9,
+   "description": "Pure kora Handwoven silver, gold zari and multicolor resham meenakari kadhwa bootas with designer gold zari and multicolor resham meenakari contrast border and pallu weave very much exclusive piece of Banarasi saree.",
+   "price": 39500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_009.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora Handwoven silver, gold zari and multicolor resham meenakari kadhwa bootas with designer gold zari and multicolor resham meenakari contrast border and pallu weave very much exclusive piece of Banarasi saree.\n\nPrice 39500",
+   "highRes": {
+    "file": "extra_photo_013.jpg",
+    "score": 3.5,
+    "nextBest": 42.5
+   },
+   "output": {
+    "row": 9,
+    "out": "sn-009.jpg",
+    "from": "extra_photo_013.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 10,
+   "description": "Pure kora and tissue strips weave on base with white resham floral embroidery work, scalloped design",
+   "price": 14500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_010.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora and  tissue strips weave on base with white resham floral embroidery work, scalloped design\n\nPrice 14500",
+   "highRes": {
+    "file": "extra_photo_018.jpg",
+    "score": 2.4,
+    "nextBest": 18.3
+   },
+   "output": {
+    "row": 10,
+    "out": "sn-010.jpg",
+    "from": "extra_photo_018.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 11,
+   "description": "Pure katan silk all over gold zari booties with rich border weave",
+   "price": 17500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_011.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk all over gold zari booties with rich border weave\n\nPrice 17500",
+   "highRes": {
+    "file": "extra_photo_006.jpg",
+    "score": 5.6,
+    "nextBest": 25.3
+   },
+   "output": {
+    "row": 11,
+    "out": "sn-011.jpg",
+    "from": "extra_photo_006.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 12,
+   "description": "Pure katan silk all over gold zari booties with rich skirt border weave",
+   "price": 19500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_012.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk all over gold zari booties with rich skirt border weave\n\nPrice 19500",
+   "highRes": {
+    "file": "extra_photo_021.jpg",
+    "score": 2.7,
+    "nextBest": 29.9
+   },
+   "output": {
+    "row": 12,
+    "out": "sn-012.jpg",
+    "from": "extra_photo_021.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 13,
+   "description": "Pure katan silk handwoven all over silver and gold zari shikargah motifs weave",
+   "price": 31500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_013.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk handwoven all over silver and gold zari shikargah motifs weave \n\nPrice 31500",
+   "highRes": {
+    "file": "extra_photo_008.jpg",
+    "score": 7.3,
+    "nextBest": 45.7
+   },
+   "output": {
+    "row": 13,
+    "out": "sn-013.jpg",
+    "from": "extra_photo_008.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 14,
+   "description": "Pure kora with light gold and pastel shade resham, alfi bootas weave",
+   "price": 17500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_014.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora with light gold and pastel shade resham, alfi bootas weave \n\nPrice 17500",
+   "highRes": {
+    "file": "extra_photo_012.jpg",
+    "score": 3.4,
+    "nextBest": 40.4
+   },
+   "output": {
+    "row": 14,
+    "out": "sn-014.jpg",
+    "from": "extra_photo_012.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 15,
+   "description": "Pure kora with light gold and pastel shade resham, alfi bootas weave",
+   "price": 17500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_015.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora with light gold and pastel shade resham, alfi bootas weave \n\nPrice 17500",
+   "highRes": {
+    "file": "extra_photo_033.jpg",
+    "score": 3.3,
+    "nextBest": 39.5
+   },
+   "output": {
+    "row": 15,
+    "out": "sn-015.jpg",
+    "from": "extra_photo_033.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 16,
+   "description": "Pure katan silk all over gold zari booties with rich border weave",
+   "price": 19500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_016.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk all over gold zari booties with rich  border weave\n\nPrice 19500",
+   "highRes": {
+    "file": "extra_photo_027.jpg",
+    "score": 4.1,
+    "nextBest": 28.3
+   },
+   "output": {
+    "row": 16,
+    "out": "sn-016.jpg",
+    "from": "extra_photo_027.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 17,
+   "description": "Pure katan silk all over gold zari jungla motifs with rich border weave",
+   "price": 17500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_017.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk all over gold zari jungla motifs with rich border weave\n\nPrice 17500",
+   "highRes": {
+    "file": "extra_photo_009.jpg",
+    "score": 5.7,
+    "nextBest": 24.7
+   },
+   "output": {
+    "row": 17,
+    "out": "sn-017.jpg",
+    "from": "extra_photo_009.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 18,
+   "description": "Pure kora jamdani handwoven all over antique gold zari with multicolor resham meenakari bird, flower and tilfi jaal motifs with desginer gold zari rich border and pallu weaved very much exclusive piece of Banarasi saree, this all over tilfi meenakari",
+   "price": 33500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_018.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora jamdani handwoven all over antique gold zari with multicolor resham meenakari bird, flower and tilfi jaal motifs with desginer gold zari rich border and pallu weaved very much exclusive piece of Banarasi saree,  this all over tilfi meenakari                                                       price 33500",
+   "highRes": {
+    "file": "extra_photo_016.jpg",
+    "score": 3.1,
+    "nextBest": 27.1
+   },
+   "output": {
+    "row": 18,
+    "out": "sn-018.jpg",
+    "from": "extra_photo_016.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 19,
+   "description": "Pure katan silk cutwork rangkat banarasi saree",
+   "price": 31500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_019.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk cutwork rangkat banarasi saree \n\nPrice 31500",
+   "highRes": {
+    "file": "extra_photo_019.jpg",
+    "score": 4.3,
+    "nextBest": 33.8
+   },
+   "output": {
+    "row": 19,
+    "out": "sn-019.jpg",
+    "from": "extra_photo_019.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 20,
+   "description": "Pure Tissue Handwoven all over silver and gold zari booties with designer multicolor resham meenakari peacock & parrot motifs contrast border and pallu weave very much exclusive piece of Banarasi saree",
+   "price": 41500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_020.jpg",
+   "sentOn": "2026-10-09 10:53",
+   "whatsapp": "Pure Tissue Handwoven all over silver and gold zari booties  with designer multicolor resham meenakari peacock &  parrot motifs contrast border and pallu weave very much exclusive piece of Banarasi saree\n\nPrice 41500",
+   "highRes": {
+    "file": "extra_photo_038.jpg",
+    "score": 3.6,
+    "nextBest": 33.5
+   },
+   "output": {
+    "row": 20,
+    "out": "sn-020.jpg",
+    "from": "extra_photo_038.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 21,
+   "description": "Drape yourself in timeless elegance.\nThis luxurious pink Banarasi kora saree features intricate woven motifs of a mother and baby cow, symbolizing love and tenderness. Accented with exquisite Pichwai-style resham florals along the border, it's a perfect blend of tradition, artistry, and grace—crafted to make every moment special.",
+   "price": 49500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_021.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Drape yourself in timeless elegance.\n\nThis luxurious pink  Banarasi kora saree features intricate woven motifs of a mother and baby cow, symbolizing love and tenderness. Accented with exquisite Pichwai-style resham florals along the border, it's a perfect blend of tradition, artistry, and grace—crafted to make every moment special.\n\nPrice 49500",
+   "highRes": {
+    "file": "extra_photo_032.jpg",
+    "score": 5.4,
+    "nextBest": 36.1
+   },
+   "output": {
+    "row": 21,
+    "out": "sn-021.jpg",
+    "from": "extra_photo_032.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 22,
+   "description": "Pure tissue Handwoven fully kadhwa all over gold and silver zari bootas with gold zari , designer multicolor resham meenakari chauthera pauri cutwork border and pallu has paisley motifs weave very much exclusive piece of Banarasi saree",
+   "price": 35500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_022.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure tissue Handwoven fully kadhwa all over gold and silver zari bootas with gold zari , designer multicolor resham meenakari chauthera pauri cutwork border and pallu has paisley motifs weave very much exclusive piece of Banarasi saree\n\n\nPrice 35500",
+   "highRes": {
+    "file": "extra_photo_030.jpg",
+    "score": 3.1,
+    "nextBest": 21.9
+   },
+   "output": {
+    "row": 22,
+    "out": "sn-022.jpg",
+    "from": "extra_photo_030.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 23,
+   "description": "Pure katan silk Handwoven, pauri cutwork, all over gold zari and multicolour resham meenakari designer jaal motifs with gold zari and multicolour resham meenakari alfi border and pallu weave very much exclusive piece of Banarasi saree",
+   "price": 29500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_023.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk Handwoven, pauri cutwork, all over gold zari and multicolour resham meenakari designer jaal motifs with gold zari and multicolour resham meenakari alfi border and pallu weave very much exclusive piece of Banarasi saree\nPrice 29500",
+   "highRes": {
+    "file": "extra_photo_031.jpg",
+    "score": 7.2,
+    "nextBest": 49.8
+   },
+   "output": {
+    "row": 23,
+    "out": "sn-023.jpg",
+    "from": "extra_photo_031.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 24,
+   "description": "Pure katan silk Handwoven all over silver zari brocade tanchoi base with multicolour resham meenakari designer skirt border weave very much exclusive piece of Banarasi saree",
+   "price": 29500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_024.jpg",
+   "sentOn": "2026-10-09 10:53",
+   "whatsapp": "Pure katan silk Handwoven all over silver zari brocade tanchoi base with multicolour resham meenakari designer skirt border weave very much exclusive piece of Banarasi saree\n\nPrice 29500",
+   "highRes": {
+    "file": "extra_photo_040.jpg",
+    "score": 3.4,
+    "nextBest": 25.5
+   },
+   "output": {
+    "row": 24,
+    "out": "sn-024.jpg",
+    "from": "extra_photo_040.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 25,
+   "description": "Pure kora with multicolor resham meenakari floral jungla patter embroidery banarasi saree",
+   "price": 15500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_025.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora with  multicolor resham meenakari floral jungla patter embroidery banarasi saree\n\nPrice 15500",
+   "highRes": {
+    "file": "extra_photo_022.jpg",
+    "score": 4.1,
+    "nextBest": 19.3
+   },
+   "output": {
+    "row": 25,
+    "out": "sn-025.jpg",
+    "from": "extra_photo_022.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 26,
+   "description": "Pure katan silk pauri weave cutwork rangkat banarasi saree",
+   "price": 29500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_026.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk pauri weave  cutwork rangkat banarasi saree\n\nPrice 29500",
+   "highRes": {
+    "file": "extra_photo_011.jpg",
+    "score": 5.5,
+    "nextBest": 40.5
+   },
+   "output": {
+    "row": 26,
+    "out": "sn-026.jpg",
+    "from": "extra_photo_011.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 27,
+   "description": "Pure kora Handwoven fully kadwa All over silver and gold zari booties with designer gold zari and multicolour rangkat border , rich pallu weave very much exclusive piece of Banarasi saree",
+   "price": 37500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_027.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora Handwoven fully kadwa All over silver and gold zari booties with designer gold zari and multicolour rangkat  border , rich pallu weave very much exclusive piece of Banarasi saree\n\nPrice 37500",
+   "highRes": {
+    "file": "extra_photo_028.jpg",
+    "score": 5,
+    "nextBest": 36.1
+   },
+   "output": {
+    "row": 27,
+    "out": "sn-027.jpg",
+    "from": "extra_photo_028.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 28,
+   "description": "Pure kora Handwoven fully kadwa all over silver and gold zari alfi booties with designer gold zari & multicolour resham pachmeena Kadhiyal contrast skirt border and designer rich pallu weave very much exclusive piece of Banarasi saree",
+   "price": 43500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_028.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora  Handwoven fully kadwa all over silver and gold zari alfi booties with designer gold zari & multicolour resham  pachmeena Kadhiyal contrast skirt border and designer rich pallu weave very much exclusive piece of Banarasi saree\n\nPrice 43500",
+   "highRes": {
+    "file": "extra_photo_029.jpg",
+    "score": 4,
+    "nextBest": 34.6
+   },
+   "output": {
+    "row": 28,
+    "out": "sn-028.jpg",
+    "from": "extra_photo_029.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 29,
+   "description": "Pure katan silk Handwoven all over silver zari brocade tanchoi base with multicolour resham meenakari designer skirt border weave very much exclusive piece of Banarasi saree",
+   "price": 49500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_029.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk Handwoven all over silver zari brocade tanchoi base with multicolour resham meenakari designer skirt border weave very much exclusive piece of Banarasi saree\n\nPrice 49500",
+   "highRes": {
+    "file": "extra_photo_017.jpg",
+    "score": 5.4,
+    "nextBest": 39
+   },
+   "output": {
+    "row": 29,
+    "out": "sn-029.jpg",
+    "from": "extra_photo_017.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 30,
+   "description": "Pure katan silk Handwoven all over silver zari brocade tanchoi base with multicolour resham meenakari designer skirt border weave very much exclusive piece of Banarasi saree",
+   "price": 49500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_030.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk Handwoven all over silver zari brocade tanchoi base with multicolour resham meenakari designer skirt border weave very much exclusive piece of Banarasi saree\n\nPrice 49500",
+   "highRes": {
+    "file": "extra_photo_034.jpg",
+    "score": 2.8,
+    "nextBest": 34.8
+   },
+   "output": {
+    "row": 30,
+    "out": "sn-030.jpg",
+    "from": "extra_photo_034.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 31,
+   "description": "Pure katan silk Handwoven all over gold zari bird booties with designer multicolor resham meenakari floral jaal and different kind of bird Motifs skirt border and pallu weave very much exclusive piece of Banarasi paithani saree.\nPauri weave clean cutwork",
+   "price": 49500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_031.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk Handwoven all over gold zari bird booties with designer multicolor resham meenakari floral jaal and different kind of bird Motifs skirt border and pallu weave very much exclusive piece of Banarasi paithani saree. \n\nPauri weave clean cutwork                  price 49500",
+   "highRes": {
+    "file": "extra_photo_020.jpg",
+    "score": 5.9,
+    "nextBest": 35.9
+   },
+   "output": {
+    "row": 31,
+    "out": "sn-031.jpg",
+    "from": "extra_photo_020.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 32,
+   "description": "Pure kora with multicolor resham meenakari floral jungla patter embroidery banarasi saree",
+   "price": 15500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_032.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure kora with  multicolor resham meenakari floral jungla patter embroidery banarasi saree\n\nPrice 15500",
+   "highRes": {
+    "file": "extra_photo_015.jpg",
+    "score": 2.5,
+    "nextBest": 17.9
+   },
+   "output": {
+    "row": 32,
+    "out": "sn-032.jpg",
+    "from": "extra_photo_015.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 33,
+   "description": "Pure katan silk fully kadhwa weave dyeable banarasi saree\nIt can be dye in any color and combination",
+   "price": 21500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_033.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk fully kadhwa  weave dyeable banarasi saree\nIt can be dye in any color and combination\n\nPrice  21500",
+   "highRes": {
+    "file": "extra_photo_010.jpg",
+    "score": 2.4,
+    "nextBest": 30.5
+   },
+   "output": {
+    "row": 33,
+    "out": "sn-033.jpg",
+    "from": "extra_photo_010.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 34,
+   "description": "Pure ektara weave cotton jamdani",
+   "price": 26500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_034.jpg",
+   "sentOn": "2026-10-09 10:53",
+   "whatsapp": "Pure ektara weave cotton jamdani \n\nPrice 26500",
+   "highRes": {
+    "file": "extra_photo_037.jpg",
+    "score": 3.4,
+    "nextBest": 31.7
+   },
+   "output": {
+    "row": 34,
+    "out": "sn-034.jpg",
+    "from": "extra_photo_037.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 35,
+   "description": "Pure katan silk Handwoven all over gold zari bird bootas with designer multicolor resham meenakari bird, animal and floral Motifs skirt border and pallu weave very much exclusive piece of Banarasi paithani saree\nPauri weave paithani",
+   "price": 49500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_035.jpg",
+   "sentOn": "2026-10-09 10:53",
+   "whatsapp": "Pure katan silk Handwoven all over gold zari bird bootas with designer multicolor resham meenakari bird, animal and floral Motifs skirt border and pallu weave very much exclusive piece of Banarasi paithani saree\n\nPauri weave paithani \n\nPrice 49500",
+   "highRes": {
+    "file": "extra_photo_041.jpg",
+    "score": 3.4,
+    "nextBest": 32.5
+   },
+   "output": {
+    "row": 35,
+    "out": "sn-035.jpg",
+    "from": "extra_photo_041.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 36,
+   "description": "Pure tissue Handwoven fully kadwa all over silver and gold zari booties with silver, gold zari and multicolor resham meenakari designer chauthera border & contrast piping and pallu weave very much exclusive piece of Banarasi saree",
+   "price": 29500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_036.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure tissue Handwoven fully kadwa all over silver and gold zari booties with silver, gold zari and multicolor resham meenakari designer chauthera border & contrast piping and pallu weave very much exclusive piece of Banarasi saree\n\n\nPrice 29500",
+   "highRes": {
+    "file": "extra_photo_023.jpg",
+    "score": 2.4,
+    "nextBest": 26.4
+   },
+   "output": {
+    "row": 36,
+    "out": "sn-036.jpg",
+    "from": "extra_photo_023.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 37,
+   "description": "Pure tissue handwoven fully kadwa all over silver, gold zari booties with designer gold zari and multicolour resham meenakari contrast border and designer pallu weave very much exclusive piece of Banarasi saree\nPauri weave",
+   "price": 41500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_037.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure tissue handwoven fully kadwa all over silver, gold zari booties with designer gold zari and multicolour resham meenakari contrast border and designer pallu weave very much exclusive piece of Banarasi saree\n\nPauri weave \n\nPrice 41500",
+   "highRes": {
+    "file": "extra_photo_026.jpg",
+    "score": 2.9,
+    "nextBest": 24.6
+   },
+   "output": {
+    "row": 37,
+    "out": "sn-037.jpg",
+    "from": "extra_photo_026.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 38,
+   "description": "Pure Tissue Handwoven fully kadhwa, all over silver and gold zari booties with designer multicolor resham tilfi meenakari border and pallu weave very much exclusive piece of Banarasi saree",
+   "price": 47500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_038.jpg",
+   "sentOn": "2026-10-09 10:53",
+   "whatsapp": "Pure Tissue Handwoven fully kadhwa, all over silver and gold zari booties with designer multicolor resham tilfi meenakari border and pallu weave very much exclusive piece of Banarasi saree\n\nPrice 47500",
+   "highRes": {
+    "file": "extra_photo_039.jpg",
+    "score": 2.7,
+    "nextBest": 22.4
+   },
+   "output": {
+    "row": 38,
+    "out": "sn-038.jpg",
+    "from": "extra_photo_039.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 39,
+   "description": "Pure katan silk Handwoven all over gold zari bird booties with designer multicolor resham meenakari floral paur cutwork jaal and different kind of village theme Motifs, skirt border and pallu weave very much exclusive piece of Banarasi paithani saree",
+   "price": 49500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_039.jpg",
+   "sentOn": "2026-10-09 10:53",
+   "whatsapp": "Pure katan silk Handwoven all over gold zari bird booties with designer multicolor resham meenakari floral paur cutwork jaal and different kind of village theme Motifs, skirt border and pallu weave very much exclusive piece of Banarasi paithani saree\n\nPrice 49500",
+   "highRes": {
+    "file": "extra_photo_036.jpg",
+    "score": 4.8,
+    "nextBest": 35.5
+   },
+   "output": {
+    "row": 39,
+    "out": "sn-039.jpg",
+    "from": "extra_photo_036.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 40,
+   "description": "Ektara katan silk with digital print",
+   "price": 27500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_040.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Ektara katan silk with digital print \nPrice 27500",
+   "highRes": {
+    "file": "extra_photo_035.jpg",
+    "score": 4.4,
+    "nextBest": 26.4
+   },
+   "output": {
+    "row": 40,
+    "out": "sn-040.jpg",
+    "from": "extra_photo_035.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 41,
+   "description": "Pure katan silk with designer floral digital printed banarasi saree",
+   "price": 21500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_041.jpg",
+   "sentOn": "2026-10-09 10:52",
+   "whatsapp": "Pure katan silk with designer floral digital printed banarasi saree \n\nPrice 21500",
+   "highRes": {
+    "file": "extra_photo_024.jpg",
+    "score": 3.1,
+    "nextBest": 28.2
+   },
+   "output": {
+    "row": 41,
+    "out": "sn-041.jpg",
+    "from": "extra_photo_024.jpg",
+    "how": "resized 1800x1800 from full-size original",
+    "w": 1800,
+    "h": 1800
+   }
+  },
+  {
+   "row": 42,
+   "description": "Pure chiniya silk",
+   "price": 10500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_042.jpg",
+   "sentOn": "2026-10-09 11:49",
+   "whatsapp": "Pure chiniya silk price 10500",
+   "highRes": null,
+   "output": {
+    "row": 42,
+    "out": "sn-042.jpg",
+    "from": "saree_042.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 43,
+   "description": "Pure chiniya silk",
+   "price": 10500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_043.jpg",
+   "sentOn": "2026-10-09 11:49",
+   "whatsapp": "Pure chiniya silk price 10500",
+   "highRes": null,
+   "output": {
+    "row": 43,
+    "out": "sn-043.jpg",
+    "from": "saree_043.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 44,
+   "description": "Pure kora banarasi kadua weaved saree",
+   "price": 17500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_044.jpg",
+   "sentOn": "2026-10-09 11:54",
+   "whatsapp": "Pure kora banarasi kadua weaved saree \nPrice 17500",
+   "highRes": null,
+   "output": {
+    "row": 44,
+    "out": "sn-044.jpg",
+    "from": "saree_044.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 45,
+   "description": "Pure kora banarasi kadua weaved saree",
+   "price": 17500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_045.jpg",
+   "sentOn": "2026-10-09 11:54",
+   "whatsapp": "Pure kora banarasi kadua weaved saree \nPrice 17500",
+   "highRes": null,
+   "output": {
+    "row": 45,
+    "out": "sn-045.jpg",
+    "from": "saree_045.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 46,
+   "description": "Pure kora banarasi kadhua weaved saree",
+   "price": 13500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_046.jpg",
+   "sentOn": "2026-10-09 11:54",
+   "whatsapp": "Pure kora banarasi kadhua weaved saree\n13500",
+   "highRes": null,
+   "output": {
+    "row": 46,
+    "out": "sn-046.jpg",
+    "from": "saree_046.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 47,
+   "description": "Pure tissue kadhua weaved saree",
+   "price": 18500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_047.jpg",
+   "sentOn": "2026-10-09 11:54",
+   "whatsapp": "Pure tissue kadhua weaved saree\n18500",
+   "highRes": null,
+   "output": {
+    "row": 47,
+    "out": "sn-047.jpg",
+    "from": "saree_047.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 48,
+   "description": "Pure tissue kadhua weaved saree",
+   "price": 19500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_048.jpg",
+   "sentOn": "2026-10-09 11:54",
+   "whatsapp": "Pure tissue kadhua weaved saree \n19500",
+   "highRes": null,
+   "output": {
+    "row": 48,
+    "out": "sn-048.jpg",
+    "from": "saree_048.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 49,
+   "description": "Pure kora banarasi kadhua weaved saree",
+   "price": 16500,
+   "range": "Premium (Silk Mark certified)",
+   "imageFile": "saree_049.jpg",
+   "sentOn": "2026-10-09 11:54",
+   "whatsapp": "Pure kora banarasi kadhua weaved saree \n16500",
+   "highRes": null,
+   "output": {
+    "row": 49,
+    "out": "sn-049.jpg",
+    "from": "saree_049.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 50,
+   "description": "Semi Georgette banarasi silk",
+   "price": 4500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_050.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi Georgette banarasi silk \n\n4500",
+   "highRes": null,
+   "output": {
+    "row": 50,
+    "out": "sn-050.jpg",
+    "from": "saree_050.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 51,
+   "description": "Semi katan silk booties with contrast alfi border work",
+   "price": 6500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_051.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi katan silk  booties with contrast alfi border work\n\nPrice : 6500",
+   "highRes": null,
+   "output": {
+    "row": 51,
+    "out": "sn-051.jpg",
+    "from": "saree_051.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 52,
+   "description": "Semi katan silk multicolor bird jungla motifs paithani saree",
+   "price": 12500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_052.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi katan silk multicolor bird jungla motifs paithani saree\nPrice 12500",
+   "highRes": null,
+   "output": {
+    "row": 52,
+    "out": "sn-052.jpg",
+    "from": "saree_052.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 53,
+   "description": "Art silk kora jamdani banarasi saree",
+   "price": 5999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_053.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Art silk kora jamdani banarasi saree 5999",
+   "highRes": null,
+   "output": {
+    "row": 53,
+    "out": "sn-053.jpg",
+    "from": "saree_053.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 54,
+   "description": "Semi mashru banarasi silk",
+   "price": 5500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_054.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi mashru banarasi silk 5500",
+   "highRes": null,
+   "output": {
+    "row": 54,
+    "out": "sn-054.jpg",
+    "from": "saree_054.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 55,
+   "description": "Art silk banarasi saree",
+   "price": 3999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_055.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Art silk banarasi saree price 3999",
+   "highRes": null,
+   "output": {
+    "row": 55,
+    "out": "sn-055.jpg",
+    "from": "saree_055.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 56,
+   "description": "Semi katan silk banarasi saree",
+   "price": 6999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_056.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi katan silk banarasi saree price 6999",
+   "highRes": null,
+   "output": {
+    "row": 56,
+    "out": "sn-056.jpg",
+    "from": "saree_056.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 57,
+   "description": "Art Kora silk banarasi saree",
+   "price": 2499,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_057.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Art Kora silk banarasi saree price 2499",
+   "highRes": null,
+   "output": {
+    "row": 57,
+    "out": "sn-057.jpg",
+    "from": "saree_057.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 58,
+   "description": "Semi silk tanchoi with multicolor meenakri floral weave banarasi saree",
+   "price": 7999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_058.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk  tanchoi with multicolor meenakri floral weave banarasi saree\nPrice 7999",
+   "highRes": null,
+   "output": {
+    "row": 58,
+    "out": "sn-058.jpg",
+    "from": "saree_058.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 59,
+   "description": "Semi silk tanchoi with multicolor meenakri floral weave banarasi saree",
+   "price": 7999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_059.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk  tanchoi with multicolor meenakri floral weave banarasi saree\nPrice 7999",
+   "highRes": null,
+   "output": {
+    "row": 59,
+    "out": "sn-059.jpg",
+    "from": "saree_059.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 60,
+   "description": "Semi silk tanchoi with multicolor meenakri floral weave banarasi saree",
+   "price": 7999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_060.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk  tanchoi with multicolor meenakri floral weave banarasi saree\nPrice 7999",
+   "highRes": null,
+   "output": {
+    "row": 60,
+    "out": "sn-060.jpg",
+    "from": "saree_060.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 61,
+   "description": "Art silk all over gold zari bootas with contraat kanchi border weave banarasi saree",
+   "price": 4500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_061.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Art silk all over gold zari bootas with contraat kanchi border weave banarasi saree\nPric 4500",
+   "highRes": null,
+   "output": {
+    "row": 61,
+    "out": "sn-061.jpg",
+    "from": "saree_061.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 62,
+   "description": "Art silk all over gold zari bootas with contraat kanchi border weave banarasi saree",
+   "price": 4500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_062.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Art silk all over gold zari bootas with contraat kanchi border weave banarasi saree\nPric 4500",
+   "highRes": null,
+   "output": {
+    "row": 62,
+    "out": "sn-062.jpg",
+    "from": "saree_062.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 63,
+   "description": "semi mashru banarasi silk saree",
+   "price": 5500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_063.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "semi mashru banarasi silk saree\nPrice 5500",
+   "highRes": null,
+   "output": {
+    "row": 63,
+    "out": "sn-063.jpg",
+    "from": "saree_063.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 64,
+   "description": "Semi silk antique zari all over booties with double shade border weave banarasi saree",
+   "price": 4999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_064.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk  antique zari all over booties with double shade border weave banarasi saree\nPrice 4999",
+   "highRes": null,
+   "output": {
+    "row": 64,
+    "out": "sn-064.jpg",
+    "from": "saree_064.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 65,
+   "description": "Semi silk sona rupa jamdani style design weave banarasi saree",
+   "price": 6999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_065.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk sona rupa jamdani style design weave banarasi saree\nPrice 6999",
+   "highRes": null,
+   "output": {
+    "row": 65,
+    "out": "sn-065.jpg",
+    "from": "saree_065.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 66,
+   "description": "Semi silk sona rupa jamdani style design weave banarasi saree",
+   "price": 6999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_066.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk sona rupa jamdani style design weave banarasi saree\nPrice 6999",
+   "highRes": null,
+   "output": {
+    "row": 66,
+    "out": "sn-066.jpg",
+    "from": "saree_066.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 67,
+   "description": "Semi silk antique zari all over booties with double shade border weave banarasi saree",
+   "price": 4999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_067.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk  antique zari all over booties with double shade border weave banarasi saree\nPrice 4999",
+   "highRes": null,
+   "output": {
+    "row": 67,
+    "out": "sn-067.jpg",
+    "from": "saree_067.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 68,
+   "description": "Semi silk antique zari all over booties with double shade border weave\nbanarasi saree",
+   "price": 4999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_068.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk  antique zari all over booties with double shade border weave \nPrice banarasi saree\n4999",
+   "highRes": null,
+   "output": {
+    "row": 68,
+    "out": "sn-068.jpg",
+    "from": "saree_068.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 69,
+   "description": "Semi silk antique zari all over booties with double shade border weave banarasi saree",
+   "price": 4999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_069.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi silk  antique zari all over booties with double shade border weave banarasi saree\nPrice 4999",
+   "highRes": null,
+   "output": {
+    "row": 69,
+    "out": "sn-069.jpg",
+    "from": "saree_069.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 70,
+   "description": "Semi georgette banarasi saree",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_070.jpg",
+   "sentOn": "2026-10-09 12:06",
+   "whatsapp": "Semi georgette banarasi saree\n3500",
+   "highRes": null,
+   "output": {
+    "row": 70,
+    "out": "sn-070.jpg",
+    "from": "saree_070.jpg",
+    "how": "copied unchanged"
+   }
+  },
+  {
+   "row": 71,
+   "description": "Vicose chiniya silk semi banarasi saree",
+   "price": 4500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_071.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Vicose chiniya silk semi banarasi saree\n4500",
+   "highRes": null,
+   "output": {
+    "row": 71,
+    "out": "sn-071.jpg",
+    "from": "saree_071.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 72,
+   "description": "Semi banarasi green mango silk saree",
+   "price": 4500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_072.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi green mango silk saree\n4500",
+   "highRes": null,
+   "output": {
+    "row": 72,
+    "out": "sn-072.jpg",
+    "from": "saree_072.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 73,
+   "description": "Semi banarasi katan silk saree",
+   "price": 2999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_073.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi katan silk saree\n2999",
+   "highRes": null,
+   "output": {
+    "row": 73,
+    "out": "sn-073.jpg",
+    "from": "saree_073.jpg",
+    "how": "cropped 0,560,717,478 from screenshot",
+    "w": 717,
+    "h": 478
+   }
+  },
+  {
+   "row": 74,
+   "description": "Banarasi malmal cotton saree",
+   "price": 2499,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_074.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Banarasi malmal cotton saree\n2499",
+   "highRes": null,
+   "output": {
+    "row": 74,
+    "out": "sn-074.jpg",
+    "from": "saree_074.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 75,
+   "description": "Semi banarasi katan silk tilfi boota saree",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_075.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi katan silk tilfi boota saree\n3500",
+   "highRes": null,
+   "output": {
+    "row": 75,
+    "out": "sn-075.jpg",
+    "from": "saree_075.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 76,
+   "description": "Semi banarasi kora silk applique work saree",
+   "price": 4500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_076.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi kora silk applique work saree\n4500",
+   "highRes": null,
+   "output": {
+    "row": 76,
+    "out": "sn-076.jpg",
+    "from": "saree_076.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 77,
+   "description": "Semi banarasi crepe silk saree",
+   "price": 2950,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_077.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi crepe silk saree \n2950",
+   "highRes": null,
+   "output": {
+    "row": 77,
+    "out": "sn-077.jpg",
+    "from": "saree_077.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 78,
+   "description": "Semi banarasi katan silk tilfi boota saree",
+   "price": 4500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_078.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi katan silk tilfi boota saree \n4500",
+   "highRes": null,
+   "output": {
+    "row": 78,
+    "out": "sn-078.jpg",
+    "from": "saree_078.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 79,
+   "description": "Semi banarasi rangkat mushroo silk saree",
+   "price": 8999,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_079.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi rangkat mushroo silk saree \n8999",
+   "highRes": null,
+   "output": {
+    "row": 79,
+    "out": "sn-079.jpg",
+    "from": "saree_079.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 80,
+   "description": "Kora silk banarasi saree with handembroidery boota",
+   "price": 9500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_080.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Kora silk  banarasi saree with handembroidery boota\n9500",
+   "highRes": null,
+   "output": {
+    "row": 80,
+    "out": "sn-080.jpg",
+    "from": "saree_080.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 81,
+   "description": "Semi banarasi katan silk saree",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_081.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi katan silk saree \n3500",
+   "highRes": null,
+   "output": {
+    "row": 81,
+    "out": "sn-081.jpg",
+    "from": "saree_081.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 82,
+   "description": "Semi banarasi silk saree with hand embroidery boota",
+   "price": 9500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_082.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi silk saree with hand embroidery boota\n9500",
+   "highRes": null,
+   "output": {
+    "row": 82,
+    "out": "sn-082.jpg",
+    "from": "saree_082.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 83,
+   "description": "Semi banarasi pashmina saree",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_083.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi pashmina saree \n3500",
+   "highRes": null,
+   "output": {
+    "row": 83,
+    "out": "sn-083.jpg",
+    "from": "saree_083.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 84,
+   "description": "Semi banarasi silk saree",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_084.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi silk saree 3500",
+   "highRes": null,
+   "output": {
+    "row": 84,
+    "out": "sn-084.jpg",
+    "from": "saree_084.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 85,
+   "description": "Semi banarasi silk saree with hand embroidery boota",
+   "price": 9500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_085.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi silk saree with hand embroidery boota \n9500",
+   "highRes": null,
+   "output": {
+    "row": 85,
+    "out": "sn-085.jpg",
+    "from": "saree_085.jpg",
+    "how": "cropped 0,560,717,478 from screenshot",
+    "w": 717,
+    "h": 478
+   }
+  },
+  {
+   "row": 86,
+   "description": "Semi banarasi silk saree with hand embroidery boota",
+   "price": 9500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_086.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi silk saree with hand embroidery boota \n9500",
+   "highRes": null,
+   "output": {
+    "row": 86,
+    "out": "sn-086.jpg",
+    "from": "saree_086.jpg",
+    "how": "cropped 0,560,717,478 from screenshot",
+    "w": 717,
+    "h": 478
+   }
+  },
+  {
+   "row": 87,
+   "description": "Semi georgette banarasi saree",
+   "price": 2499,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_087.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi georgette banarasi saree \n2499",
+   "highRes": null,
+   "output": {
+    "row": 87,
+    "out": "sn-087.jpg",
+    "from": "saree_087.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 88,
+   "description": "Semi banarasi patola weaved saree",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_088.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi patola weaved saree\n3500",
+   "highRes": null,
+   "output": {
+    "row": 88,
+    "out": "sn-088.jpg",
+    "from": "saree_088.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 89,
+   "description": "Semi banarasi silk kinkhwab saree",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_089.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi silk kinkhwab saree\n3500",
+   "highRes": null,
+   "output": {
+    "row": 89,
+    "out": "sn-089.jpg",
+    "from": "saree_089.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 90,
+   "description": "Semi banarasi silk saree",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_090.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi silk saree\n3500",
+   "highRes": null,
+   "output": {
+    "row": 90,
+    "out": "sn-090.jpg",
+    "from": "saree_090.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  },
+  {
+   "row": 91,
+   "description": "Semi banarasi tissue silk saree with lace work",
+   "price": 3500,
+   "range": "Semi-premium Banarasi silk",
+   "imageFile": "saree_091.jpg",
+   "sentOn": "2026-10-09 12:28",
+   "whatsapp": "Semi banarasi tissue silk saree with lace work \n3500",
+   "highRes": null,
+   "output": {
+    "row": 91,
+    "out": "sn-091.jpg",
+    "from": "saree_091.jpg",
+    "how": "cropped 0,261,717,1076 from screenshot",
+    "w": 717,
+    "h": 1076
+   }
+  }
+ ],
+ "unmatched": [
+  {
+   "file": "extra_photo_042.jpg",
+   "closest": "saree_005.jpg",
+   "score": 46.4
+  },
+  {
+   "file": "extra_photo_043.jpg",
+   "closest": "saree_020.jpg",
+   "score": 44.5
+  },
+  {
+   "file": "extra_photo_044.jpg",
+   "closest": "saree_047.jpg",
+   "score": 44.5
+  },
+  {
+   "file": "extra_photo_045.jpg",
+   "closest": "saree_005.jpg",
+   "score": 45.7
+  },
+  {
+   "file": "extra_photo_046.jpg",
+   "closest": "saree_005.jpg",
+   "score": 43
+  },
+  {
+   "file": "extra_photo_047.jpg",
+   "closest": "saree_055.jpg",
+   "score": 48.8
+  }
+ ]
+}

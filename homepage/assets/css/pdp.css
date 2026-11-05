@@ -116,17 +116,17 @@
 .saree-swatch__row {
   display: flex; justify-content: space-between; gap: var(--spacing-2);
   font-family: var(--font-display); font-weight: var(--font-weight-medium);
-  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: var(--font-size-eyebrow); letter-spacing: 0.12em; text-transform: uppercase;
   font-variant-numeric: tabular-nums;
 }
-.saree-swatch__hex { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; letter-spacing: 0.02em; }
+.saree-swatch__hex { font-family: var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
 .saree-swatch__name {
   margin-top: auto; padding-top: var(--spacing-3);
   font-family: var(--font-display); font-weight: var(--font-weight-regular);
   font-size: 22px; line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase;
 }
 .saree-swatch__pair { display: inline; margin-left: var(--spacing-1); font-size: 0.72em; text-transform: none; letter-spacing: 0; }
-.saree-swatch__meta { margin-top: var(--spacing-2); font-size: 12px; line-height: 1.35; }
+.saree-swatch__meta { margin-top: var(--spacing-2); font-size: var(--font-size-caption); line-height: 1.35; }
 /* ─── 02b In detail — circular features ────────────────────
    Circles are an approved PDP exception to the 0-radius rule (brand-guidelines.md §8b): no card,
    border or shadow, just the crop, an uppercase heading and one line of product data. */
@@ -257,10 +257,10 @@
 .chapter__chips { margin-top: var(--spacing-6); display: flex; flex-wrap: wrap; gap: var(--spacing-3) var(--spacing-6); font-size: 13px; }
 .chapter__chips li { display: flex; align-items: center; gap: var(--spacing-2); }
 .chapter__chip { width: 18px; height: 18px; box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 45%, transparent); }
-.chapter__hex { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 12px; opacity: 0.85; }
+.chapter__hex { font-family: var(--font-display); font-variant-numeric: tabular-nums; font-size: var(--font-size-caption); letter-spacing: 0.04em; opacity: 0.85; }
 
 /* Scroll length: only applied when JS is running, so without JS it is a normal colour section */
-.js .chapter { height: 370vh; --ch-r: 0%; } /* starts closed; pdp.js then sets the clip on .chapter__bg itself */
+.js .chapter { height: 440vh; --ch-r: 0%; } /* starts closed; pdp.js then sets the clip on .chapter__bg itself */
 .js .chapter__sticky { position: sticky; top: 0; height: 100svh; }
 .js .chapter__inner { opacity: 0; }
 /* ─── 06 Product details ───────────────────────────────── */
@@ -357,8 +357,30 @@
 /* ─── 08 Related ───────────────────────────────────────── */
 .related { padding-bottom: var(--spacing-6); }
 
-/* ─── Mobile buy bar (hidden on desktop: the info panel is sticky there) ─ */
-.pdp-buybar { display: none; }
+/* ─── Buy bar: once the main Add to bag button scrolls out of view (and until the footer), a slim bar along the
+   bottom keeps the saree's photo, name, price and Add to bag in reach. Every screen size. ─ */
+.pdp-buybar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  display: flex; align-items: center; gap: var(--space-sm);
+  padding: var(--space-xs) var(--page-margin) calc(var(--space-xs) + env(safe-area-inset-bottom));
+  background: var(--color-bg);
+  box-shadow: 0 -1px 0 var(--color-border);
+  transform: translateY(100%);
+  transition: transform var(--duration-base) var(--ease-in-out);
+}
+.pdp-buybar.is-visible { transform: none; }
+.pdp-buybar__thumb { flex: none; width: 40px; aspect-ratio: 3 / 4; height: auto; object-fit: cover; }
+.pdp-buybar__info { display: grid; min-width: 0; margin-right: auto; }
+.pdp-buybar__name { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-product); }
+.pdp-buybar__price { font-size: var(--font-size-caption); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.pdp-buybar .button { min-width: 150px; }
+body:has(.pdp-buybar) { padding-bottom: 64px; } /* keep the last content clear of the buy bar */
+@media (min-width: 1024px) {
+  .pdp-buybar { gap: var(--space-md); }
+  .pdp-buybar__thumb { width: 48px; }
+  .pdp-buybar .button { min-width: 220px; }
+}
+@media (prefers-reduced-motion: reduce) { .pdp-buybar { transition: none; } }
 
 /* ─── 404 ──────────────────────────────────────────────── */
 .pdp-404 { padding: var(--spacing-12) var(--page-margin) var(--spacing-11); }
@@ -375,7 +397,7 @@
   .drape__item--fall { grid-column: 1 / 6; }
   .drape__item--pallu { grid-column: 6 / 9; margin-top: var(--spacing-9); }
   .drape__item--border { grid-column: 3 / 8; margin-bottom: calc(-1 * var(--spacing-10)); }
-  .pdp-hero { grid-template-columns: 1fr; }
+  .pdp-hero { grid-template-columns: minmax(0, 1fr); }
   .pdp-gallery { grid-column: 1; grid-row: auto; margin: 0 calc(-1 * var(--page-margin)); }
   .pdp-gallery__stage { aspect-ratio: auto; }
 
@@ -389,7 +411,9 @@
   .pdp-gallery__btn { display: none; }
   /* the rail becomes a row of thumbnails under the swipe gallery */
   .pdp-gallery--many { display: flex; flex-direction: column; }
-  .pdp-gallery__thumbs { order: 2; display: flex; gap: var(--spacing-3); padding: var(--spacing-4) var(--page-margin) 0; }
+  /* the strip scrolls sideways when the thumbnails outgrow a small phone, instead of widening the page */
+  .pdp-gallery__thumbs { order: 2; display: flex; gap: var(--spacing-3); padding: var(--spacing-4) var(--page-margin) 0; overflow-x: auto; scrollbar-width: none; max-width: 100%; min-width: 0; }
+  .pdp-gallery__thumbs::-webkit-scrollbar { display: none; }
   .pdp-gallery__thumbs li { flex: 0 0 56px; }
 
   .pdp-info { grid-column: 1; grid-row: auto; position: static; padding: var(--spacing-7) 0 0; }
@@ -398,7 +422,7 @@
 
 
   /* Chapter: image on top, text below; shorter scroll, gentler movement (set in pdp.js) */
-  .js .chapter { height: 300svh; }
+  .js .chapter { height: 360svh; }
   .chapter__inner {
     grid-template-columns: 1fr; grid-template-rows: auto 1fr auto;
     align-items: start; row-gap: var(--spacing-5);
@@ -422,21 +446,6 @@
 
   .style-it__grid { grid-auto-flow: row; grid-template-columns: 1fr 1fr; row-gap: var(--spacing-6); }
 
-  .pdp-buybar {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
-    display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-4);
-    padding: var(--spacing-3) var(--page-margin) calc(var(--spacing-3) + env(safe-area-inset-bottom));
-    background: var(--color-bg);
-    box-shadow: 0 -1px 0 var(--color-border);
-    transform: translateY(100%);
-    transition: transform var(--duration-base) var(--ease-in-out);
-  }
-  .pdp-buybar.is-visible { transform: none; }
-  .pdp-buybar__info { display: grid; min-width: 0; }
-  .pdp-buybar__name { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 15px; }
-  .pdp-buybar__price { font-size: var(--font-size-caption); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
-  .pdp-buybar .button { min-width: 150px; }
-  body:has(.pdp-buybar) { padding-bottom: 72px; } /* keep the last content clear of the buy bar */
 }
 
 /* ─── Mobile ≤767 ──────────────────────────────────────── */
@@ -500,7 +509,7 @@
 }
 @media (max-width: 767px) {
   .features__grid, .features__grid--3, .features__grid--2 { row-gap: var(--spacing-6); }
-  .feature__text { font-size: 14px; }
+  .feature__text { font-size: var(--font-size-body); }
 }
 
 @media (prefers-reduced-motion: reduce) { .unfolded__media { inset: 0; translate: none; } }
@@ -579,3 +588,328 @@
 .has-chapter-reveal .chapter { z-index: 2; }
 .has-chapter-reveal .chapter + .unfolded { position: relative; z-index: 1; margin-top: -100svh; will-change: transform; }
 .has-chapter-reveal .chapter + .unfolded .unfolded__inner { min-height: 100svh; }
+
+/* ═══ Saree video — in the gallery and in the product panel ═══════════════════
+   Gallery: the reel is the last item in the vertical strip (a thumbnail with a play badge); choosing it
+   plays the video in the main frame, muted, with a sound toggle. Panel: a film card takes the Saree
+   Swatch's place. Both only appear when the saree has its own video. */
+.pdp-gallery__slide--video { background: var(--color-ink); }
+.pdp-gallery__video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pdp-gallery__sound {
+  position: absolute; right: var(--spacing-4); bottom: var(--spacing-4);
+  min-height: 36px; padding: 0 var(--spacing-4); border-radius: var(--radius-full);
+  background: rgba(31, 26, 22, 0.55); color: var(--color-ivory);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 12px; letter-spacing: 0.04em;
+  backdrop-filter: blur(6px);
+}
+.pdp-gallery__sound[aria-pressed="true"] { background: var(--color-ivory); color: var(--color-ink); }
+.pdp-gallery__thumb--video { position: relative; }
+.pdp-gallery__thumb-play {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(246, 241, 234, 0.92); color: var(--color-ink);
+  box-shadow: 0 0 0 4px rgba(246, 241, 234, 0.28);
+}
+.pdp-gallery__thumb--video.is-active .pdp-gallery__thumb-play { opacity: 0; }
+
+/* Video card — 9:16, rounded, controls only on hover (or tap) */
+.video-card {
+  position: relative; overflow: hidden; isolation: isolate;
+  margin: var(--spacing-7) 0 0; width: 100%; max-width: 320px; aspect-ratio: 9 / 16;
+  border-radius: 16px; background: var(--color-ink);
+}
+.video-card__video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform 700ms var(--ease-out);
+}
+.video-card__shade {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 38%, transparent 62%);
+  opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.video-card__bar {
+  position: absolute; left: 14px; right: 14px; bottom: 14px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
+}
+.video-card__right { display: flex; align-items: center; gap: 6px; }
+.video-card__glass {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 30px; padding: 6px 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  color: #fff; font-family: var(--font-body); font-size: var(--font-size-caption); font-weight: var(--font-weight-regular); line-height: 1; letter-spacing: 0.02em;
+}
+.video-card__time { font-variant-numeric: tabular-nums; }
+.video-card__full { padding: 0; width: 30px; justify-content: center; }
+button.video-card__glass { cursor: pointer; transition: background-color 200ms var(--ease-out); }
+button.video-card__glass:hover { background: rgba(255, 255, 255, 0.28); }
+/* revealed on hover, on keyboard focus, and after a tap on touch screens */
+.video-card:hover .video-card__video, .video-card.is-revealed .video-card__video { transform: scale(1.05); }
+.video-card:hover .video-card__shade, .video-card:focus-within .video-card__shade, .video-card.is-revealed .video-card__shade { opacity: 1; }
+.video-card:hover .video-card__bar, .video-card:focus-within .video-card__bar, .video-card.is-revealed .video-card__bar { opacity: 1; transform: none; }
+.video-card:focus-within :focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.video-card:fullscreen { max-width: none; border-radius: 0; }
+.video-card:fullscreen .video-card__video { object-fit: contain; transform: none; }
+@media (max-width: 1023px) { .video-card { max-width: 360px; } }
+@media (prefers-reduced-motion: reduce) { .video-card__video, .video-card__bar { transition: none; } .video-card:hover .video-card__video { transform: none; } }
+
+/* colour chips beside the Colour value */
+.pdp-info__chips { display: flex; gap: 6px; margin-top: 8px; }
+.pdp-info__chip { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12); }
+
+.pdp-reel-dialog {
+  padding: 0; border: 0; background: transparent; overflow: visible;
+  width: min(92vw, calc(88svh * 9 / 16)); max-width: none; max-height: none;
+}
+.pdp-reel-dialog::backdrop { background: rgba(31, 26, 22, 0.82); }
+.pdp-reel-dialog__video { display: block; width: 100%; height: auto; max-height: 88svh; background: var(--color-ink); border-radius: var(--radius-sm); }
+.pdp-reel-dialog__close {
+  position: absolute; top: 0; right: -52px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--color-bg); color: var(--color-text); font-size: 20px;
+}
+@media (max-width: 767px) {
+  .pdp-reel-dialog__close { right: 8px; top: 8px; }
+}
+
+/* ═══ The drape in motion — full-width editorial feature ═════════════════════
+   The saree's own frame, blurred and vignetted, behind a two-panel card: the reel in a white frame,
+   an editorial note on ivory. (The card's shadow and rounded corners are a deliberate exception to the
+   no-shadow rule in the guidelines, as requested.) */
+.motion {
+  position: relative; isolation: isolate; overflow: hidden;
+  margin: var(--spacing-10) 0; padding: var(--spacing-11) var(--page-margin);
+  background: var(--color-ink);
+}
+.motion__backdrop {
+  position: absolute; inset: -40px; z-index: -1;
+  background: var(--motion-bg) center / cover no-repeat;
+  filter: blur(28px) saturate(0.9) brightness(0.62);
+  transform: scale(1.08);
+}
+.motion__backdrop::after { /* light vignette */
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(23, 23, 23, 0.1) 0%, rgba(23, 23, 23, 0.55) 100%);
+}
+.motion__card {
+  display: grid; grid-template-columns: 1fr 1fr;
+  max-width: 56rem; margin: 0 auto;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+}
+.motion__frame { display: flex; align-items: center; justify-content: center; padding: 16px; background: #fff; }
+.video-card--framed { margin: 0; max-width: none; width: 100%; border-radius: 8px; }
+.motion__text {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  gap: var(--spacing-5);
+  padding: clamp(32px, 2rem + 3vw, 64px);
+  background: #FAF8F5; color: var(--color-text);
+}
+.motion__title {
+  font-family: var(--font-accent); font-style: normal; font-weight: 400;
+  font-size: clamp(1.6rem, 1.1rem + 1.4vw, 2.4rem); line-height: 1.1;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.motion__motif { color: var(--color-text-muted); line-height: 0; }
+.motion__body {
+  max-width: 24em; margin: 0;
+  font-family: var(--font-accent); font-size: clamp(1.1rem, 1rem + 0.35vw, 1.3rem); line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+.motion__cta {
+  margin-top: var(--spacing-2); min-height: 44px; display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - 10px) / 0 1px;
+  transition: background-size var(--duration-base) var(--ease-out);
+}
+.motion__cta span { display: inline-block; transition: transform var(--duration-base) var(--ease-out); }
+.motion__cta:hover { background-size: 100% 1px; }
+.motion__cta:hover span { transform: translateX(4px); }
+
+@media (max-width: 767px) {
+  .motion { padding: var(--spacing-9) var(--page-margin); margin: var(--spacing-8) 0; }
+  .motion__card { grid-template-columns: 1fr; }
+  .motion__frame { padding: 12px; }
+  .video-card--framed { max-width: 360px; margin: 0 auto; }
+}
+
+/* Drape in motion — compact: the video is sized by height so the whole card fits on one screen */
+.motion { padding: var(--spacing-9) var(--page-margin); margin: var(--spacing-9) 0; }
+.motion__card { --mh: min(70svh, 560px); grid-template-columns: auto 1fr; max-width: 52rem; }
+.motion__frame { padding: 12px; }
+.motion .video-card--framed { height: var(--mh); width: auto; aspect-ratio: 9 / 16; }
+.motion__text { gap: var(--spacing-4); padding: clamp(28px, 1.5rem + 2.5vw, 56px); }
+.motion__title { font-size: clamp(1.4rem, 1rem + 1.1vw, 2rem); }
+.motion__body { font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem); }
+@media (max-width: 767px) {
+  .motion__card { grid-template-columns: 1fr; }
+  .motion .video-card--framed { height: min(62svh, 520px); }
+}
+
+/* ─── Product page density ─────────────────────────────────
+   The default section rhythm (up to 160px) left long empty stretches between sections here.
+   Product pages now run at the homepage's tighter rhythm; scoped to .pdp so nothing else moves. */
+/* (product pages use the site-wide --section-spacing in tokens.css) */
+/* the film panel already ends with its own margin, so the detail circles start straight after it */
+.motion + .features { padding-top: 0; }
+
+/* ═══ "A closer look" holds still while it is read ═══════════════
+   The section is taller than the screen and its content is pinned inside it: once it fills the screen it
+   stays put for about another screen of scrolling (--hold), then the page carries on. Scrolling is never
+   intercepted; the hold is just extra scroll distance. Applied only when the script runs. */
+.unfolded__pin { position: relative; isolation: isolate; overflow: hidden; }
+.js .unfolded { --hold: 110svh; overflow: visible; height: calc(100svh + var(--hold)); }
+.js .unfolded__pin { position: sticky; top: 0; height: 100svh; }
+.js .unfolded .unfolded__inner { min-height: 100svh; height: 100svh; padding-top: calc(var(--header-height) + var(--spacing-7)); } /* clear of the pinned header */
+@media (max-width: 767px) { .js .unfolded { --hold: 80svh; } }
+
+/* ═══ Whole photographs: never cropped ═══════════════════════
+   The frame takes the main photograph's own proportions (--ratio, set by render/pdp.mjs), and the
+   portraits and laid-flat shots are fitted inside it whole, at their full resolution. A second portrait of
+   a different shape sits whole inside the same frame on the Stone background. Only the close-up views (the
+   border, the fabric) are deliberate crops. */
+.pdp-gallery__stage { aspect-ratio: var(--ratio, 3 / 4); }
+.pdp-gallery__slide--whole img { object-fit: contain; object-position: 50% 50%; transform: none; }
+/* Model photos with a frame (render/pdp.mjs): the photo is placed so its 3:4 window fills the slide, cropping away
+   backdrop around the model and the saree. --fw is the photo's width, --fx / --fy its offset, as shares of the slide. */
+.pdp-gallery__slide--framed img.crop {
+  position: absolute; left: var(--fx); top: var(--fy); width: var(--fw); height: auto; max-width: none;
+  object-fit: fill; transform: none;
+}
+/* each slide clips its own image, so a zoomed close-up can't spill over its neighbour in the phone swipe row */
+.pdp-gallery__slide { overflow: hidden; }
+
+/* ═══ Colour choice: one print in several colours ═════════════
+   Under the price. An eyebrow label with the chosen colour's name, then one square swatch per colour: 2px corners
+   (buttons, §12.11), a hairline edge so pale colours read on Ivory, and an Ink outline on the chosen one.
+   Each chip is a 44px target around a 32px swatch. */
+.pdp-colours { margin-top: var(--spacing-5); }
+.pdp-colours__label { display: flex; align-items: baseline; gap: var(--spacing-3); }
+.pdp-colours__eyebrow {
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.pdp-colours__name { font-size: var(--font-size-body); color: var(--color-text); }
+.pdp-colours__list { display: flex; flex-wrap: wrap; gap: var(--spacing-1); margin: var(--spacing-2) 0 0 -6px; padding: 0; list-style: none; }
+.pdp-colours__chip {
+  position: relative; width: 44px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
+}
+.pdp-colours__chip::before {
+  content: ""; position: absolute; inset: 6px; border-radius: var(--radius-sm);
+  background: var(--chip); box-shadow: inset 0 0 0 1px rgba(31, 26, 22, 0.14);
+}
+.pdp-colours__chip::after {
+  content: ""; position: absolute; inset: 2px; border-radius: 3px;
+  box-shadow: 0 0 0 1px transparent; transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+.pdp-colours__chip:hover::after { box-shadow: 0 0 0 1px var(--color-border-strong); }
+.pdp-colours__chip[aria-checked="true"]::after { box-shadow: 0 0 0 1px var(--color-ink); }
+.pdp-colours__chip:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 0; }
+.pdp-colours__note { margin-top: var(--spacing-1); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+@media (prefers-reduced-motion: reduce) { .pdp-colours__chip::after { transition: none; } }
+
+/* ═══ PDP layout: thumbnail rail + main image, sticky details ════════
+   Desktop (≥1024), after houseofmasaba.com's product page: a narrow vertical rail of every view (model shots,
+   close-ups, the border, the folded or laid-flat shot, the film) on the left, ONE main photograph beside it (--pdp-photo-w,
+   up to 660px; arrows and thumbnails change it) and the details (up to 560px), centred together as one group. Model
+   photos are cropped to 3:4 around the model and the saree (images[].frame). Both columns are sticky: whichever is
+   shorter (usually the photograph) holds still beside the other while the page scrolls, and because both live in
+   .pdp-hero it stops where the row ends. Past the main Add to bag button, the buy bar keeps the photo, name, price and
+   Add to bag pinned to the bottom of the screen. Tablet (768–1023): the same rail + photograph side by side, the
+   photograph no taller than about three-quarters of the screen, details below. Phone (≤767): full-width swipe
+   gallery with a horizontal thumbnail strip under it, details below. Spacing uses the scale in tokens.css. */
+.pdp { --pdp-sticky-top: calc(var(--header-height) + var(--space-md)); }
+@media (min-width: 1024px) {
+  /* Main photograph width (--pdp-photo-w): the larger of "fits the screen height" and 36% of the window, never over
+     660px, so it stays generous on short laptop screens. --pdp-stage-h is the height that gives (from the frame shape).
+     The gallery and the details are one centred group, so the space is shared evenly on both sides. */
+  .pdp {
+    --pdp-photo-h: clamp(440px, calc(100svh - var(--announcement-height) - var(--header-height) - var(--space-md) - var(--space-lg)), 880px);
+    --pdp-rail-w: clamp(64px, 5.5vw, 88px);
+    /* ...and never so wide that the details drop below 360px (window − gutters − rail − gaps − scrollbar) */
+    --pdp-photo-w: min(660px, max(calc(var(--pdp-photo-h) * var(--ratio-n, 0.75)), 36vw),
+      calc(100vw - 2 * var(--page-margin) - var(--pdp-rail-w) - var(--space-md) - var(--space-3xl) - 360px - 20px));
+  }
+  .pdp-gallery { --pdp-stage-h: calc(var(--pdp-photo-w) / var(--ratio-n, 0.75)); }
+  .pdp-hero {
+    grid-template-columns: auto minmax(360px, 560px);
+    justify-content: center;
+    column-gap: var(--space-3xl);
+    padding-top: var(--space-md);
+    align-items: start;
+  }
+  /* Both columns are sticky; in a shared row only the shorter one moves. The details are usually longer, so the
+     photograph holds still beside them while they are read. If the photograph is taller than the screen, it sticks by
+     its bottom edge (a negative top), so the whole picture has been seen before it holds. */
+  .pdp-gallery, .pdp-gallery:not(.pdp-gallery--many) {
+    grid-column: 1; grid-row: 1; margin: 0;
+    position: sticky; top: min(var(--pdp-sticky-top), calc(100svh - var(--pdp-stage-h) - var(--space-md))); align-self: start;
+  }
+  .pdp-gallery--many {
+    display: grid; grid-template-columns: var(--pdp-rail-w) var(--pdp-photo-w);
+    column-gap: var(--space-md); align-items: start;
+  }
+  .pdp-gallery__thumbs {
+    position: sticky; top: var(--pdp-sticky-top); align-self: start;
+    display: flex; flex-direction: column; gap: var(--space-xs);
+    max-height: calc(100svh - var(--pdp-sticky-top) - var(--space-md));
+    overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none;
+    padding: 3px; margin: -3px; /* room for the chosen thumbnail's outline inside the scroll box */
+  }
+  .pdp-gallery__thumbs::-webkit-scrollbar { display: none; }
+  .pdp-gallery__thumbs li { flex: none; }
+  .pdp-gallery__thumb { aspect-ratio: 3 / 4; }
+  .pdp-gallery__main { width: var(--pdp-photo-w); }
+  .pdp-gallery__thumbs { position: static; max-height: var(--pdp-stage-h); } /* the rail moves with the photograph */
+  .pdp-gallery__stage { width: 100%; height: auto; max-height: none; aspect-ratio: var(--ratio, 3 / 4); }
+
+  .pdp-info {
+    grid-column: 2; grid-row: 1;
+    position: sticky; top: var(--pdp-sticky-top); align-self: start;
+    padding: var(--space-xs) 0 var(--space-xl);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .pdp-hero { padding-top: var(--space-md); }
+  .pdp-gallery { margin: 0; }
+  .pdp-gallery--many {
+    display: grid; grid-template-columns: 64px minmax(0, calc(76svh * var(--ratio-n, 0.75)));
+    column-gap: var(--space-sm); justify-content: center; align-items: start;
+  }
+  .pdp-gallery:not(.pdp-gallery--many) .pdp-gallery__main { width: min(100%, calc(76svh * var(--ratio-n, 0.75))); margin-inline: auto; }
+  .pdp-gallery__thumbs {
+    order: 0; position: relative; flex-direction: column; gap: var(--space-xs);
+    padding: 3px; margin: -3px; max-width: none; max-height: 76svh; overflow-x: hidden; overflow-y: auto;
+  }
+  .pdp-gallery__thumbs li { flex: none; }
+  .pdp-gallery__thumb { aspect-ratio: 3 / 4; }
+  .pdp-gallery__stage { display: block; overflow: hidden; scroll-snap-type: none; aspect-ratio: var(--ratio, 3 / 4); }
+  .pdp-gallery__slide { position: absolute; inset: 0; flex: none; opacity: 0; scroll-snap-align: none; aspect-ratio: auto; }
+  .pdp-gallery__slide.is-active { opacity: 1; }
+  .pdp-gallery__btn { display: grid; width: 44px; height: 44px; }
+  .pdp-info { padding-top: var(--space-xl); }
+}
+
+/* ═══ Details panel rhythm ══════════════════════════════════════
+   One spacing scale through the panel (tokens.css), tighter than before so more of it sits beside the photograph:
+   tight steps inside a group (name → meaning, descriptor → price), --space-md between groups, --space-lg before
+   the call to action and the details list. Nothing is removed or restyled. The assurance rows are text, not
+   controls, so they no longer need a 44px touch height. */
+.pdp-info__name { margin-top: var(--space-2xs); }
+.pdp-info__meaning { margin-top: var(--space-2xs); }
+.pdp-info__descriptor { margin-top: var(--space-md); }
+.pdp-info__price { margin-top: var(--space-2xs); }
+.pdp-colours { margin-top: var(--space-md); }
+.pdp-info__description { margin-top: var(--space-md); }
+.pdp-info__actions { margin-top: var(--space-lg); }
+.pdp-trust { margin-top: var(--space-md); }
+.pdp-trust__list { margin-top: var(--space-sm); }
+.pdp-trust__list li { min-height: 0; padding-block: var(--space-xs); }
+.pdp-info__meta { margin-top: var(--space-lg); padding-top: var(--space-md); gap: var(--space-sm) var(--space-md); }
+.saree-swatch { margin-top: var(--space-lg); }
+@media (min-width: 1024px) { .pdp-info { padding-bottom: var(--space-md); } }

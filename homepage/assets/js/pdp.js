@@ -3,15 +3,24 @@
 (function () {
   'use strict';
 
-  var swipeMode = window.matchMedia('(max-width: 1023px)');
+  var swipeMode = window.matchMedia('(max-width: 767px)'); // phones swipe; tablets and up keep the rail + main image
 
-  /* ─── Gallery: crossfade on desktop, swipe on tablet/mobile ─ */
+  /* ─── Gallery: crossfade beside the thumbnail rail (tablet and desktop), swipe on phones ─ */
   var gallery = document.querySelector('[data-gallery]');
   if (gallery) {
     var track = gallery.querySelector('[data-gallery-track]');
     var slides = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-slide]'));
     var thumbs = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-thumb]'));
+    var rail = gallery.querySelector('.pdp-gallery__thumbs');
     var current = 0;
+    // When the rail holds more thumbnails than fit beside the photo it scrolls on its own; keep the chosen one in
+    // view by scrolling the rail only (never the page)
+    var revealThumb = function (t) {
+      if (!rail || !t || swipeMode.matches || rail.scrollHeight <= rail.clientHeight + 1) return;
+      var y = t.offsetTop, h = t.offsetHeight;
+      if (y < rail.scrollTop) rail.scrollTop = y - 4;
+      else if (y + h > rail.scrollTop + rail.clientHeight) rail.scrollTop = y + h - rail.clientHeight + 4;
+    };
 
     var setIndex = function (i) {
       current = i;
@@ -23,12 +32,16 @@
         t.classList.toggle('is-active', n === i);
         if (n === i) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
       });
+      gallery.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: i } })); // the colour choice follows the photo
     };
     var go = function (i) {
       var next = (i + slides.length) % slides.length;
       if (swipeMode.matches) track.scrollTo({ left: next * track.clientWidth, behavior: 'smooth' });
       setIndex(next);
+      revealThumb(thumbs[next]);
     };
+
+    gallery.snGo = function (i) { if (i !== current) go(i); }; // used by the colour choice
 
     if (slides.length > 1) {
       var prev = gallery.querySelector('[data-gallery-prev]');
@@ -55,6 +68,64 @@
       var onMode = function () { if (!swipeMode.matches) track.scrollLeft = 0; else track.scrollLeft = current * track.clientWidth; };
       if (swipeMode.addEventListener) swipeMode.addEventListener('change', onMode);
     }
+  }
+
+  /* ─── Colour choice: one print in several colours ───────────
+     Each chip carries its colour's name, price, swatch colour and gallery slide. Choosing one updates them all,
+     the bag buttons and the address (?colour=<key>), so every colour has its own link. */
+  var variants = document.querySelector('[data-variants]');
+  if (variants) {
+    var chips = Array.prototype.slice.call(variants.querySelectorAll('[data-variant]'));
+    var note = variants.querySelector('[data-variant-note]');
+    var swatch = document.querySelector('[data-swatch]');
+    var formatPrice = function (n) { return '₹ ' + Number(n).toLocaleString('en-IN'); };
+    var chosen = null;
+    var choose = function (chip, opts) {
+      opts = opts || {};
+      if (!chip || chip === chosen) return;
+      chosen = chip;
+      var key = chip.getAttribute('data-variant');
+      chips.forEach(function (c) { c.setAttribute('aria-checked', String(c === chip)); c.tabIndex = c === chip ? 0 : -1; });
+      document.querySelectorAll('[data-variant-label]').forEach(function (el) { el.textContent = chip.getAttribute('data-variant-name'); });
+      var price = chip.getAttribute('data-variant-price');
+      if (price) document.querySelectorAll('[data-variant-price-text]').forEach(function (el) { el.textContent = formatPrice(price); });
+      document.querySelectorAll('[data-add-to-bag][data-variant]').forEach(function (b) { b.setAttribute('data-variant', key); });
+      if (note) note.hidden = !chip.hasAttribute('data-variant-shared');
+      if (swatch) {
+        swatch.style.setProperty('--pc', chip.getAttribute('data-variant-hex'));
+        swatch.style.setProperty('--pc-text', chip.getAttribute('data-variant-text'));
+        var hex = swatch.querySelector('[data-swatch-hex]'); if (hex) hex.textContent = chip.getAttribute('data-variant-hex');
+        var nm = swatch.querySelector('[data-swatch-name]'); if (nm) nm.textContent = chip.getAttribute('data-variant-name');
+      }
+      if (!opts.fromGallery && gallery && gallery.snGo) gallery.snGo(Number(chip.getAttribute('data-variant-slide')));
+      if (!opts.silent) {
+        try { var u = new URL(location.href); u.searchParams.set('colour', key); history.replaceState(null, '', u); } catch (e) { /* old browser: the link just doesn't change */ }
+      }
+    };
+    chips.forEach(function (c, i) {
+      c.tabIndex = i === 0 ? 0 : -1;
+      c.addEventListener('click', function () { choose(c); });
+      // arrow keys move between colours, as in any radio group
+      c.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var next = chips[(i + d + chips.length) % chips.length];
+        next.focus(); choose(next);
+      });
+    });
+    // Browsing to a colour's own photo in the gallery chooses that colour (shared photos leave the choice alone)
+    if (gallery) gallery.addEventListener('gallery:change', function (e) {
+      if (chosen && Number(chosen.getAttribute('data-variant-slide')) === e.detail.index) return;
+      var owners = chips.filter(function (c) { return Number(c.getAttribute('data-variant-slide')) === e.detail.index; });
+      if (owners.length === 1) choose(owners[0], { fromGallery: true });
+    });
+    // Start at the colour in the link, if there is one
+    var wanted = null;
+    try { wanted = new URL(location.href).searchParams.get('colour'); } catch (e) { /* ignore */ }
+    var start = chips.filter(function (c) { return c.getAttribute('data-variant') === wanted; })[0];
+    chosen = null;
+    choose(start || chips[0], { silent: !start });
   }
 
   /* ─── Saree swatch: the fabric drifts a few pixels toward the pointer ─
@@ -133,7 +204,7 @@
       for (var i = 0; i < HOLDS.length; i++) {
         if (p <= HOLDS[i][1]) return i;
         var next = HOLDS[i + 1];
-        if (next && p < next[0]) return i + ease((p - HOLDS[i][1]) / (next[0] - HOLDS[i][1]));
+        if (next && p < next[0]) return i + (p - HOLDS[i][1]) / (next[0] - HOLDS[i][1]);
       }
       return n - 1;
     };
@@ -165,14 +236,28 @@
       el.style[prop] = value;
     };
 
-    /* Smoothing: the picture eases toward the scroll position instead of jumping to it, so a mouse
-       wheel (which moves the page in steps) reads as one continuous movement. EASE_MS is roughly how
-       long it takes to close most of the gap. Nothing is delayed for long, and scrolling itself is untouched. */
     var under = chapter.nextElementSibling && chapter.nextElementSibling.classList.contains('unfolded') ? chapter.nextElementSibling : null;
     if (under) document.documentElement.classList.add('has-chapter-reveal');
 
-    var EASE_MS = 120;
-    var shown = null, lastTime = 0; // shown = the { entry, p } currently on screen
+    /* Pace: scrolling sets where the chapter is heading; the picture follows at the scroll's own speed, within
+       limits, the same way scrolling down and up. Scroll slowly and it keeps step with the page; scroll faster and
+       it speeds up with you; flick and it tops out at a pace where every change is still seen, so a mouse wheel's
+       steps and a hard flick both read as one continuous movement. Each value (how far the colour has opened,
+       progress through the chapter, the state position) moves toward its target at
+         speed = the scroll's own speed + keep × how far behind it is,
+       kept between min (so it always settles) and max (the fastest it ever moves), in units per second.
+       At max, one change of state takes about half a second (1 / 2); slower scrolling gives slower changes, down
+       to the scroll's own pace. Scrolling itself is never touched. */
+    var PACE = {
+      entry: { min: 0.3, max: 2.4, keep: 4 },  // the colour opening as the chapter arrives
+      p:     { min: 0.1, max: 1.2, keep: 3 },  // progress through the pinned scroll
+      sp:    { min: 0.35, max: 2, keep: 3 },   // state position: 0 … n-1
+    };
+    // No state is ever skipped: the content arrives on the first state and leaves on the last, in both directions.
+    // ENTRY_IN: by here the colour has opened and the content faded in. P_OUT: after here the content starts to leave.
+    var ENTRY_IN = 0.65, P_OUT = 0.84;
+    var shown = null, lastTime = 0; // shown = the { entry, p, sp } currently on screen
+    var aimed = null, speedOf = { entry: 0, p: 0, sp: 0 }; // last frame's targets, and how fast the scroll moves each
 
     // Draws one frame. Returns true once the picture has caught up with the scroll position.
     function render(now) {
@@ -194,21 +279,38 @@
         entry: clamp((vh - rect.top) / vh, 0, 1),                 // 0 → 1 as the chapter arrives
         p: clamp(-rect.top / Math.max(1, rect.height - vh), 0, 1), // 0 → 1 across the pinned scroll
       };
+      target.sp = statePos(target.p);
       var settled = true;
-      if (still || !shown || typeof now !== 'number') shown = target;
-      else {
-        var k = 1 - Math.exp(-Math.min(now - lastTime, 64) / EASE_MS);
-        ['entry', 'p'].forEach(function (key) {
-          var gap = target[key] - shown[key];
-          if (Math.abs(gap) < 0.0004) shown[key] = target[key];
-          else { shown[key] += gap * k; settled = false; }
+      if (still || !shown || !aimed || typeof now !== 'number') {
+        shown = { entry: target.entry, p: target.p, sp: target.sp };
+        speedOf = { entry: 0, p: 0, sp: 0 };
+      } else {
+        var dt = Math.min(now - lastTime, 64) / 1000; // seconds since the last frame (capped after a pause)
+        var before = { entry: shown.entry, p: shown.p, sp: shown.sp };
+        ['entry', 'p', 'sp'].forEach(function (key) {
+          // how fast the scroll is moving this value, smoothed over about a tenth of a second
+          if (dt > 0) speedOf[key] += ((target[key] - aimed[key]) / dt - speedOf[key]) * Math.min(1, dt / 0.1);
+          var gap = target[key] - shown[key], pace = PACE[key];
+          var step = clamp(Math.abs(speedOf[key]) + pace.keep * Math.abs(gap), pace.min, pace.max) * dt;
+          if (Math.abs(gap) <= step) shown[key] = target[key];
+          else shown[key] += gap > 0 ? step : -step;
         });
+        // Hold back whichever value would skip a state. Decided from the last frame, so arriving and leaving run
+        // in the same order both ways.
+        if (before.entry < ENTRY_IN) shown.sp = Math.min(shown.sp, 0);    // arriving: the first state shows before anything changes
+        if (before.sp > 0) shown.entry = Math.max(shown.entry, ENTRY_IN); // leaving upward: back to the first state before the colour closes
+        if (before.sp < n - 1) shown.p = Math.min(shown.p, P_OUT);         // leaving downward: the last state shows before the content goes
+        if (before.p > P_OUT) shown.sp = Math.max(shown.sp, n - 1);        // coming back up: the content returns on the last state
+        settled = shown.entry === target.entry && shown.p === target.p && shown.sp === target.sp;
+        if (settled) speedOf = { entry: 0, p: 0, sp: 0 };
       }
+      aimed = { entry: target.entry, p: target.p, sp: target.sp };
       lastTime = typeof now === 'number' ? now : performance.now();
       var entry = shown.entry, p = shown.p;
 
-      var sp = statePos(p);
-      if (still) sp = Math.round(sp);
+      // the state position moves at its paced speed (above); each crossing is then eased in and out
+      var sp = Math.floor(shown.sp) + ease(shown.sp - Math.floor(shown.sp));
+      if (still) sp = Math.round(shown.sp);
 
       // Colour: opens from the centre as the chapter arrives and closes back into the centre as it ends.
       // Both are tied to scroll position, so scrolling up replays each one in reverse: coming back from
@@ -310,6 +412,64 @@
     redraw();
   }
 
+  /* ─── Saree video ─────────────────────────────────────────────
+     Gallery: the video slide plays (muted) only while it is the active slide; a toggle turns sound on.
+     Film card: loops silently while on screen; "Watch with sound" opens the full video in a dialog.
+     Reduced motion or data saver: nothing autoplays; posters show. A broken file hides its player. */
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches || !!(navigator.connection && navigator.connection.saveData);
+  var load = function (v) { if (v && !v.getAttribute('src') && v.dataset.src) { v.src = v.dataset.src; v.load(); } };
+  var tryPlay = function (v) { load(v); var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+
+  var videoSlide = document.querySelector('[data-gallery-video]');
+  if (videoSlide) {
+    var gv = videoSlide.querySelector('video'), sound = videoSlide.querySelector('[data-video-sound]');
+    var sync = function () {
+      if (videoSlide.classList.contains('is-active')) { if (!still || gv.dataset.asked) tryPlay(gv); } else gv.pause();
+    };
+    new MutationObserver(sync).observe(videoSlide, { attributes: true, attributeFilter: ['class'] });
+    // choosing the video is itself a request to play it, even under reduced motion
+    var thumb = document.querySelector('.pdp-gallery__thumb--video');
+    if (thumb) thumb.addEventListener('click', function () { gv.dataset.asked = '1'; setTimeout(sync, 0); });
+    sound.addEventListener('click', function () {
+      gv.muted = !gv.muted;
+      sound.setAttribute('aria-pressed', String(!gv.muted));
+      sound.textContent = gv.muted ? 'Sound off' : 'Sound on';
+      sound.setAttribute('aria-label', gv.muted ? 'Turn sound on' : 'Turn sound off');
+      if (!gv.muted) tryPlay(gv);
+    });
+    gv.addEventListener('error', function () { var li = thumb && thumb.closest('li'); if (li) li.hidden = true; });
+  }
+
+  /* Video card: loops silently while on screen; controls appear on hover, focus or a tap */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-vcard]'), function (card) {
+    var cv = card.querySelector('[data-vcard-video]'), soundBtn = card.querySelector('[data-vcard-sound]');
+    var label = card.querySelector('[data-vcard-sound-label]'), iconOn = card.querySelector('[data-vcard-icon-on]'), iconOff = card.querySelector('[data-vcard-icon-off]');
+    var timeEl = card.querySelector('[data-vcard-time]');
+    var fmt = function (s) { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+    cv.addEventListener('loadedmetadata', function () { timeEl.textContent = fmt(cv.duration); });
+    cv.addEventListener('error', function () { card.hidden = true; });
+    var setSound = function (on) {
+      cv.muted = !on;
+      soundBtn.setAttribute('aria-pressed', String(on));
+      label.textContent = on ? 'Sound on' : 'Sound off';
+      iconOn.hidden = !on; iconOff.hidden = on;
+      if (on) tryPlay(cv);
+    };
+    soundBtn.addEventListener('click', function () { setSound(cv.muted); });
+    var fullBtn = card.querySelector('[data-vcard-full]');
+    if (fullBtn) fullBtn.addEventListener('click', function () {
+      if (document.fullscreenElement) { document.exitFullscreen(); return; }
+      if (card.requestFullscreen) { card.requestFullscreen().then(function () { setSound(true); }).catch(function () {}); }
+      else if (cv.webkitEnterFullscreen) { load(cv); cv.webkitEnterFullscreen(); } // iPhone: the native player
+    });
+    // touch screens have no hover: a tap on the video shows the controls for a few seconds
+    var hideTimer;
+    cv.addEventListener('click', function () { card.classList.add('is-revealed'); clearTimeout(hideTimer); hideTimer = setTimeout(function () { card.classList.remove('is-revealed'); }, 3000); });
+    if (still) { load(cv); cv.preload = 'metadata'; }
+    else if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { if (e[0].isIntersecting) tryPlay(cv); else cv.pause(); }, { threshold: 0.35 }).observe(card);
+    else tryPlay(cv);
+  });
+
   /* ─── Buy bar: appears once the main Add to bag has scrolled away ─ */
   /* ─── The Saree, Unfolded: the photograph shifts slightly as the section crosses the screen ─ */
   var unfolded = document.querySelector('[data-unfolded]');
@@ -336,21 +496,21 @@
   // past it (anchor link, fast fling, restored scroll) never crosses a threshold, so an observer wouldn't fire.
   if (bar && cta) {
     var barButton = bar.querySelector('button');
-    var shown = null, queued = false;
-    var update = function () {
-      queued = false;
+    var barShown = null, barQueued = false; // own names: var is function-scoped, and the colour chapter above uses shown / queued
+    var updateBar = function () {
+      barQueued = false;
       var ctaGone = cta.getBoundingClientRect().bottom < 0;
       var footerIn = footer ? footer.getBoundingClientRect().top < window.innerHeight : false;
       var show = ctaGone && !footerIn;
-      if (show === shown) return;
-      shown = show;
+      if (show === barShown) return;
+      barShown = show;
       bar.classList.toggle('is-visible', show);
       bar.setAttribute('aria-hidden', String(!show));
       if (barButton) barButton.tabIndex = show ? 0 : -1;
     };
-    var queue = function () { if (!queued) { queued = true; requestAnimationFrame(update); } };
-    window.addEventListener('scroll', queue, { passive: true });
-    window.addEventListener('resize', queue);
-    update();
+    var queueBar = function () { if (!barQueued) { barQueued = true; requestAnimationFrame(updateBar); } };
+    window.addEventListener('scroll', queueBar, { passive: true });
+    window.addEventListener('resize', queueBar);
+    updateBar();
   }
 })();

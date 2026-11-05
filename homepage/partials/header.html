@@ -17,7 +17,7 @@
             <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="mega-shop" data-mega-trigger>Shop</button>
           </li>
           <li><a class="site-nav__link" href="/#edits">Edits</a></li>
-          <li class="hide-tablet"><a class="site-nav__link" href="/#craft">Craft</a></li>
+          <li class="hide-tablet"><a class="site-nav__link" href="/craft">Craft</a></li>
           <li><a class="site-nav__link" href="#">About</a></li>
         </ul>
       </nav>
@@ -43,41 +43,48 @@
       </ul>
     </div>
 
-    <!-- Shop mega menu -->
+    <!-- Shop mega menu: three columns of links, and a preview on the right that follows the hovered
+         (or focused) link: its photograph cross-fades in with a short line. Each link carries its own
+         preview in data-preview-* attributes. Links without a photograph show a plain panel. -->
     <div class="mega" id="mega-shop" data-mega hidden>
       <div class="container mega__grid">
         <div class="mega__col">
           <p class="eyebrow">Shop</p>
           <ul>
-            <li><a href="/#new-arrivals">New arrivals</a></li>
-            <li><a href="/sarees">All sarees</a></li>
-            <li><a href="/edits/festive">Festive edit</a></li>
+            <li><a href="/#new-arrivals" data-preview data-preview-img="/assets/images/hariyali.jpg" data-preview-pos="50% 40%" data-preview-title="New arrivals" data-preview-text="The newest sarees, starting with Hariyali in teal and gold.">New arrivals</a></li>
+            <li><a href="/sarees" data-preview data-preview-img="/assets/images/kajal.jpg" data-preview-pos="50% 70%" data-preview-title="All sarees" data-preview-text="The whole collection, with filters for colour, fabric, edit and price.">All sarees</a></li>
+            <li><a href="/edits/festive" data-preview data-preview-img="/assets/images/panna.jpg" data-preview-pos="50% 80%" data-preview-title="The festive edit" data-preview-text="For evenings, celebrations and everything worth dressing for.">Festive edit</a></li>
           </ul>
         </div>
         <div class="mega__col">
           <p class="eyebrow">By region</p>
           <ul>
-            <li><a href="/categories/banaras-ki-bunkari">Banaras ki Bunkari</a></li>
-            <li><a href="/categories/kolkata-ki-kalakari">Kolkata ki Kalakari</a></li>
-            <li><a href="/categories/rajasthan-ki-rajshahi">Rajasthan ki Rajshahi</a></li>
-            <li><a href="/categories/gujarat-ki-garima">Gujarat ki Garima</a></li>
-            <li><a href="/categories/pedana-ki-kalamkari">Pedana ki Kalamkari</a></li>
-            <li><a href="/categories/bihar-ki-bahar">Bihar ki Bahar</a></li>
-            <li><a href="/categories/madhya-pradesh-ki-chanderi">Madhya Pradesh ki Chanderi</a></li>
+            <li><a href="/categories/banaras-ki-bunkari" data-preview data-preview-img="/assets/images/panna.jpg" data-preview-pos="50% 80%" data-preview-title="Banaras ki Bunkari" data-preview-text="Silk and zari from the looms of Varanasi. Panna, Kairi, Jamun, Neel and Bagh.">Banaras ki Bunkari</a></li>
+            <li><a href="/categories/kolkata-ki-kalakari" data-preview data-preview-img="" data-preview-pos="" data-preview-title="Kolkata ki Kalakari" data-preview-text="Sarees from Bengal are on their way.">Kolkata ki Kalakari</a></li>
+            <li><a href="/categories/rajasthan-ki-rajshahi" data-preview data-preview-img="/assets/images/anaar.jpg" data-preview-pos="50% 45%" data-preview-title="Rajasthan ki Rajshahi" data-preview-text="Tie-dyed bandhani in deep, festive colour. Starting with Anaar in maroon.">Rajasthan ki Rajshahi</a></li>
+            <li><a href="/categories/gujarat-ki-garima" data-preview data-preview-img="/assets/images/rangoli.jpg" data-preview-pos="50% 40%" data-preview-title="Gujarat ki Garima" data-preview-text="Ikat in bold colour and pattern: Rangoli, Saanjh and Sindoor.">Gujarat ki Garima</a></li>
+            <li><a href="/categories/pedana-ki-kalamkari" data-preview data-preview-img="/assets/images/leela.jpg" data-preview-pos="50% 40%" data-preview-title="Pedana ki Kalamkari" data-preview-text="Hand-painted Kalamkari from Andhra Pradesh: Kahani and Leela.">Pedana ki Kalamkari</a></li>
+            <li><a href="/categories/bihar-ki-bahar" data-preview data-preview-img="" data-preview-pos="" data-preview-title="Bihar ki Bahar" data-preview-text="Sarees from Bihar are on their way.">Bihar ki Bahar</a></li>
+            <li><a href="/categories/madhya-pradesh-ki-chanderi" data-preview data-preview-img="" data-preview-pos="" data-preview-title="Madhya Pradesh ki Chanderi" data-preview-text="Chanderi sarees are on their way.">Madhya Pradesh ki Chanderi</a></li>
           </ul>
         </div>
         <div class="mega__col">
           <p class="eyebrow">The craft</p>
           <ul>
-            <li><a href="/#craft">The art of craftsmanship</a></li>
-            <li><a href="#">Care guide</a></li>
+            <li><a href="/craft" data-preview data-preview-img="/assets/images/craft-film-poster.jpg" data-preview-pos="60% 50%" data-preview-title="The art of craftsmanship" data-preview-text="How a saree comes off the loom, thread by thread.">The art of craftsmanship</a></li>
+            <li><a href="#" data-preview data-preview-img="/assets/images/chameli-detail.jpg" data-preview-pos="50% 50%" data-preview-title="Care guide" data-preview-text="How to store, fold and look after your saree.">Care guide</a></li>
           </ul>
         </div>
-        <a class="mega__feature" href="/edits/festive">
-          <div class="media media--4-5">
-            <img src="/assets/images/panna.jpg" alt="" loading="lazy" style="object-position:50% 80%">
+        <a class="mega__preview" href="/edits/festive" data-mega-preview aria-live="polite">
+          <div class="mega__preview-media">
+            <img class="mega__preview-img is-shown" data-preview-layer src="/assets/images/panna.jpg" alt="" loading="lazy" style="object-position:50% 80%">
+            <img class="mega__preview-img" data-preview-layer alt="" loading="lazy">
+            <span class="mega__preview-empty" data-preview-empty>Coming soon</span>
           </div>
-          <span class="link"><span class="link__label">The festive edit</span><span class="link__arrow" aria-hidden="true">→</span></span>
+          <span class="mega__preview-text">
+            <span class="mega__preview-title" data-preview-title-el>The festive edit</span>
+            <span class="mega__preview-line" data-preview-text-el>For evenings, celebrations and everything worth dressing for.</span>
+          </span>
         </a>
       </div>
     </div>
@@ -97,13 +104,14 @@
         <li><a href="/#new-arrivals">New arrivals</a></li>
         <li><a href="/sarees">All sarees</a></li>
         <li><a href="/#edits">Edits</a></li>
-        <li><a href="/#craft">The art of craftsmanship</a></li>
+        <li><a href="/craft">The art of craftsmanship</a></li>
         <li><a href="#">About</a></li>
       </ul>
       <ul class="mobile-menu__secondary">
         <li><a href="/wishlist">Wishlist (<span data-wishlist-count>0</span>)</a></li>
         <li><a href="#">Account</a></li>
-        <li><a href="#">Help</a></li>
+        <li><a href="/faq">Help</a></li>
+        <li><a href="/contact">Contact</a></li>
         <li><a href="#">Instagram</a></li>
       </ul>
     </nav>

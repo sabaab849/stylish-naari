@@ -69,7 +69,7 @@
 }
 /* the ivory runs edge to edge behind the bar, without clipping the panels that hang below it */
 .js .filters::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(-1 * var(--bleed)); right: calc(-1 * var(--bleed)); background: var(--color-bg); }
-body:has(.site-header:not(.is-hidden)) .filters { top: var(--header-height); }
+.js .filters { top: var(--header-height); } /* the header is always pinned, so the bar sits just below it */
 .js .collection__tabs--filtered { margin-bottom: 0; }
 
 .filters__bar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-5); min-height: 56px; }
@@ -81,8 +81,8 @@ body:has(.site-header:not(.is-hidden)) .filters { top: var(--header-height); }
   font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 14px;
 }
 .filter__summary::-webkit-details-marker { display: none; }
-.filter__summary::after { content: "+"; font-weight: 400; font-size: 16px; line-height: 1; }
-.filter[open] .filter__summary::after { content: "–"; }
+/* no +/– marks: the open filter is shown by an underline instead */
+.filter[open] .filter__summary { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .filter__count { font-size: 11px; font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
 .filter__panel {
   position: absolute; top: 100%; left: calc(-1 * var(--spacing-4)); z-index: 2;
@@ -92,7 +92,7 @@ body:has(.site-header:not(.is-hidden)) .filters { top: var(--header-height); }
 }
 .filter__option {
   display: flex; align-items: center; gap: var(--spacing-3); min-height: 40px; cursor: pointer;
-  font-size: 14px;
+  font-size: var(--font-size-nav);
 }
 .filter__option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 /* the tick box, drawn */
@@ -103,7 +103,7 @@ body:has(.site-header:not(.is-hidden)) .filters { top: var(--header-height); }
 .filter__option input:checked ~ .filter__name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .filter__n { margin-left: auto; padding-left: var(--spacing-4); font-size: 11px; font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
 
-.filters__sort { display: inline-flex; align-items: center; gap: var(--spacing-2); flex: none; font-size: 14px; color: var(--color-text-muted); }
+.filters__sort { display: inline-flex; align-items: center; gap: var(--spacing-2); flex: none; font-size: var(--font-size-nav); color: var(--color-text-muted); }
 .filters__sort select {
   appearance: none; -webkit-appearance: none;
   min-height: 44px; padding: 0 18px 0 0; border: 0; border-radius: 0; background: transparent;
@@ -112,6 +112,7 @@ body:has(.site-header:not(.is-hidden)) .filters { top: var(--header-height); }
   background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
   background-position: calc(100% - 5px) 55%, 100% 55%; background-size: 5px 5px; background-repeat: no-repeat;
 }
+@media (max-width: 767px) { .filters__sort select { font-size: 16px; } } /* 16px: phones don't zoom into the field */
 
 .filters__status {
   display: flex; align-items: center; gap: var(--spacing-4); min-height: 36px; padding-bottom: var(--spacing-2);

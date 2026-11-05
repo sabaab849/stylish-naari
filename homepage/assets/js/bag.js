@@ -28,6 +28,21 @@
     });
   }
   function find(slug) { return (catalogue || []).filter(function (p) { return p.slug === slug; })[0]; }
+  // A line is one saree in one colour: { slug, variant, qty }. "id" keeps two colours of one print apart.
+  function lineId(l) { return l.slug + (l.variant ? '|' + l.variant : ''); }
+  function resolve(line) {
+    var p = find(line.slug);
+    if (!p) return null;
+    var v = line.variant && p.variants ? p.variants.filter(function (x) { return x.key === line.variant; })[0] : null;
+    return {
+      p: p,
+      name: v ? p.name + ', ' + v.name.toLowerCase() : p.name,
+      descriptor: v ? p.attributes.fabric + ' · ' + v.name : p.descriptor,
+      price: v ? v.price : p.price,
+      img: p.images[v ? v.imageIndex : 0] || p.images[0],
+      href: '/products/' + p.slug + (v ? '?colour=' + v.key : ''),
+    };
+  }
 
   /* ─── Count everywhere ─────────────────────────────── */
   function renderCount() {
@@ -56,24 +71,24 @@
     }
     var total = 0;
     list.innerHTML = '<ul class="bag-lines">' + lines.map(function (line) {
-      var p = find(line.slug);
-      if (!p) return '';
-      total += (p.price || 0) * line.qty;
-      var img = p.images[0];
+      var r = resolve(line);
+      if (!r) return '';
+      var p = r.p, id = lineId(line), img = r.img;
+      total += (r.price || 0) * line.qty;
       return '<li class="bag-line">' +
-        '<a class="bag-line__media" href="/products/' + p.slug + '"><img src="' + img.src + '" alt="" width="' + img.width + '" height="' + img.height + '"></a>' +
+        '<a class="bag-line__media" href="' + r.href + '"><img src="' + img.src + '" alt="" width="' + img.width + '" height="' + img.height + '"></a>' +
         '<div class="bag-line__info">' +
-          '<a class="bag-line__name" href="/products/' + p.slug + '">' + p.name + '</a>' +
-          '<p class="bag-line__descriptor">' + p.descriptor + '</p>' +
+          '<a class="bag-line__name" href="' + r.href + '">' + r.name + '</a>' +
+          '<p class="bag-line__descriptor">' + r.descriptor + '</p>' +
           '<div class="bag-line__qty">' +
-            '<button type="button" class="bag-line__step" data-bag-step="-1" data-slug="' + p.slug + '" aria-label="Decrease quantity of ' + p.name + '">−</button>' +
+            '<button type="button" class="bag-line__step" data-bag-step="-1" data-slug="' + id + '" aria-label="Decrease quantity of ' + r.name + '">−</button>' +
             '<span aria-live="polite">' + line.qty + '</span>' +
-            '<button type="button" class="bag-line__step" data-bag-step="1" data-slug="' + p.slug + '" aria-label="Increase quantity of ' + p.name + '">+</button>' +
+            '<button type="button" class="bag-line__step" data-bag-step="1" data-slug="' + id + '" aria-label="Increase quantity of ' + r.name + '">+</button>' +
           '</div>' +
         '</div>' +
         '<div class="bag-line__end">' +
-          '<p class="bag-line__price">' + formatPrice(p.price * line.qty) + '</p>' +
-          '<button type="button" class="bag-line__remove" data-bag-remove="' + p.slug + '">Remove</button>' +
+          '<p class="bag-line__price">' + formatPrice(r.price * line.qty) + '</p>' +
+          '<button type="button" class="bag-line__remove" data-bag-remove="' + id + '">Remove</button>' +
         '</div>' +
       '</li>';
     }).join('') + '</ul>';
@@ -99,18 +114,19 @@
   }
 
   /* ─── Mutations ────────────────────────────────────── */
-  function add(slug, qty) {
+  function add(slug, qty, variant) {
     var lines = items();
-    var line = lines.filter(function (l) { return l.slug === slug; })[0];
-    if (line) line.qty += qty || 1; else lines.push({ slug: slug, qty: qty || 1 });
+    var id = slug + (variant ? '|' + variant : '');
+    var line = lines.filter(function (l) { return lineId(l) === id; })[0];
+    if (line) line.qty += qty || 1; else lines.push(variant ? { slug: slug, variant: variant, qty: qty || 1 } : { slug: slug, qty: qty || 1 });
     write(lines); renderCount();
   }
   function step(slug, delta) {
-    var lines = items().map(function (l) { if (l.slug === slug) l.qty += delta; return l; }).filter(function (l) { return l.qty > 0; });
+    var lines = items().map(function (l) { if (lineId(l) === slug) l.qty += delta; return l; }).filter(function (l) { return l.qty > 0; });
     write(lines); renderCount(); renderDrawer();
   }
   function remove(slug) {
-    write(items().filter(function (l) { return l.slug !== slug; })); renderCount(); renderDrawer();
+    write(items().filter(function (l) { return lineId(l) !== slug; })); renderCount(); renderDrawer();
   }
 
   /* ─── Events ───────────────────────────────────────── */
@@ -123,7 +139,7 @@
     var adder = t.closest('[data-add-to-bag]');
     if (adder && !adder.disabled) {
       var slug = adder.getAttribute('data-add-to-bag');
-      add(slug, 1); // optimistic: the count changes immediately
+      add(slug, 1, adder.getAttribute('data-variant') || null); // optimistic: the count changes immediately
       var label = adder.getAttribute('data-add-label') || adder.textContent;
       adder.textContent = 'Added';
       adder.classList.add('is-added');

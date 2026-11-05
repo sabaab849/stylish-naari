@@ -6,7 +6,7 @@
   min-width: 16px; height: 16px; padding: 0 4px;
   border-radius: var(--radius-full);
   background: currentColor;
-  font-size: 10px; line-height: 16px; text-align: center; font-weight: var(--font-weight-medium);
+  font-size: 11px; line-height: 16px; text-align: center; font-weight: var(--font-weight-medium);
 }
 /* the number sits in the opposite colour of the header text */
 .bag-icon__count { color: var(--color-ivory); background: var(--color-ink); }

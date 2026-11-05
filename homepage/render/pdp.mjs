@@ -12,7 +12,7 @@ export const link = (label, href = '#', extra = '') => `<a class="link${extra}" 
 const focusStyle = (img) => [img.focus ? `--s:${img.focus.s}; --ox:${img.focus.ox}; --oy:${img.focus.oy}` : '', img.pos ? `object-position:${img.pos}` : ''].filter(Boolean).join('; ');
 
 /* An image cropped from a product photo. Mirrors a Shopify focal point + zoom. */
-function cropImg(product, crop, { alt = '', loading = 'lazy', cls = '' } = {}) {
+export function cropImg(product, crop, { alt = '', loading = 'lazy', cls = '' } = {}) {
   const img = product.images[crop.img ?? 0];
   if (!img) return '';
   const style = [
@@ -29,38 +29,59 @@ function renderGallery(p) {
   // Views: each photograph, then closer views of the fall, pallu and border cut from those photographs.
   // (These replaced the separate "On the body" section, so the rail has more than one or two images.)
   const cropStyle = (c) => [c.s ? `--s:${c.s}` : '', c.ox ? `--ox:${c.ox}` : '', c.oy ? `--oy:${c.oy}` : '', c.op ? `object-position:${c.op}` : ''].filter(Boolean).join('; ');
-  // Order: the portrait(s) → one print detail → one border detail → the product shot.
-  //   print detail  = the fabric close-up photo itself, uncropped (full resolution, so it stays sharp)
-  //   border detail = a modest crop of that close-up (zoom capped at 1.6 so it stays sharp too)
-  //   product shot  = the saree laid flat, shown whole on its own backdrop colour
+  // Every photograph of the saree is in the rail. Order: the portrait(s) → the close-up photographs (print,
+  // embroidery, border) → a border crop if no border photograph exists → the product shot(s) → the video.
+  //   close-ups     = each close-up photo itself, uncropped (full resolution, so it stays sharp)
+  //   border detail = a modest crop of the close-up (zoom capped at 1.6 so it stays sharp too), only when the
+  //                   photograph it is cut from isn't already shown in full
+  //   product shot  = the saree laid flat or folded, shown whole on its own backdrop colour
   // Sarees with only a portrait get two fabric-only close-ups cut from it instead.
   const portraits = p.images.filter((im) => !im.role);
-  const detail = p.images.find((im) => im.role === 'detail');
+  const details = p.images.filter((im) => im.role === 'detail');
+  const closeups = p.images.filter((im) => im.role && im.role !== 'detail' && im.role !== 'product'); // e.g. a border photo
   const products = p.images.filter((im) => im.role === 'product');
-  const views = portraits.map((img) => ({ img, style: focusStyle(img), alt: img.alt }));
+  // Model portraits with a frame (images[].frame: a 3:4 window, as shares of the photo) are cropped in on the model and
+  // the saree, so the backdrop doesn't fill the picture. Other portraits are shown whole. Close-up views are crops.
+  const framed = (f) => `--fw:${+(100 / f.w).toFixed(3)}%; --fx:${+(-100 * f.x / f.w).toFixed(3)}%; --fy:${+(-100 * f.y / f.h).toFixed(3)}%`;
+  const views = portraits.map((img) => img.frame
+    ? { img, style: framed(img.frame), alt: img.alt, frame: true }
+    : { img, style: '', alt: img.alt, whole: true });
   const cropView = (key, label, maxZoom) => {
     const c = p.crops?.[key];
     const img = c && p.images[c.img ?? 0];
     if (img) views.push({ img, style: cropStyle({ ...c, s: Math.min(c.s ?? 1, maxZoom) }), alt: `${p.name}: ${label}` });
   };
-  if (detail) {
-    views.push({ img: detail, style: '', alt: `${p.name}: the print, up close` });
-    cropView('borderDetail', 'the border', 1.6);
+  if (details.length || closeups.length) {
+    details.forEach((img, n) => views.push({ img, style: '', alt: n ? (img.alt || `${p.name}: up close`) : `${p.name}: the print, up close` }));
+    closeups.forEach((img) => views.push({ img, style: '', alt: img.alt || `${p.name}: up close` }));
+    const bc = p.crops?.borderDetail;
+    if (bc && !closeups.includes(p.images[bc.img ?? 0])) cropView('borderDetail', 'the border', 1.6);
   } else if (portraits.length === 1) {
     cropView('border', 'the border', 2.4);
     cropView('swatch', 'the fabric', 2.4);
   }
-  for (const img of products) views.push({ img, style: `object-fit:contain; background:${img.bg || 'transparent'}`, alt: img.alt, bg: img.bg });
+  // A product shot is shown whole on its backdrop colour, unless it is a full-frame photo of the cloth (fit: cover)
+  for (const img of products) views.push({ img, style: img.fit === 'cover' ? '' : `object-fit:contain; background:${img.bg || 'transparent'}`, alt: img.alt, bg: img.bg, whole: img.fit !== 'cover' });
+  if (p.video?.src) views.push({ video: p.video, img: { src: p.video.poster || p.images[0].src, width: p.video.width || 720, height: p.video.height || 1280 }, alt: `${p.name}: the saree in motion` });
   const many = views.length > 1;
-  const slides = views.map((v, i) => `
-        <figure class="pdp-gallery__slide${i === 0 ? ' is-active' : ''}" data-gallery-slide aria-label="Image ${i + 1} of ${views.length}"${i ? ' aria-hidden="true"' : ''}>
+  // The frame's shape: 3:4 when the first photo is framed; otherwise the first photo's own shape, but never wider than
+  // square (a landscape catalogue photo sits whole inside a square frame), so the picture always fits the screen.
+  const first = views[0].img;
+  const [rw, rh] = views[0].frame ? [3, 4] : first.width > first.height ? [1, 1] : [first.width, first.height];
+  const ratio = `--ratio:${rw} / ${rh}; --ratio-n:${(rw / rh).toFixed(4)}`;
+  const slides = views.map((v, i) => v.video ? `
+        <figure class="pdp-gallery__slide pdp-gallery__slide--video" data-gallery-slide data-gallery-video aria-label="Video, ${i + 1} of ${views.length}" aria-hidden="true">
+          <video class="pdp-gallery__video" muted loop playsinline preload="none" poster="${esc(v.video.poster || '')}" data-src="${esc(v.video.src)}" width="${v.img.width}" height="${v.img.height}" aria-label="${esc(v.alt)}"></video>
+          <button class="pdp-gallery__sound" type="button" data-video-sound aria-pressed="false" aria-label="Turn sound on">Sound off</button>
+        </figure>` : `
+        <figure class="pdp-gallery__slide${i === 0 ? ' is-active' : ''}${v.whole ? ' pdp-gallery__slide--whole' : ''}${v.frame ? ' pdp-gallery__slide--framed' : ''}" data-gallery-slide aria-label="Image ${i + 1} of ${views.length}"${i ? ' aria-hidden="true"' : ''}>
           <img class="crop" src="${esc(v.img.src)}" alt="${esc(v.alt)}" width="${v.img.width}" height="${v.img.height}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" style="${esc(v.style)}">
         </figure>`).join('');
   // A rail of thumbnails beside the image, and a round arrow on each side of it
   const thumbs = many ? `
       <ul class="pdp-gallery__thumbs">${views.map((v, i) => `
-        <li><button class="pdp-gallery__thumb${i === 0 ? ' is-active' : ''}" type="button" data-gallery-thumb aria-label="Show image ${i + 1} of ${views.length}"${i === 0 ? ' aria-current="true"' : ''}>
-          <img class="crop" src="${esc(v.img.src)}" alt="" width="${v.img.width}" height="${v.img.height}" loading="lazy" decoding="async" style="${esc(v.style)}">
+        <li><button class="pdp-gallery__thumb${i === 0 ? ' is-active' : ''}${v.video ? ' pdp-gallery__thumb--video' : ''}" type="button" data-gallery-thumb aria-label="${v.video ? 'Play the video' : `Show image ${i + 1} of ${views.length}`}"${i === 0 ? ' aria-current="true"' : ''}>
+          <img class="crop" src="${esc(v.img.src)}" alt="" width="${v.img.width}" height="${v.img.height}" loading="lazy" decoding="async" style="${esc(v.style || '')}">${v.video ? '<span class="pdp-gallery__thumb-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>' : ''}
         </button></li>`).join('')}
       </ul>` : '';
   const chevron = (d) => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="${d}"/></svg>`;
@@ -68,12 +89,61 @@ function renderGallery(p) {
         <button class="pdp-gallery__btn pdp-gallery__btn--prev" type="button" data-gallery-prev aria-label="Previous image">${chevron('M14.5 6l-6 6 6 6')}</button>
         <button class="pdp-gallery__btn pdp-gallery__btn--next" type="button" data-gallery-next aria-label="Next image">${chevron('M9.5 6l6 6-6 6')}</button>` : '';
   return `
-    <section class="pdp-gallery${many ? ' pdp-gallery--many' : ''}" aria-label="${esc(p.name)} images" data-gallery tabindex="-1">${thumbs}
+    <section class="pdp-gallery${many ? ' pdp-gallery--many' : ''}" aria-label="${esc(p.name)} images" data-gallery tabindex="-1" style="${ratio}">${thumbs}
       <div class="pdp-gallery__main">
-        <div class="pdp-gallery__stage" data-gallery-track style="--ratio:4 / 5">${slides}
+        <div class="pdp-gallery__stage" data-gallery-track>${slides}
         </div>${controls}
       </div>
     </section>`;
+}
+
+/* ─── Video card: in the product panel, for sarees with a video ─────────────
+   A 9:16 reel that loops silently. Nothing sits on the video until it is hovered (or tapped on touch
+   screens): then a soft gradient brings up a sound toggle, the running time and a full-screen button.
+   Same behaviour as react/SareeVideoCard.jsx. */
+function renderFilmCard(p, { full = true, cls = '' } = {}) {
+  const v = p.video;
+  const icon = (d) => `<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  return `
+      <figure class="video-card${cls ? ' ' + cls : ''}" data-vcard>
+        <video class="video-card__video" data-vcard-video muted loop playsinline preload="none" poster="${esc(v.poster || '')}" data-src="${esc(v.src)}" width="${v.width || 720}" height="${v.height || 1280}" aria-label="${esc(p.name)}: the saree in motion"></video>
+        <div class="video-card__shade" aria-hidden="true"></div>
+        <figcaption class="video-card__bar">
+          <button class="video-card__glass video-card__sound" type="button" data-vcard-sound aria-pressed="false">
+            <span data-vcard-icon-off>${icon('<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/>')}</span>
+            <span data-vcard-icon-on hidden>${icon('<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>')}</span>
+            <span data-vcard-sound-label>Sound off</span>
+          </button>
+          <span class="video-card__right">
+            <span class="video-card__glass video-card__time" data-vcard-time>0:00</span>
+            ${full ? `<button class="video-card__glass video-card__full" type="button" data-vcard-full aria-label="Watch full screen">${icon('<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>')}</button>` : ''}
+          </span>
+        </figcaption>
+      </figure>`;
+}
+
+/* ─── The drape in motion: a full-width editorial feature, for sarees with a video ──
+   A softly blurred, vignetted backdrop of the saree's own poster frame; on it a two-panel card: the 9:16
+   reel in a white frame, and a short editorial note on ivory. Copy comes from product.motion (draft), or
+   falls back to the product's own description. */
+function renderMotion(p) {
+  if (!p.video?.src) return '';
+  const m = p.motion || {};
+  const text = m.text || p.description;
+  const motif = '<svg viewBox="0 0 48 16" width="48" height="16" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M0 8h17M31 8h17"/><circle cx="24" cy="8" r="4.5"/><circle cx="24" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg>';
+  return `
+  <section class="motion" aria-labelledby="motion-title" style="--motion-bg:url('${esc(p.video.poster || p.images[0].src)}')">
+    <div class="motion__backdrop" aria-hidden="true"></div>
+    <div class="motion__card" data-reveal>
+      <div class="motion__frame">${renderFilmCard(p, { full: false, cls: 'video-card--framed' })}</div>
+      <div class="motion__text">
+        <h2 class="motion__title" id="motion-title">${esc(m.title || 'The drape in motion')}</h2>
+        <span class="motion__motif">${motif}</span>
+        ${text ? `<p class="motion__body">${esc(text)}</p>` : ''}
+        <a class="motion__cta" href="${esc(m.href || '/#craft')}">${esc(m.cta || 'Explore the craft')} <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>`;
 }
 
 function specRows(p) {
@@ -81,6 +151,7 @@ function specRows(p) {
   const colourNames = p.colours.map((c) => c.name).join(', ');
   return [
     ['Fabric', a.fabric],
+    ['Range', a.range], // Premium / Semi-premium, from the client's catalogue
     ['Colour', a.colourway || colourNames],
     ['Border', a.border],
     ['Motif', a.motif],
@@ -92,12 +163,41 @@ function specRows(p) {
   ].filter(([, v]) => v);
 }
 
+/* ─── Colour variants: one print in several colours ─────────
+   A product with variants (products.json → variants[]) shows a colour choice under the price. Each colour has its
+   own link (?colour=<key>), price and photo (variants[].imageIndex = its slide in the gallery). pdp.js swaps the
+   name, price, photo, swatch and the bag button when a colour is chosen; the page renders the first colour. */
+export const variantsOf = (p) => (p.variants?.length > 1 ? p.variants : null);
+function renderColourChoice(p) {
+  const vs = variantsOf(p);
+  if (!vs) return '';
+  const v = vs[0];
+  const sharedNote = 'Shown together with the other colours in one photograph.';
+  return `
+      <div class="pdp-colours" data-variants data-shared-note="${esc(sharedNote)}">
+        <p class="pdp-colours__label"><span class="pdp-colours__eyebrow">Colour</span> <span class="pdp-colours__name" data-variant-label>${esc(v.name)}</span></p>
+        <ul class="pdp-colours__list" role="radiogroup" aria-label="Colour">${vs.map((x, i) => `
+          <li><button class="pdp-colours__chip" type="button" role="radio" aria-checked="${i === 0}" aria-label="${esc(x.name)}"
+            data-variant="${esc(x.key)}" data-variant-name="${esc(x.name)}" data-variant-price="${x.price ?? ''}" data-variant-slide="${x.imageIndex}"
+            data-variant-hex="${esc(x.colour.hex)}" data-variant-text="${esc(x.colour.text)}"${x.imageShared ? ' data-variant-shared' : ''}
+            style="--chip:${esc(x.colour.hex)}"></button></li>`).join('')}
+        </ul>
+        <p class="pdp-colours__note" data-variant-note${v.imageShared ? '' : ' hidden'}>${esc(sharedNote)}</p>
+      </div>`;
+}
+
 function renderInfo(p, data, index, total) {
   const edit = p.edits.map((k) => data.edits[k]).filter(Boolean)[0];
-  const hasPrice = p.price != null;
-  const meta = specRows(p).slice(0, 4).map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const vs = variantsOf(p);
+  const price = vs ? vs[0].price : p.price;
+  const hasPrice = price != null;
+  const chips = false && p.colours.length ? `<span class="pdp-info__chips">${p.colours.map((c) => `<span class="pdp-info__chip" style="background:${esc(c.hex)}" title="${esc(c.name)}"></span>`).join('')}</span>` : '';
+  const meta = specRows(p).slice(0, 4).map(([k, v]) => k === 'Colour' && vs
+    ? `<div><dt>${esc(k)}</dt><dd data-variant-label>${esc(vs[0].name)}</dd></div>`
+    : `<div><dt>${esc(k)}</dt><dd>${esc(v)}${k === 'Colour' ? chips : ''}</dd></div>`).join('');
+  const variantAttr = vs ? ` data-variant="${esc(vs[0].key)}"` : '';
   const button = hasPrice
-    ? `<button class="button button--filled button--block" type="button" data-add-to-bag="${esc(p.slug)}" data-add-label="Add to bag">Add to bag</button>`
+    ? `<button class="button button--filled button--block" type="button" data-add-to-bag="${esc(p.slug)}"${variantAttr} data-add-label="Add to bag">Add to bag</button>`
     : `<button class="button button--filled button--block" type="button" disabled>Add to bag</button>
           <p class="pdp-info__note">Price to be confirmed — this saree can’t be added to the bag yet.</p>`;
   return `
@@ -106,14 +206,15 @@ function renderInfo(p, data, index, total) {
       <h1 class="t-h1 pdp-info__name">${esc(p.name)}</h1>
       ${p.nameMeaning ? `<p class="pdp-info__meaning"><em class="serif">${esc(p.nameMeaning)}</em></p>` : ''}
       <p class="pdp-info__descriptor">${esc(p.descriptor)}</p>
-      ${hasPrice ? `<p class="pdp-info__price" data-price>${formatPrice(p.price)}</p>` : ''}
+      ${hasPrice ? `<p class="pdp-info__price" data-price data-variant-price-text>${formatPrice(price)}</p>` : ''}
+      ${renderColourChoice(p)}
       ${p.description ? `<p class="pdp-info__description">${esc(p.description)}</p>` : ''}
       <div class="pdp-info__actions" data-pdp-cta>
         ${button}
       </div>${renderTrust(p, data)}
       ${meta ? `<dl class="pdp-info__meta">${meta}</dl>` : ''}
       ${data.store.shipping && !data.store.assurances?.length ? `<p class="pdp-info__shipping">${esc(data.store.shipping)}</p>` : ''}
-      ${renderSareeSwatch(p, index, total)}
+      ${p.video?.src ? '' : renderSareeSwatch(p, index, total)}
     </div>`;
 }
 
@@ -142,11 +243,12 @@ function renderTrust(p, data) {
    It introduces the colour that the colour chapter later spreads across the whole screen.
    Reusable: everything comes from the product record (crops.swatch, colours, attributes). */
 export function renderSareeSwatch(p, index, total) {
-  const c = p.colours[0];
+  const vs = variantsOf(p);
+  const c = vs ? vs[0].colour : p.colours[0];
   if (!c) return '';
   const a = p.attributes;
   const crop = p.crops?.swatch || p.crops?.weave;
-  const second = p.colours[1];
+  const second = vs ? null : p.colours[1];
   const meta = [a.fabric, a.border].filter(Boolean).join(' · ');
   const alt = `Close-up of ${p.name}'s ${(a.fabric || 'fabric').toLowerCase()}${a.colourway ? `: ${a.colourway.toLowerCase()}` : ''}`;
   return `
@@ -158,9 +260,9 @@ export function renderSareeSwatch(p, index, total) {
       <figcaption class="saree-swatch__label${second ? ' saree-swatch__label--pair' : ''}">
         <span class="saree-swatch__row">
           <span class="saree-swatch__no">Saree ${pad2(index + 1)} / ${pad2(total)}</span>
-          <span class="saree-swatch__hex">${esc(c.hex)}</span>
+          <span class="saree-swatch__hex" data-swatch-hex>${esc(c.hex)}</span>
         </span>
-        <span class="saree-swatch__name">${esc(c.name)}${second ? ` <em class="serif saree-swatch__pair">&amp; ${esc(second.name.toLowerCase())}</em>` : ''}</span>
+        <span class="saree-swatch__name" data-swatch-name>${esc(c.name)}${second ? ` <em class="serif saree-swatch__pair">&amp; ${esc(second.name.toLowerCase())}</em>` : ''}</span>
         ${meta ? `<span class="saree-swatch__meta">${esc(meta)}</span>` : ''}
       </figcaption>
     </figure>`;
@@ -329,6 +431,7 @@ function renderDetails(p, data) {
   if (!items.length && !policies.length) return '';
   return `
   <section class="unfolded" aria-labelledby="details-title" data-unfolded style="--pc:${esc(p.colours[0]?.hex || 'var(--color-ink)')}">
+    <div class="unfolded__pin">
     <div class="unfolded__media" data-unfolded-media>
       ${backdropPicture(p)}
     </div>
@@ -354,6 +457,7 @@ function renderDetails(p, data) {
           </div>` : ''}
         </dl>
       </div>
+    </div>
     </div>
   </section>`;
 }
@@ -395,9 +499,13 @@ export function productCard(p, index = 0, { wishlist = true } = {}) {
   const main = p.images[0];
   const detail = p.crops?.border;
   const colour = p.colours[0];
+  const vs = variantsOf(p);
+  const colourValues = (vs ? vs.map((v) => v.name) : colour ? [colour.name] : []).map(slugify);
+  const quickAdd = p.price != null && !vs;
+  const priceText = p.price == null ? '' : (p.priceMax && p.priceMax !== p.price ? 'From ' : '') + formatPrice(p.price);
   const facts = [
     `data-order="${index}"`,
-    colour ? `data-colour="${esc(slugify(colour.name))}"` : '',
+    colourValues.length ? `data-colour="${esc(colourValues.join(' '))}"` : '',
     fabricOf(p) ? `data-fabric="${esc(slugify(fabricOf(p)))}"` : '',
     `data-edit="${esc(p.edits.join(' '))}"`,
     `data-price-band="${priceBand(p)}"`,
@@ -413,11 +521,11 @@ export function productCard(p, index = 0, { wishlist = true } = {}) {
               </div>
               <h3 class="product-card__title">${esc(p.name)}</h3>
               <p class="product-card__descriptor">${esc(p.descriptor)}</p>
-              ${p.price != null ? `<p class="product-card__price">${formatPrice(p.price)}</p>` : ''}
+              ${priceText ? `<p class="product-card__price">${priceText}</p>` : ''}
             </a>
             <div class="product-card__actions">
               ${!wishlist ? '' : `<button class="product-card__save" type="button" data-wishlist="${esc(p.slug)}" data-name="${esc(p.name)}" aria-pressed="false" aria-label="Save ${esc(p.name)} to your wishlist">${heart}</button>`}
-              ${p.price != null ? `<button class="product-card__quick" type="button" data-add-to-bag="${esc(p.slug)}" data-add-label="Quick add" aria-label="Quick add ${esc(p.name)} to your bag">Quick add</button>` : ''}
+              ${quickAdd ? `<button class="product-card__quick" type="button" data-add-to-bag="${esc(p.slug)}" data-add-label="Quick add" aria-label="Quick add ${esc(p.name)} to your bag">Quick add</button>` : ''}
             </div>
           </li>`;
 }
@@ -444,18 +552,20 @@ function renderRelated(p, data) {
   </section>`;
 }
 
-/* ─── Mobile buy bar ──────────────────────────────────────── */
+/* ─── Buy bar: name, price and Add to bag, pinned to the bottom once the main button scrolls away ── */
 function renderBuyBar(p) {
-  if (p.price == null) return '';
+  const vs = variantsOf(p);
+  if ((vs ? vs[0].price : p.price) == null) return '';
   return `
   <div class="pdp-buybar" data-buybar aria-hidden="true">
-    <div class="pdp-buybar__info"><span class="pdp-buybar__name">${esc(p.name)}</span><span class="pdp-buybar__price">${formatPrice(p.price)}</span></div>
-    <button class="button button--filled" type="button" data-add-to-bag="${esc(p.slug)}" data-add-label="Add to bag" tabindex="-1">Add to bag</button>
+    <img class="pdp-buybar__thumb" src="${esc(p.images[0].src)}" alt="" width="${p.images[0].width}" height="${p.images[0].height}" loading="lazy" decoding="async">
+    <div class="pdp-buybar__info"><span class="pdp-buybar__name">${esc(p.name)}</span><span class="pdp-buybar__price" data-variant-price-text>${formatPrice(vs ? vs[0].price : p.price)}</span></div>
+    <button class="button button--filled" type="button" data-add-to-bag="${esc(p.slug)}"${vs ? ` data-variant="${esc(vs[0].key)}"` : ''} data-add-label="Add to bag" tabindex="-1">Add to bag</button>
   </div>`;
 }
 
 /* ─── Page ────────────────────────────────────────────────── */
-export function page({ title, description, body, preload = '', ogImage = '', mainClass = 'pdp' }) {
+export function page({ title, description, body, preload = '', ogImage = '', mainClass = 'pdp', styles = [], scripts = [] }) {
   return `<!doctype html>
 <html lang="en-IN">
 <head>
@@ -466,13 +576,14 @@ export function page({ title, description, body, preload = '', ogImage = '', mai
   ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : ''}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@400;500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   ${preload}
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/homepage.css">
   <link rel="stylesheet" href="/assets/css/bag.css">
   <link rel="stylesheet" href="/assets/css/pdp.css">
-  <link rel="stylesheet" href="/assets/css/shop.css">
+  <link rel="stylesheet" href="/assets/css/shop.css">${styles.map((href) => `
+  <link rel="stylesheet" href="${esc(href)}">`).join('')}
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="page--solid-header">
@@ -488,10 +599,20 @@ export function page({ title, description, body, preload = '', ogImage = '', mai
   <script src="/assets/js/homepage.js" defer></script>
   <script src="/assets/js/bag.js" defer></script>
   <script src="/assets/js/shop.js" defer></script>
-  <script src="/assets/js/pdp.js" defer></script>
+  <script src="/assets/js/pdp.js" defer></script>${scripts.map((src) => `
+  <script src="${esc(src)}" defer></script>`).join('')}
 </body>
 </html>
 `;
+}
+
+/* Old product links: sarees merged into one page with colour variants keep working (products[].aliases). */
+export function aliasTarget(slug, data) {
+  for (const p of data.products) {
+    const a = (p.aliases || []).find((x) => x.slug === slug);
+    if (a) return `/products/${p.slug}${a.colour ? `?colour=${a.colour}` : ''}`;
+  }
+  return null;
 }
 
 export function renderProduct(slug, data) {
@@ -503,6 +624,7 @@ export function renderProduct(slug, data) {
     ${renderGallery(p)}
     ${renderInfo(p, data, index, data.products.length)}
   </div>
+  ${renderMotion(p)}
   ${renderFeatures(p)}
   ${renderColourChapter(p)}
   ${renderDetails(p, data)}

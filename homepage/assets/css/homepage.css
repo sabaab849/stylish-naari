@@ -198,7 +198,6 @@ a:hover > .edit-card__text .link__arrow,
   color: var(--color-text);
   box-shadow: 0 1px 0 var(--color-border);
 }
-.site-header.is-hidden { transform: translateY(-100%); }
 
 .site-header__inner {
   height: var(--header-height);
@@ -216,8 +215,8 @@ a:hover > .edit-card__text .link__arrow,
 .site-nav__link {
   display: inline-flex; align-items: center; min-height: 44px;
   font-family: var(--font-display);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-header-nav);
   background: linear-gradient(currentColor, currentColor) no-repeat 0 calc(50% + 0.9em) / 0 1px;
   transition: background-size var(--duration-base) var(--ease-out);
 }
@@ -308,7 +307,7 @@ a:hover > .edit-card__text .link__arrow,
    Caps need slightly smaller size and looser tracking than mixed case to read at the same weight. */
 .hero__title--caps {
   text-transform: uppercase;
-  font-size: clamp(2rem, 1.2rem + 3vw, 3.75rem);
+  font-size: var(--font-size-headline-caps);
   letter-spacing: -0.015em;
   line-height: 0.98;
   max-width: 6.5em; /* two lines, so the headline stays in the floor shadow and off the saree */
@@ -355,7 +354,7 @@ a:hover > .edit-card__text .link__arrow,
 }
 .product-card__descriptor {
   margin-top: var(--spacing-1);
-  font-size: calc(var(--font-size-product) - 1px);
+  font-size: var(--font-size-product);
   line-height: 1.4;
   color: var(--color-text-muted);
 }
@@ -486,9 +485,11 @@ a:hover > .edit-card__text .link__arrow,
 .newsletter__field input:focus { outline: none; }
 .newsletter__field:focus-within { box-shadow: 0 1px 0 var(--color-ink); }
 .newsletter__form.is-error .newsletter__field { border-color: var(--color-error); }
-.newsletter__msg { min-height: 1.45em; margin-top: var(--spacing-2); font-size: var(--font-size-caption); }
+/* one fixed line for every message, so showing one never moves the footer */
+.newsletter__msg { min-height: 1.45em; margin-top: var(--spacing-2); font-size: var(--font-size-caption); line-height: 1.45; transition: color var(--duration-fast) var(--ease-out); }
 .newsletter__form.is-error .newsletter__msg { color: var(--color-error); }
-.newsletter__success { margin-top: var(--spacing-6); font-family: var(--font-display); font-size: var(--font-size-h3); letter-spacing: -0.01em; }
+.newsletter__form.is-done .newsletter__msg { color: var(--color-text); }
+.newsletter__form.is-sending button { opacity: 0.6; cursor: progress; }
 
 .footer-group { grid-column: span 2; }
 .site-footer__grid > .footer-group:nth-of-type(1) { grid-column: 6 / 8; }
@@ -604,7 +605,7 @@ a:hover > .edit-card__text .link__arrow,
   .festive__aside { position: absolute; left: var(--page-margin); right: var(--page-margin); bottom: 0; padding: 0 0 var(--spacing-8); display: block; }
 
   /* Footer: newsletter first, link groups as accordions */
-  .site-footer__grid { grid-template-columns: 1fr; row-gap: 0; }
+  .site-footer__grid { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
   .newsletter { margin-bottom: var(--spacing-8); }
   .footer-group, .footer-group--follow,
   .site-footer__grid > .footer-group:nth-of-type(1) { grid-column: 1; border-top: 1px solid var(--color-border); }
@@ -617,16 +618,14 @@ a:hover > .edit-card__text .link__arrow,
   .footer-group ul { padding-bottom: var(--spacing-4); }
   .footer-group--follow { display: flex; justify-content: space-between; align-items: center; min-height: 52px; border-bottom: 1px solid var(--color-border); }
   .footer-group--follow .eyebrow { margin: 0; }
+  .footer-group--follow ul { padding-bottom: 0; }
   .site-footer__bar { flex-direction: column; align-items: flex-start; gap: var(--spacing-3); border-top: 0; }
 }
 
 /* ─── Homepage density ─────────────────────────────────────
    The homepage runs tighter than the token defaults (160px between sections felt empty).
    Scoped to .home so product pages keep their own rhythm. */
-.home {
-  --section-spacing: clamp(56px, 2.5rem + 3.2vw, 96px);
-  --section-header-gap: clamp(20px, 1rem + 1vw, 32px);
-}
+/* (the homepage rhythm is now the site-wide --section-spacing in tokens.css) */
 .home .site-footer { padding-top: var(--spacing-9); }
 .home .site-footer__grid { padding-bottom: var(--spacing-9); }
 .home .festive__aside { padding: var(--spacing-9) 0; }
@@ -684,7 +683,7 @@ a:hover > .edit-card__text .link__arrow,
 
 /* ─── Collection pages (/sarees, /edits/…) ───────────────── */
 .page--solid-header .collection { padding-top: var(--header-height); }
-.collection__head { padding: var(--spacing-10) 0 var(--spacing-7); }
+.collection__head { padding: var(--space-3xl) 0 var(--space-xl); }
 .collection__intro { margin-top: var(--spacing-3); font-size: var(--font-size-body-lg); color: var(--color-text-muted); max-width: 34em; }
 .collection__tabs {
   display: flex; flex-wrap: wrap; gap: 0 var(--spacing-6);
@@ -709,7 +708,7 @@ a:hover > .edit-card__text .link__arrow,
 @media (max-width: 1023px) {
   .collection__grid { grid-template-columns: 1fr 1fr; gap: var(--spacing-7) var(--grid-gutter); }
   .collection__grid > :nth-child(n) { margin-top: 0; }
-  .collection__head { padding-top: var(--spacing-8); }
+
 }
 @media (max-width: 767px) {
   .hero--kasni .hero__img { object-position: 50% 50%; }
@@ -957,7 +956,6 @@ a:hover > .edit-card__text .link__arrow,
 }
 @media (max-width: 767px) {
   .home .product-row--scroll > .product-card { flex-basis: calc((100% - var(--grid-gutter)) / 1.9); }
-  .home .product-card__descriptor { font-size: 13px; }
 }
 
 /* ═══ Footer — Deep Espresso ═════════════════════════════════════
@@ -970,7 +968,7 @@ a:hover > .edit-card__text .link__arrow,
   --color-border:      #655047; /* warm brown hairlines */
   --color-ink:         #F8F1E8; /* the newsletter underline and its focus line */
   --color-focus:       #F8F1E8;
-  --color-error:       #F2A99B; /* the page's error red is too dark to read on espresso */
+  --color-error:       #E7A08F; /* muted coral: the page's error red is too dark to read on espresso */
   margin-top: var(--spacing-9);
   background: #30241F;
   color: var(--color-text);
@@ -1044,7 +1042,7 @@ a:hover > .edit-card__text .link__arrow,
 /* ─── Festive edit: words only beside the photograph ─────────────
    The thumbnail is gone, so the text block is centred on the photograph's height and carries
    the panel on its own: a larger headline, and the eyebrow in the gold of Panna's zari. */
-.festive .eyebrow { color: #D9B77E; font-size: 0.8125rem; margin-bottom: var(--spacing-4); }
+.festive .eyebrow { color: #D9B77E; margin-bottom: var(--spacing-4); }
 .festive__aside, .home .festive__aside { justify-content: center; }
 .festive__text .t-h2 { font-size: clamp(1.875rem, 1.3rem + 1.9vw, 3rem); line-height: 1.06; max-width: 12em; }
 .festive__text .link { margin-top: var(--spacing-6); }
@@ -1132,3 +1130,187 @@ a:hover > .edit-card__text .link__arrow,
   .regions__row > li { flex-basis: 42%; }
   .regions__group a { font-size: 16px; }
 }
+
+/* ─── Campaign banner: "Tradition in every thread" ──────────────
+   Photograph edge to edge, headline set as live text in the site's type (CLAUDE.md → Typography):
+   the title uses the hero's caps headline (Inter Tight 400, uppercase), the line uses body-lg (Inter).
+   A warm umber shade on the left keeps ivory type at a readable contrast on the pale backdrop.
+   The photograph (hero-tradition.webp, 2042 × 770) is never cropped through the Kalamkari print:
+   - desktop: the whole photograph at its own proportions;
+   - laptop and tablet: a taller frame that trims only the blurred fabric on the left;
+   - phone: its own crop of the model and the pallu, the words below it on umber. */
+.thread-banner {
+  position: relative; isolation: isolate; overflow: hidden;
+  margin-top: var(--section-spacing);
+  width: 100%; aspect-ratio: 2042 / 770; min-height: 460px; max-height: 88svh; /* width: 100% so min-height makes it taller, not wider */
+  background: #8A6A4E; color: var(--color-ivory);
+}
+.thread-banner__media { position: absolute; inset: 0; z-index: -2; }
+.thread-banner__media img { width: 100%; height: 100%; object-fit: cover; object-position: 85% 50%; }
+.thread-banner::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to right, rgba(74, 50, 34, 0.55) 0%, rgba(74, 50, 34, 0.3) 30%, rgba(74, 50, 34, 0) 54%);
+}
+.thread-banner__content { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.thread-banner__title {
+  font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-headline-caps); line-height: 0.98; letter-spacing: -0.015em; /* same as .hero__title--caps */
+  text-transform: uppercase;
+}
+.thread-banner__title span { display: block; }
+.thread-banner__line { margin-top: var(--spacing-4); max-width: 22em; font-size: var(--font-size-body-lg); line-height: 1.5; }
+.thread-banner__link { margin-top: var(--spacing-5); align-self: flex-start; }
+.thread-banner__link::after { content: ""; position: absolute; inset: -100vh -100vw; } /* the whole banner is the link */
+.thread-banner :focus-visible { outline-color: var(--color-ivory); }
+.thread-banner:has(.thread-banner__link:focus-visible) { outline: 2px solid var(--color-ivory); outline-offset: -8px; }
+.thread-banner__link:focus-visible { outline: none; }
+.thread-banner:hover .link__label { background-size: 100% 1px; }
+.thread-banner:hover .link__arrow { transform: translateX(4px); }
+
+/* Tablet: a taller frame; only the blurred fabric on the left is trimmed, so the model clears the words */
+@media (max-width: 1023px) {
+  .thread-banner { aspect-ratio: 16 / 10; min-height: 420px; }
+  .thread-banner__media img { object-position: 78% 50%; }
+  .thread-banner::before { background: linear-gradient(to right, rgba(74, 50, 34, 0.68) 0%, rgba(74, 50, 34, 0.42) 38%, rgba(74, 50, 34, 0) 64%); }
+}
+/* Phone: the photograph's phone crop on top, the words below it on umber */
+@media (max-width: 767px) {
+  .thread-banner { aspect-ratio: auto; min-height: 0; max-height: none; background: var(--color-studio-umber); }
+  .thread-banner__media { position: relative; display: block; aspect-ratio: 880 / 770; }
+  .thread-banner__media img { object-position: 50% 50%; }
+  .thread-banner::before { display: none; }
+  .thread-banner__content { height: auto; padding-top: var(--spacing-7); padding-bottom: var(--spacing-8); }
+}
+
+/* ═══ Shop mega menu — preview panel ═══════════════════════════════════════
+   Three link columns; on the right, a preview that follows the hovered or focused link. Two stacked
+   images cross-fade (300ms ease-in-out); the title and line fade and rise with them. */
+.mega__grid { align-items: start; }
+.mega__col:nth-child(1) { grid-column: 1 / span 2; }
+.mega__col:nth-child(2) { grid-column: 3 / span 3; }
+.mega__col:nth-child(3) { grid-column: 6 / span 2; }
+.mega__col li a { transition: color 300ms ease-in-out; }
+.mega__col li a.is-previewed { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.mega__preview {
+  grid-column: 9 / span 4;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--spacing-5); align-items: end;
+}
+.mega__preview-media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--color-surface); }
+.mega__preview-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transform: scale(1.03);
+  transition: opacity 300ms ease-in-out, transform 600ms ease-in-out;
+}
+.mega__preview-img.is-shown { opacity: 1; transform: none; }
+.mega__preview-empty {
+  position: absolute; left: var(--spacing-4); bottom: var(--spacing-4);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0; transition: opacity 300ms ease-in-out;
+}
+.mega__preview.is-empty .mega__preview-empty { opacity: 1; }
+.mega__preview-text { display: grid; gap: var(--spacing-2); padding-bottom: var(--spacing-1); transition: opacity 300ms ease-in-out, transform 300ms ease-in-out; }
+.mega__preview.is-swapping .mega__preview-text { opacity: 0; transform: translateY(4px); }
+.mega__preview-title {
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-h3); line-height: var(--line-height-h3); letter-spacing: var(--letter-spacing-h3);
+}
+.mega__preview-line { font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-secondary); max-width: 22em; }
+/* Arrow is glued to the last word with a no-break space so it never wraps onto its own line */
+.mega__preview-title::after { content: "\00a0→"; position: relative; left: 0; white-space: nowrap; transition: left 300ms ease-in-out; }
+.mega__preview:hover .mega__preview-title::after, .mega__preview:focus-visible .mega__preview-title::after { left: 4px; }
+@media (prefers-reduced-motion: reduce) { .mega__preview-title::after { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .mega__preview-img, .mega__preview-text, .mega__preview-empty { transition: none; transform: none; }
+}
+/* Laptop: the preview drops its side-by-side text and sits as a single column */
+@media (max-width: 1279px) {
+  .mega__preview { grid-column: 9 / span 4; grid-template-columns: 1fr; row-gap: var(--spacing-3); }
+}
+@media (max-width: 1023px) {
+  .mega__col:nth-child(n) { grid-column: span 4; }
+  .mega__preview { display: none; }
+}
+
+/* ═══ Header: full width at the top, floating bar after the hero ══════════════
+   Three states, all one 300ms ease-in-out transition:
+   1. Top of the page: full width, transparent over the hero.
+   2. Scrolling inside the hero (.is-solid): full width, Ivory, hairline under it.
+   3. Past the hero (.is-floating): a centred, constrained bar (max 72rem) sitting --header-float-gap below
+      the top of the window, solid Warm White, compact height.
+   The bar's surface lives on .site-header__inner so its width, padding and corners can animate; the outer
+   .site-header is only a fixed, full-width frame. Being fixed, nothing it does moves the page.
+   The floating bar's total height (gap + compact bar) equals --header-height, so sticky elements that sit
+   "below the header" (shop filters, PDP gallery) stay correct in every state.
+   Brand §12.11 keeps corners at 2px and forbids shadows, so the float corner and edge are tokens: the
+   defaults are on-brand; set --header-float-radius: 16px and --header-float-shadow to a soft shadow for the
+   rounded-2xl / shadow-lg look. */
+.site-header {
+  --header-float-width:  min(72rem, 100% - 2 * var(--page-margin));
+  --header-float-gap:    0px; /* no gap above the bar: it sits flush with the top of the window */
+  --header-float-radius: var(--radius-sm);
+  --header-float-shadow: 0 0 0 1px var(--color-border);
+  padding-top: 0;
+  transition:
+    color 300ms ease-in-out, padding-top 300ms ease-in-out, transform 300ms ease-in-out;
+}
+/* The surface moves from the header frame to the inner bar */
+.site-header.is-solid, .site-header.is-menu-open { background: transparent; box-shadow: none; }
+.site-header__inner {
+  /* Content stays in the page container while the bar itself spans the window */
+  max-width: 100%;
+  padding-inline: max(var(--page-margin), (100% - var(--container-width)) / 2);
+  border-radius: 0;
+  background-color: rgb(246 241 234 / 0);
+  box-shadow: 0 1px 0 rgb(221 211 198 / 0);
+  transition:
+    height 300ms ease-in-out, max-width 300ms ease-in-out, padding 300ms ease-in-out,
+    border-radius 300ms ease-in-out, background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+}
+.site-header.is-solid .site-header__inner,
+.site-header.is-menu-open .site-header__inner {
+  background-color: rgb(246 241 234 / 1); /* --color-bg */
+  box-shadow: 0 1px 0 var(--color-border);
+}
+.site-header.is-floating { padding-top: var(--header-float-gap); }
+.site-header.is-floating .site-header__inner {
+  height: var(--header-height);
+  max-width: var(--header-float-width);
+  padding-inline: var(--spacing-5);
+  border-radius: var(--header-float-radius);
+  background-color: var(--color-warm-white); /* solid, no see-through or blur */
+  box-shadow: var(--header-float-shadow);
+}
+.site-header__logo { transition: transform 300ms ease-in-out; transform-origin: center; }
+.site-header.is-floating .site-header__logo { transform: scale(0.88); }
+
+/* Mega menu: full width under the full-width bar; under the floating bar it narrows to the bar's width and
+   hangs just below it, so the preview and columns line up with the bar in both states. */
+.mega {
+  margin-inline: auto; max-width: 100%;
+  transition:
+    opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out),
+    max-width 300ms ease-in-out, top 300ms ease-in-out;
+}
+.site-header.is-floating .mega {
+  top: calc(100% + 8px);
+  max-width: var(--header-float-width);
+  background: var(--color-warm-white);
+  border-radius: var(--header-float-radius);
+  box-shadow: var(--header-float-shadow);
+  padding-inline: var(--spacing-5);
+}
+.site-header.is-floating .mega .container { padding-inline: 0; }
+/* Hover bridge so the pointer can cross the 8px gap without the menu closing */
+.site-header.is-floating .mega::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 8px; }
+
+@media (max-width: 767px) {
+  .site-header { --header-float-gap: 0px; }
+  .site-header__inner { padding-inline: calc(var(--page-margin) - 12px); } /* icon buttons carry their own 12px */
+  .site-header.is-floating .site-header__inner { padding-inline: calc(var(--spacing-5) - 12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .site-header__inner, .site-header__logo, .mega { transition: none; }
+}
+

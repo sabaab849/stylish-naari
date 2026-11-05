@@ -18,10 +18,10 @@
     }
   }
 
-  /* ─── Header: transparent over hero → solid; hide on scroll down ─ */
+  /* ─── Header: transparent over the hero at the very top; opaque and fixed in place once the page scrolls,
+     then compact once the hero has gone. It never hides: it stays pinned for the whole page. */
   var header = document.querySelector('[data-header]');
   var announcement = document.querySelector('.announcement');
-  var lastY = window.scrollY;
   var ticking = false;
   var menuOpen = false;
 
@@ -30,16 +30,11 @@
     var annH = announcement ? announcement.offsetHeight : 0;
     header.style.setProperty('--header-top', Math.max(0, annH - y) + 'px');
 
-    var solidAt = hero ? hero.offsetHeight * 0.8 : 0;
-    var solid = !hero || y > solidAt; // pages without a full-bleed hero start solid
+    // Transparent over the hero; solid once the hero has scrolled out from under the bar. Pages without a
+    // full-bleed hero are always solid. The bar never changes size or width.
+    var solid = !hero || y > hero.offsetHeight - header.offsetHeight;
     header.classList.toggle('is-solid', solid);
 
-    var goingDown = y > lastY + 2;
-    var goingUp = y < lastY - 2;
-    if (solid && goingDown && !menuOpen) header.classList.add('is-hidden');
-    if (goingUp || !solid) header.classList.remove('is-hidden');
-
-    lastY = y;
     ticking = false;
   }
   if (header) {
@@ -96,6 +91,47 @@
       if (trigger.getAttribute('aria-expanded') === 'true' && !mega.contains(e.target) && e.target !== trigger) closeMega();
     });
     mega.addEventListener('click', function (e) { if (e.target.closest('a')) closeMega(); });
+  }
+
+  /* ─── Mega menu preview: follows the hovered or focused link ─────── */
+  var preview = document.querySelector('[data-mega-preview]');
+  if (preview && mega) {
+    var layers = preview.querySelectorAll('[data-preview-layer]');
+    var titleEl = preview.querySelector('[data-preview-title-el]'), textEl = preview.querySelector('[data-preview-text-el]');
+    var front = 0, currentLink = null, swapTimer;
+    var show = function (a) {
+      if (a === currentLink) return;
+      if (currentLink) currentLink.classList.remove('is-previewed');
+      currentLink = a; a.classList.add('is-previewed');
+      var src = a.dataset.previewImg;
+      preview.href = a.getAttribute('href');
+      preview.classList.toggle('is-empty', !src);
+      if (src) {
+        var next = layers[1 - front];
+        next.style.objectPosition = a.dataset.previewPos || '50% 50%';
+        var reveal = function () { next.classList.add('is-shown'); layers[front].classList.remove('is-shown'); front = 1 - front; };
+        if (next.getAttribute('src') === src) reveal();
+        else { next.onload = reveal; next.src = src; }
+      } else {
+        layers[0].classList.remove('is-shown'); layers[1].classList.remove('is-shown');
+      }
+      // text: fade out, swap, fade back in
+      preview.classList.add('is-swapping'); clearTimeout(swapTimer);
+      swapTimer = setTimeout(function () {
+        titleEl.textContent = a.dataset.previewTitle; textEl.textContent = a.dataset.previewText;
+        preview.classList.remove('is-swapping');
+      }, 150);
+    };
+    Array.prototype.forEach.call(mega.querySelectorAll('[data-preview]'), function (a, i) {
+      a.addEventListener('mouseenter', function () { show(a); });
+      a.addEventListener('focus', function () { show(a); });
+      // the link the panel opens on (it matches the panel's starting link)
+      if (a.getAttribute('href') === preview.getAttribute('href') && !currentLink) { currentLink = a; a.classList.add('is-previewed'); }
+    });
+    // warm the cache so the first swaps are instant
+    trigger && trigger.addEventListener('mouseenter', function () {
+      Array.prototype.forEach.call(mega.querySelectorAll('[data-preview-img]'), function (a) { if (a.dataset.previewImg) { var im = new Image(); im.src = a.dataset.previewImg; } });
+    }, { once: true });
   }
 
   /* ─── Mobile menu ─────────────────────────────────────── */
@@ -266,10 +302,11 @@
   if (craftVideos.length) {
     craftVideos.forEach(function (v) {
       // The toggle only appears once real footage is actually playing
-      v.addEventListener('playing', function () { craft.classList.add('has-video'); });
+      var scope = v.closest('[data-craft-scope]') || craft; // the Craft page wraps its film in data-craft-scope
+      v.addEventListener('playing', function () { if (scope) scope.classList.add('has-video'); });
       if (reduceMotion) {
         v.preload = 'metadata';
-        v.addEventListener('loadedmetadata', function () { craft.classList.add('has-video'); });
+        v.addEventListener('loadedmetadata', function () { if (scope) scope.classList.add('has-video'); });
       }
     });
 
@@ -297,38 +334,75 @@
   /* ─── Newsletter: inline validation + success state ──── */
   var form = document.querySelector('[data-newsletter]');
   if (form) {
+    /* Validates on submit only; the message sits in a fixed-height line under the field, so nothing moves.
+       States: empty, invalid, already subscribed, sending, subscribed, could not subscribe.
+       Submission: if the form has data-endpoint, the email is POSTed there as JSON (409 = already subscribed).
+       Without one (this prototype), the address is kept in this browser so a repeat sign-up is recognised.
+       In the Shopify build, the theme's customer form replaces both. */
     var input = form.querySelector('input[type="email"]');
     var msg = form.querySelector('.newsletter__msg');
-    var submit = form.querySelector('button[type="submit"] .link__label');
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var button = form.querySelector('button[type="submit"]');
+    var label = button.querySelector('.link__label');
+    var KEY = 'sn-newsletter';
+    // name@domain.tld: no spaces, one @, a domain made of dot-separated labels, a letters-only ending
+    var emailPattern = /^[^\s@]+@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/i;
+    var MESSAGES = {
+      empty: 'Please enter your email address.',
+      invalid: 'Please enter a valid email address.',
+      duplicate: 'You’re already subscribed.',
+      success: 'Thank you for subscribing.',
+      failed: 'We couldn’t subscribe you just now. Please try again.',
+    };
 
+    var subscribed = function () {
+      try { var v = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(v) ? v : []; } catch (err) { return []; }
+    };
+    var remember = function (email) {
+      try { localStorage.setItem(KEY, JSON.stringify(subscribed().concat(email))); } catch (err) { /* private mode */ }
+    };
+
+    function show(state) {
+      var error = state === 'empty' || state === 'invalid' || state === 'failed';
+      form.classList.toggle('is-error', error);
+      form.classList.toggle('is-done', state === 'success' || state === 'duplicate');
+      if (error) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+      msg.textContent = state ? MESSAGES[state] : '';
+    }
+    function busy(on) {
+      form.classList.toggle('is-sending', on);
+      button.disabled = on;
+      button.setAttribute('aria-busy', String(on));
+      label.textContent = on ? 'Subscribing…' : 'Subscribe';
+    }
+
+    // Once an error is showing, it clears as soon as the address becomes valid
     input.addEventListener('input', function () {
-      if (form.classList.contains('is-error') && emailPattern.test(input.value.trim())) {
-        form.classList.remove('is-error');
-        input.removeAttribute('aria-invalid');
-        msg.textContent = '';
-      }
+      if (form.classList.contains('is-error') && emailPattern.test(input.value.trim())) show(null);
+      else if (form.classList.contains('is-done')) show(null);
     });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var value = input.value.trim();
-      if (!emailPattern.test(value)) {
-        form.classList.add('is-error');
-        input.setAttribute('aria-invalid', 'true');
-        msg.textContent = value ? "That email doesn't look right. Check it and try again." : 'Add your email address to subscribe.';
-        input.focus();
-        return;
-      }
-      // Prototype only: Shopify's customer form posts here in the theme build.
-      submit.textContent = 'Subscribing…';
-      setTimeout(function () {
-        var done = document.createElement('p');
-        done.className = 'newsletter__success';
-        done.setAttribute('role', 'status');
-        done.textContent = 'Thank you — you’re on the list.';
-        form.replaceWith(done);
-      }, 500);
+      if (form.classList.contains('is-sending')) return;
+      var email = input.value.trim().toLowerCase();
+      if (!email) { show('empty'); input.focus(); return; }
+      if (!emailPattern.test(email)) { show('invalid'); input.focus(); return; }
+
+      var endpoint = form.getAttribute('data-endpoint');
+      if (!endpoint && subscribed().indexOf(email) > -1) { show('duplicate'); return; }
+
+      busy(true);
+      var request = endpoint
+        ? fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ email: email }) })
+          .then(function (res) { if (res.status === 409) return 'duplicate'; if (!res.ok) throw new Error('HTTP ' + res.status); return 'success'; })
+        : new Promise(function (resolve) { setTimeout(function () { resolve('success'); }, 500); }); // prototype stand-in
+      request
+        .then(function (result) {
+          if (result === 'success') { remember(email); input.value = ''; }
+          show(result);
+        })
+        .catch(function () { show('failed'); })
+        .then(function () { busy(false); });
     });
   }
 
@@ -343,4 +417,184 @@
   });
   syncGroups();
   if (desktop.addEventListener) desktop.addEventListener('change', syncGroups);
+
+  /* ─── Craft page: hero film ───────────────────────────────────
+     The film needs no timing code: its 3-second scenes and cross-fades are inside the one video file, which loops on
+     its own. This block only plays or pauses that video. The windows over it hold fixed photographs (no script).
+     The film stops when the hero is off screen, the tab is hidden, the page is left (pagehide) or the keyboard-only
+     pause button is pressed. Reduced motion: the video stays on its first frame. */
+  var reelEl = document.querySelector('[data-reel]');
+  if (reelEl) {
+    var rVideo = reelEl.querySelector('[data-reel-video]');
+    var rToggle = reelEl.querySelector('[data-reel-toggle]');
+    var rUserPaused = false, rVisible = true;
+    var rRunning = function () { return !reduceMotion && !rUserPaused && rVisible && !document.hidden; };
+
+    var start = function () {
+      if (!rRunning()) return;
+      reelEl.classList.remove('is-paused');
+      if (rVideo) { var p = rVideo.play(); if (p && p.catch) p.catch(function () {}); } // autoplay blocked: poster stays
+    };
+    var stop = function () {
+      if (rVideo) rVideo.pause();
+      reelEl.classList.add('is-paused');
+    };
+
+    if (rVideo) {
+      // if the film can't play at all, the poster frame stays in place (the video shows it)
+      rVideo.addEventListener('error', function () { reelEl.classList.add('is-film-failed'); }, true);
+      if (reduceMotion) { rVideo.removeAttribute('autoplay'); rVideo.pause(); try { rVideo.currentTime = 0; } catch (e) {} }
+    }
+    if (rToggle) rToggle.addEventListener('click', function () {
+      rUserPaused = !rUserPaused;
+      rToggle.setAttribute('aria-pressed', String(rUserPaused));
+      rToggle.textContent = rUserPaused ? 'Play the film' : 'Pause the film';
+      if (rUserPaused) stop(); else start();
+    });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    window.addEventListener('pagehide', stop);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        rVisible = entries[0].isIntersecting;
+        if (rVisible) start(); else stop();
+      }, { threshold: 0.15 }).observe(reelEl);
+    }
+    if (rRunning()) start(); else stop();
+  }
+
+  /* ─── Craft page: lookbook pins ─────────────────────────────
+     Pins are stored as a place on the photograph (data-x / data-y, % of its full size). The frame crops the photo
+     (object-fit: cover: a wide band, a taller frame on phones), so each pin is re-placed in pixels to stay on the same
+     spot of the saree, and hidden if that spot is cropped away. A card floats over the photograph beside its pin
+     (phones: across the top or bottom), kept inside the frame, so the page never moves.
+       mouse     hovering a pin opens its card; it closes a moment after the pointer leaves both the pin and the card
+                 (long enough to cross into the card and use its link). A click holds it open; a second click closes it.
+       touch     a tap on the pin opens it; a tap on the pin, the close button or anywhere else closes it.
+       keyboard  Enter or Space on the pin toggles it; Escape closes it and returns focus to the pin. Tab goes from the
+                 pin into its card; moving focus anywhere else closes it. */
+  var lb = document.querySelector('[data-lookbook]');
+  if (lb) {
+    var frame = lb.querySelector('[data-lookbook-frame]');
+    var lbImg = lb.querySelector('[data-lookbook-img]');
+    var pins = Array.prototype.slice.call(lb.querySelectorAll('[data-lookbook-pin]'));
+    var phone = window.matchMedia('(max-width: 767px)');
+    var openPin = null, held = false, leaveTimer = 0, enterTimer = 0;
+    var focusOf = function () {
+      var v = getComputedStyle(lbImg).objectPosition.split(' ');
+      return [parseFloat(v[0]) / 100, parseFloat(v[1] || v[0]) / 100];
+    };
+    var place = function () {
+      var W = frame.clientWidth, H = frame.clientHeight;
+      var w = Number(lbImg.getAttribute('width')), h = Number(lbImg.getAttribute('height'));
+      var k = Math.max(W / w, H / h), f = focusOf();
+      var ox = (W - w * k) * f[0], oy = (H - h * k) * f[1];
+      pins.forEach(function (pin) {
+        var x = ox + Number(pin.getAttribute('data-x')) / 100 * w * k;
+        var y = oy + Number(pin.getAttribute('data-y')) / 100 * h * k;
+        var inside = x > 16 && x < W - 16 && y > 16 && y < H - 16;
+        pin.style.left = x + 'px'; pin.style.top = y + 'px';
+        pin.hidden = !inside;
+      });
+      if (openPin) placeCard(openPin);
+    };
+    var cardOf = function (pin) { return document.getElementById(pin.getAttribute('aria-controls')); };
+    var placeCard = function (pin) {
+      var card = cardOf(pin);
+      var W = frame.clientWidth, H = frame.clientHeight;
+      var x = parseFloat(pin.style.left), y = parseFloat(pin.style.top);
+      if (phone.matches) { // phones: CSS lays it across the photograph, at the top when the pin is in the lower half
+        card.style.left = ''; card.style.top = '';
+        card.classList.toggle('is-top', y > H / 2);
+        return;
+      }
+      card.classList.remove('is-top');
+      var gap = 26, pad = 16, reach = 22, cw = card.offsetWidth, ch = card.offsetHeight;
+      var others = pins.filter(function (q) { return q !== pin && !q.hidden; })
+        .map(function (q) { return [parseFloat(q.style.left), parseFloat(q.style.top)]; });
+      var clampTop = function (t) { return Math.max(pad, Math.min(H - ch - pad, t)); };
+      var clearOf = function (l, t) { // leaves every other pin's 44px target uncovered
+        return others.every(function (o) { return o[0] < l - reach || o[0] > l + cw + reach || o[1] < t - reach || o[1] > t + ch + reach; });
+      };
+      // Beside the pin, outer side first (away from the middle, so it covers less of the saree): centred on the pin,
+      // then rising from it, then falling from it; then the same on the other side. The first spot that fits in the
+      // frame and leaves the other pins free to hover wins; failing that, the first spot that fits.
+      var outer = x >= W / 2 ? 1 : -1, best = null, first = null;
+      [outer, -outer].forEach(function (side) {
+        var l = side > 0 ? x + gap : x - gap - cw;
+        if (l < pad || l + cw > W - pad) return;
+        [y - ch / 2, y - ch + 28, y - 28].forEach(function (t) {
+          t = clampTop(t);
+          if (!first) first = [l, t];
+          if (!best && clearOf(l, t)) best = [l, t];
+        });
+      });
+      var spot = best || first || [Math.max(pad, Math.min(W - cw - pad, outer > 0 ? x + gap : x - gap - cw)), clampTop(y - ch / 2)];
+      card.style.left = spot[0] + 'px'; card.style.top = spot[1] + 'px';
+      card.style.setProperty('--origin', (x - spot[0]) + 'px ' + (y - spot[1]) + 'px'); // it grows out of the pin
+    };
+    var cancelLeave = function () { clearTimeout(leaveTimer); leaveTimer = 0; };
+    var close = function (returnFocus) {
+      cancelLeave(); clearTimeout(enterTimer);
+      if (!openPin) return;
+      var pin = openPin, card = cardOf(pin);
+      openPin = null; held = false;
+      pin.setAttribute('aria-expanded', 'false');
+      card.classList.remove('is-open');
+      setTimeout(function () { if (!card.classList.contains('is-open')) card.hidden = true; }, reduceMotion ? 0 : 240);
+      if (returnFocus) pin.focus();
+    };
+    var open = function (pin) {
+      cancelLeave(); clearTimeout(enterTimer);
+      if (openPin === pin) return;
+      close(false);
+      var card = cardOf(pin);
+      openPin = pin;
+      pin.setAttribute('aria-expanded', 'true');
+      card.hidden = false;
+      placeCard(pin);
+      requestAnimationFrame(function () { if (openPin === pin) card.classList.add('is-open'); });
+    };
+    // A card opened by hover closes shortly after the pointer leaves its pin and the card; a held one stays.
+    var leaveSoon = function () { cancelLeave(); leaveTimer = setTimeout(function () { if (!held) close(false); }, 320); };
+    var isMouse = function (e) { return e.pointerType === 'mouse'; };
+    pins.forEach(function (pin) {
+      var card = cardOf(pin);
+      pin.addEventListener('pointerenter', function (e) {
+        if (!isMouse(e)) return;
+        if (openPin === pin) { cancelLeave(); return; }
+        // straight away when nothing is open; a short pause when another card is, so crossing a pin doesn't swap it
+        if (!openPin) open(pin);
+        else { clearTimeout(enterTimer); enterTimer = setTimeout(function () { open(pin); }, 140); }
+      });
+      pin.addEventListener('pointerleave', function (e) {
+        if (!isMouse(e)) return;
+        clearTimeout(enterTimer);
+        if (openPin === pin && !held) leaveSoon();
+      });
+      pin.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (openPin !== pin) { open(pin); held = true; } // tap, Enter / Space, or a click on a closed pin
+        else if (!held) { held = true; cancelLeave(); }  // already open from hovering: the click keeps it open
+        else close(false);
+      });
+      card.addEventListener('pointerenter', function (e) { if (isMouse(e) && openPin === pin) cancelLeave(); });
+      card.addEventListener('pointerleave', function (e) { if (isMouse(e) && openPin === pin && !held) leaveSoon(); });
+      card.addEventListener('click', function (e) { e.stopPropagation(); });
+    });
+    lb.querySelectorAll('[data-lookbook-close]').forEach(function (b) { b.addEventListener('click', function () { close(true); }); });
+    document.addEventListener('click', function () { close(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && openPin) close(frame.contains(document.activeElement)); });
+    frame.addEventListener('focusout', function (e) {
+      var to = e.relatedTarget;
+      if (openPin && to && to !== openPin && !cardOf(openPin).contains(to)) close(false);
+    });
+    // The close-ups are lazy and their cards hidden, so they would only start loading on the first hover. Load them
+    // once the photograph itself has loaded (it is lazy too, so that happens as the section comes near).
+    var warm = function () { lb.querySelectorAll('.lookbook__card-img').forEach(function (im) { im.loading = 'eager'; }); };
+    var ready = function () { place(); lb.classList.add('is-ready'); };
+    if (lbImg.complete) { ready(); warm(); } else lbImg.addEventListener('load', function () { ready(); warm(); }, { once: true });
+    window.addEventListener('resize', place);
+    if (phone.addEventListener) phone.addEventListener('change', place);
+    ready(); // the frame has its size before the photo loads, so the pins can be placed straight away
+  }
 })();

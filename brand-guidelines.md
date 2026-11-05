@@ -591,7 +591,7 @@ Fluid sizes via `clamp()`: mobile → desktop.
 | **Body large** | Inter | 400 | 17 → 19px | 1.55 | −0.005em | Sentence |
 | **Body** | Inter | 400 | 15 → 16px | 1.6 | 0 | Sentence |
 | **Caption** | Inter | 400 | 12 → 13px | 1.45 | 0.005em | Sentence |
-| **Navigation** | Inter Tight | 500 | 14px | 1.0 | 0 | Title |
+| **Navigation** (header links) | Inter Tight | 600 | 14 → 15px | 1.0 | 0 | Title |
 | **Product title** | Inter Tight | 500 | 14 → 15px | 1.3 | 0 | Title |
 | **Product descriptor** | Inter | 400 | 13 → 14px | 1.4 | 0 | Sentence (muted) |
 | **Price** | Inter | 400 | 14 → 15px | 1.3 | 0, tabular numerals | — |
@@ -697,7 +697,8 @@ Added at the owner's request, each held to one flat ivory chip or a line of text
 
 ### 12.4 Header
 
-- Height: 72px desktop, 56px mobile.
+- Height: 80px desktop and tablet, 56px mobile. *Approved change (Nov 2026): the header was 72px and its links
+  Inter Tight 500 at 14px; at the client's request it is a little taller and the links are 600 at 15px.*
 - **Layout:** primary nav left · wordmark centre · utilities right.
 - **Over hero:** transparent; Ivory text and wordmark.
 - **On scroll** (after 80% of hero height): Ivory background, Ink text, 1px `--color-border` bottom hairline, transition 300ms. Hides on scroll-down, reappears on scroll-up.

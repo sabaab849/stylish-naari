@@ -1,0 +1,51 @@
+<!doctype html>
+<html><body>
+<canvas id="c"></canvas>
+<script>
+// Merges several clips of one saree into a short portrait reel with soft crossfades.
+// ?w=720&bps=2600000. Clips are temporary copies in _tools (_teal-*.tmp.mp4); see SHOTS.
+const q = new URLSearchParams(location.search);
+const W = +(q.get('w') || 720), H = Math.round(W * 16 / 9), BPS = +(q.get('bps') || 2600000), FPS = 30, FADE = 0.45;
+const SHOTS = [ // [file, start, length]: the saree laid out → a hand across the motifs → the border and pallu
+  ['./_teal-a.tmp.mp4', 0.3, 8],
+  ['./_teal-b.tmp.mp4', 4, 8],
+  ['./_teal-c.tmp.mp4', 2.5, 8],
+];
+const c = document.getElementById('c'); c.width = W; c.height = H; const g = c.getContext('2d');
+window.status_ = 'loading';
+const mime = ['video/mp4;codecs=avc1.640028', 'video/mp4;codecs=avc1', 'video/mp4', 'video/webm;codecs=vp9'].find((t) => MediaRecorder.isTypeSupported(t));
+window.mime = mime;
+const open = (src) => new Promise((r) => { const v = document.createElement('video'); v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = src; v.oncanplaythrough = () => r(v); });
+const seek = (v, t) => new Promise((r) => { v.onseeked = r; v.currentTime = t; });
+const cover = (v, a) => { // draw v to fill the canvas (crop, never stretch)
+  const s = Math.max(W / v.videoWidth, H / v.videoHeight), w = v.videoWidth * s, h = v.videoHeight * s;
+  g.globalAlpha = a; g.drawImage(v, (W - w) / 2, (H - h) / 2, w, h); g.globalAlpha = 1;
+};
+(async () => {
+  const clips = [];
+  for (const [src, start] of SHOTS) { const v = await open(src); await seek(v, start); clips.push(v); }
+  cover(clips[0], 1);
+  const rec = new MediaRecorder(c.captureStream(FPS), { mimeType: mime, videoBitsPerSecond: BPS });
+  const chunks = []; rec.ondataavailable = (e) => e.data.size && chunks.push(e.data);
+  rec.onstop = async () => {
+    const buf = new Uint8Array(await new Blob(chunks).arrayBuffer());
+    let s = ''; for (let i = 0; i < buf.length; i += 0x8000) s += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
+    window.result = btoa(s); window.status_ = 'done';
+  };
+  rec.start(500); window.status_ = 'recording';
+  for (let i = 0; i < clips.length; i++) {
+    const v = clips[i], [, start, len] = SHOTS[i];
+    await v.play();
+    await new Promise((done) => {
+      const tick = () => {
+        const t = v.currentTime - start;
+        cover(v, i === 0 ? 1 : Math.min(1, t / FADE)); // fade the new clip in over the last frame of the previous one
+        (t < len && !v.ended) ? requestAnimationFrame(tick) : done();
+      };
+      tick();
+    });
+    v.pause();
+  }
+  rec.stop();
+})();
+</script></body></html>
