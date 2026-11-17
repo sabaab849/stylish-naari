@@ -14,7 +14,7 @@
         </button>
         <ul class="site-nav__list">
           <li>
-            <button class="site-nav__link" type="button" aria-expanded="false" aria-controls="mega-shop" data-mega-trigger>Shop</button>
+            <a class="site-nav__link" href="/sarees" aria-expanded="false" aria-controls="mega-shop" data-mega-trigger>Shop</a>
           </li>
           <li><a class="site-nav__link" href="/#edits">Edits</a></li>
           <li class="hide-tablet"><a class="site-nav__link" href="/craft">Craft</a></li>
@@ -57,15 +57,16 @@
           </ul>
         </div>
         <div class="mega__col">
-          <p class="eyebrow">By region</p>
+          <p class="eyebrow">By category</p>
+          <!-- Categories by craft (client, Nov 17 2026; products.json → categories). Banarasi's two subcategories sit under it. -->
           <ul>
-            <li><a href="/categories/banaras-ki-bunkari" data-preview data-preview-img="/assets/images/panna.jpg" data-preview-pos="50% 80%" data-preview-title="Banaras ki Bunkari" data-preview-text="Silk and zari from the looms of Varanasi. Panna, Kairi, Jamun, Neel and Bagh.">Banaras ki Bunkari</a></li>
-            <li><a href="/categories/kolkata-ki-kalakari" data-preview data-preview-img="" data-preview-pos="" data-preview-title="Kolkata ki Kalakari" data-preview-text="Sarees from Bengal are on their way.">Kolkata ki Kalakari</a></li>
-            <li><a href="/categories/rajasthan-ki-rajshahi" data-preview data-preview-img="/assets/images/anaar.jpg" data-preview-pos="50% 45%" data-preview-title="Rajasthan ki Rajshahi" data-preview-text="Tie-dyed bandhani in deep, festive colour. Starting with Anaar in maroon.">Rajasthan ki Rajshahi</a></li>
-            <li><a href="/categories/gujarat-ki-garima" data-preview data-preview-img="/assets/images/rangoli.jpg" data-preview-pos="50% 40%" data-preview-title="Gujarat ki Garima" data-preview-text="Ikat in bold colour and pattern: Rangoli, Saanjh and Sindoor.">Gujarat ki Garima</a></li>
-            <li><a href="/categories/pedana-ki-kalamkari" data-preview data-preview-img="/assets/images/leela.jpg" data-preview-pos="50% 40%" data-preview-title="Pedana ki Kalamkari" data-preview-text="Hand-painted Kalamkari from Andhra Pradesh: Kahani and Leela.">Pedana ki Kalamkari</a></li>
-            <li><a href="/categories/bihar-ki-bahar" data-preview data-preview-img="" data-preview-pos="" data-preview-title="Bihar ki Bahar" data-preview-text="Sarees from Bihar are on their way.">Bihar ki Bahar</a></li>
-            <li><a href="/categories/madhya-pradesh-ki-chanderi" data-preview data-preview-img="" data-preview-pos="" data-preview-title="Madhya Pradesh ki Chanderi" data-preview-text="Chanderi sarees are on their way.">Madhya Pradesh ki Chanderi</a></li>
+            <li><a href="/categories/banarasi" data-preview data-preview-img="/assets/images/panna.jpg" data-preview-pos="50% 80%" data-preview-title="Banarasi" data-preview-text="Silk and zari from the looms of Varanasi.">Banarasi</a></li>
+            <li class="mega__sub"><a href="/categories/banarasi-premium-silk" data-preview data-preview-img="/assets/images/kajal.jpg" data-preview-pos="50% 70%" data-preview-title="Banarasi premium silk" data-preview-text="Pure katan, kora and tissue silk, woven in Banaras.">Premium silk</a></li>
+            <li class="mega__sub"><a href="/categories/banarasi-premium-semi-silk" data-preview data-preview-img="/assets/images/surmai.jpg" data-preview-pos="50% 40%" data-preview-title="Banarasi premium semi-silk" data-preview-text="Banarasi weaves in lighter semi-silk blends.">Premium semi-silk</a></li>
+            <li><a href="/categories/kalamkari" data-preview data-preview-img="/assets/images/chitra.jpg" data-preview-pos="50% 35%" data-preview-title="Kalamkari" data-preview-text="Stories and florals, painted and printed by hand.">Kalamkari</a></li>
+            <li><a href="/categories/bandhani" data-preview data-preview-img="/assets/images/jamuni.jpg" data-preview-pos="50% 40%" data-preview-title="Bandhani" data-preview-text="Colour resisted by hand, dot by dot, before the cloth is dyed.">Bandhani</a></li>
+            <li><a href="/categories/block-prints" data-preview data-preview-img="/assets/images/mehrab.jpg" data-preview-pos="50% 40%" data-preview-title="Block prints" data-preview-text="Printed by hand with carved wooden blocks.">Block prints</a></li>
+            <li><a href="/categories/chanderi" data-preview data-preview-img="" data-preview-pos="" data-preview-title="Chanderi" data-preview-text="Chanderi sarees are on their way.">Chanderi</a></li>
           </ul>
         </div>
         <div class="mega__col">
@@ -103,6 +104,7 @@
       <ul class="mobile-menu__primary">
         <li><a href="/#new-arrivals">New arrivals</a></li>
         <li><a href="/sarees">All sarees</a></li>
+        <li><a href="/#categories">Categories</a></li>
         <li><a href="/#edits">Edits</a></li>
         <li><a href="/craft">The art of craftsmanship</a></li>
         <li><a href="#">About</a></li>
@@ -131,5 +133,13 @@
       <div class="bag-drawer__total"><span>Subtotal</span><span data-bag-subtotal></span></div>
       <button class="button button--filled button--block" type="button" disabled aria-describedby="bag-checkout-note">Checkout</button>
       <p class="bag-drawer__note" id="bag-checkout-note">Prototype: checkout is handled by Shopify in the live store.</p>
+      <!-- Ways to pay: same markup as render/pdp.mjs → paymentMethods(); keep the two in step -->
+      <ul class="pay-methods bag-drawer__pay" aria-label="Ways to pay">
+        <li><img class="pay-methods__logo pay-methods__logo--upi" src="/assets/images/payments/upi.svg" alt="UPI" width="176" height="52" loading="lazy" decoding="async"></li>
+        <li><img class="pay-methods__logo pay-methods__logo--visa" src="/assets/images/payments/visa.svg" alt="Visa" width="1000" height="324" loading="lazy" decoding="async"></li>
+        <li><img class="pay-methods__logo pay-methods__logo--mastercard" src="/assets/images/payments/mastercard.svg" alt="Mastercard" width="152" height="94" loading="lazy" decoding="async"></li>
+        <li><img class="pay-methods__logo pay-methods__logo--rupay" src="/assets/images/payments/rupay.svg" alt="RuPay" width="300" height="67" loading="lazy" decoding="async"></li>
+        <li class="pay-methods__text"><svg class="pay-methods__bank" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9.5 12 4l9 5.5M3.5 9.5h17v2h-17zM5.5 11.5v6.5M9.5 11.5v6.5M14.5 11.5v6.5M18.5 11.5v6.5M4.5 18h15v2h-15z"/></svg>Net banking</li>
+      </ul>
     </div>
   </aside>

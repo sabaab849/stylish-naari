@@ -5,8 +5,8 @@ export const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&a
 const pad2 = (n) => String(n).padStart(2, '0');
 export const formatPrice = (n) => (n == null ? '' : '₹ ' + Number(n).toLocaleString('en-IN'));
 
-const arrow = '<span class="link__arrow" aria-hidden="true">→</span>';
-export const link = (label, href = '#', extra = '') => `<a class="link${extra}" href="${esc(href)}"><span class="link__label">${esc(label)}</span>${arrow}</a>`;
+// Text links carry no arrow (client, Nov 2026)
+export const link = (label, href = '#', extra = '') => `<a class="link${extra}" href="${esc(href)}"><span class="link__label">${esc(label)}</span></a>`;
 
 /* Inline style for a product photo's focus crop (zoom + focal point), plus its object-position. */
 const focusStyle = (img) => [img.focus ? `--s:${img.focus.s}; --ox:${img.focus.ox}; --oy:${img.focus.oy}` : '', img.pos ? `object-position:${img.pos}` : ''].filter(Boolean).join('; ');
@@ -24,6 +24,17 @@ export function cropImg(product, crop, { alt = '', loading = 'lazy', cls = '' } 
   return `<img class="crop ${cls}" src="${esc(img.src)}" alt="${esc(alt)}" width="${img.width}" height="${img.height}" loading="${loading}" decoding="async"${style ? ` style="${style}"` : ''}>`;
 }
 
+/* What a product photograph shows, from its record in products.json:
+     product  the saree itself, folded or laid flat: images[].role "product", and the catalogue photos (no role,
+              in /assets/images/catalogue/), which are all folded shots
+     styled   a model wearing it: the other photographs without a role
+     detail   close-ups (role "detail", "border" and so on) */
+export const imageKind = (img) => (img.role === 'product' || (!img.role && img.src.includes('/catalogue/')) ? 'product' : img.role ? 'detail' : 'styled');
+const CAPTION = { styled: 'Styled imagery for representation', product: 'Actual product photograph' };
+/* A real photograph of the saree itself: a product shot, a catalogue photo, a Drive pendrive photo (images[].sn), or a
+   photo marked actual: true (e.g. Hariyali's own close-ups). */
+export const isActual = (img) => !!(img && (imageKind(img) === 'product' || img.sn || img.actual));
+
 /* ─── 01 Hero: gallery + sticky product information ───────── */
 function renderGallery(p) {
   // Views: each photograph, then closer views of the fall, pallu and border cut from those photographs.
@@ -36,22 +47,36 @@ function renderGallery(p) {
   //                   photograph it is cut from isn't already shown in full
   //   product shot  = the saree laid flat or folded, shown whole on its own backdrop colour
   // Sarees with only a portrait get two fabric-only close-ups cut from it instead.
-  const portraits = p.images.filter((im) => !im.role);
-  const details = p.images.filter((im) => im.role === 'detail');
-  const closeups = p.images.filter((im) => im.role && im.role !== 'detail' && im.role !== 'product'); // e.g. a border photo
-  const products = p.images.filter((im) => im.role === 'product');
+  // images[].gallery: false = kept for crops elsewhere on the page, but not a slide (e.g. a border shot with no print in it)
+  const shown = p.images.filter((im) => im.gallery !== false);
+  const portraits = shown.filter((im) => !im.role);
+  const details = shown.filter((im) => im.role === 'detail');
+  const closeups = shown.filter((im) => im.role && im.role !== 'detail' && im.role !== 'product'); // e.g. a border photo
+  const products = shown.filter((im) => im.role === 'product');
   // Model portraits with a frame (images[].frame: a 3:4 window, as shares of the photo) are cropped in on the model and
   // the saree, so the backdrop doesn't fill the picture. Other portraits are shown whole. Close-up views are crops.
   const framed = (f) => `--fw:${+(100 / f.w).toFixed(3)}%; --fx:${+(-100 * f.x / f.w).toFixed(3)}%; --fy:${+(-100 * f.y / f.h).toFixed(3)}%`;
-  const views = portraits.map((img) => img.frame
+  const portraitView = (img) => img.frame
     ? { img, style: framed(img.frame), alt: img.alt, frame: true }
-    : { img, style: '', alt: img.alt, whole: true });
+    : { img, style: '', alt: img.alt, whole: true };
+  // A product shot is shown whole on its backdrop colour, unless it is a full-frame photo of the cloth (fit: cover)
+  const productView = (img) => ({ img, style: img.fit === 'cover' ? '' : `object-fit:contain; background:${img.bg || 'transparent'}`, alt: img.alt, bg: img.bg, whole: img.fit !== 'cover' });
+  // galleryListed: true = every photograph exactly in the order listed in products.json, nothing cut from them
+  // (the November 16 sarees: model portrait → original product photo → print → border).
+  const views = p.galleryListed ? shown.map((img) => (img.role === 'product' ? productView(img) : img.role ? { img, style: '', alt: img.alt } : portraitView(img)))
+    : portraits.map(portraitView);
+  // images[].second: true = a product shot that comes straight after the model photo (the first-shoot folded originals,
+  // _tools/originals-firstshoot.ps1); the close-up crops follow it as before.
+  const early = p.galleryListed ? [] : products.filter((im) => im.second);
+  for (const img of early) views.push(productView(img));
   const cropView = (key, label, maxZoom) => {
     const c = p.crops?.[key];
     const img = c && p.images[c.img ?? 0];
-    if (img) views.push({ img, style: cropStyle({ ...c, s: Math.min(c.s ?? 1, maxZoom) }), alt: `${p.name}: ${label}` });
+    if (img && img.gallery !== false) views.push({ img, style: cropStyle({ ...c, s: Math.min(c.s ?? 1, maxZoom) }), alt: `${p.name}: ${label}` });
   };
-  if (details.length || closeups.length) {
+  if (p.galleryListed) {
+    // already complete
+  } else if (details.length || closeups.length) {
     details.forEach((img, n) => views.push({ img, style: '', alt: n ? (img.alt || `${p.name}: up close`) : `${p.name}: the print, up close` }));
     closeups.forEach((img) => views.push({ img, style: '', alt: img.alt || `${p.name}: up close` }));
     const bc = p.crops?.borderDetail;
@@ -60,9 +85,15 @@ function renderGallery(p) {
     cropView('border', 'the border', 2.4);
     cropView('swatch', 'the fabric', 2.4);
   }
-  // A product shot is shown whole on its backdrop colour, unless it is a full-frame photo of the cloth (fit: cover)
-  for (const img of products) views.push({ img, style: img.fit === 'cover' ? '' : `object-fit:contain; background:${img.bg || 'transparent'}`, alt: img.alt, bg: img.bg, whole: img.fit !== 'cover' });
+  if (!p.galleryListed) for (const img of products) if (!early.includes(img)) views.push(productView(img));
   if (p.video?.src) views.push({ video: p.video, img: { src: p.video.poster || p.images[0].src, width: p.video.width || 720, height: p.video.height || 1280 }, alt: `${p.name}: the saree in motion` });
+  // Caption under every photograph (client, Nov 16), from what the photo really is (isActual):
+  //   real photo of the saree itself (folded / laid flat / Drive pendrive / catalogue)  → "Actual product photograph"
+  //   anything AI-made: the model portrait and every close-up or crop cut from it      → "Styled imagery for representation"
+  //   a real photoshoot (products.json → photoshoot: true): its model photos are real, so they carry no caption
+  // The film carries none.
+  for (const v of views) v.caption = v.video ? '' : isActual(v.img) ? CAPTION.product : p.photoshoot ? '' : CAPTION.styled;
+  const captioned = views.some((v) => v.caption);
   const many = views.length > 1;
   // The frame's shape: 3:4 when the first photo is framed; otherwise the first photo's own shape, but never wider than
   // square (a landscape catalogue photo sits whole inside a square frame), so the picture always fits the screen.
@@ -74,7 +105,7 @@ function renderGallery(p) {
           <video class="pdp-gallery__video" muted loop playsinline preload="none" poster="${esc(v.video.poster || '')}" data-src="${esc(v.video.src)}" width="${v.img.width}" height="${v.img.height}" aria-label="${esc(v.alt)}"></video>
           <button class="pdp-gallery__sound" type="button" data-video-sound aria-pressed="false" aria-label="Turn sound on">Sound off</button>
         </figure>` : `
-        <figure class="pdp-gallery__slide${i === 0 ? ' is-active' : ''}${v.whole ? ' pdp-gallery__slide--whole' : ''}${v.frame ? ' pdp-gallery__slide--framed' : ''}" data-gallery-slide aria-label="Image ${i + 1} of ${views.length}"${i ? ' aria-hidden="true"' : ''}>
+        <figure class="pdp-gallery__slide${i === 0 ? ' is-active' : ''}${v.whole ? ' pdp-gallery__slide--whole' : ''}${v.frame ? ' pdp-gallery__slide--framed' : ''}" data-gallery-slide data-caption="${esc(v.caption)}" aria-label="Image ${i + 1} of ${views.length}"${i ? ' aria-hidden="true"' : ''}>
           <img class="crop" src="${esc(v.img.src)}" alt="${esc(v.alt)}" width="${v.img.width}" height="${v.img.height}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" style="${esc(v.style)}">
         </figure>`).join('');
   // A rail of thumbnails beside the image, and a round arrow on each side of it
@@ -89,10 +120,11 @@ function renderGallery(p) {
         <button class="pdp-gallery__btn pdp-gallery__btn--prev" type="button" data-gallery-prev aria-label="Previous image">${chevron('M14.5 6l-6 6 6 6')}</button>
         <button class="pdp-gallery__btn pdp-gallery__btn--next" type="button" data-gallery-next aria-label="Next image">${chevron('M9.5 6l6 6-6 6')}</button>` : '';
   return `
-    <section class="pdp-gallery${many ? ' pdp-gallery--many' : ''}" aria-label="${esc(p.name)} images" data-gallery tabindex="-1" style="${ratio}">${thumbs}
+    <section class="pdp-gallery${many ? ' pdp-gallery--many' : ''}${captioned ? ' has-captions' : ''}" aria-label="${esc(p.name)} images" data-gallery tabindex="-1" style="${ratio}">${thumbs}
       <div class="pdp-gallery__main">
         <div class="pdp-gallery__stage" data-gallery-track>${slides}
-        </div>${controls}
+        </div>${controls}${captioned ? `
+        <p class="pdp-gallery__caption" data-gallery-caption>${esc(views[0].caption)}</p>` : ''}
       </div>
     </section>`;
 }
@@ -140,7 +172,7 @@ function renderMotion(p) {
         <h2 class="motion__title" id="motion-title">${esc(m.title || 'The drape in motion')}</h2>
         <span class="motion__motif">${motif}</span>
         ${text ? `<p class="motion__body">${esc(text)}</p>` : ''}
-        <a class="motion__cta" href="${esc(m.href || '/#craft')}">${esc(m.cta || 'Explore the craft')} <span aria-hidden="true">→</span></a>
+        <a class="motion__cta" href="${esc(m.href || '/#craft')}">${esc(m.cta || 'Explore the craft')}</a>
       </div>
     </div>
   </section>`;
@@ -223,6 +255,19 @@ function renderInfo(p, data, index, total) {
    written in the template. An assurance marked for one fabric only shows on sarees of that fabric. */
 const lock = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="9.5" rx="1"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg>';
 const tick = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+/* Ways to pay as logos (assets/images/payments/*.svg, brand colours, fixed height in CSS); "Net banking" is a line bank
+   icon plus its name, after a divider. A method with no logo here falls back to its name. Same markup in the bag drawer
+   (partials/header.html), so keep the two in step. */
+const PAY_LOGOS = { upi: ['upi.svg', 'UPI', 176, 52], visa: ['visa.svg', 'Visa', 1000, 324], mastercard: ['mastercard.svg', 'Mastercard', 152, 94], rupay: ['rupay.svg', 'RuPay', 300, 67] };
+export const bankIcon = '<svg class="pay-methods__bank" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 9.5 12 4l9 5.5M3.5 9.5h17v2h-17zM5.5 11.5v6.5M9.5 11.5v6.5M14.5 11.5v6.5M18.5 11.5v6.5M4.5 18h15v2h-15z"/></svg>';
+export function paymentMethods(methods = [], cls = '') {
+  if (!methods.length) return '';
+  const key = (m) => m.toLowerCase().replace(/[^a-z]/g, '');
+  const logos = methods.filter((m) => PAY_LOGOS[key(m)]);
+  const other = methods.filter((m) => !PAY_LOGOS[key(m)]);
+  const img = ([file, alt, w, h]) => `<li><img class="pay-methods__logo pay-methods__logo--${file.replace('.svg', '')}" src="/assets/images/payments/${file}" alt="${alt}" width="${w}" height="${h}" loading="lazy" decoding="async"></li>`;
+  return `<ul class="pay-methods ${cls}" aria-label="Ways to pay">${logos.map((m) => img(PAY_LOGOS[key(m)])).join('')}${other.map((m) => `<li class="pay-methods__text">${/bank/i.test(m) ? bankIcon : ''}${esc(m)}</li>`).join('')}</ul>`;
+}
 function renderTrust(p, data) {
   const checkout = data.store.checkout;
   const fabric = (p.attributes.fabric || '').toLowerCase();
@@ -230,10 +275,10 @@ function renderTrust(p, data) {
   if (!checkout && !assurances.length) return '';
   return `
       <div class="pdp-trust">
-        ${checkout ? `<div class="pdp-trust__secure">
+        ${checkout ? `<div class="pdp-trust__secure"><div class="pdp-trust__row">
           <span class="pdp-trust__label">${lock}${esc(checkout.label)}</span>
-          ${checkout.methods?.length ? `<ul class="pdp-trust__methods" aria-label="Ways to pay">${checkout.methods.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>` : ''}
-        </div>` : ''}
+          ${paymentMethods(checkout.methods, 'pdp-trust__methods')}
+        </div></div>` : ''}
         ${assurances.length ? `<ul class="pdp-trust__list">${assurances.map((a) => `<li>${tick}${esc(a.title)}</li>`).join('')}</ul>` : ''}
       </div>`;
 }

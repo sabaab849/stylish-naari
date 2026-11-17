@@ -60,3 +60,7 @@
   text-decoration: underline; text-underline-offset: 3px;
 }
 .bag-line__remove:hover { color: var(--color-text); }
+
+/* Ways to pay under Checkout (logos: shop.css → .pay-methods) */
+.bag-drawer__pay { justify-content: center; margin-top: var(--space-sm); padding-top: var(--space-sm); border-top: 1px solid var(--color-border); }
+.bag-drawer__pay .pay-methods__text { flex-basis: 100%; justify-content: center; padding-left: 0; border-left: 0; } /* own line: the drawer is narrow */

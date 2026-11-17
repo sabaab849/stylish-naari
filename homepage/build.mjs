@@ -5,7 +5,7 @@
 //   dist/index.html              the homepage
 //   dist/sarees.html             every saree
 //   dist/wishlist.html           the saved list (filled in by shop.js)
-//   dist/faq.html, shipping.html, returns.html, care.html, contact.html   help pages
+//   dist/{faq,shipping,exchanges,privacy,terms,care,contact}.html   help and policy pages
 //   dist/craft.html              the Craft page
 //   dist/edits/<key>.html        one page per edit
 //   dist/categories/<slug>.html  one page per shop category
@@ -19,7 +19,7 @@ import { renderProduct, renderNotFound, aliasTarget } from './render/pdp.mjs';
 import { renderCollection, renderWishlist } from './render/collection.mjs';
 import { renderInfoPage, INFO_PAGES } from './render/info.mjs';
 import { renderCraftPage } from './render/craft.mjs';
-import { renderCategory } from './render/categories.mjs';
+import { renderCategory, categoryTarget, oldCategorySlugs } from './render/categories.mjs';
 import { root, readData, withIncludes } from './render/includes.mjs';
 
 const out = join(root, '..', 'dist');
@@ -54,6 +54,11 @@ for (const p of data.products) write(`products/${p.slug}.html`, renderProduct(p.
 for (const p of data.products) for (const a of p.aliases || []) {
   const to = aliasTarget(a.slug, data);
   write(`products/${a.slug}.html`, `<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="canonical" href="${to}"><meta http-equiv="refresh" content="0; url=${to}"><script>location.replace(${JSON.stringify(to)})</script><a href="${to}">Continue</a>`);
+}
+// old state-wise category links (Banaras ki Bunkari and the rest) forward to the craft category that replaced them, or to /sarees
+for (const slug of oldCategorySlugs(data)) {
+  const to = categoryTarget(slug, data);
+  write(`categories/${slug}.html`, `<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="canonical" href="${to}"><meta http-equiv="refresh" content="0; url=${to}"><script>location.replace(${JSON.stringify(to)})</script><a href="${to}">Continue</a>`);
 }
 write('404.html', renderNotFound());
 

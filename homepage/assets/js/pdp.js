@@ -12,6 +12,7 @@
     var slides = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-slide]'));
     var thumbs = Array.prototype.slice.call(gallery.querySelectorAll('[data-gallery-thumb]'));
     var rail = gallery.querySelector('.pdp-gallery__thumbs');
+    var caption = gallery.querySelector('[data-gallery-caption]'); // follows the photo on screen (styled / actual product)
     var current = 0;
     // When the rail holds more thumbnails than fit beside the photo it scrolls on its own; keep the chosen one in
     // view by scrolling the rail only (never the page)
@@ -32,6 +33,7 @@
         t.classList.toggle('is-active', n === i);
         if (n === i) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
       });
+      if (caption && slides[i]) caption.textContent = slides[i].getAttribute('data-caption') || '';
       gallery.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: i } })); // the colour choice follows the photo
     };
     var go = function (i) {

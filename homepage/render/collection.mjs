@@ -98,7 +98,7 @@ export function renderWishlist(data) {
     </ul>
     <div class="wishlist__empty" data-wishlist-empty hidden>
       <p>Nothing saved yet. Tap the heart on any saree to keep it here.</p>
-      <a class="link" href="/sarees"><span class="link__label">See all sarees</span><span class="link__arrow" aria-hidden="true">→</span></a>
+      <a class="link" href="/sarees"><span class="link__label">See all sarees</span></a>
     </div>
     <noscript><p class="wishlist__empty">The wishlist needs JavaScript to show what you have saved.</p></noscript>
   </div>`,

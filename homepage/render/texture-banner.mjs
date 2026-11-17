@@ -30,7 +30,7 @@ export function renderTextureBanner(data, {
         ${eyebrow ? `<p class="eyebrow texture-banner__eyebrow">${esc(eyebrow)}</p>` : ''}
         <h2 class="texture-banner__title" id="texture-title"><a class="texture-banner__link" href="${esc(href)}">${esc(title)}</a></h2>
         ${line ? `<p class="texture-banner__line">${esc(line)}</p>` : ''}
-        ${cta ? `<span class="link link--on-dark texture-banner__cta" aria-hidden="true"><span class="link__label">${esc(cta)}</span><span class="link__arrow">↗</span></span>` : ''}
+        ${cta ? `<span class="link link--on-dark texture-banner__cta" aria-hidden="true"><span class="link__label">${esc(cta)}</span></span>` : ''}
       </div>
     </section>`;
 }

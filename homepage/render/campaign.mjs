@@ -42,7 +42,7 @@ export function renderCampaign(data, { edit: editKey, product: slug, image = 0, 
         <p class="eyebrow campaign__eyebrow">The campaign</p>
         <h2 class="campaign__title" id="campaign-title"><a class="campaign__link" href="/edits/${esc(editKey)}">${esc(edit.title)}</a></h2>
         <p class="campaign__line">${esc(edit.descriptor)}</p>
-        <span class="link link--on-dark" aria-hidden="true"><span class="link__label">Explore the edit</span><span class="link__arrow">→</span></span>
+        <span class="link link--on-dark" aria-hidden="true"><span class="link__label">Explore the edit</span></span>
       </div>
       ${star('campaign__cursor campaign__cursor--star', 'data-campaign-cursor')}
       ${star('campaign__cursor campaign__cursor--sparkle', 'data-campaign-cursor-trail')}

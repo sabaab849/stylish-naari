@@ -1,4 +1,4 @@
-/* Stylish Naari — customer-help pages (FAQ, Shipping & Delivery, Returns & Exchanges, Saree Care Guide, Contact).
+/* Stylish Naari — customer-help and policy pages (FAQ, Shipping, Exchanges, Privacy, Terms, Saree care guide, Contact).
    Loaded only on those pages (render/info.mjs). Tokens and type roles only (CLAUDE.md → Typography):
    page title t-h1, section titles h3 size in Inter Tight 500, body copy Inter at body size. No cards, no icons. */
 
@@ -9,6 +9,23 @@
 .info__head { padding: var(--space-3xl) 0 var(--space-xl); max-width: 44em; }
 .info__intro { margin-top: var(--spacing-4); font-size: var(--font-size-body-lg); line-height: 1.55; color: var(--color-text-secondary); max-width: 36em; }
 .info__draft { margin-top: var(--spacing-5); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+
+.info__updated { margin-top: var(--spacing-3); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
+
+/* ─── At a glance: the key terms of a policy, above the full text (no cards: hairlines only) ── */
+.info-glance {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 var(--space-2xl); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);
+}
+.info-glance__item { padding: var(--space-md) var(--space-md) var(--space-md) 0; }
+.info-glance__item + .info-glance__item { padding-left: var(--space-md); border-left: 1px solid var(--color-border); }
+.info-glance dd { margin: 0; }
+.info-glance .info-glance__value {
+  margin-top: var(--space-xs);
+  font-family: var(--font-display); font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-h3); line-height: var(--line-height-h3); letter-spacing: var(--letter-spacing-h3); color: var(--color-text);
+}
+.info-glance .info-glance__note { margin-top: var(--space-2xs); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
 
 /* Anything the client still has to supply or confirm */
 .placeholder {
@@ -40,6 +57,7 @@
 }
 .info-section p, .info__list, .info__steps { color: var(--color-text-secondary); max-width: 38em; }
 .info-section p + p, .info-section p + .info__list, .info__list + p, .info-section p + .info__steps { margin-top: var(--spacing-3); }
+.info-section strong { font-weight: var(--font-weight-medium); color: var(--color-text); }
 .info__link { color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .info__link:hover { text-decoration-thickness: 2px; }
 
@@ -124,6 +142,13 @@
   .info__body, .contact-form { grid-column: 1; }
   .contact-details { grid-column: 1; margin-top: var(--spacing-9); padding-top: var(--spacing-7); border-top: 1px solid var(--color-border); grid-template-columns: repeat(2, 1fr); }
   .info-fabrics { grid-template-columns: 1fr 1fr; }
+}
+
+/* At a glance: two by two below 1024 (four columns get too narrow for the values) */
+@media (max-width: 1023px) {
+  .info-glance { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .info-glance__item:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .info-glance__item:nth-child(n + 3) { border-top: 1px solid var(--color-border); }
 }
 
 /* ─── Phone ≤767 ──────────────────────────────────────────── */

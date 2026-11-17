@@ -251,6 +251,9 @@ a:hover > .edit-card__text .link__arrow,
   font-family: var(--font-display); font-size: 17px; letter-spacing: -0.01em;
 }
 .mega__col li a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+/* a subcategory under its category (Banarasi → Premium silk / Premium semi-silk) */
+.mega__col li.mega__sub a { padding: 2px 0 2px var(--space-sm); font-size: var(--font-size-body); color: var(--color-text-muted); }
+.mega__col li.mega__sub a:hover { color: var(--color-text); }
 .mega__feature { grid-column: 10 / span 3; }
 .mega__feature .media { margin-bottom: var(--spacing-2); }
 
@@ -502,6 +505,11 @@ a:hover > .edit-card__text .link__arrow,
   transition: background-size var(--duration-base) var(--ease-out);
 }
 .footer-group li a:hover { background-size: 100% 1px; }
+/* Footer phone: line icon + number; the hover underline sits under the number only */
+.footer-group li a.footer-phone { display: inline-flex; align-items: center; gap: var(--space-2xs); background: none; }
+.footer-phone__icon { flex: none; width: 1em; height: 1em; }
+.footer-phone span { background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px; transition: background-size var(--duration-base) var(--ease-out); }
+.footer-phone:hover span, .footer-phone:focus-visible span { background-size: 100% 1px; }
 
 .site-footer__bar {
   display: flex; justify-content: space-between; align-items: center;
@@ -511,6 +519,9 @@ a:hover > .edit-card__text .link__arrow,
 }
 .site-footer__bar ul { display: flex; gap: var(--spacing-5); }
 .site-footer__bar .wordmark { color: var(--color-text); }
+/* the agency credit: "Made by [logo] DigiVeritaz", the logo sized to the caption text */
+.site-footer__credit { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+.site-footer__credit img { width: 1.6em; height: 1.6em; object-fit: contain; }
 
 /* ─── Laptop ≤1279 ─────────────────────────────────────── */
 @media (max-width: 1279px) {
@@ -620,6 +631,9 @@ a:hover > .edit-card__text .link__arrow,
   .footer-group--follow .eyebrow { margin: 0; }
   .footer-group--follow ul { padding-bottom: 0; }
   .site-footer__bar { flex-direction: column; align-items: flex-start; gap: var(--spacing-3); border-top: 0; }
+  .site-footer__bar ul { flex-wrap: wrap; row-gap: var(--spacing-2); }
+  .site-footer__bar li { white-space: nowrap; }
+  .site-footer__credit { flex-basis: 100%; } /* the credit gets its own line under the legal links */
 }
 
 /* ─── Homepage density ─────────────────────────────────────
@@ -1059,14 +1073,14 @@ a:hover > .edit-card__text .link__arrow,
   .festive__text .t-h2 { font-size: 1.75rem; }
 }
 
-/* ═══ Shop by region — the client's saree categories ═══════════
-   Seven regional traditions as a row of portrait tiles; the certified and other categories as two
-   quiet groups of text links beneath (fewer choices at once: Hick's and Miller's laws in the UX notes).
-   Until a photograph is supplied, a tile is a plain stone panel with its place name set in the display
-   face: type and space only, no motifs (brand guidelines §16). */
+/* ═══ Shop by category — the client's saree categories, by craft (Nov 17 2026) ═══════════
+   Five crafts (Banarasi, Kalamkari, Bandhani, Block prints, Chanderi) as a row of portrait tiles; Banarasi's
+   subcategories and the certified categories as quiet groups of text links beneath (fewer choices at once:
+   Hick's and Miller's laws in the UX notes). Until a photograph is supplied, a tile is a plain stone panel with
+   "Coming soon" set in the display face: type and space only, no motifs (brand guidelines §16). */
 .regions__head { align-items: flex-end; }
 .regions__row {
-  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: var(--spacing-4);
 }
 .region-tile__link { display: block; }
@@ -1121,7 +1135,7 @@ a:hover > .edit-card__text .link__arrow,
     margin-right: calc(-1 * var(--page-margin)); padding-right: var(--page-margin);
   }
   .regions__row::-webkit-scrollbar { display: none; }
-  .regions__row > li { flex: 0 0 26%; scroll-snap-align: start; }
+  .regions__row > li { flex: 0 0 30%; scroll-snap-align: start; }
   .regions__more { grid-template-columns: 1fr; row-gap: var(--spacing-6); margin-top: var(--spacing-8); }
   .regions__group:nth-child(n) { grid-column: 1; }
 }
@@ -1218,7 +1232,7 @@ a:hover > .edit-card__text .link__arrow,
 }
 .mega__preview-line { font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-secondary); max-width: 22em; }
 /* Arrow is glued to the last word with a no-break space so it never wraps onto its own line */
-.mega__preview-title::after { content: "\00a0→"; position: relative; left: 0; white-space: nowrap; transition: left 300ms ease-in-out; }
+.mega__preview-title::after { content: none; } /* no arrow after text links (client, Nov 2026) */
 .mega__preview:hover .mega__preview-title::after, .mega__preview:focus-visible .mega__preview-title::after { left: 4px; }
 @media (prefers-reduced-motion: reduce) { .mega__preview-title::after { transition: none; } }
 @media (prefers-reduced-motion: reduce) {

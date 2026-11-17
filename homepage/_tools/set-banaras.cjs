@@ -3,7 +3,7 @@
 //   panna: the client's product photo is named "Emerald Banarasi Saree with Paisley Border"
 // Other sarees are left unassigned until the client confirms them (see the report). Safe to re-run.
 const fs = require('fs'); const f = 'assets/data/products.json'; const d = JSON.parse(fs.readFileSync(f, 'utf8'));
-const CAT = 'banaras-ki-bunkari';
+const CAT = 'banarasi';
 const banarasi = { kairi: 'Original brief: the brand\'s Banarasi sarees (first shoot)', jamun: 'Original brief: first shoot', neel: 'Original brief: first shoot', bagh: 'Original brief: first shoot', panna: 'Product photo filename: "Emerald Banarasi Saree with Paisley Border"' };
 for (const p of d.products) if (banarasi[p.slug]) {
   p.categories = [...new Set([...(p.categories || []), CAT])];

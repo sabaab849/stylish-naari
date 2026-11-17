@@ -7,7 +7,7 @@
 //   /sarees              every saree (render/collection.mjs)
 //   /edits/<key>         the sarees in one edit
 //   /wishlist            the sarees saved in this browser
-//   /faq /shipping /returns /care /contact   help pages (render/info.mjs)
+//   /faq /shipping /exchanges /privacy /terms /care /contact   help pages (render/info.mjs)
 //   /craft               the Craft page (render/craft.mjs)
 //   everything else      static files
 //
@@ -20,7 +20,7 @@ import { aliasTarget, renderProduct, renderNotFound } from './render/pdp.mjs';
 import { renderCollection, renderWishlist } from './render/collection.mjs';
 import { renderInfoPage, INFO_PAGES } from './render/info.mjs';
 import { renderCraftPage } from './render/craft.mjs';
-import { renderCategory } from './render/categories.mjs';
+import { renderCategory, categoryTarget } from './render/categories.mjs';
 import { root, readData, withIncludes } from './render/includes.mjs';
 
 const port = Number(process.env.PORT) || 4321;
@@ -73,7 +73,10 @@ createServer((req, res) => {
   const category = urlPath.match(/^\/categories\/([a-z0-9-]+)\/?$/);
   if (category) {
     try {
-      const html = renderCategory(readData(), category[1]);
+      const data = readData();
+      const moved = categoryTarget(category[1], data); // old state-wise categories (render/categories.mjs)
+      if (moved) { res.writeHead(301, { Location: moved }).end(); return; }
+      const html = renderCategory(data, category[1]);
       sendHtml(res, html ? 200 : 404, html || renderNotFound());
     } catch (err) {
       console.error(err);
@@ -85,7 +88,7 @@ createServer((req, res) => {
   // Craft page
   if (/^\/craft\/?$/.test(urlPath)) { sendHtml(res, 200, renderCraftPage(readData())); return; }
 
-  // Help pages: /faq, /shipping, /returns, /care, /contact (render/info.mjs)
+  // Help pages: /faq, /shipping, /exchanges, /privacy, /terms, /care, /contact (render/info.mjs)
   const info = urlPath.match(/^\/([a-z]+)\/?$/);
   if (info && INFO_PAGES[info[1]]) { sendHtml(res, 200, renderInfoPage(info[1], readData())); return; }
 

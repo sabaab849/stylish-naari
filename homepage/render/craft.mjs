@@ -15,7 +15,7 @@ import { reel, marks, closing, lookbook, kalamkari } from './craft-content.mjs';
 import { windowFrame } from './craft-windows.mjs';
 
 const productsIn = (data, slug) => data.products.filter((p) => (p.categories || []).includes(slug));
-const arrowLink = (label, href, extra = '') => `<a class="link${extra}" href="${esc(href)}"><span class="link__label">${esc(label)}</span><span class="link__arrow" aria-hidden="true">→</span></a>`;
+const arrowLink = (label, href, extra = '') => `<a class="link${extra}" href="${esc(href)}"><span class="link__label">${esc(label)}</span></a>`;
 
 /* ─── 1. Hero: one craft film, an editorial composition over it ──────
    One landscape frame (16:9, never taller than the screen; a taller frame on phones so the words fit). Layers:
@@ -61,8 +61,8 @@ function renderHero() {
       <h1 class="craft-hero__title" id="craft-title">${esc(reel.title)} <em class="serif">${esc(reel.titleAccent)}</em></h1>
       <p class="craft-hero__line">${esc(reel.line)}</p>
       <div class="craft-hero__actions">
-        <a class="button craft-hero__cta" href="${esc(reel.primary.href)}">${esc(reel.primary.label)}<span class="craft-hero__arrow" aria-hidden="true">→</span></a>
-        <a class="link link--on-dark" href="${esc(reel.secondary.href)}"><span class="link__label">${esc(reel.secondary.label)}</span><span class="link__arrow" aria-hidden="true">→</span></a>
+        <a class="button craft-hero__cta" href="${esc(reel.primary.href)}">${esc(reel.primary.label)}</a>
+        <a class="link link--on-dark" href="${esc(reel.secondary.href)}"><span class="link__label">${esc(reel.secondary.label)}</span></a>
       </div>
     </div>
     <button type="button" class="craft-hero__pause" data-reel-toggle aria-pressed="false">Pause the film</button>
@@ -244,7 +244,7 @@ ${markSection('handloom', data, handloomMedia)}
     <div class="container craft-close__content" data-reveal>
       <p class="eyebrow craft-close__eyebrow">${esc(closing.eyebrow)}</p>
       <h2 class="craft-close__title" id="craft-close-title"><a class="craft-close__link" href="${esc(closing.href)}">${esc(closing.title)}</a></h2>
-      <span class="link link--on-dark" aria-hidden="true"><span class="link__label">Shop all sarees</span><span class="link__arrow">→</span></span>
+      <span class="link link--on-dark" aria-hidden="true"><span class="link__label">Shop all sarees</span></span>
     </div>
   </section>`;
 

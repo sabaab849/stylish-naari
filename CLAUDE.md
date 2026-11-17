@@ -78,8 +78,19 @@ Sizes come from the fluid tokens, not from these breakpoints. Use the breakpoint
 - **Section display sizes:** a few sections size their headline to fit their own frame (colour chapter,
   "The Saree, Unfolded", campaign titles). Those use `clamp()` with a `vw` term so they stay fluid; keep
   the minimum at or above `--font-size-h2` and record any new one here.
+- **Image captions (PDP gallery):** Inter 400 at `--font-size-eyebrow` (11 → 12px), sentence case, no tracking,
+  `--color-text-muted`, one line under the photograph (`.pdp-gallery__caption`). Every slide is captioned by what it
+  really is (`render/pdp.mjs` → `isActual`): real photos of the saree (product shots, Drive pendrive / catalogue photos,
+  `images[].actual`) read "Actual product photograph"; AI-made images, including close-ups and crops cut from them, read
+  "Styled imagery for representation"; real photoshoot sarees (`photoshoot: true`) carry no caption on their model photos.
+  New sarees: add them to `_tools/set-captions.cjs` if they are a real shoot or have real close-ups.
 - **New text:** pick the role from the table above and use its tokens (`font-family`, `font-size`,
   `line-height`, `letter-spacing`). Check it at 390px, 820px and 1440px before finishing.
+
+**Ways to pay:** logos, never text pills. SVGs in `assets/images/payments/` (UPI, Visa, Mastercard, RuPay; UPI and RuPay
+lettering is outlined to paths so it never depends on a font), then a line bank icon + "Net banking" after a hairline.
+PDP: `render/pdp.mjs` → `paymentMethods()` from `store.checkout.methods`; bag drawer: the same markup in
+`partials/header.html`. Styles: `shop.css` → `.pay-methods`.
 
 ## Spacing
 
@@ -124,5 +135,60 @@ change the token, never a page.
 - Buy bar: once the main Add to bag button scrolls away (until the footer), a bar pinned to the bottom shows the
   photo, name, price and Add to bag, on every screen size (`pdp.js` → `[data-buybar]`).
 - Tablet (768–1023): rail + photograph side by side, centred, photo no taller than ~76% of the screen; details below.
+- A saree with a single portrait normally gets two fabric close-ups cut from it (crops.border, crops.swatch) as slides
+  2–3. `galleryListed: true` instead shows every photo in its listed order with nothing cut from them: the November 16
+  sarees (`_tools/add-nov16.cjs`) run model portrait → original product photo (the Drive "SN-0xx – 01 (primary)",
+  unedited, on its own black backdrop) → print → border. The print is the WHOLE Drive shot of the print (zoomed out, never one motif); the border is the
+  WHOLE Drive shot that shows the border beside the print, uncut, on ivory (fit: contain): never a crop of the border
+  alone, never made up when Drive has no shot (Megh has none). Black studio backdrop → page ivory
+  (`_tools/originals-nov16.ps1`, then `_tools/set-borders-nov16.cjs`). All three carry the
+  "Actual product photograph" caption (role "product").
+- No saree has two PDPs. When a model PDP exists for a catalogue saree, the folded catalogue PDP (or that colour of a
+  multi-colour one) is removed and redirects to the model PDP, which takes over its price and fabric
+  (`_tools/dedupe-folded.cjs`, run after any add-*.cjs; it lists every match).
+- Premium Semi-Silk sarees (Surmai … Laali, `_tools/convert-semi-silk.ps1` + `add-semi-silk.cjs`, then `dedupe-folded.cjs`):
+  model photo, then slides 2–4 from the Drive pendrive folder of the saree's SN (its own photo, a print close-up, another
+  view). Those are whole photos, never cropped; a landscape photo is turned upright (90° clockwise) so it fills the
+  portrait frame (`fit: cover`), longest side 2400px.
+- One model photograph per product (client, Nov 2026): slide 1 is the only photo of the model; later slides are the
+  original product photos and fabric close-ups. Never add a second pose, back view or portrait (`_tools/one-model-photo.cjs`).
+- No border-only slides (client, Nov 2026): a photo that shows the border beside plain body cloth, with none of the
+  print, is not a gallery slide. It stays in `images` with `gallery: false` (crops still use it by index; `render/pdp.mjs`
+  skips it, and skips crops cut from it). List: `_tools/hide-border-only.cjs` — check every new saree's border shot by eye.
+- First-shoot Banarasi sarees (Kairi, Jamun, Neel, Bagh): model photo → real folded photo (`images[].second: true`, from the
+  Drive folder "Stylissh Naari" flat-lays, turned upright: `_tools/originals-firstshoot.ps1` + `add-originals-firstshoot.cjs`)
+  → border crop → print crop. Kairi = IMG_7947, Bagh = IMG_7944. No flat-lay of Jamun or Neel in that folder yet (Jamun's real
+  model shoot is IMG_8016–8029). The gallery caps crop zoom at 2.4, so `crops.border` and `crops.swatch` must point at
+  different spots (hem border vs body print) or the two slides look the same.
 - Phone (≤767): full-width swipe gallery with a horizontal thumbnail strip under it; details below. Nothing sticky
   below 1024px except the buy bar (`pdp.js` swipe mode is `max-width: 767px`).
+
+## Categories
+
+By craft, never by state (client, 17 Nov 2026): **Banarasi** (subcategories **Premium silk** and **Premium semi-silk**),
+**Kalamkari**, **Bandhani**, **Block prints**, **Chanderi**, plus the certified (`mark`) and `more` pages. Defined in
+`products.json` → `categories` by `_tools/set-categories.cjs` (run it after any add-*.cjs; it also remaps old slugs).
+A subcategory has `parent`; a saree in it carries both slugs. Banarasi subcategory = the Drive workbook "Pendrive Photo
+Audit – Banarasi": SN-001…049 Premium silk, SN-050…091 Premium semi-silk; every SN saree is Banarasi. Banarasi sarees with
+no SN (first shoot, AI model sarees) have no subcategory until the client says. Old state-wise links
+(`banaras-ki-bunkari` …) redirect via `categories[].formerly` / `categoryRedirects` (serve.mjs 301, build.mjs forwarding
+page). Shown in: homepage tiles (`render/categories.mjs`, top-level crafts only, subcategories as links beneath), the header
+mega menu "By category" (`partials/header.html`, hand-written: keep it in step), category pages with an "All Banarasi ·
+Premium silk · Premium semi-silk" tab row. Ikat sarees (Rangoli, Saanjh, Sindoor) and a few others have no category yet.
+Kalamkari model sarees Veena, Darbar, Chitra, Gajraj, Bansuri: `_tools/convert-kalamkari.ps1` + `add-kalamkari.cjs`.
+Bandhani (not "Bandhej": client, 17 Nov 2026; `/categories/bandhej` redirects) model sarees Chunari, Sakhi, Jamuni, Bindiya,
+Gulabo, Lavanya: `_tools/convert-bandhani.ps1` + `add-bandhani.cjs`; Anaar is Bandhani too.
+Block print sarees (15): `_tools/convert-blockprint.ps1` + `add-blockprint.cjs`, then `set-captions.cjs` (the eleven WhatsApp
+"IMG-2026…" photos are a real shoot: photoshoot, no caption; Rekha, Syahi, Raat, Mehrab are AI) and `set-categories.cjs`.
+
+## Policy pages
+
+`/shipping`, `/exchanges`, `/privacy`, `/terms` and `/faq` (copy in `render/info-content.mjs`, layout in `render/info.mjs`,
+footer column "Policies"). Terms are the client's (launch questions reply, 17 Nov 2026). Shipping is **free across India on
+every order** — a fixed business rule, never add a charge or threshold; outside India, charges are given by email. Dispatch
+4–12 days (by availability, confirmed by email, working days only), delivery 6–12 working days, tracking within 24–48 hours,
+no cash on delivery; these must match `store.shipping` in `products.json`. No returns; exchanges only for damage or misprints,
+within 14 days, unused with tags, unboxing video required, never for handloom, customised or sale items; customer pays
+exchange shipping; settled with a store credit note valid 15 days. Business (registered as "Stylissh Naari"): Brindaban Complex, Majiwada,
+Thane West; GSTIN 27AVTPM2829F2Z5; support stylisshnaari3552026@gmail.com, +91 73048 12124 (`store.support`); disputes: courts of Mumbai. A page shows the "Draft page" line only while its copy still contains
+`[Insert …]` / `[Confirm …]`.

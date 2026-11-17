@@ -1,16 +1,19 @@
-// Customer-help pages: /faq, /shipping, /returns, /care, /contact.
-// One shared layout (title block, an "On this page" list, readable sections, a "More help" footer) so the five
-// pages read as one family with the rest of the site. Copy lives in render/info-content.mjs.
+// Customer-help and policy pages: /faq, /shipping, /exchanges, /privacy, /terms, /care, /contact.
+// One shared layout (title block, an "On this page" list, readable sections, a "More help" footer) so the
+// pages read as one family with the rest of the site. Policy pages add a "last updated" line and, for shipping and
+// exchanges, a strip of the key terms above the text. Copy lives in render/info-content.mjs.
 import { page, esc } from './pdp.mjs';
-import { HELP_LINKS, faq, shipping, returns, care, contact } from './info-content.mjs';
+import { HELP_LINKS, faq, shipping, exchanges, privacy, terms, care, contact } from './info-content.mjs';
 
-export const INFO_PAGES = { faq, shipping, returns, care, contact };
+export const INFO_PAGES = { faq, shipping, exchanges, privacy, terms, care, contact };
 
 const slugify = (v) => String(v).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-/* Inline text: escape, then [[text|/href]] → link, and any [Insert …] / [Confirm …] → a marked placeholder */
+/* Inline text: escape, then [[text|/href]] → link, **text** → emphasis (Inter 500), and any [Insert …] / [Confirm …]
+   → a marked placeholder */
 function inline(text) {
   return esc(text)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (m, label, href) => `<a class="info__link" href="${href}">${label}</a>`)
     .replace(/\[((?:Insert|Confirm)[^\]]*)\]/g, (m, inner) => `<mark class="placeholder" title="Placeholder: awaiting client confirmation">[${inner}]</mark>`);
 }
@@ -29,12 +32,25 @@ const head = (p, extra = '') => `
     <header class="info__head">
       <p class="eyebrow">${esc(p.eyebrow)}</p>
       <h1 class="t-h1" id="page-title">${esc(p.title)}</h1>
-      <p class="info__intro">${inline(p.intro)}</p>${extra}
+      <p class="info__intro">${inline(p.intro)}</p>${p.updated ? `
+      <p class="info__updated">Last updated <time>${esc(p.updated)}</time></p>` : ''}${extra}
     </header>`;
 
-// A visible line on every help page while its copy is placeholder (store.helpPagesDraft in products.json)
-const draftNote = (data) => (data.store?.helpPagesDraft === false ? '' : `
+// A visible line on a help page while its copy still has placeholders (switch off for all pages with
+// store.helpPagesDraft: false in products.json)
+const hasPlaceholders = (p) => /\[(?:Insert|Confirm)/.test(JSON.stringify(p));
+const draftNote = (data, p) => (data.store?.helpPagesDraft === false || !hasPlaceholders(p) ? '' : `
       <p class="info__draft">Draft page: details in <mark class="placeholder">[brackets]</mark> are placeholders awaiting confirmation.</p>`);
+
+// The key terms of a policy, read at a glance before the full text
+const glance = (p) => (p.glance ? `
+    <dl class="info-glance" aria-label="At a glance">${p.glance.map(([label, value, note]) => `
+      <div class="info-glance__item">
+        <dt class="eyebrow">${esc(label)}</dt>
+        <dd class="info-glance__value">${esc(value)}</dd>${note ? `
+        <dd class="info-glance__note">${esc(note)}</dd>` : ''}
+      </div>`).join('')}
+    </dl>` : '');
 
 const toc = (items) => `
       <nav class="info__toc" aria-label="On this page">
@@ -46,7 +62,7 @@ const moreHelp = (current) => `
     <aside class="info-more" aria-labelledby="more-help-title">
       <h2 class="t-h3" id="more-help-title">More help</h2>
       <ul class="info-more__links">${HELP_LINKS.filter(([, href]) => href !== `/${current}`).map(([label, href]) => `
-        <li><a class="link" href="${href}"><span class="link__label">${esc(label)}</span><span class="link__arrow" aria-hidden="true">→</span></a></li>`).join('')}
+        <li><a class="link" href="${href}"><span class="link__label">${esc(label)}</span></a></li>`).join('')}
       </ul>
     </aside>`;
 
@@ -57,11 +73,11 @@ const shell = (p, data, inner) => page({
   styles: ['/assets/css/info.css'],
   scripts: p.slug === 'contact' ? ['/assets/js/contact.js'] : [],
   body: `
-  <div class="container">${head(p, draftNote(data))}${inner}${moreHelp(p.slug)}
+  <div class="container">${head(p, draftNote(data, p))}${glance(p)}${inner}${moreHelp(p.slug)}
   </div>`,
 });
 
-/* ─── Policy-style pages: Shipping, Returns, Care ─────────── */
+/* ─── Policy-style pages: Shipping, Exchanges, Privacy, Terms, Care ─ */
 function renderSections(p, data) {
   const sections = p.sections.map((s) => `
         <section class="info-section" id="${s.id}" aria-labelledby="${s.id}-title">
@@ -145,10 +161,11 @@ function renderContact(p, data) {
             <h2 class="eyebrow">Email</h2>
             <p>${email}</p>
           </div>
+${s.hours ? `
           <div class="contact-details__item">
             <h2 class="eyebrow">Support hours</h2>
-            <p>${value(s.hours, '[Insert support hours]')}</p>
-          </div>${s.phone ? `
+            <p>${esc(s.hours)}</p>
+          </div>` : ''}${s.phone ? `
           <div class="contact-details__item">
             <h2 class="eyebrow">Phone</h2>
             <p><a class="info__link" href="tel:${esc(s.phone.replace(/\s/g, ''))}">${esc(s.phone)}</a></p>
@@ -161,8 +178,8 @@ function renderContact(p, data) {
             <h2 class="eyebrow">Quick answers</h2>
             <ul class="contact-details__links">
               <li><a class="info__link" href="/faq">Frequently asked questions</a></li>
-              <li><a class="info__link" href="/shipping">Shipping & delivery</a></li>
-              <li><a class="info__link" href="/returns">Returns & exchanges</a></li>
+              <li><a class="info__link" href="/shipping">Shipping policy</a></li>
+              <li><a class="info__link" href="/exchanges">Exchange policy</a></li>
             </ul>
           </div>
         </aside>`;

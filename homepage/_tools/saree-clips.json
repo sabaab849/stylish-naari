@@ -1,0 +1,24 @@
+{
+  "_about": "Saree videos (16 Nov 2026). Source: Drive folder 1qw382ACo3q3h_kqA0xiKNbDmb5N2GJVi (64 clips, 001–064.mp4, 1080×1920, ~28 s, the folded sarees from the pendrive product shoot, in the same order as the shoot folders day1/1–48 then 2day). Matched by eye against each product's original SN photo and the pendrive audit (folder → SN). slug → clip number. Encoded by _tools/encode-clips.mjs.",
+  "map": {
+    "kamal": "001", "moti": "002", "chameli": "003", "aasmaan": "004", "kattha": "005", "gulistan": "007",
+    "mehendi": "008", "mangal": "010", "ambi": "011", "airavat": "016", "basant": "017", "sawari": "020",
+    "bahaar": "021", "kasni": "023", "rani": "026", "sosan": "028", "taal": "029", "mor": "030",
+    "shringaar": "031", "palash": "032", "shagun": "035", "khus": "036", "mishri": "037", "moonga": "040",
+    "haldi": "042", "mitti": "046", "gulbahar": "047", "gunja": "049", "jharokha": "050", "maina": "051",
+    "khubani": "052", "tulsi": "053", "banafsha": "056", "laali": "061", "zamurrad": "062", "sitara": "064"
+  },
+  "notOnSite": {
+    "006": "SN-015 purple kora alfi booti (also 015)", "009": "SN-017 maroon katan zari jungla", "012": "SN-016 katan zari booti",
+    "013": "SN-013 pink colourway (Phalsa is the purple one, seen only at the edge)", "014": "SN-041 peach floral digital print",
+    "015": "SN-015 purple (second clip)", "018": "SN-040 lavender digital print", "019": "SN-023 teal colourway (Panna is dark green)",
+    "022": "SN-029 gold colourway (Kasni is lilac)", "024": "SN-024 pink katan tanchoi", "025": "SN-030 lilac katan tanchoi",
+    "027": "Light blue tissue with a bird pallu (pendrive day1/33, not in the client workbook)", "033": "SN-018 olive kora tilfi meenakari",
+    "034": "SN-009 blue kora meenakari kadhwa", "038": "SN-037 peach tissue kadhwa", "039": "Purple bird paithani (SN-031)",
+    "041": "SN-039 blue katan village paithani", "043": "Ivory with silver buti (2day/49, not in the workbook)",
+    "044": "Salmon pink (2day, not in the workbook)", "045": "A pile of colourways (SN-062 group)", "048": "SN-051 red semi katan alfi border (no model photo)",
+    "054": "Lavender with buti (2day, not in the workbook)", "055": "Aqua with buti (2day, not in the workbook)",
+    "057": "Pink with zari (2day/84, not in the workbook)", "058": "Pink meenakari tanchoi (SN-058 group)", "059": "Grey meenakari tanchoi (SN-058 group)",
+    "060": "Pink meenakari tanchoi (SN-058 group)", "063": "Orange jaal (2day/92, not in the workbook)"
+  }
+}

@@ -1,45 +1,6 @@
 // Copy for the Craft page (/craft). Rendered by render/craft.mjs.
-// Region names, places and photographs come from data.categories in products.json; this file only adds
-// the one or two lines about each craft. Keep them short: the photographs carry the page.
-//
-// STATUS: DRAFT. Each line describes the craft that region is best known for, in general terms. Before launch,
-// the client should confirm it matches the sarees they actually sell under that region (see `confirm`).
-
-export const intro = {
-  eyebrow: 'The craft',
-  title: 'The art of the saree',
-  line: 'Seven regions, each with its own way of weaving, dyeing and printing. This is where our sarees come from.',
-};
-
-// keyed by category slug
-export const regions = {
-  'banaras-ki-bunkari': {
-    line: 'From Varanasi: silk woven with zari brocade, buti and jaal, set on the loom thread by thread.',
-  },
-  'kolkata-ki-kalakari': {
-    line: 'The sarees of Bengal, from airy tant cottons to the woven motifs of jamdani and baluchari.',
-    confirm: 'Which Bengal weaves the client stocks (tant, jamdani, baluchari or others).',
-  },
-  'rajasthan-ki-rajshahi': {
-    line: 'Bandhani and leheriya: colour resisted by hand, dot by dot and wave by wave, before the cloth is dyed.',
-    confirm: 'Whether the Rajasthan range is bandhani and leheriya, block print, or both.',
-  },
-  'gujarat-ki-garima': {
-    line: 'Ikat, and at its finest the patola of Patan, where every thread is dyed in its pattern before it is woven.',
-    confirm: 'Whether any of the sarees are true double-ikat patola, or single ikat.',
-  },
-  'pedana-ki-kalamkari': {
-    line: 'Kalamkari from Pedana in Andhra Pradesh: florals and stories printed by hand in layered, traditionally natural dyes.',
-    confirm: 'Whether the Pedana sarees are block-printed, hand-painted, or both, and whether natural dyes are used.',
-  },
-  'madhya-pradesh-ki-chanderi': {
-    line: 'From the town of Chanderi: sheer, light weaves of silk and cotton, lit with fine zari buti.',
-  },
-  'bihar-ki-bahar': {
-    line: 'Bihar’s tussar silk from Bhagalpur, with its natural golden sheen, and the hand-drawn lines of Madhubani.',
-    confirm: 'Whether the Bihar range is Bhagalpuri tussar, Madhubani-painted, or both.',
-  },
-};
+// The shop categories (by craft: Banarasi, Kalamkari, Bandhani, Block prints, Chanderi) live in data.categories in
+// products.json; the old state-wise region copy that sat here was removed with them (client, Nov 17 2026).
 
 // ─── Hero: one craft film, an editorial composition over it ───────────────────
 // BACKGROUND: ONE continuous video, craft-hero-loop.mp4: Kalamkari, handloom, zari and silk yarn, a new scene every
@@ -115,7 +76,7 @@ export const closing = {
 // Facts kept to what is generally documented about the two traditions; nothing here claims how a particular
 // Stylish Naari saree was made. The photographs are details of our own Kalamkari sarees (Kahani and Leela);
 // the captions name the saree and what it shows, not which school or technique made it — the products' records
-// don't say (see the client questions in craft-content: 'pedana-ki-kalamkari'.confirm).
+// don't say.
 // Images: leela.jpg, plus crops cut at full resolution from kahani-product.jpg and leela-product.jpg
 // (kalamkari-*.jpg). Replace with dedicated close-up photography when it exists; keep the same files.
 export const kalamkari = {

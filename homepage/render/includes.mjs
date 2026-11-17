@@ -16,7 +16,7 @@ export const readData = () => JSON.parse(readFileSync(join(root, 'assets/data/pr
 // Includes rendered from data rather than read from partials/ (Shopify: a section bound to a collection)
 const dataIncludes = {
   'new-arrivals': () => renderNewArrivals(readData()),
-  // Shop by region: the client's saree categories (data.categories); tiles fill in as photographs arrive
+  // Shop by category: the saree categories by craft (data.categories); tiles fill in as photographs arrive
   categories: () => renderCategories(readData()),
   // The homepage campaign: one edit, shown through one saree's portrait, on the studio colour behind it
   campaign: () => renderCampaign(readData(), { edit: 'soft', product: 'kasni', position: '50% 42%' }),

@@ -65,7 +65,7 @@
     var lines = items();
     if (!lines.length) {
       list.innerHTML = '<p class="bag-drawer__empty">Your bag is empty.</p>' +
-        '<a class="link" href="/#new-arrivals"><span class="link__label">Start with the new arrivals</span><span class="link__arrow" aria-hidden="true">→</span></a>';
+        '<a class="link" href="/#new-arrivals"><span class="link__label">Start with the new arrivals</span></a>';
       foot.hidden = true;
       return;
     }

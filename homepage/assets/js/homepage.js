@@ -81,8 +81,20 @@
         });
       });
     }
-    trigger.addEventListener('click', function () {
-      if (trigger.getAttribute('aria-expanded') === 'true') closeMega(); else openMega();
+    /* "Shop" is a link to the shop-all page (/sarees). With a mouse, a click follows it and the menu
+       opens on hover. On touch screens, the first tap opens the menu and a second tap goes to the page.
+       From the keyboard, Enter follows the link and Arrow Down opens the menu. */
+    trigger.addEventListener('click', function (e) {
+      if (canHover || trigger.getAttribute('aria-expanded') === 'true') return;
+      e.preventDefault();
+      openMega();
+    });
+    trigger.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown') return;
+      e.preventDefault();
+      openMega();
+      var first = mega.querySelector('a');
+      if (first) requestAnimationFrame(function () { first.focus(); });
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') { closeMega(); trigger.focus(); }

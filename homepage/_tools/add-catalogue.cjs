@@ -14,7 +14,7 @@
 //              sarees. Rename before launch if wanted.
 //   images     assets/images/catalogue/sn-NNN.jpg, one per catalogue row (NNN = row number); see
 //              catalogue-source.json rows[].output for how each was made.
-//   category   "banaras-ki-bunkari" only where the row's own description says Banarasi.
+//   category   "banarasi" only where the row's own description says Banarasi.
 // Anything the catalogue doesn't say (SKU, border, length, blouse piece, care, crops) stays null and is hidden.
 const fs = require('fs');
 const path = require('path');
@@ -193,7 +193,7 @@ const added = ROWS.map(([row, name, fabric, colourNames, n, note]) => {
     priceIsPlaceholder: false,
     isNew: false,
     edits: [],
-    categories: banarasi ? ['banaras-ki-bunkari'] : [],
+    categories: banarasi ? ['banarasi'] : [],
     ...(banarasi ? { categoryEvidence: 'The catalogue description says Banarasi.' } : {}),
     colours,
     coloursSource: 'photo',
