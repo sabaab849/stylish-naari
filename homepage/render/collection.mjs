@@ -24,13 +24,24 @@ function renderFilters(data, list, { withEdits }) {
   const declared = (data.store.filters?.fabrics || []).map((label) => ({ value: slugify(label), label, n: found.find((f) => f.value === slugify(label))?.n || 0 }));
   const fabrics = declared.concat(found.filter((f) => !declared.some((d) => d.value === f.value)));
   const edits = withEdits ? Object.entries(data.edits).map(([key, e]) => ({ value: key, label: e.title, n: list.filter((p) => p.edits.includes(key)).length })).filter((o) => o.n) : [];
+  // Craft: the shop-by-category crafts in their own order, each Banarasi subcategory straight after Banarasi
+  // (named as on its page: "Banarasi premium silk"). Only crafts with sarees on this page are listed.
+  const cats = data.categories || [];
+  const crafts = cats.filter((c) => c.group === 'craft' && !c.parent)
+    .flatMap((c) => [c, ...cats.filter((s) => s.parent === c.slug)])
+    .map((c) => {
+      const parent = c.parent && cats.find((x) => x.slug === c.parent);
+      const label = parent ? `${parent.name} ${c.name.charAt(0).toLowerCase()}${c.name.slice(1)}` : c.name;
+      return { value: c.slug, label, n: list.filter((p) => (p.categories || []).includes(c.slug)).length };
+    })
+    .filter((o) => o.n);
   const bands = PRICE_BANDS.map(([value, label]) => ({ value, label })).concat({ value: 'to-be-confirmed', label: 'Price to be confirmed' })
     .map((o) => ({ ...o, n: list.filter((p) => priceBand(p) === o.value).length })).filter((o) => o.n);
 
   return `
     <section class="filters" data-filters aria-label="Filter and sort">
       <div class="filters__bar">
-        <div class="filters__groups">${group('colour', 'Colour', colours, true)}${group('fabric', 'Fabric', fabrics)}${group('edit', 'Edit', edits)}${group('price-band', 'Price', bands)}
+        <div class="filters__groups">${group('category', 'Craft', crafts)}${group('colour', 'Colour', colours, true)}${group('fabric', 'Fabric', fabrics)}${group('edit', 'Edit', edits)}${group('price-band', 'Price', bands)}
         </div>
         <label class="filters__sort">Sort by
           <select data-sort>

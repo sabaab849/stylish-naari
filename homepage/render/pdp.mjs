@@ -555,6 +555,7 @@ export function productCard(p, index = 0, { wishlist = true } = {}) {
     colourValues.length ? `data-colour="${esc(colourValues.join(' '))}"` : '',
     fabricOf(p) ? `data-fabric="${esc(slugify(fabricOf(p)))}"` : '',
     `data-edit="${esc(p.edits.join(' '))}"`,
+    (p.categories || []).length ? `data-category="${esc(p.categories.join(' '))}"` : '',
     `data-price-band="${priceBand(p)}"`,
     `data-price="${p.price ?? ''}"`,
     p.isNew ? 'data-new' : '',
