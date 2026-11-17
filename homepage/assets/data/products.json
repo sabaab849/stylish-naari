@@ -36,7 +36,8 @@
     "videos": "Saree reels (Nov 16): 36 products have a video from the Drive saree clips (_tools/saree-clips.json, encode-clips.mjs, set-videos.cjs), shown as the last gallery slide and the \"in motion\" section, like Hariyali.",
     "kalamkari": "Veena, Darbar, Chitra, Gajraj and Bansuri: the five Kalamkari model photographs of November 17 (model photography folder). Names and copy are proposals; fabric and price have not been supplied.",
     "bandhani": "Chunari, Sakhi, Jamuni, Bindiya, Gulabo and Lavanya: the six Bandhani model photographs of November 17 (model photography folder). Names and copy are proposals; fabric and price have not been supplied.",
-    "blockPrints": "Rekha … Mehrab: the fifteen Block print photographs of November 17 (model photography folder; eleven are real photoshoot photos). Names and copy are proposals; fabric and price have not been supplied."
+    "blockPrints": "Rekha … Mehrab: the fifteen Block print photographs of November 17 (model photography folder; eleven are real photoshoot photos). Names and copy are proposals; fabric and price have not been supplied.",
+    "shopify": "store.shopify: the Shopify store this site checks out through (see homepage/shopify/README.md). storeDomain = \"your-store.myshopify.com\", storefrontToken = the public Storefront API access token (Headless channel). Until both are set, the bag shows that checkout is not connected yet. siteUrl = where Shopify fetches product photos from during the CSV import (_tools/export-shopify.cjs)."
   },
   "store": {
     "shipping": "Complimentary shipping across India. Orders are dispatched within 4–12 days, depending on availability, and delivery takes 6–12 working days.",
@@ -80,7 +81,16 @@
       "whatsapp": null,
       "formEndpoint": null
     },
-    "helpPagesDraft": true
+    "helpPagesDraft": true,
+    "shopify": {
+      "storeDomain": null,
+      "storefrontToken": null,
+      "apiVersion": "2025-10",
+      "country": "IN",
+      "siteUrl": "https://stylish-naari.vercel.app",
+      "vendor": "Stylish Naari",
+      "productType": "Saree"
+    }
   },
   "edits": {
     "jewel": {
@@ -2605,8 +2615,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with an ivory brocade blouse, gold jhumkas and a low bun.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 18900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "festive",
@@ -2735,8 +2745,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a magenta blouse, a silver necklace, silver jhumkas and silver bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 17900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -2866,8 +2876,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with an ivory blouse, small studs and a low bun.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 15900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -2996,8 +3006,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a plum blouse and a gemstone choker.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 19900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -3126,8 +3136,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a backless rose blouse tied at the neck, gold studs and a low bun.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 16900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft",
@@ -3256,8 +3266,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with loose waves and bare feet.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 21900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft"
@@ -3941,8 +3951,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with gold jhumkas, a gold choker and gold heels.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 16900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "bright",
@@ -4071,8 +4081,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, small studs and a single gold bangle.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 17900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -4202,8 +4212,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a gold chain and loose waves.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 15900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "contrast"
@@ -4331,8 +4341,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a wine blouse, gold jhumkas, rings and nude heels.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 16900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "festive",
@@ -4461,8 +4471,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a backless ivory blouse, small studs and a low bun.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 15900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "bright",
@@ -4777,8 +4787,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with red roses in the hair, gold jhumkas, a gold brocade blouse and stacked gold bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 24900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "contrast",
@@ -4936,8 +4946,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with an embroidered mustard blouse, long gold chandbali earrings, a bindi and gold cuffs.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 27900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -5087,8 +5097,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black and gold brocade blouse, green enamel earrings, stacked gold bangles and red roses in the hair.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 22900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -5247,8 +5257,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a red brocade blouse, an oxidised silver choker and cuff, and a pink lotus in hand.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 26900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -5403,8 +5413,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a wine and gold brocade blouse, marigolds in the hair, green drop earrings and a gold cuff.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 21900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "bright",
@@ -5559,8 +5569,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black and gold brocade blouse, gold chandbali earrings, gold pins in a low bun, a gold cuff and an antique gold waist chain.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 23900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "bright",
@@ -5709,8 +5719,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a red brocade blouse, a long braid with pink tasselled parandi, oxidised silver jhumkas, a silver temple necklace and silver cuffs.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 28900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft",
@@ -5864,8 +5874,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a violet brocade blouse, a gold collar with an orange stone pendant, gold hoop earrings, a gold cuff and a low braided bun.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 25900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "festive",
@@ -10638,8 +10648,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 29900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [
         "banarasi"
@@ -10787,8 +10797,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 26900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [
         "banarasi"
@@ -10949,8 +10959,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 31900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [
         "banarasi"
@@ -11106,8 +11116,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 27900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [
         "banarasi"
@@ -11275,8 +11285,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a brocade blouse, oxidised silver jhumkas, a gold cuff and loose curls.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 29900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",
@@ -11418,8 +11428,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a mustard embroidered blouse, a painted-stone necklace and drop earrings, gold bangles and red roses in a low bun.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 22900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft"
@@ -11576,8 +11586,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a coral blouse, an oxidised silver necklace and earrings, and a silver cuff.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 24900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft",
@@ -11719,8 +11729,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with pearl drop earrings, stacked silver cuffs and long loose waves.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 21900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "soft"
@@ -11862,8 +11872,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 23900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [
         "banarasi"
@@ -12020,8 +12030,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 25900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [
         "banarasi"
@@ -12175,8 +12185,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 26900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [
         "banarasi"
@@ -12338,8 +12348,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 24900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [
         "banarasi"
@@ -12495,8 +12505,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 14900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [],
       "looks": [],
@@ -12638,8 +12648,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 13900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [],
       "looks": [],
@@ -12790,8 +12800,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 9900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [],
       "looks": [],
@@ -12939,8 +12949,8 @@
       "descriptionStatus": "draft",
       "colourLineStatus": "draft",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 12900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "categories": [],
       "looks": [],
@@ -18010,8 +18020,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, small gold studs and a low bun.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 5900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "contrast"
@@ -18139,8 +18149,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, a silver chain and a silver bangle.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 4900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "contrast"
@@ -18268,8 +18278,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, blue drop earrings and white bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 4500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel"
@@ -18398,8 +18408,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, jhumkas and white bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 4500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "bright",
@@ -18529,8 +18539,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, blue drop earrings and white bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 3900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel"
@@ -18659,8 +18669,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a teal blouse, silver jhumkas and a cuff.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 5500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel"
@@ -18789,8 +18799,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, silver hoop earrings and white flowers in the hair.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 4900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel"
@@ -18919,8 +18929,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, silver jhumkas and white flowers in the hair.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 5500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel"
@@ -19049,8 +19059,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, silver jhumkas and white flowers in the hair.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 5900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "contrast"
@@ -19179,8 +19189,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, silver jhumkas and a silver bangle.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 4500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel"
@@ -19309,8 +19319,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, silver earrings and silver bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 4900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "contrast"
@@ -19439,8 +19449,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, gold and blue chandbalis and white bangles.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 4500,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel"
@@ -19569,8 +19579,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a black blouse, silver jhumkas and white flowers in the hair.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 5900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "bright",
@@ -19700,8 +19710,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with an indigo blouse and small studs.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 6900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel"
@@ -19829,8 +19839,8 @@
       "colourLineStatus": "draft",
       "styling": "Shown with a cobalt blouse, a gold choker, gold earrings and a bangle.",
       "stylingStatus": "draft",
-      "price": null,
-      "priceIsPlaceholder": false,
+      "price": 6900,
+      "priceIsPlaceholder": true,
       "isNew": true,
       "edits": [
         "jewel",

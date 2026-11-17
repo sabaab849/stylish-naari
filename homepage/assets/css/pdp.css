@@ -385,7 +385,8 @@
 .pdp-buybar__name { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-product); }
 .pdp-buybar__price { font-size: var(--font-size-caption); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
 .pdp-buybar .button { min-width: 150px; }
-body:has(.pdp-buybar) { padding-bottom: 64px; } /* keep the last content clear of the buy bar */
+/* No room is reserved under the page for the bar: it hides as soon as the footer comes into view (pdp.js), so the
+   footer always sits flush with the bottom of the page. */
 @media (min-width: 1024px) {
   .pdp-buybar { gap: var(--space-md); }
   .pdp-buybar__thumb { width: 48px; }

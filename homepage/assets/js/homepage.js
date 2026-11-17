@@ -30,9 +30,9 @@
     var annH = announcement ? announcement.offsetHeight : 0;
     header.style.setProperty('--header-top', Math.max(0, annH - y) + 'px');
 
-    // Transparent over the hero; solid once the hero has scrolled out from under the bar. Pages without a
-    // full-bleed hero are always solid. The bar never changes size or width.
-    var solid = !hero || y > hero.offsetHeight - header.offsetHeight;
+    // Transparent over the hero only at the very top; solid as soon as the page scrolls (client, 17 Nov 2026).
+    // Pages without a full-bleed hero are always solid. The bar never changes size or width.
+    var solid = !hero || y > 0;
     header.classList.toggle('is-solid', solid);
 
     ticking = false;

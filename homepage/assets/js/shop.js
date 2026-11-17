@@ -27,7 +27,7 @@
       btn.setAttribute('aria-pressed', String(on));
       btn.setAttribute('aria-label', on ? 'Remove ' + name + ' from your wishlist' : 'Save ' + name + ' to your wishlist');
     });
-    document.querySelectorAll('[data-wishlist-count]').forEach(function (el) { el.textContent = list.length; });
+    document.querySelectorAll('[data-wishlist-count]').forEach(function (el) { el.textContent = list.length ? ' (' + list.length + ')' : ''; }); // "(n)" only once something is saved
     paintWishlistPage(list);
   }
 

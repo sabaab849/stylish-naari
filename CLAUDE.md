@@ -194,3 +194,15 @@ within 14 days, unused with tags, unboxing video required, never for handloom, c
 exchange shipping; settled with a store credit note valid 15 days. Business (registered as "Stylissh Naari"): Brindaban Complex, Majiwada,
 Thane West; GSTIN 27AVTPM2829F2Z5; support stylisshnaari3552026@gmail.com, +91 73048 12124 (`store.support`); disputes: courts of Mumbai. A page shows the "Draft page" line only while its copy still contains
 `[Insert …]` / `[Confirm …]`.
+
+## Shopify (products, payment, checkout)
+
+All products, payment and checkout run on Shopify (client, 17 Nov 2026); the site stays on Vercel as the shop window.
+- Catalogue: `node _tools/export-shopify.cjs` (from `homepage/`) → `homepage/shopify/import/` (products.csv in Shopify's
+  import format, collections.csv, prices-needed.csv, redirects.csv). Re-run after any product change. Setup steps for the
+  store: `homepage/shopify/README.md`.
+- Handle = slug, always. Status is active only with a confirmed price (no price or `priceIsPlaceholder` → draft at ₹0).
+  Photos are exported as URLs on `store.shopify.siteUrl`, so push and deploy before importing.
+- Checkout: `assets/js/bag.js` → Storefront API (`product(handle)` for each line, then `cartCreate`) → redirect to the
+  cart's `checkoutUrl`. Settings in `products.json → store.shopify` (`storeDomain`, public `storefrontToken`,
+  `apiVersion`, `country: IN`); the button stays disabled until both are set. Never put an Admin API token in the site.

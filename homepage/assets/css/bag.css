@@ -42,6 +42,7 @@
   font-family: var(--font-display); font-weight: var(--font-weight-medium); font-variant-numeric: tabular-nums;
 }
 .bag-drawer__note { margin-top: var(--spacing-3); font-size: var(--font-size-caption); color: var(--color-text-muted); }
+.bag-drawer__note.is-error { color: var(--color-error); } /* checkout could not open (bag.js) */
 
 .bag-lines { display: grid; row-gap: var(--spacing-6); }
 .bag-line { display: grid; grid-template-columns: 72px 1fr auto; column-gap: var(--spacing-4); align-items: start; }

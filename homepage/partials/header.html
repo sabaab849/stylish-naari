@@ -26,7 +26,7 @@
 
       <ul class="site-utilities">
         <li class="hide-mobile"><a class="site-nav__link" href="#">Search</a></li>
-        <li class="hide-mobile"><a class="site-nav__link" href="/wishlist">Wishlist (<span data-wishlist-count>0</span>)</a></li>
+        <li class="hide-mobile"><a class="site-nav__link" href="/wishlist">Wishlist<span data-wishlist-count></span></a></li>
         <li class="hide-tablet"><a class="site-nav__link" href="#">Account</a></li>
         <li class="hide-mobile"><button class="site-nav__link" type="button" data-bag-open aria-controls="bag-drawer">Bag (<span data-bag-count>0</span>)</button></li>
         <li class="show-mobile">
@@ -110,7 +110,7 @@
         <li><a href="#">About</a></li>
       </ul>
       <ul class="mobile-menu__secondary">
-        <li><a href="/wishlist">Wishlist (<span data-wishlist-count>0</span>)</a></li>
+        <li><a href="/wishlist">Wishlist<span data-wishlist-count></span></a></li>
         <li><a href="#">Account</a></li>
         <li><a href="/faq">Help</a></li>
         <li><a href="/contact">Contact</a></li>
@@ -131,8 +131,9 @@
     <div class="bag-drawer__body" data-bag-items></div>
     <div class="bag-drawer__foot" data-bag-foot hidden>
       <div class="bag-drawer__total"><span>Subtotal</span><span data-bag-subtotal></span></div>
-      <button class="button button--filled button--block" type="button" disabled aria-describedby="bag-checkout-note">Checkout</button>
-      <p class="bag-drawer__note" id="bag-checkout-note">Prototype: checkout is handled by Shopify in the live store.</p>
+      <!-- Checkout goes to Shopify (assets/js/bag.js → Storefront API cartCreate → Shopify's checkout page) -->
+      <button class="button button--filled button--block" type="button" data-bag-checkout disabled aria-describedby="bag-checkout-note">Checkout</button>
+      <p class="bag-drawer__note" id="bag-checkout-note" data-bag-checkout-note aria-live="polite">Shipping is free across India. You’ll pay securely on the next page.</p>
       <!-- Ways to pay: same markup as render/pdp.mjs → paymentMethods(); keep the two in step -->
       <ul class="pay-methods bag-drawer__pay" aria-label="Ways to pay">
         <li><img class="pay-methods__logo pay-methods__logo--upi" src="/assets/images/payments/upi.svg" alt="UPI" width="176" height="52" loading="lazy" decoding="async"></li>

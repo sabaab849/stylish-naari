@@ -7,7 +7,10 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* The canvas behind the page is the footer's espresso: on a page shorter than the screen, or when a phone
+   over-scrolls past the end, the footer carries on to the bottom edge instead of leaving an ivory strip. The page
+   itself stays ivory (body background). */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: #30241F; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -677,9 +680,10 @@ a:hover > .edit-card__text .link__arrow,
   .home .product-row--scroll > :nth-child(even) { margin-top: var(--spacing-8); } /* the offset, kept as a rhythm */
   .product-row--scroll + .row-progress { display: block; position: relative; height: 1px; background: var(--color-border); margin-top: var(--spacing-7); }
   .row-nav { display: flex; }
-  .row-nav button { width: 44px; height: 44px; font-size: 16px; border-radius: var(--radius-sm); transition: background-color var(--duration-fast) var(--ease-out); }
+  .row-nav { gap: var(--space-xs); }
+  .row-nav button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--color-border-strong); border-radius: 50%; color: var(--color-ink); transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out); }
   .row-nav button:hover:not(:disabled) { background: var(--color-surface); }
-  .row-nav button:disabled { color: var(--color-border-strong); cursor: default; }
+  .row-nav button:disabled { color: var(--color-border-strong); border-color: var(--color-border); cursor: default; }
 }
 
 /* ─── Colour story: six fields, each a link to its saree ─── */
@@ -987,11 +991,6 @@ a:hover > .edit-card__text .link__arrow,
 .home .site-footer { margin-top: 0; }
 .site-footer .newsletter__field input { caret-color: var(--color-text); }
 .site-footer__bar { border-top-color: rgba(101, 80, 71, 0.7); }
-/* Product pages reserve room for the fixed buy bar under the last content; keep that room espresso, not ivory */
-@media (max-width: 1023px) {
-  body:has(.pdp-buybar) { padding-bottom: 0; }
-  body:has(.pdp-buybar) .site-footer { padding-bottom: 72px; }
-}
 
 /* ═══ The art of Indian craftsmanship — full-bleed film ═════════
    The film fills the section edge to edge; the copy sits lower-left on a soft scrim. The headline pairs

@@ -1,11 +1,16 @@
-/* Stylish Naari — bag (prototype)
-   Stores line items in localStorage so the count survives page changes. In the Shopify build this is
-   replaced by the Cart AJAX API (/cart/add.js, /cart.js); the markup and data-attributes stay the same. */
+/* Stylish Naari — bag and checkout
+   The bag keeps line items in localStorage so the count survives page changes. Checkout is Shopify's: the Checkout
+   button turns the bag into a Shopify cart through the Storefront API (cartCreate) and sends the shopper to Shopify's
+   own checkout page, where payment, shipping and the order happen (client, Nov 17 2026). Each saree is found in Shopify
+   by its handle, which is the site's slug (products.csv from _tools/export-shopify.cjs), so no IDs are kept here.
+   Settings: products.json → store.shopify { storeDomain, storefrontToken, apiVersion, country }; see shopify/README.md.
+   Until storeDomain and storefrontToken are set, the button says checkout isn't connected yet. */
 (function () {
   'use strict';
 
   var KEY = 'sn-bag';
   var catalogue = null; // products.json, loaded on demand
+  var shop = null;      // products.json → store.shopify
 
   function read() {
     try { var v = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(v) ? v : []; }
@@ -24,7 +29,7 @@
   function loadCatalogue() {
     if (catalogue) return Promise.resolve(catalogue);
     return fetch('/assets/data/products.json').then(function (r) { return r.json(); }).then(function (d) {
-      catalogue = d.products; return catalogue;
+      catalogue = d.products; shop = (d.store && d.store.shopify) || {}; return catalogue;
     });
   }
   function find(slug) { return (catalogue || []).filter(function (p) { return p.slug === slug; })[0]; }
@@ -94,6 +99,83 @@
     }).join('') + '</ul>';
     subtotal.textContent = formatPrice(total);
     foot.hidden = false;
+    renderCheckout();
+  }
+
+  /* ─── Checkout (Shopify Storefront API) ─────────────── */
+  var checkoutBtn = document.querySelector('[data-bag-checkout]');
+  var checkoutNote = document.querySelector('[data-bag-checkout-note]');
+  var NOTE = 'Shipping is free across India. You’ll pay securely on the next page.';
+  function connected() { return !!(shop && shop.storeDomain && shop.storefrontToken); }
+  function renderCheckout(message) {
+    if (!checkoutBtn) return;
+    checkoutBtn.disabled = !connected();
+    checkoutBtn.removeAttribute('aria-busy');
+    checkoutBtn.textContent = 'Checkout';
+    if (checkoutNote) checkoutNote.textContent = message || (connected() ? NOTE : 'Checkout opens once the Shopify store is connected.');
+    if (checkoutNote) checkoutNote.classList.toggle('is-error', !!message);
+  }
+  function storefront(query, variables) {
+    var url = 'https://' + shop.storeDomain.replace(/^https?:\/\//, '').replace(/\/$/, '') +
+      '/api/' + (shop.apiVersion || '2025-10') + '/graphql.json';
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': shop.storefrontToken },
+      body: JSON.stringify({ query: query, variables: variables || {} }),
+    }).then(function (r) {
+      if (!r.ok) throw new Error('Shopify answered ' + r.status);
+      return r.json();
+    }).then(function (j) {
+      if (j.errors && j.errors.length) throw new Error(j.errors[0].message);
+      return j.data;
+    });
+  }
+  // One query for every saree in the bag: p0: product(handle: "kajal") { … }, p1: …
+  function findVariants(lines) {
+    var handles = lines.map(function (l) { return l.slug; });
+    var q = 'query Bag' + (shop.country ? '($country: CountryCode) @inContext(country: $country)' : '') + ' {' +
+      handles.map(function (h, i) {
+        return ' p' + i + ': product(handle: ' + JSON.stringify(h) + ') { title variants(first: 50) { nodes { id title availableForSale } } }';
+      }).join('') + ' }';
+    return storefront(q, shop.country ? { country: shop.country } : {}).then(function (data) {
+      return lines.map(function (line, i) {
+        var p = data['p' + i];
+        var nodes = p ? p.variants.nodes : [];
+        var r = resolve(line);
+        var wanted = line.variant && r ? r.name.split(', ').pop() : null; // a colour variant, if the bag has one
+        var v = nodes.filter(function (n) { return wanted && n.title.toLowerCase() === wanted; })[0] || nodes[0];
+        return { line: line, name: r ? r.name : line.slug, variant: v && v.availableForSale ? v : null };
+      });
+    });
+  }
+  function checkout() {
+    if (!connected() || !checkoutBtn) return;
+    var lines = items();
+    if (!lines.length) return;
+    checkoutBtn.disabled = true;
+    checkoutBtn.setAttribute('aria-busy', 'true');
+    checkoutBtn.textContent = 'Going to checkout…';
+    if (checkoutNote) { checkoutNote.textContent = NOTE; checkoutNote.classList.remove('is-error'); }
+    findVariants(lines).then(function (found) {
+      var missing = found.filter(function (f) { return !f.variant; });
+      if (missing.length) {
+        throw new Error((missing.length === 1 ? missing[0].name + ' isn’t' : missing.map(function (m) { return m.name; }).join(', ') + ' aren’t') +
+          ' available to order online yet. Remove ' + (missing.length === 1 ? 'it' : 'them') + ' to continue, or contact us to order.');
+      }
+      var input = {
+        lines: found.map(function (f) { return { merchandiseId: f.variant.id, quantity: f.line.qty }; }),
+      };
+      if (shop.country) input.buyerIdentity = { countryCode: shop.country };
+      return storefront('mutation Cart($input: CartInput!) { cartCreate(input: $input) { cart { checkoutUrl } userErrors { message } } }', { input: input });
+    }).then(function (data) {
+      var res = data.cartCreate;
+      if (res.userErrors && res.userErrors.length) throw new Error(res.userErrors[0].message);
+      window.location.href = res.cart.checkoutUrl; // Shopify's checkout: payment, shipping and the order happen there
+    }).catch(function (err) {
+      var msg = err && err.message && !/^Shopify answered|Failed to fetch|NetworkError/.test(err.message)
+        ? err.message : 'Checkout couldn’t open just now. Check your connection and try again.';
+      renderCheckout(msg);
+    });
   }
 
   function openDrawer() {
@@ -147,6 +229,7 @@
       setTimeout(openDrawer, 250);
       return;
     }
+    if (t.closest('[data-bag-checkout]')) { e.preventDefault(); checkout(); return; }
     var stepper = t.closest('[data-bag-step]');
     if (stepper) { step(stepper.getAttribute('data-slug'), Number(stepper.getAttribute('data-bag-step'))); return; }
     var remover = t.closest('[data-bag-remove]');
