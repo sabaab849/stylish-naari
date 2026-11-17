@@ -150,6 +150,8 @@ change the token, never a page.
   model photo, then slides 2–4 from the Drive pendrive folder of the saree's SN (its own photo, a print close-up, another
   view). Those are whole photos, never cropped; a landscape photo is turned upright (90° clockwise) so it fills the
   portrait frame (`fit: cover`), longest side 2400px.
+- The second gallery slide always fills the frame edge to edge, never shown whole with bands at the sides (client,
+  17 Nov 2026; `render/pdp.mjs`, after the views are built). Later slides keep their own `fit`.
 - One model photograph per product (client, Nov 2026): slide 1 is the only photo of the model; later slides are the
   original product photos and fabric close-ups. Never add a second pose, back view or portrait (`_tools/one-model-photo.cjs`).
 - No border-only slides (client, Nov 2026): a photo that shows the border beside plain body cloth, with none of the
@@ -172,7 +174,7 @@ A subcategory has `parent`; a saree in it carries both slugs. Banarasi subcatego
 Audit – Banarasi": SN-001…049 Premium silk, SN-050…091 Premium semi-silk; every SN saree is Banarasi. Banarasi sarees with
 no SN (first shoot, AI model sarees) have no subcategory until the client says. Old state-wise links
 (`banaras-ki-bunkari` …) redirect via `categories[].formerly` / `categoryRedirects` (serve.mjs 301, build.mjs forwarding
-page). Shown in: homepage tiles (`render/categories.mjs`, top-level crafts only, subcategories as links beneath), the header
+page). Shown in: homepage tiles (`render/categories.mjs`, top-level crafts only; the Banarasi subcategories are not listed on the homepage: client, Nov 2026), the header
 mega menu "By category" (`partials/header.html`, hand-written: keep it in step), category pages with an "All Banarasi ·
 Premium silk · Premium semi-silk" tab row. Ikat sarees (Rangoli, Saanjh, Sindoor) and a few others have no category yet.
 Kalamkari model sarees Veena, Darbar, Chitra, Gajraj, Bansuri: `_tools/convert-kalamkari.ps1` + `add-kalamkari.cjs`.

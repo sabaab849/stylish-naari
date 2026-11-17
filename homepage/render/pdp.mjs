@@ -86,6 +86,8 @@ function renderGallery(p) {
     cropView('swatch', 'the fabric', 2.4);
   }
   if (!p.galleryListed) for (const img of products) if (!early.includes(img)) views.push(productView(img));
+  // The second photograph always fills the frame edge to edge, no bands either side (client, 17 Nov 2026)
+  if (views[1] && !views[1].video && views[1].whole) views[1] = { ...views[1], style: '', whole: false };
   if (p.video?.src) views.push({ video: p.video, img: { src: p.video.poster || p.images[0].src, width: p.video.width || 720, height: p.video.height || 1280 }, alt: `${p.name}: the saree in motion` });
   // Caption under every photograph (client, Nov 16), from what the photo really is (isActual):
   //   real photo of the saree itself (folded / laid flat / Drive pendrive / catalogue)  → "Actual product photograph"

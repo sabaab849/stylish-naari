@@ -282,6 +282,21 @@ html:not(.js) .craft-hero__pause { display: none; }
 .kalamkari-open__main .kalamkari__caption { display: none; }
 .kalamkari-open__inset { left: calc(-1 * var(--spacing-10)); bottom: 0; width: 38%; }
 
+/* The other crafts (Banarasi, Bandhani, Block prints, Chanderi): the opening's layout repeated, one chapter each.
+   Mirrored chapters put the photograph on the left (bleeding off that edge) with the detail over its right corner. */
+.craft-chapter .kalamkari-art__facts { margin-top: var(--spacing-6); }
+.craft-chapter--mirror .kalamkari-open__text { grid-column: 8 / 13; grid-row: 1; }
+.craft-chapter--mirror .kalamkari-open__media { grid-column: 1 / 7; grid-row: 1; margin-right: 0; margin-left: calc(-1 * var(--bleed)); }
+.craft-chapter--mirror .kalamkari-open__inset { left: auto; right: calc(-1 * var(--spacing-10)); }
+/* No photograph yet: a plain stone panel, type only (as the homepage category tiles) */
+.craft-chapter__empty {
+  display: flex; flex-direction: column; justify-content: flex-end; gap: var(--spacing-2);
+  aspect-ratio: 4 / 5; padding: var(--space-xl); background: var(--color-surface);
+}
+.craft-chapter__empty span:first-child { font-family: var(--font-display); font-size: var(--font-size-h2); line-height: var(--line-height-h2); letter-spacing: var(--letter-spacing-h2); color: var(--color-text-secondary); }
+.craft-chapter__empty span:last-child { font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase; color: var(--color-text-muted); }
+.kalamkari-open__media.is-empty { padding-bottom: 0; }
+
 /* The two traditions: mirrored spreads, the detail and its text sharing the row */
 .kalamkari-arts { margin-top: var(--section-spacing); }
 .kalamkari-arts__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--spacing-2) var(--spacing-6); margin-bottom: var(--spacing-9); }
@@ -452,4 +467,18 @@ main.craft-page + .site-footer { margin-top: 0; }
 /* Very short phones (≤700px tall, e.g. iPhone SE): the words fill the frame, so the film plays without cards */
 @media (max-width: 767px) and (max-height: 700px) {
   .craft-hero__cards { display: none; }
+}
+
+/* The other crafts on tablet and phone: one column like the Kalamkari opening, mirrored or not (words, then the pair) */
+@media (max-width: 1023px) {
+  .craft-chapter--mirror .kalamkari-open__text { grid-column: 1; grid-row: auto; }
+  .craft-chapter--mirror .kalamkari-open__media { grid-column: 1; grid-row: auto; margin-left: 22%; margin-right: calc(-1 * var(--page-margin)); }
+  .craft-chapter--mirror .kalamkari-open__inset { left: -22%; right: auto; }
+  .kalamkari-open__media.is-empty { margin-left: 0; margin-right: 0; max-width: 520px; }
+  .craft-chapter__empty { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 767px) {
+  .craft-chapter--mirror .kalamkari-open__media { margin-left: 14%; }
+  .craft-chapter--mirror .kalamkari-open__inset { left: -14%; }
+  .kalamkari-open__media.is-empty { margin-left: 0; }
 }

@@ -36,10 +36,10 @@ function tile(c) {
 export function renderCategories(data) {
   const cats = data.categories || [];
   const crafts = cats.filter((c) => c.group === 'craft' && !c.parent);
-  // Subcategories as a line of links under the tiles (Banarasi: Premium silk, Premium semi-silk), then the certified ones.
+  // Under the tiles: the certified categories only. Subcategories (Banarasi: Premium silk, Premium semi-silk) are not
+  // listed on the homepage (client, Nov 2026); they stay as tabs on the Banarasi page and in the header menu.
   // The "more" categories (Designer fusion, Blouses, Jewellery, Others) keep their pages but are not listed here.
   const groups = [
-    ...crafts.map((c) => [c.name, childrenOf(data, c.slug)]),
     ['Certified', cats.filter((c) => c.group === 'mark')],
   ].filter(([, list]) => list.length);
   if (!crafts.length && !groups.length) return '';

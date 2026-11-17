@@ -506,10 +506,6 @@ a:hover > .edit-card__text .link__arrow,
 }
 .footer-group li a:hover { background-size: 100% 1px; }
 /* Footer phone: line icon + number; the hover underline sits under the number only */
-.footer-group li a.footer-phone { display: inline-flex; align-items: center; gap: var(--space-2xs); background: none; }
-.footer-phone__icon { flex: none; width: 1em; height: 1em; }
-.footer-phone span { background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px; transition: background-size var(--duration-base) var(--ease-out); }
-.footer-phone:hover span, .footer-phone:focus-visible span { background-size: 100% 1px; }
 
 .site-footer__bar {
   display: flex; justify-content: space-between; align-items: center;

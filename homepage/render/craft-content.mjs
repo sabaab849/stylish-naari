@@ -156,3 +156,52 @@ export const lookbook = {
       image: { img: 0, s: 4, ox: '62%', oy: '80%', alt: 'The marigold border of Bagh running down the drape' } },
   ],
 };
+
+// ─── The other crafts: one chapter each, after Kalamkari (client, Nov 17 2026) ──────────────────────────────────
+// Banarasi, Bandhani, Block prints and Chanderi: the shop's other categories (products.json → categories). Each chapter is
+// laid out like the Kalamkari opening: eyebrow, a three-line headline (name, a phrase, an Instrument Serif accent), the
+// history in a paragraph, a line on the name, facts, and a link to the category. The photograph alternates sides.
+// Photographs are our own sarees; insets are details cut from them (assets/images/craft-*-detail.jpg). A craft with no
+// photograph yet (Chanderi) shows a plain "Coming soon" panel. History is kept to what is generally documented about each
+// craft; nothing claims how a particular Stylish Naari saree was made.
+export const crafts = [
+  {
+    key: 'banarasi', category: 'banarasi', cta: 'Shop Banarasi sarees',
+    eyebrow: 'The craft of Varanasi',
+    title: 'Banarasi —', titleRest: 'woven in silk', titleAccent: 'and gold',
+    intro: 'Woven in Varanasi on the banks of the Ganga, the Banarasi saree carries centuries of Mughal-era design into silk. Gold and silver zari is worked into the cloth on the handloom as brocade, building floral buti, trailing jaal and paisley kalga thread by thread; a single saree can take weeks to weave.',
+    name: 'Banaras, the old name of Varanasi, gave the weave its name.',
+    facts: [['Technique', 'Handloom brocade, woven with zari'], ['Motifs', 'Buti, jaal, kalga, shikargah'], ['Our range', 'Premium silk and premium semi-silk'], ['Place', 'Varanasi, Uttar Pradesh']],
+    main: { src: '/assets/images/panna.jpg', width: 1750, height: 3109, pos: '50% 70%', alt: 'Panna, a Banarasi saree woven with zari, worn by candlelight' },
+    inset: { src: '/assets/images/panna-detail.jpg', width: 1594, height: 2392, pos: '50% 50%', alt: 'Detail of Panna: a zari jaal of flowers and a paisley border woven into dark green silk', caption: 'Panna, a zari jaal' },
+  },
+  {
+    key: 'bandhani', category: 'bandhani', cta: 'Shop Bandhani sarees',
+    eyebrow: 'The craft of Gujarat and Rajasthan',
+    title: 'Bandhani —', titleRest: 'colour tied', titleAccent: 'dot by dot',
+    intro: 'One of India’s oldest resist-dyeing arts, Bandhani is made by pinching the cloth into thousands of tiny points and binding each one tightly with thread before it is dyed. Where the thread holds, the colour cannot reach; when the knots are opened, the pattern appears as dots, squares and waves, often built up over several rounds of dye.',
+    name: 'The name comes from bandhan, to tie.',
+    facts: [['Technique', 'Tie-and-dye resist, knotted by hand'], ['Motifs', 'Dots, squares, chequered gharchola'], ['Place', 'Kutch and Jamnagar in Gujarat; Rajasthan']],
+    main: { src: '/assets/images/jamuni.jpg', width: 1006, height: 1564, pos: '50% 50%', alt: 'Jamuni, a violet Bandhani saree with a white floral border, the panelled pallu swept out' },
+    inset: { src: '/assets/images/craft-bandhani-detail.jpg', width: 560, height: 560, alt: 'Detail of Bindiya: tied dots in clusters inside gold tissue checks on plum', caption: 'Bindiya, tied dots in gold checks' },
+  },
+  {
+    key: 'block-prints', category: 'block-prints', cta: 'Shop block print sarees',
+    eyebrow: 'The craft of Rajasthan',
+    title: 'Block print —', titleRest: 'pattern pressed', titleAccent: 'by hand',
+    intro: 'Carved by hand from wood, each block is dipped in colour and pressed onto the cloth one impression at a time, lined up by eye with the last. In Rajasthan, Sanganer and Bagru have printed this way for centuries, with natural dyes and dabu, a mud resist, layering florals, stripes and geometric patterns in indigo, madder red and black.',
+    name: 'A single design can need a separate block for every colour.',
+    facts: [['Technique', 'Hand block printing, dabu mud resist'], ['Colours', 'Indigo, madder red, black, ochre'], ['Place', 'Sanganer and Bagru, Rajasthan']],
+    main: { src: '/assets/images/mehrab.jpg', width: 1024, height: 1536, pos: '50% 55%', alt: 'Mehrab, a cobalt block print saree with a white triangle border, worn beneath a painted palace arch' },
+    inset: { src: '/assets/images/craft-blockprint-detail.jpg', width: 560, height: 560, alt: 'Detail of Raat: printed medallion bands and cypress motifs in red on indigo', caption: 'Raat, printed medallions' },
+  },
+  {
+    key: 'chanderi', category: 'chanderi', cta: 'Shop Chanderi sarees',
+    eyebrow: 'The craft of Madhya Pradesh',
+    title: 'Chanderi —', titleRest: 'woven light', titleAccent: 'as air',
+    intro: 'Woven in the hill town of Chanderi for centuries, Chanderi cloth is prized for being sheer, light and softly lustrous. Fine silk and cotton yarns are woven on the handloom, lit with small zari or coloured buti and slim borders; it was long a cloth of royal courts.',
+    name: 'Our Chanderi sarees are on their way.',
+    facts: [['Technique', 'Handloom weaving in silk and cotton'], ['Motifs', 'Buti, coins, peacocks, florals'], ['Place', 'Chanderi, Madhya Pradesh']],
+    main: null,
+  },
+];

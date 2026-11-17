@@ -11,7 +11,7 @@
 //   closing    hero-tradition.webp / .jpg (the homepage hero photograph, lettering removed)
 // The Silk Mark section was taken off this page at the client's request; its copy stays in craft-content.mjs (marks.silk).
 import { page, esc, cropImg } from './pdp.mjs';
-import { reel, marks, closing, lookbook, kalamkari } from './craft-content.mjs';
+import { reel, marks, closing, lookbook, kalamkari, crafts } from './craft-content.mjs';
 import { windowFrame } from './craft-windows.mjs';
 
 const productsIn = (data, slug) => data.products.filter((p) => (p.categories || []).includes(slug));
@@ -216,6 +216,37 @@ function renderKalamkari(data) {
   </section>`;
 }
 
+/* ─── 3b. The other crafts: Banarasi, Bandhani, Block prints, Chanderi ───────────────────
+   One chapter each, built like the Kalamkari opening (same type, same layered pair of photographs), with the
+   photograph on alternate sides so the page reads as a sequence of spreads. Facts as in the Kalamkari traditions, and
+   a link to the category when it has sarees. A craft with no photograph yet shows a plain panel saying so. */
+function renderCrafts(data) {
+  return crafts.map((c, i) => {
+    const count = c.category ? productsIn(data, c.category).length : 0;
+    const media = c.main
+      ? `${kkFigure(c.main, 'kalamkari-open__main')}${c.inset ? kkFigure(c.inset, 'kalamkari-open__inset') : ''}`
+      : `
+        <div class="craft-chapter__empty" data-reveal><span>${esc(c.title.replace(/\s*—$/, ''))} sarees</span><span>Coming soon</span></div>`;
+    return `
+  <section class="kalamkari craft-chapter${i % 2 === 1 ? ' craft-chapter--mirror' : ''}" id="${esc(c.key)}" aria-labelledby="${esc(c.key)}-title">
+    <div class="container kalamkari-open">
+      <div class="kalamkari-open__text" data-reveal>
+        <p class="eyebrow">${esc(c.eyebrow)}</p>
+        <h2 class="kalamkari-open__title" id="${esc(c.key)}-title">${esc(c.title)} <span>${esc(c.titleRest)}</span> <em class="serif">${esc(c.titleAccent)}</em></h2>
+        <p class="kalamkari-open__intro">${esc(c.intro)}</p>
+        <p class="kalamkari-open__name">${esc(c.name)}</p>
+        <dl class="kalamkari-art__facts">${c.facts.map(([t, d]) => `
+          <div><dt>${esc(t)}</dt><dd>${esc(d)}</dd></div>`).join('')}
+        </dl>${count ? `
+        ${arrowLink(c.cta, `/categories/${c.category}`, ' kalamkari-art__link')}` : ''}
+      </div>
+      <div class="kalamkari-open__media${c.main ? '' : ' is-empty'}">${media}
+      </div>
+    </div>
+  </section>`;
+  }).join('');
+}
+
 export function renderCraftPage(data) {
   const handloomMedia = `
       <figure class="craft-mark__media craft-mark__media--film" data-craft-scope data-reveal>
@@ -232,6 +263,7 @@ export function renderCraftPage(data) {
 ${hero.html}
 ${renderLookbook(data)}
 ${renderKalamkari(data)}
+${renderCrafts(data)}
 
 ${markSection('handloom', data, handloomMedia)}
 
@@ -250,7 +282,7 @@ ${markSection('handloom', data, handloomMedia)}
 
   return page({
     title: 'The art of the saree | Stylish Naari',
-    description: 'The crafts behind Stylish Naari sarees: Kalamkari painted and printed by hand, weaving on the handloom, and what the Handloom Mark means.',
+    description: 'The crafts behind Stylish Naari sarees: Kalamkari painted and printed by hand, Banarasi silk and zari, Bandhani, block printing and Chanderi, weaving on the handloom, and what the Handloom Mark means.',
     ogImage: '/assets/images/hero-tradition.jpg',
     preload: hero.preload,
     mainClass: 'craft-page',
