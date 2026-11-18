@@ -680,7 +680,7 @@ export function renderProduct(slug, data) {
   ${renderRelated(p, data)}
   ${renderBuyBar(p)}`;
   return page({
-    title: `${p.name} — ${p.descriptor} | Stylish Naari`,
+    title: `${p.name} — ${p.descriptor} | Stylissh Naari`,
     description: p.description || p.descriptor,
     ogImage: p.images[0]?.src,
     preload: `<link rel="preload" as="image" href="${esc(p.images[0].src)}" fetchpriority="high">`,
@@ -690,7 +690,7 @@ export function renderProduct(slug, data) {
 
 export function renderNotFound() {
   return page({
-    title: 'Not found | Stylish Naari',
+    title: 'Not found | Stylissh Naari',
     description: 'This page has unravelled.',
     body: `
   <section class="pdp-404 container">

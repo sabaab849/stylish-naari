@@ -1,4 +1,4 @@
-/* Stylish Naari — bag and checkout
+/* Stylissh Naari — bag and checkout
    The bag keeps line items in localStorage so the count survives page changes. Checkout is Shopify's: the Checkout
    button turns the bag into a Shopify cart through the Storefront API (cartCreate) and sends the shopper to Shopify's
    own checkout page, where payment, shipping and the order happen (client, Nov 17 2026). Each saree is found in Shopify

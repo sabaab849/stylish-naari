@@ -1,4 +1,4 @@
-/* Stylish Naari — contact form (prototype)
+/* Stylissh Naari — contact form (prototype)
    Validates in the browser with accessible errors. It only says a message was sent when a submission service
    actually accepted it: the form posts JSON to data-endpoint (set store.support.formEndpoint in products.json).
    With no endpoint configured it says plainly that nothing was sent. In the Shopify build, replace this with

@@ -82,7 +82,7 @@ export function renderCategory(data, slug) {
       <li><a class="collection__tab${x.slug === slug ? ' is-current' : ''}" href="/categories/${esc(x.slug)}"${x.slug === slug ? ' aria-current="page"' : ''}>${esc(x === top ? `All ${top.name}` : x.name)} <span>${pad2(productsIn(data, x.slug).length)}</span></a></li>`).join('')}
     </ul></nav>` : '';
   return page({
-    title: `${title} sarees | Stylish Naari`,
+    title: `${title} sarees | Stylissh Naari`,
     description: c.line ? `${title} sarees. ${c.line}` : `${title} sarees`,
     mainClass: 'collection',
     body: `

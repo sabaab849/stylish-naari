@@ -5,9 +5,9 @@
 // Usage (from homepage/): node _tools/encode-clips.mjs <folder with 001.mp4…> <ffmpeg.exe>
 // Raw clips: download from the Drive folder in saree-clips.json (they are not kept in the repo).
 import fs from 'node:fs'; import path from 'node:path'; import { execFileSync } from 'node:child_process';
-const [src, ffmpeg] = process.argv.slice(2);
+const [src, ffmpeg, mapKey = 'map'] = process.argv.slice(2); // mapKey: 'map' (first batch) or 'map2' (second batch)
 if (!src || !ffmpeg) { console.error('usage: node _tools/encode-clips.mjs <clips folder> <ffmpeg>'); process.exit(1); }
-const { map } = JSON.parse(fs.readFileSync('_tools/saree-clips.json', 'utf8'));
+const map = JSON.parse(fs.readFileSync('_tools/saree-clips.json', 'utf8'))[mapKey];
 const run = (args) => execFileSync(ffmpeg, ['-y', '-v', 'error', ...args], { stdio: 'inherit' });
 for (const [slug, n] of Object.entries(map)) {
   const inp = path.join(src, `${n}.mp4`);

@@ -281,8 +281,8 @@ ${markSection('handloom', data, handloomMedia)}
   </section>`;
 
   return page({
-    title: 'The art of the saree | Stylish Naari',
-    description: 'The crafts behind Stylish Naari sarees: Kalamkari painted and printed by hand, Banarasi silk and zari, Bandhani, block printing and Chanderi, weaving on the handloom, and what the Handloom Mark means.',
+    title: 'The art of the saree | Stylissh Naari',
+    description: 'The crafts behind Stylissh Naari sarees: Kalamkari painted and printed by hand, Banarasi silk and zari, Bandhani, block printing and Chanderi, weaving on the handloom, and what the Handloom Mark means.',
     ogImage: '/assets/images/hero-tradition.jpg',
     preload: hero.preload,
     mainClass: 'craft-page',

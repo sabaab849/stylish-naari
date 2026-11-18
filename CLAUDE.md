@@ -1,6 +1,6 @@
-# Stylish Naari — project notes for Claude
+# Stylissh Naari — project notes for Claude
 
-Storefront prototype for Stylish Naari sarees. No framework: a small Node renderer (`homepage/render/*.mjs`)
+Storefront prototype for Stylissh Naari sarees (the brand is spelt "Stylissh Naari", double s, everywhere on the site and in the wordmark: client, 18 Nov 2026; the folder and Vercel URL keep the old spelling). No framework: a small Node renderer (`homepage/render/*.mjs`)
 fills `homepage/index.html` and renders collection and product pages from `homepage/assets/data/products.json`.
 
 - Preview: `npm run dev` → http://localhost:4321 (restart after editing anything in `homepage/render/`; CSS, JS, JSON and `index.html` are read fresh on every request)

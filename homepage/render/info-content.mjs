@@ -32,7 +32,7 @@ export const faq = {
   eyebrow: 'Help',
   title: 'Frequently asked questions',
   metaTitle: 'FAQs',
-  description: 'Answers to common questions about ordering, free shipping across India, exchanges, our sarees and saree care at Stylish Naari.',
+  description: 'Answers to common questions about ordering, free shipping across India, exchanges, our sarees and saree care at Stylissh Naari.',
   intro: 'Answers to the questions we are asked most often. If you can’t find what you need, [[get in touch|/contact]] and we will help.',
   groups: [
     { title: 'Orders & payments', items: [
@@ -80,7 +80,7 @@ export const shipping = {
   slug: 'shipping',
   eyebrow: 'Policies',
   title: 'Shipping policy',
-  description: 'Free shipping on every Stylish Naari order across India: dispatch times, delivery estimates, tracking, international orders and what to do if a parcel is delayed.',
+  description: 'Free shipping on every Stylissh Naari order across India: dispatch times, delivery estimates, tracking, international orders and what to do if a parcel is delayed.',
   intro: 'Every order ships free across India, with no minimum order value. Here is how your saree is prepared, sent and delivered.',
   updated: POLICY_UPDATED,
   glance: [
@@ -137,7 +137,7 @@ export const exchanges = {
   eyebrow: 'Policies',
   title: 'Exchange policy',
   metaTitle: 'Exchange policy',
-  description: 'The Stylish Naari exchange policy: what can be exchanged, the 14-day window, the unboxing video, damaged or incorrect items, shipping and store credit.',
+  description: 'The Stylissh Naari exchange policy: what can be exchanged, the 14-day window, the unboxing video, damaged or incorrect items, shipping and store credit.',
   intro: 'Every saree is checked before it leaves us. If yours arrives damaged or misprinted, you can request an exchange within 14 days of receiving it. This page explains when an exchange is possible and how it works.',
   updated: POLICY_UPDATED,
   glance: [
@@ -239,7 +239,7 @@ export const care = {
       ] },
     ] },
     { id: 'fabric', title: 'Care by fabric', verify: true, body: [
-      { note: 'General guidance, to be verified by Stylish Naari or a textile expert before publishing. The care label on your saree always comes first.' },
+      { note: 'General guidance, to be verified by Stylissh Naari or a textile expert before publishing. The care label on your saree always comes first.' },
     ], fabrics: [
       ['Silk and Banarasi silk', [
         'Dry-cleaning is usually recommended, especially for sarees with zari.',
@@ -272,7 +272,7 @@ export const contact = {
   eyebrow: 'Contact',
   title: 'Get in touch',
   metaTitle: 'Contact us',
-  description: 'Contact Stylish Naari about an order, shipping, returns or any of our sarees.',
+  description: 'Contact Stylissh Naari about an order, shipping, returns or any of our sarees.',
   intro: 'Questions about an order, a saree or anything else? Send us a message and we will get back to you as soon as we can.',
   enquiries: ['Order status', 'Shipping', 'Returns & exchanges', 'Product information', 'Other'],
 };
@@ -282,12 +282,12 @@ export const privacy = {
   slug: 'privacy',
   eyebrow: 'Policies',
   title: 'Privacy policy',
-  description: 'How Stylish Naari collects, uses, shares and protects your personal information when you shop with us, and the choices you have.',
-  intro: 'Your trust matters to us. This policy explains what personal information we collect when you visit or shop with Stylish Naari, how we use it, and the choices you have.',
+  description: 'How Stylissh Naari collects, uses, shares and protects your personal information when you shop with us, and the choices you have.',
+  intro: 'Your trust matters to us. This policy explains what personal information we collect when you visit or shop with Stylissh Naari, how we use it, and the choices you have.',
   updated: POLICY_UPDATED,
   sections: [
     { id: 'about', title: 'About this policy', body: [
-      { p: 'This policy applies to this website and to orders, messages and services connected with it (together, our “services”). Stylish Naari is operated by Stylissh Naari, Brindaban Complex, Majiwada, Thane West, Maharashtra, India (“we”, “us”, “our”).' },
+      { p: 'This policy applies to this website and to orders, messages and services connected with it (together, our “services”). Stylissh Naari is operated by Stylissh Naari, Brindaban Complex, Majiwada, Thane West, Maharashtra, India (“we”, “us”, “our”).' },
       { p: 'By using our services you agree to this policy. We process personal information in line with Indian law, including the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023.' },
     ] },
     { id: 'collect', title: 'Information we collect', body: [
@@ -368,12 +368,12 @@ export const terms = {
   slug: 'terms',
   eyebrow: 'Policies',
   title: 'Terms & conditions',
-  description: 'The terms that apply when you use the Stylish Naari website and buy from us: orders, pricing, payment, shipping, exchanges, intellectual property and liability.',
-  intro: 'These terms apply when you use this website or buy from Stylish Naari. Please read them carefully: by using the website or placing an order, you agree to them.',
+  description: 'The terms that apply when you use the Stylissh Naari website and buy from us: orders, pricing, payment, shipping, exchanges, intellectual property and liability.',
+  intro: 'These terms apply when you use this website or buy from Stylissh Naari. Please read them carefully: by using the website or placing an order, you agree to them.',
   updated: POLICY_UPDATED,
   sections: [
     { id: 'overview', title: 'Overview', body: [
-      { p: 'This website is operated by Stylissh Naari, Brindaban Complex, Majiwada, Thane West, Maharashtra, India, GSTIN 27AVTPM2829F2Z5 (“Stylish Naari”, “we”, “us”, “our”). “You” means anyone who uses the website or buys from us.' },
+      { p: 'This website is operated by Stylissh Naari, Brindaban Complex, Majiwada, Thane West, Maharashtra, India, GSTIN 27AVTPM2829F2Z5 (“Stylissh Naari”, “we”, “us”, “our”). “You” means anyone who uses the website or buys from us.' },
       { p: 'These terms should be read with our [[Shipping policy|/shipping]], [[Exchange policy|/exchanges]] and [[Privacy policy|/privacy]], which form part of them.' },
     ] },
     { id: 'eligibility', title: 'Using the website', body: [
@@ -406,7 +406,7 @@ export const terms = {
       { p: 'How we deliver your order is set out in our [[Shipping policy|/shipping]]. Exchanges, refunds and cancellations are covered by our [[Exchange policy|/exchanges]]. Responsibility for an order passes to you when it is delivered.' },
     ] },
     { id: 'ip', title: 'Intellectual property', body: [
-      { p: 'Everything on this website, including our photographs, films, designs, text, logo and the Stylish Naari name, belongs to us or our licensors and is protected by law. You may not copy, reproduce, sell or use any of it for commercial purposes without our written permission.' },
+      { p: 'Everything on this website, including our photographs, films, designs, text, logo and the Stylissh Naari name, belongs to us or our licensors and is protected by law. You may not copy, reproduce, sell or use any of it for commercial purposes without our written permission.' },
     ] },
     { id: 'content', title: 'Reviews and messages', body: [
       { p: 'If you send us reviews, photographs, comments or ideas, you allow us to use, edit and publish them in connection with our business, without payment. You confirm that they are your own, are accurate and don’t infringe anyone’s rights. We may remove any content we consider unlawful, offensive or misleading.' },

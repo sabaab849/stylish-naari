@@ -67,7 +67,7 @@ const moreHelp = (current) => `
     </aside>`;
 
 const shell = (p, data, inner) => page({
-  title: `${p.metaTitle || p.title} | Stylish Naari`,
+  title: `${p.metaTitle || p.title} | Stylissh Naari`,
   description: p.description,
   mainClass: `info info--${p.slug}`,
   styles: ['/assets/css/info.css'],

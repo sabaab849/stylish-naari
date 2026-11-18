@@ -1,7 +1,8 @@
-/* Stylish Naari — shopping tools (prototype)
+/* Stylissh Naari — shopping tools (prototype)
    1. Wishlist: the heart on every product card, the count in the header and the /wishlist page. Saved in localStorage; in the Shopify build this
       becomes the customer's saved list, with the same data-wishlist attribute on the button.
-   2. Collection filters and sort: works on the cards already on the page, using their data-* values.
+   2. Collection filters (left sidebar; a drawer on smaller screens) and sort: works on the cards already on the page,
+      using their data-* values.
    Quick add needs no code here: its button carries data-add-to-bag, which bag.js already handles. */
 (function () {
   'use strict';
@@ -71,6 +72,8 @@
   var sort = filters.querySelector('[data-sort]');
   var result = filters.querySelector('[data-filter-result]');
   var clear = filters.querySelector('[data-filter-clear]');
+  var total = filters.querySelector('[data-filter-total]');  // the count on the drawer's "Filter" button
+  var show = filters.querySelector('[data-filter-show]');    // "Show 12 sarees" at the foot of the drawer
   var empty = document.querySelector('[data-filter-empty]');
 
   // What each card offers per filter group. A saree can sit in several edits; the rest are single values.
@@ -115,6 +118,9 @@
       if (badge) { badge.textContent = g.values.length ? '(' + g.values.length + ')' : ''; badge.hidden = !g.values.length; }
     });
     if (result) result.textContent = shown + (shown === 1 ? ' saree' : ' sarees') + (filtered ? ' of ' + cards.length : '');
+    var ticked = active.reduce(function (n, g) { return n + g.values.length; }, 0);
+    if (total) { total.textContent = ticked ? '(' + ticked + ')' : ''; total.hidden = !ticked; }
+    if (show) show.textContent = shown ? 'Show ' + shown + (shown === 1 ? ' saree' : ' sarees') : 'No sarees match';
     if (clear) clear.hidden = !filtered;
     if (empty) empty.hidden = shown > 0;
 
@@ -143,13 +149,50 @@
   if (clear) clear.addEventListener('click', reset);
   document.addEventListener('click', function (e) {
     if (e.target.closest('[data-filter-reset]')) reset();
-    // one panel open at a time; a click anywhere else closes it
-    groups.forEach(function (g) { if (g.open && !g.contains(e.target)) g.open = false; });
   });
+
+  /* The sidebar's categories open and close on their own (native <details>). Below 1024px the sidebar is a drawer
+     that slides in from the left: opened by the toolbar's Filter button, closed by ×, the backdrop, Escape or
+     "Show n sarees". While it is open it is a modal dialog and the page behind does not scroll. */
+  var panel = filters.querySelector('[data-filters-panel]');
+  var overlay = filters.querySelector('[data-filters-overlay]');
+  var opener = filters.querySelector('[data-filters-open]');
+  var drawerMode = window.matchMedia('(max-width: 1023px)');
+  var drawerOpen = false;
+  function openDrawer() {
+    if (!panel || !drawerMode.matches) return;
+    drawerOpen = true;
+    panel.classList.add('is-open'); if (overlay) overlay.classList.add('is-open');
+    panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'true');
+    if (opener) opener.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('no-scroll');
+    setTimeout(function () { var c = panel.querySelector('.filters__close'); if (c) c.focus(); }, 60);
+  }
+  function closeDrawer(restoreFocus) {
+    if (!panel || !drawerOpen) return;
+    drawerOpen = false;
+    panel.classList.remove('is-open'); if (overlay) overlay.classList.remove('is-open');
+    panel.removeAttribute('role'); panel.removeAttribute('aria-modal');
+    if (opener) opener.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('no-scroll');
+    if (restoreFocus !== false && opener) opener.focus();
+  }
+  if (opener) opener.addEventListener('click', openDrawer);
+  if (overlay) overlay.addEventListener('click', function () { closeDrawer(); });
+  filters.querySelectorAll('[data-filters-close]').forEach(function (b) { b.addEventListener('click', function () { closeDrawer(); }); });
   document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape') return;
-    groups.forEach(function (g) { if (g.open) { g.open = false; g.querySelector('summary').focus(); } });
+    if (!drawerOpen) return;
+    if (e.key === 'Escape') { closeDrawer(); return; }
+    if (e.key !== 'Tab') return;
+    // keep keyboard focus inside the open drawer
+    var f = Array.prototype.filter.call(panel.querySelectorAll('button, summary, input:not([disabled]), select'), function (el) { return el.offsetParent !== null; });
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
   });
+  // Growing past the drawer size (rotating a tablet) returns the sidebar to the page
+  var onMode = function () { if (!drawerMode.matches) closeDrawer(false); };
+  if (drawerMode.addEventListener) drawerMode.addEventListener('change', onMode); else if (drawerMode.addListener) drawerMode.addListener(onMode);
 
   apply(false);
 })();

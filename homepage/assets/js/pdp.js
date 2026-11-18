@@ -1,4 +1,4 @@
-/* Stylish Naari — product detail page interactions.
+/* Stylissh Naari — product detail page interactions.
    Header, menus, reveals and the related-products row are handled by homepage.js; the bag by bag.js. */
 (function () {
   'use strict';

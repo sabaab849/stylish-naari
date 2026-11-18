@@ -1,4 +1,4 @@
-// Local preview server for the Stylish Naari prototype.
+// Local preview server for the Stylissh Naari prototype.
 // Run from this folder:  node serve.mjs   → http://localhost:4321
 //
 // Routes
@@ -124,4 +124,4 @@ createServer((req, res) => {
 }).on('error', (err) => {
   console.error(err.code === 'EADDRINUSE' ? `Port ${port} is busy. Try: PORT=4322 node serve.mjs` : err.message);
   process.exit(1);
-}).listen(port, '::', () => console.log(`Stylish Naari → http://localhost:${port}`));
+}).listen(port, '::', () => console.log(`Stylissh Naari → http://localhost:${port}`));

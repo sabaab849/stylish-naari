@@ -20,7 +20,7 @@ export const reel = {
   eyebrow: 'The craft',
   title: 'The art of',
   titleAccent: 'the saree',
-  line: 'Painted, printed and woven by hand: the crafts behind every Stylish Naari saree.',
+  line: 'Painted, printed and woven by hand: the crafts behind every Stylissh Naari saree.',
   primary: { label: 'Explore Kalamkari', href: '#kalamkari' },
   secondary: { label: 'Shop the collection', href: '/sarees' },
   video: {
@@ -46,7 +46,7 @@ export const reel = {
 };
 
 // The two certification marks. Facts kept to what each scheme states about itself; no claim that any
-// Stylish Naari saree carries a mark until that saree is tagged with the mark's category in products.json.
+// Stylissh Naari saree carries a mark until that saree is tagged with the mark's category in products.json.
 export const marks = {
   handloom: {
     category: 'handloom-mark-sarees',
@@ -74,7 +74,7 @@ export const closing = {
 
 // ─── Kalamkari: one craft, told in depth ──────────────────────────────────────
 // Facts kept to what is generally documented about the two traditions; nothing here claims how a particular
-// Stylish Naari saree was made. The photographs are details of our own Kalamkari sarees (Kahani and Leela);
+// Stylissh Naari saree was made. The photographs are details of our own Kalamkari sarees (Kahani and Leela);
 // the captions name the saree and what it shows, not which school or technique made it — the products' records
 // don't say.
 // Images: leela.jpg, plus crops cut at full resolution from kahani-product.jpg and leela-product.jpg
@@ -163,7 +163,7 @@ export const lookbook = {
 // history in a paragraph, a line on the name, facts, and a link to the category. The photograph alternates sides.
 // Photographs are our own sarees; insets are details cut from them (assets/images/craft-*-detail.jpg). A craft with no
 // photograph yet (Chanderi) shows a plain "Coming soon" panel. History is kept to what is generally documented about each
-// craft; nothing claims how a particular Stylish Naari saree was made.
+// craft; nothing claims how a particular Stylissh Naari saree was made.
 export const crafts = [
   {
     key: 'banarasi', category: 'banarasi', cta: 'Shop Banarasi sarees',

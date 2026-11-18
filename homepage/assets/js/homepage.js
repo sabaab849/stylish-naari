@@ -1,4 +1,4 @@
-/* Stylish Naari — homepage interactions
+/* Stylissh Naari — homepage interactions
    Small, dependency-free. Each block maps to one Shopify section's JS. */
 (function () {
   'use strict';

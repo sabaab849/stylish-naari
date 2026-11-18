@@ -33,7 +33,7 @@
     "originalsEarly": "Kajal, Kamal, Moonga, Phalsa, Panna, Kasni, Chameli and Mehendi: gallery slides 2–4 are the original pendrive photos of their SN (Drive Premium Silk / Original Product Photos – Pendrive), whole and turned upright (_tools/originals-early.ps1, set-originals-early.cjs). Kasni is SN-029 lilac (the arched meenakari pallu). Kairi, Jamun, Neel and Bagh have no folded photos: not in the client workbook and not in any of the 92 pendrive shoot folders.",
     "oneModelPhoto": "One model photograph per product (Nov 16): later poses and portraits removed by _tools/one-model-photo.cjs; fabric close-ups and original product photos kept.",
     "folded": "Folded-only PDPs (no model photograph) were removed on 16 Nov 2026 by _tools/remove-folded-only.cjs; every product has a model photo.",
-    "videos": "Saree reels (Nov 16): 36 products have a video from the Drive saree clips (_tools/saree-clips.json, encode-clips.mjs, set-videos.cjs), shown as the last gallery slide and the \"in motion\" section, like Hariyali.",
+    "videos": "Saree reels: products with a video from the Drive saree clips (_tools/saree-clips.json: map = first batch, 16 Nov; map2 = second batch, 18 Nov; encode-clips.mjs, set-videos.cjs), shown as the last gallery slide and the \"in motion\" section, like Hariyali.",
     "kalamkari": "Veena, Darbar, Chitra, Gajraj and Bansuri: the five Kalamkari model photographs of November 17 (model photography folder). Names and copy are proposals; fabric and price have not been supplied.",
     "bandhani": "Chunari, Sakhi, Jamuni, Bindiya, Gulabo and Lavanya: the six Bandhani model photographs of November 17 (model photography folder). Names and copy are proposals; fabric and price have not been supplied.",
     "blockPrints": "Rekha … Mehrab: the fifteen Block print photographs of November 17 (model photography folder; eleven are real photoshoot photos). Names and copy are proposals; fabric and price have not been supplied.",
@@ -88,7 +88,7 @@
       "apiVersion": "2025-10",
       "country": "IN",
       "siteUrl": "https://stylish-naari.vercel.app",
-      "vendor": "Stylish Naari",
+      "vendor": "Stylissh Naari",
       "productType": "Saree"
     }
   },
@@ -8058,7 +8058,17 @@
         {
           "slug": "rani-pink-kora-kadhua-weave"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/mehfil-reel.mp4",
+        "srcSmall": "/assets/video/mehfil-reel-small.mp4",
+        "poster": "/assets/images/mehfil-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 30.mp4"
+        ]
+      }
     },
     {
       "slug": "mishri",
@@ -9867,7 +9877,17 @@
         {
           "slug": "teal-tissue-kadhua-weave"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/firoza-reel.mp4",
+        "srcSmall": "/assets/video/firoza-reel-small.mp4",
+        "poster": "/assets/images/firoza-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 55.mp4"
+        ]
+      }
     },
     {
       "slug": "gulistan",
@@ -13679,7 +13699,17 @@
         {
           "slug": "magenta-semi-kora-applique"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/shahtoot-reel.mp4",
+        "srcSmall": "/assets/video/shahtoot-reel-small.mp4",
+        "poster": "/assets/images/shahtoot-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 03.mp4"
+        ]
+      }
     },
     {
       "slug": "khubani",
@@ -14073,7 +14103,17 @@
         ]
       },
       "catalogueRow": 71,
-      "catalogueDescription": "Viscose chiniya silk semi Banarasi saree."
+      "catalogueDescription": "Viscose chiniya silk semi Banarasi saree.",
+      "video": {
+        "src": "/assets/video/kachnar-reel.mp4",
+        "srcSmall": "/assets/video/kachnar-reel-small.mp4",
+        "poster": "/assets/images/kachnar-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 48.mp4"
+        ]
+      }
     },
     {
       "slug": "jharokha",
@@ -15261,7 +15301,17 @@
         {
           "slug": "orange-semi-katan-tilfi-boota"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/tesu-reel.mp4",
+        "srcSmall": "/assets/video/tesu-reel-small.mp4",
+        "poster": "/assets/images/tesu-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 17.mp4"
+        ]
+      }
     },
     {
       "slug": "mitti",
@@ -15653,7 +15703,17 @@
         {
           "slug": "magenta-kora-hand-embroidered-boota"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/kokum-reel.mp4",
+        "srcSmall": "/assets/video/kokum-reel-small.mp4",
+        "poster": "/assets/images/kokum-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 25.mp4"
+        ]
+      }
     },
     {
       "slug": "amavas",
@@ -15846,7 +15906,17 @@
         {
           "slug": "black-malmal-cotton-banarasi"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/amavas-reel.mp4",
+        "srcSmall": "/assets/video/amavas-reel-small.mp4",
+        "poster": "/assets/images/amavas-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 28.mp4"
+        ]
+      }
     },
     {
       "slug": "shikara",
@@ -16036,7 +16106,17 @@
         ]
       },
       "catalogueRow": 83,
-      "catalogueDescription": "Semi Banarasi pashmina saree."
+      "catalogueDescription": "Semi Banarasi pashmina saree.",
+      "video": {
+        "src": "/assets/video/shikara-reel.mp4",
+        "srcSmall": "/assets/video/shikara-reel-small.mp4",
+        "poster": "/assets/images/shikara-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 51.mp4"
+        ]
+      }
     },
     {
       "slug": "saunf",
@@ -16824,7 +16904,17 @@
         {
           "slug": "pink-semi-crepe-silk"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/gulaal-reel.mp4",
+        "srcSmall": "/assets/video/gulaal-reel-small.mp4",
+        "poster": "/assets/images/gulaal-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 18.mp4"
+        ]
+      }
     },
     {
       "slug": "aparajita",
@@ -17018,7 +17108,17 @@
         {
           "slug": "royal-blue-semi-katan-banarasi"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/aparajita-reel.mp4",
+        "srcSmall": "/assets/video/aparajita-reel-small.mp4",
+        "poster": "/assets/images/aparajita-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 15.mp4"
+        ]
+      }
     },
     {
       "slug": "banafsha",
@@ -17410,7 +17510,17 @@
         {
           "slug": "ivory-semi-rangkat-mashru"
         }
-      ]
+      ],
+      "video": {
+        "src": "/assets/video/kumud-reel.mp4",
+        "srcSmall": "/assets/video/kumud-reel-small.mp4",
+        "poster": "/assets/images/kumud-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 14.mp4"
+        ]
+      }
     },
     {
       "slug": "maina",
@@ -17803,7 +17913,17 @@
         ]
       },
       "catalogueRow": 72,
-      "catalogueDescription": "Semi Banarasi green mango silk saree."
+      "catalogueDescription": "Semi Banarasi green mango silk saree.",
+      "video": {
+        "src": "/assets/video/pudina-reel.mp4",
+        "srcSmall": "/assets/video/pudina-reel-small.mp4",
+        "poster": "/assets/images/pudina-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "Drive saree clips 2 / Sequence 43.mp4"
+        ]
+      }
     },
     {
       "slug": "laali",

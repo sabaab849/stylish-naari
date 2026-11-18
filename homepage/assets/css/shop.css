@@ -1,4 +1,4 @@
-/* Stylish Naari — shopping tools: wishlist + quick add on product cards, the collection filter bar,
+/* Stylissh Naari — shopping tools: wishlist + quick add on product cards, the collection filter bar,
    and the checkout / assurance block on the product page.
    Loaded on every page after homepage.css. Tokens only; no new colours or fonts.
    These are approved exceptions to the "nothing on the card" rule (brand-guidelines.md §12.2a): each
@@ -56,52 +56,26 @@
 }
 @media (prefers-reduced-motion: reduce) { .product-card__quick { transform: none; } }
 
-/* ─── Collection: filter + sort bar ──────────────────────────
-   Needs JavaScript, so it only appears when the script is running. Sticks to the top of the screen
-   and steps down below the header whenever the header is showing. */
-.filters { display: none; }
-.js .filters {
-  display: block; position: sticky; top: 0; z-index: 20;
-  margin-bottom: var(--spacing-7);
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
-  transition: top var(--duration-base) var(--ease-in-out);
-}
-/* the ivory runs edge to edge behind the bar, without clipping the panels that hang below it */
-.js .filters::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(-1 * var(--bleed)); right: calc(-1 * var(--bleed)); background: var(--color-bg); }
-.js .filters { top: var(--header-height); } /* the header is always pinned, so the bar sits just below it */
-.js .collection__tabs--filtered { margin-bottom: 0; }
+/* ─── Collection: filter sidebar + toolbar ───────────────────
+   Desktop (≥1024): a sticky left sidebar of collapsible categories (Craft, Colour, Fabric, Edit, Price), the grid in the
+   remaining width, and a slim toolbar above the grid (result count, sort). Below 1024px the sidebar becomes a drawer
+   that slides in from the left, opened from the toolbar's Filter button. Filtering needs JavaScript, so without it the
+   sidebar and toolbar stay hidden and the grid runs full width. */
+.filters, .collection__toolbar, .filters-overlay { display: none; }
+.js .collection__tabs--filtered { margin-bottom: var(--space-lg); }
 
-.filters__bar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-5); min-height: 56px; }
-.filters__groups { display: flex; flex-wrap: wrap; gap: 0 var(--spacing-6); }
-.filter { position: relative; }
-.filter__summary {
-  display: inline-flex; align-items: center; gap: 6px; min-height: 56px;
-  list-style: none; cursor: pointer; user-select: none;
-  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: 14px;
+/* Toolbar: count on the left, sort on the right, a hairline beneath */
+.js .collection__toolbar {
+  display: flex; align-items: center; gap: var(--space-md);
+  min-height: 56px; margin-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
 }
-.filter__summary::-webkit-details-marker { display: none; }
-/* no +/– marks: the open filter is shown by an underline instead */
-.filter[open] .filter__summary { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
-.filter__count { font-size: 11px; font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
-.filter__panel {
-  position: absolute; top: 100%; left: calc(-1 * var(--spacing-4)); z-index: 2;
-  min-width: 260px; padding: var(--spacing-3) var(--spacing-4);
-  background: var(--color-bg);
-  box-shadow: 0 0 0 1px var(--color-border);
+.filters__status { flex: 1; min-width: 0; font-size: var(--font-size-caption); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.filters__toggle {
+  display: none; align-items: center; gap: var(--space-xs); min-height: 44px;
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-nav); letter-spacing: 0.01em;
 }
-.filter__option {
-  display: flex; align-items: center; gap: var(--spacing-3); min-height: 40px; cursor: pointer;
-  font-size: var(--font-size-nav);
-}
-.filter__option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-/* the tick box, drawn */
-.filter__box { flex: none; width: 16px; height: 16px; box-shadow: inset 0 0 0 1px var(--color-border-strong); }
-.filter__option input:checked ~ .filter__box { background: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-ink), inset 0 0 0 4px var(--color-bg); }
-.filter__option input:focus-visible ~ .filter__box { outline: 2px solid var(--color-focus); outline-offset: 2px; }
-.filter__swatch { flex: none; width: 18px; height: 18px; box-shadow: 0 0 0 1px rgba(31, 26, 22, 0.18); }
-.filter__option input:checked ~ .filter__name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-.filter__n { margin-left: auto; padding-left: var(--spacing-4); font-size: 11px; font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
+.filters__toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
 
 .filters__sort { display: inline-flex; align-items: center; gap: var(--spacing-2); flex: none; font-size: var(--font-size-nav); color: var(--color-text-muted); }
 .filters__sort select {
@@ -112,26 +86,125 @@
   background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
   background-position: calc(100% - 5px) 55%, 100% 55%; background-size: 5px 5px; background-repeat: no-repeat;
 }
-@media (max-width: 767px) { .filters__sort select { font-size: 16px; } } /* 16px: phones don't zoom into the field */
 
-.filters__status {
-  display: flex; align-items: center; gap: var(--spacing-4); min-height: 36px; padding-bottom: var(--spacing-2);
-  font-size: var(--font-size-caption); color: var(--color-text-muted);
+/* Sidebar */
+.js .filters { display: flex; flex-direction: column; background: var(--color-bg); }
+.filters__head {
+  display: flex; align-items: center; gap: var(--space-sm);
+  min-height: 56px; border-bottom: 1px solid var(--color-ink);
 }
-.filters__clear { min-height: 32px; color: var(--color-text); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.filters__title {
+  margin-right: auto;
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); line-height: 1.2; letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+}
+.filters__clear { min-height: 32px; font-size: var(--font-size-caption); color: var(--color-text); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.filters__close, .filters__foot { display: none; }
+
+/* One category: its name and a chevron; the options open beneath it */
+.filter { border-bottom: 1px solid var(--color-border); }
+.filter__summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm);
+  min-height: 52px; list-style: none; cursor: pointer; user-select: none;
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-nav); letter-spacing: 0.01em;
+}
+.filter__summary::-webkit-details-marker { display: none; }
+.filter__summary:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.filter__count { font-size: 11px; font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
+.filter__chevron {
+  flex: none; width: 12px; height: 12px; fill: none; stroke: var(--color-text-muted); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform var(--duration-base) var(--ease-in-out);
+}
+.filter[open] .filter__chevron { transform: rotate(180deg); }
+.filter__summary:hover .filter__chevron { stroke: var(--color-text); }
+.filter__panel { padding: 0 0 var(--space-sm); }
+.filter[open] .filter__panel { animation: filter-open var(--duration-base) var(--ease-out); }
+@keyframes filter-open { from { opacity: 0; transform: translateY(-4px); } }
+.filter__option {
+  display: flex; align-items: center; gap: var(--spacing-3); min-height: 36px; cursor: pointer;
+  font-size: var(--font-size-nav);
+}
+/* A subcategory (Banarasi → Premium semi-silk, Premium silk) sits indented under its craft, with a hairline down the
+   side tying the group together */
+.filter__sub { margin-left: 7px; padding-left: var(--space-md); box-shadow: inset 1px 0 0 var(--color-border); }
+.filter__sub .filter__option { min-height: 34px; }
+.filter__option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+/* the tick box, drawn */
+.filter__box { flex: none; width: 16px; height: 16px; box-shadow: inset 0 0 0 1px var(--color-border-strong); }
+.filter__option input:checked ~ .filter__box { background: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-ink), inset 0 0 0 4px var(--color-bg); }
+.filter__option input:focus-visible ~ .filter__box { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.filter__swatch { flex: none; width: 18px; height: 18px; box-shadow: 0 0 0 1px rgba(31, 26, 22, 0.18); }
+.filter__option input:focus-visible ~ .filter__swatch { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.filter__option input:checked ~ .filter__swatch { box-shadow: 0 0 0 1px var(--color-bg), 0 0 0 2px var(--color-ink); }
+.filter__option input:checked ~ .filter__name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.filter__n { margin-left: auto; padding-left: var(--spacing-4); font-size: 11px; font-variant-numeric: tabular-nums; color: var(--color-text-muted); }
+@media (prefers-reduced-motion: reduce) { .filter__chevron { transition: none; } .filter[open] .filter__panel { animation: none; } }
 
 /* A filtered or sorted grid is a plain grid: the staggered offsets only make sense in the editorial order */
 .collection__grid.is-arranged > :nth-child(n) { margin-top: 0; }
 .collection__empty { padding: var(--spacing-9) 0 var(--spacing-11); font-family: var(--font-display); font-size: var(--font-size-h3); }
 
-@media (max-width: 767px) {
-  .filters__bar { flex-wrap: wrap; gap: 0 var(--spacing-4); }
-  .filters__groups { gap: 0 var(--spacing-5); }
-  .filter { position: static; } /* the panel spans the bar instead of hanging from its own button */
-  .filter__summary { min-height: 48px; }
-  .filter__panel { left: 0; right: 0; min-width: 0; }
-  .filters__sort { width: 100%; justify-content: space-between; border-top: 1px solid var(--color-border); }
+/* Desktop: sidebar + grid side by side. The sidebar sticks under the header and scrolls on its own if it is taller
+   than the screen. Three columns in the remaining width, keeping the editorial stagger. */
+@media (min-width: 1024px) {
+  .js .collection__layout {
+    display: grid; grid-template-columns: 232px minmax(0, 1fr); column-gap: var(--space-2xl); align-items: start;
+  }
+  .js .filters {
+    position: sticky; top: calc(var(--header-height) + var(--space-lg));
+    max-height: calc(100svh - var(--header-height) - 2 * var(--space-lg));
+    overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent;
+    padding-right: var(--space-2xs); /* room for a scrollbar beside the counts */
+  }
+  .js .filters__head { position: sticky; top: 0; z-index: 1; background: var(--color-bg); }
+  .js .collection__toolbar { border-bottom-color: var(--color-ink); }
+  .js .collection__layout .collection__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--spacing-8) var(--grid-gutter); }
+  .js .collection__layout .collection__grid > :nth-child(n) { margin-top: 0; }
+  .js .collection__layout .collection__grid:not(.is-arranged) > :nth-child(3n + 2) { margin-top: var(--spacing-8); }
 }
+@media (min-width: 1280px) { .js .collection__layout { grid-template-columns: 256px minmax(0, 1fr); } }
+
+/* Phone and tablet: the sidebar is a drawer from the left; the toolbar (Filter · count · Sort) sticks under the header */
+@media (max-width: 1023px) {
+  .js .collection__toolbar {
+    position: sticky; top: var(--header-height); z-index: 20; flex-wrap: wrap; column-gap: var(--space-md);
+    margin-bottom: var(--space-lg); background: var(--color-bg);
+  }
+  .js .collection__toolbar::before { content: ""; position: absolute; z-index: -1; inset: 0 calc(-1 * var(--page-margin)); background: var(--color-bg); box-shadow: 0 1px 0 var(--color-border); }
+  .filters__toggle { display: inline-flex; }
+  .filters__status { order: 2; text-align: center; }
+  .filters__sort { order: 3; }
+
+  .js .filters-overlay {
+    display: block; position: fixed; inset: 0; z-index: 70;
+    background: rgba(31, 26, 22, 0.3);
+    opacity: 0; visibility: hidden;
+    transition: opacity var(--duration-base) var(--ease-out), visibility 0s linear var(--duration-base);
+  }
+  .js .filters-overlay.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
+  .js .filters {
+    position: fixed; top: 0; bottom: 0; left: 0; z-index: 71;
+    width: min(380px, calc(100vw - 48px));
+    box-shadow: 1px 0 0 var(--color-border);
+    transform: translateX(-100%); visibility: hidden;
+    transition: transform var(--duration-base) var(--ease-in-out), visibility 0s linear var(--duration-base);
+  }
+  .js .filters.is-open { transform: none; visibility: visible; transition-delay: 0s; }
+  .filters__head { flex: none; min-height: var(--header-height); padding: 0 var(--space-xs) 0 var(--space-md); border-bottom-color: var(--color-border); }
+  .filters__close { display: inline-flex; }
+  .filters__body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 0 var(--space-md); }
+  .filter__summary { min-height: 56px; }
+  .filter__option { min-height: 44px; } /* finger-sized rows */
+  .filter__sub .filter__option { min-height: 40px; }
+  .filters__foot { display: block; flex: none; padding: var(--space-sm) var(--space-md) calc(var(--space-sm) + env(safe-area-inset-bottom)); box-shadow: 0 -1px 0 var(--color-border); }
+  .filters__apply { width: 100%; }
+}
+@media (max-width: 767px) {
+  .filters__sort select { font-size: 16px; } /* 16px: phones don't zoom into the field */
+  .filters__status { order: 4; flex-basis: 100%; text-align: left; padding-bottom: var(--space-xs); }
+  .filters__sort { margin-left: auto; }
+}
+@media (max-width: 1023px) and (prefers-reduced-motion: reduce) { .js .filters, .js .filters-overlay { transition: none; } }
 
 /* ─── Product page: checkout + assurances, under Add to bag ─── */
 .pdp-trust { margin-top: var(--spacing-5); }
