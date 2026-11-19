@@ -22,6 +22,7 @@ import { renderInfoPage, INFO_PAGES } from './render/info.mjs';
 import { renderCraftPage } from './render/craft.mjs';
 import { renderCategory, categoryTarget } from './render/categories.mjs';
 import { root, readData, withIncludes } from './render/includes.mjs';
+import { searchIndex, searchSuggestions } from './render/search.mjs';
 
 const port = Number(process.env.PORT) || 4321;
 const types = {
@@ -94,6 +95,14 @@ createServer((req, res) => {
 
   // Wishlist
   if (/^\/wishlist\/?$/.test(urlPath)) { sendHtml(res, 200, renderWishlist(readData())); return; }
+
+  // Header search: a small index of every saree (render/search.mjs)
+  if (urlPath === '/search-index.json') {
+    const d = readData();
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-cache' });
+    res.end(JSON.stringify({ products: searchIndex(d), suggest: searchSuggestions(d) }));
+    return;
+  }
 
   // Keep internal folders private
   if (/^\/(render|partials|_source-footage)\//.test(urlPath) || urlPath === '/serve.mjs') {

@@ -23,6 +23,26 @@
       else if (y + h > rail.scrollTop + rail.clientHeight) rail.scrollTop = y + h - rail.clientHeight + 4;
     };
 
+    // A photo shown whole (object-fit: contain) can be narrower than its frame; the caption then starts at the
+    // photo's own left edge, not the frame's, so it never sits out past the picture
+    var alignCaption = function () {
+      if (!caption) return;
+      caption.style.marginLeft = '';
+      var s = slides[current];
+      var img = s && s.classList.contains('pdp-gallery__slide--whole') && s.querySelector('img');
+      if (!img || !img.naturalWidth || !img.clientHeight) return;
+      var shown = Math.min(img.clientWidth, img.clientHeight * img.naturalWidth / img.naturalHeight);
+      var photoLeft = track.getBoundingClientRect().left + (img.clientWidth - shown) / 2;
+      var textLeft = caption.getBoundingClientRect().left + (parseFloat(getComputedStyle(caption).paddingLeft) || 0);
+      var d = photoLeft - textLeft;
+      if (d > 1) caption.style.marginLeft = Math.round(d) + 'px';
+    };
+    slides.forEach(function (s, n) {
+      var img = s.querySelector('img');
+      if (img && !img.complete) img.addEventListener('load', function () { if (n === current) alignCaption(); });
+    });
+    window.addEventListener('resize', function () { alignCaption(); });
+
     var setIndex = function (i) {
       current = i;
       slides.forEach(function (s, n) {
@@ -34,6 +54,7 @@
         if (n === i) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
       });
       if (caption && slides[i]) caption.textContent = slides[i].getAttribute('data-caption') || '';
+      alignCaption();
       gallery.dispatchEvent(new CustomEvent('gallery:change', { detail: { index: i } })); // the colour choice follows the photo
     };
     var go = function (i) {
@@ -43,6 +64,7 @@
       revealThumb(thumbs[next]);
     };
 
+    alignCaption();
     gallery.snGo = function (i) { if (i !== current) go(i); }; // used by the colour choice
 
     if (slides.length > 1) {

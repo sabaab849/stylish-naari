@@ -25,14 +25,14 @@
       <a class="wordmark site-header__logo" href="/" aria-label="Stylissh Naari — home">Stylissh Naari</a>
 
       <ul class="site-utilities">
-        <li class="hide-mobile"><a class="site-nav__link" href="#">Search</a></li>
+        <li class="hide-mobile"><button class="site-nav__link" type="button" data-search-open aria-controls="site-search" aria-expanded="false">Search</button></li>
         <li class="hide-mobile"><a class="site-nav__link" href="/wishlist">Wishlist<span data-wishlist-count></span></a></li>
         <li class="hide-tablet"><a class="site-nav__link" href="#">Account</a></li>
         <li class="hide-mobile"><button class="site-nav__link" type="button" data-bag-open aria-controls="bag-drawer">Bag (<span data-bag-count>0</span>)</button></li>
         <li class="show-mobile">
-          <a class="icon-button" href="#" aria-label="Search">
+          <button class="icon-button" type="button" aria-label="Search" data-search-open aria-controls="site-search" aria-expanded="false">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-          </a>
+          </button>
         </li>
         <li class="show-mobile">
           <button class="icon-button bag-icon" type="button" data-bag-open aria-controls="bag-drawer" aria-label="Bag">
@@ -90,6 +90,22 @@
       </div>
     </div>
   </header>
+
+  <!-- Search (assets/js/search.js): opens under the header, searches every saree as you type, from /search-index.json -->
+  <div class="site-search" id="site-search" role="dialog" aria-modal="true" aria-label="Search sarees" data-search hidden>
+    <div class="container site-search__inner">
+      <form class="site-search__form" role="search" action="/sarees" data-search-form>
+        <svg class="icon site-search__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+        <label class="visually-hidden" for="site-search-input">Search sarees</label>
+        <input class="site-search__input" id="site-search-input" type="search" name="q" placeholder="Search by name, colour, fabric or craft" autocomplete="off" spellcheck="false" data-search-input>
+        <button class="site-search__close" type="button" data-search-close>Close</button>
+      </form>
+      <p class="site-search__status" aria-live="polite" data-search-status></p>
+      <div class="site-search__suggest" data-search-suggest></div>
+      <ul class="site-search__results" data-search-results></ul>
+    </div>
+  </div>
+  <div class="site-search__overlay" data-search-overlay hidden></div>
 
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>

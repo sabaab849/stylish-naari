@@ -30,7 +30,7 @@ export function cropImg(product, crop, { alt = '', loading = 'lazy', cls = '' } 
      styled   a model wearing it: the other photographs without a role
      detail   close-ups (role "detail", "border" and so on) */
 export const imageKind = (img) => (img.role === 'product' || (!img.role && img.src.includes('/catalogue/')) ? 'product' : img.role ? 'detail' : 'styled');
-const CAPTION = { styled: 'Styled imagery for representation', product: 'Actual product photograph' };
+const CAPTION = { styled: 'Styled imagery for representation', product: 'Actual product photograph', blouse: 'Blouse piece, actual product photograph' };
 /* A real photograph of the saree itself: a product shot, a catalogue photo, a Drive pendrive photo (images[].sn), or a
    photo marked actual: true (e.g. Hariyali's own close-ups). */
 export const isActual = (img) => !!(img && (imageKind(img) === 'product' || img.sn || img.actual));
@@ -94,7 +94,7 @@ function renderGallery(p) {
   //   anything AI-made: the model portrait and every close-up or crop cut from it      → "Styled imagery for representation"
   //   a real photoshoot (products.json → photoshoot: true): its model photos are real, so they carry no caption
   // The film carries none.
-  for (const v of views) v.caption = v.video ? '' : isActual(v.img) ? CAPTION.product : p.photoshoot ? '' : CAPTION.styled;
+  for (const v of views) v.caption = v.video ? '' : v.img.role === 'blouse' ? CAPTION.blouse : isActual(v.img) ? CAPTION.product : p.photoshoot ? '' : CAPTION.styled;
   const captioned = views.some((v) => v.caption);
   const many = views.length > 1;
   // The frame's shape: 3:4 when the first photo is framed; otherwise the first photo's own shape, but never wider than
@@ -226,7 +226,9 @@ function renderInfo(p, data, index, total) {
   const price = vs ? vs[0].price : p.price;
   const hasPrice = price != null;
   const chips = false && p.colours.length ? `<span class="pdp-info__chips">${p.colours.map((c) => `<span class="pdp-info__chip" style="background:${esc(c.hex)}" title="${esc(c.name)}"></span>`).join('')}</span>` : '';
-  const meta = specRows(p).slice(0, 4).map(([k, v]) => k === 'Colour' && vs
+  // The first four details, plus the blouse piece whenever it is known (client, 18 Nov 2026)
+  const rows = specRows(p);
+  const meta = [...rows.slice(0, 4), ...rows.slice(4).filter(([k]) => k === 'Blouse piece')].map(([k, v]) => k === 'Colour' && vs
     ? `<div><dt>${esc(k)}</dt><dd data-variant-label>${esc(vs[0].name)}</dd></div>`
     : `<div><dt>${esc(k)}</dt><dd>${esc(v)}${k === 'Colour' ? chips : ''}</dd></div>`).join('');
   const variantAttr = vs ? ` data-variant="${esc(vs[0].key)}"` : '';
@@ -336,19 +338,26 @@ function circleCrop(p, crop, frame) {
   const y = (1 - seen) / 2 + seen * middle(pct(crop.oy)); // the same point, as a share of the photo's height
   return { ...crop, s, ox: origin(middle(pct(crop.ox))), oy: origin((y - (1 - 1 / aspect) / 2) * aspect) };
 }
+// A real photograph of the saree: a real photoshoot, a product / folded / blouse shot, or one marked actual or from Drive
+const isRealPhoto = (p, img) => !!img && !!(p.photoshoot || img.actual || img.sn || img.second || ['product', 'blouse', 'source'].includes(img.role));
 const sameSpot = (a, b) => a && b && (a.img ?? 0) === (b.img ?? 0) && Math.abs(pct(a.ox) - pct(b.ox)) < 0.12 && Math.abs(pct(a.oy) - pct(b.oy)) < 0.12;
 function renderFeatures(p) {
   const a = p.attributes;
   const crops = p.crops || {};
+  const feat = p.features || {}; // real-photo crops (_tools/set-feature-crops.cjs); the AI model photo is only for "As styled"
   const sentence = (t) => (t && !/[.!?]$/.test(t) ? t + '.' : t);
   const cloth = [a.colourway || p.colours[0]?.name, a.fabric?.toLowerCase(), a.weave?.toLowerCase()].filter(Boolean).join(' ');
-  const border = crops.borderDetail || crops.border;
+  // Fabric, border and motif are cut only from real photographs of the saree (client, 19 Nov 2026): never the AI
+  // model photo or AI close-ups. A saree with no real photograph has no detail circles (and so no section).
+  const real = (c) => c && isRealPhoto(p, p.images[c.img ?? 0]) ? c : null;
+  const border = real(crops.borderDetail) || real(crops.border);
+  const motif = real(crops.motif);
   // The fabric circle never shows the same spot as the border or motif circle: it falls back to a wider crop
-  const fabric = [crops.swatch, crops.colour, crops.weave].find((c) => c && !sameSpot(c, border) && !sameSpot(c, crops.motif));
+  const fabric = [crops.swatch, crops.colour, crops.weave].map(real).find((c) => c && !sameSpot(c, border) && !sameSpot(c, motif));
   const items = [
-    [fabric && circleCrop(p, fabric, 5 / 4), a.fabric || a.weave ? 'Fabric & colour' : 'Colour', cloth],
-    [border && circleCrop(p, border, 4 / 3), 'The border', a.border],
-    [crops.motif && circleCrop(p, crops.motif, 4 / 3), 'The motif', a.motif],
+    [feat.fabric || (fabric && circleCrop(p, fabric, 5 / 4)), a.fabric || a.weave ? 'Fabric & colour' : 'Colour', cloth],
+    [feat.border || (border && circleCrop(p, border, 4 / 3)), 'The border', a.border],
+    [feat.motif || (motif && circleCrop(p, motif, 4 / 3)), 'The motif', a.motif],
     [crops.styling && circleCrop(p, crops.styling), 'As styled', p.styling],
   ].filter(([crop, , text]) => crop && text);
   if (items.length < 2) return '';
@@ -647,6 +656,7 @@ export function page({ title, description, body, preload = '', ogImage = '', mai
   <script src="/assets/js/homepage.js" defer></script>
   <script src="/assets/js/bag.js" defer></script>
   <script src="/assets/js/shop.js" defer></script>
+  <script src="/assets/js/search.js" defer></script>
   <script src="/assets/js/pdp.js" defer></script>${scripts.map((src) => `
   <script src="${esc(src)}" defer></script>`).join('')}
 </body>

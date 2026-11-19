@@ -149,9 +149,20 @@ change the token, never a page.
 - Premium Semi-Silk sarees (Surmai … Laali, `_tools/convert-semi-silk.ps1` + `add-semi-silk.cjs`, then `dedupe-folded.cjs`):
   model photo, then slides 2–4 from the Drive pendrive folder of the saree's SN (its own photo, a print close-up, another
   view). Those are whole photos, never cropped; a landscape photo is turned upright (90° clockwise) so it fills the
-  portrait frame (`fit: cover`), longest side 2400px.
+  portrait frame (`fit: cover`), longest side 2400px. Slide order: model → folded → print → border beside the print →
+  blouse piece (client, 19 Nov 2026; checked against Drive "Original folded images", `_tools/semi-silk-slides.cjs`).
+  SN-057 – 02 in Drive is not Surmai (teal jaal): never use it.
 - The second gallery slide always fills the frame edge to edge, never shown whole with bands at the sides (client,
   17 Nov 2026; `render/pdp.mjs`, after the views are built). Later slides keep their own `fit`.
+- Blouse piece (client, 18 Nov 2026): the last slide, role "blouse", caption "Blouse piece, actual product photograph", and
+  the details row "Blouse piece" (always shown when set). From Drive folder "2day" (folders 49–92, matched to products by
+  comparing photos, not by number: the folder numbers are not SNs). `_tools/add-blouse.cjs` lists the 10 sarees, the 4
+  matched ones with no blouse photo, and the 30 folders with no site product. Premium Silk sarees (client, 19 Nov 2026): from
+  the "day1" shoot (Drive folder 1pJXlePZQ8OwY0l8eE95p89qQB0kyMhgk = the Premium Silk pendrive SN folders on G:), the plain
+  cloth + border shot, usually photo 05; turned so the border runs along the bottom (`_tools/blouse-day1.ps1` +
+  `add-blouse-day1.cjs`, 25 sarees incl. Neem's embroidered neckline). A blouse piece can have a different weave or print
+  from the saree: Surmai, Jaswand, Saunf and Khubani (2day 53/6, 55/5, 64/5, 75/4) were added that way, same scripts. No blouse shot: Kattha, Aasmaan, Kamal, Moti, Mehfil,
+  Firoza; Megh has no SN folder.
 - One model photograph per product (client, Nov 2026): slide 1 is the only photo of the model; later slides are the
   original product photos and fabric close-ups. Never add a second pose, back view or portrait (`_tools/one-model-photo.cjs`).
 - No border-only slides (client, Nov 2026): a photo that shows the border beside plain body cloth, with none of the
@@ -162,8 +173,19 @@ change the token, never a page.
   → border crop → print crop. Kairi = IMG_7947, Bagh = IMG_7944. No flat-lay of Jamun or Neel in that folder yet (Jamun's real
   model shoot is IMG_8016–8029). The gallery caps crop zoom at 2.4, so `crops.border` and `crops.swatch` must point at
   different spots (hem border vs body print) or the two slides look the same.
+- "In detail" circles (client, 19 Nov 2026): fabric & colour, border and motif are cut only from real photos of the saree
+  (`products.json` → `features`, set by `_tools/set-feature-crops.cjs`; otherwise only crops whose image passes
+  `render/pdp.mjs` → `isRealPhoto`). "As styled" keeps the model photo. A saree with no real photo has no section.
 - Phone (≤767): full-width swipe gallery with a horizontal thumbnail strip under it; details below. Nothing sticky
   below 1024px except the buy bar (`pdp.js` swipe mode is `max-width: 767px`).
+
+## Search
+
+Header Search (desktop) and the magnifier (phone) open a panel under the header (`partials/header.html` → `.site-search`,
+`assets/js/search.js`, styles in `shop.css`). It searches a small index, `/search-index.json` (`render/search.mjs`; served by
+serve.mjs, written by build.mjs), never the half-megabyte products.json. Matches name, name meaning, descriptor, colours,
+fabric, weave, border, motif, craft, edit and "blouse piece"; every word must match; names rank first; one-letter typos in
+names still match. Enter opens the top result, Escape closes, "/" opens it, `?search=<words>` on any page opens it prefilled.
 
 ## Categories
 
@@ -206,3 +228,10 @@ All products, payment and checkout run on Shopify (client, 17 Nov 2026); the sit
 - Checkout: `assets/js/bag.js` → Storefront API (`product(handle)` for each line, then `cartCreate`) → redirect to the
   cart's `checkoutUrl`. Settings in `products.json → store.shopify` (`storeDomain`, public `storefrontToken`,
   `apiVersion`, `country: IN`); the button stays disabled until both are set. Never put an Admin API token in the site.
+
+## PDP "In detail" circles
+
+The first three circles (Fabric & colour, The border, The motif) are cut from the saree's own photographs, never from the
+AI model photo or AI close-ups (client, 19 Nov 2026); only "As styled" uses the model shoot. Sarees with real photos
+use `products.json → features` (`_tools/set-feature-crops.cjs`: [image, focal x, focal y, zoom] per circle; add new sarees
+there). Sarees with no real photo yet (53 AI-only or photoshoot sarees) still use their old crops until one is supplied.

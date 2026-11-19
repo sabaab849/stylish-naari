@@ -421,7 +421,7 @@
   .pdp-gallery__stage::-webkit-scrollbar { display: none; }
   .pdp-gallery__slide { position: relative; inset: auto; flex: 0 0 100%; aspect-ratio: var(--ratio, 3 / 4); opacity: 1; scroll-snap-align: start; }
   .pdp-gallery__btn { display: none; }
-  .pdp-gallery__caption { padding-inline: var(--page-margin); } /* the photos run edge to edge; the caption keeps the page margin */
+  @media (max-width: 767px) { .pdp-gallery__caption { padding-inline: var(--page-margin); } } /* phone: the photos run edge to edge; the caption keeps the page margin (tablet: it starts at the photo) */
   /* the rail becomes a row of thumbnails under the swipe gallery */
   /* stretch: the desktop rule's align-items: start would shrink the photo to its content (half width with two photos) */
   .pdp-gallery--many { display: flex; flex-direction: column; align-items: stretch; }

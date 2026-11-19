@@ -55,6 +55,8 @@
   .product-card:hover .product-card__detail { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .product-card__quick { transform: none; } }
+/* Phones: no quick-add bar over the photograph, so the whole saree shows (client, Nov 2026); add from the product page */
+@media (max-width: 767px) { .product-card__quick { display: none; } }
 
 /* ─── Collection: filter sidebar + toolbar ───────────────────
    Desktop (≥1024): a sticky left sidebar of collapsible categories (Craft, Colour, Fabric, Edit, Price), the grid in the
@@ -252,3 +254,78 @@
 .wishlist__empty { padding: var(--spacing-6) 0 var(--spacing-11); font-family: var(--font-display); font-size: var(--font-size-h3); }
 .wishlist__empty p { max-width: 24em; }
 .wishlist__empty .link { margin-top: var(--spacing-4); font-size: var(--font-size-button); }
+
+/* ─── Header search (assets/js/search.js, markup in partials/header.html) ───
+   A panel that drops from the top of the screen over the page, with a dimmed page behind it. Results are small
+   product cards: photo 3:4, name, descriptor, price. Type: input at body-lg (16px+ so phones don't zoom),
+   names and labels in the product and eyebrow roles. */
+.site-search {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 73;
+  max-height: 100svh; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--color-bg); color: var(--color-text);
+  box-shadow: 0 12px 40px rgba(30, 22, 16, 0.12);
+  transform: translateY(-12px); opacity: 0;
+  transition: transform var(--duration-base) var(--ease-out), opacity var(--duration-base) var(--ease-out);
+}
+.site-search.is-open { transform: none; opacity: 1; }
+.site-search__overlay { position: fixed; inset: 0; z-index: 72; background: rgba(30, 22, 16, 0.4); }
+.is-search-open, .is-search-open body { overflow: hidden; }
+.site-search__inner { padding-top: var(--space-md); padding-bottom: var(--space-xl); }
+.site-search__form {
+  display: flex; align-items: center; gap: var(--space-sm);
+  min-height: calc(var(--header-height) - var(--space-md));
+  border-bottom: 1px solid var(--color-ink);
+}
+.site-search__icon { flex: none; width: 22px; height: 22px; }
+.site-search__input {
+  flex: 1; min-width: 0; padding: var(--space-xs) 0;
+  border: 0; background: transparent; color: inherit; outline: none;
+  font-family: var(--font-body); font-size: max(16px, var(--font-size-body-lg)); line-height: 1.4;
+}
+.site-search__input::placeholder { color: var(--color-text-muted); }
+.site-search__input::-webkit-search-cancel-button { display: none; }
+.site-search__close {
+  flex: none; padding: var(--space-xs) 0;
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-button); letter-spacing: 0.01em;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.site-search__status {
+  margin-top: var(--space-md);
+  font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted);
+}
+.site-search__status:empty { display: none; }
+.site-search__status a { color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; }
+.site-search__label {
+  margin-top: var(--space-lg);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); line-height: 1.2; letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.site-search__chips { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-sm); }
+.site-search__chip {
+  display: inline-block; padding: 8px 14px;
+  border: 1px solid var(--color-border-strong); border-radius: var(--radius-full);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-nav); line-height: 1.2;
+  color: var(--color-text); background: transparent;
+  transition: border-color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out);
+}
+.site-search__chip:hover { border-color: var(--color-ink); background: var(--color-surface); }
+.site-search__results {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg) var(--grid-gutter);
+  margin-top: var(--space-md);
+}
+.site-search__results:empty { display: none; }
+@media (min-width: 768px) { .site-search__results { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .site-search__results { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.site-search__result { display: flex; flex-direction: column; color: inherit; }
+.site-search__media { display: block; aspect-ratio: 3 / 4; overflow: hidden; background: var(--color-surface); }
+.site-search__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration-slow) var(--ease-out); }
+@media (hover: hover) { .site-search__result:hover .site-search__media img { transform: scale(1.03); } }
+.site-search__name {
+  margin-top: var(--space-sm);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-product); line-height: 1.3;
+}
+.site-search__desc, .site-search__price { margin-top: 2px; font-size: var(--font-size-product); line-height: 1.35; color: var(--color-text-muted); }
+.site-search__price { color: var(--color-text); }
+@media (prefers-reduced-motion: reduce) { .site-search, .site-search__media img { transition: none; } }

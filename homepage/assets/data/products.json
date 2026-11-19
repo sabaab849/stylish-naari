@@ -174,13 +174,23 @@
         },
         {
           "src": "/assets/images/kairi-original.jpg",
-          "width": 1800,
+          "width": 1350,
           "height": 2400,
           "role": "product",
           "fit": "cover",
           "second": true,
-          "alt": "Kairi, folded: the saree itself, a chartreuse pallu with a gold zari border over the lilac body with silver buti",
-          "source": "Drive \"Stylissh Naari\" IMG_7947.JPG"
+          "alt": "Kairi, folded: the saree itself, rose pink with small zari buti, the chartreuse pallu folded open with its gold zari border",
+          "source": "model photography/folded originals nov19/kairi folded.jpg (sent in chat, November 19)"
+        },
+        {
+          "src": "/assets/images/kairi-closeup.jpg",
+          "width": 1350,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "second": true,
+          "alt": "Kairi up close: rose pink with zari buti meeting the chartreuse pallu, its gold zari border and meenakari flowers",
+          "source": "model photography/folded originals nov19/kairi closeup.jpg (sent in chat, November 19)"
         }
       ],
       "crops": {
@@ -279,6 +289,39 @@
       ],
       "categoryEvidence": {
         "banarasi": "Original brief: the brand's Banarasi sarees (first shoot)"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 2,
+          "ox": "60%",
+          "oy": "3%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 2,
+          "s": 2.2,
+          "ox": "0%",
+          "oy": "50%",
+          "op": "50% 61%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2.6,
+          "ox": "34%",
+          "oy": "50%",
+          "op": "50% 32%"
+        }
+      },
+      "video": {
+        "src": "/assets/video/kairi-reel.mp4",
+        "srcSmall": "/assets/video/kairi-reel-small.mp4",
+        "poster": "/assets/images/kairi-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "model photography/saree videos/saree shoot/saree reels/kairi video.mp4"
+        ]
       }
     },
     {
@@ -486,6 +529,26 @@
             "w": 0.77,
             "h": 0.7786
           }
+        },
+        {
+          "src": "/assets/images/neel-original.jpg",
+          "width": 1350,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "second": true,
+          "alt": "Neel, folded: the saree itself, indigo fading to mint at one end, with silver zari lotus buti and a silver brocade pallu folded open",
+          "source": "model photography/folded originals nov19/neel folded.jpg (sent in chat, November 19)"
+        },
+        {
+          "src": "/assets/images/neel-closeup.jpg",
+          "width": 1350,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "second": true,
+          "alt": "Neel up close: a silver zari lotus buti on indigo, the brocade pallu and its silver border",
+          "source": "model photography/folded originals nov19/neel closeup.jpg (sent in chat, November 19)"
         }
       ],
       "crops": {
@@ -584,6 +647,39 @@
       ],
       "categoryEvidence": {
         "banarasi": "Original brief: first shoot"
+      },
+      "video": {
+        "src": "/assets/video/neel-reel.mp4",
+        "srcSmall": "/assets/video/neel-reel-small.mp4",
+        "poster": "/assets/images/neel-reel-poster.jpg",
+        "width": 720,
+        "height": 1280,
+        "sources": [
+          "model photography/saree videos/saree shoot/saree reels/neel video.mp4"
+        ]
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 2,
+          "ox": "60%",
+          "oy": "50%",
+          "op": "50% 32%"
+        },
+        "border": {
+          "img": 2,
+          "s": 2.4,
+          "ox": "100%",
+          "oy": "40%",
+          "op": "50% 0%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2.8,
+          "ox": "0%",
+          "oy": "3%",
+          "op": "50% 0%"
+        }
       }
     },
     {
@@ -752,6 +848,29 @@
       ],
       "categoryEvidence": {
         "banarasi": "Original brief: first shoot"
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 2.4,
+          "ox": "84%",
+          "oy": "50%",
+          "op": "50% 18%"
+        },
+        "border": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "13%",
+          "oy": "68%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 3.2,
+          "ox": "22%",
+          "oy": "50%",
+          "op": "50% 10%"
+        }
       }
     },
     {
@@ -785,7 +904,7 @@
         "border": "Floral border in gold and silver",
         "motif": "Elephant and lion motifs",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -842,7 +961,28 @@
           "width": 1594,
           "height": 2390,
           "alt": "Kajal up close: a lion motif and floral border in gold and silver on black silk",
-          "role": "detail"
+          "role": "detail",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/kajal-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kajal: the border, up close",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-002 – Black – 01 – _DSC4617 (cropped: 0.4, 0, 0.5)"
+        },
+        {
+          "src": "/assets/images/kajal-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kajal: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-002 – Black – 03 – _DSC4619"
         }
       ],
       "crops": {
@@ -936,6 +1076,29 @@
       "categoryEvidence": {
         "banarasi": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-002, Banarasi – Premium",
         "banarasi-premium-silk": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-002, Banarasi – Premium"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.8,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 5%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.8,
+          "ox": "61%",
+          "oy": "95%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2,
+          "ox": "30%",
+          "oy": "10%",
+          "op": "50% 0%"
+        }
       }
     },
     {
@@ -969,7 +1132,7 @@
         "border": "Gold zari border",
         "motif": "Floral jaal with paisley pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -1025,7 +1188,18 @@
           "width": 1594,
           "height": 2392,
           "alt": "Panna up close: floral jaal, gold zari border and paisley motifs on emerald silk",
-          "role": "detail"
+          "role": "detail",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/panna-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Panna: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-023 – Dark green – 05 – _DSC4656"
         }
       ],
       "crops": {
@@ -1129,7 +1303,30 @@
       },
       "catalogueRow": 23,
       "catalogueDescription": "Pure katan silk Handwoven, pauri cutwork, all over gold zari and multicolour resham meenakari designer jaal motifs with gold zari and multicolour resham meenakari alfi border and pallu weave very much exclusive piece of Banarasi saree.",
-      "galleryListed": true
+      "galleryListed": true,
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 3,
+          "s": 2,
+          "ox": "90%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 2.4,
+          "ox": "0%",
+          "oy": "97%",
+          "op": "50% 100%"
+        }
+      }
     },
     {
       "slug": "phalsa",
@@ -1162,7 +1359,7 @@
         "border": "Gold floral border",
         "motif": "Elephant and vine motifs",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -1219,7 +1416,28 @@
           "width": 1594,
           "height": 2391,
           "alt": "Phalsa up close: gold elephants, vines and a floral border on plum silk",
-          "role": "detail"
+          "role": "detail",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/phalsa-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Phalsa: the border, up close",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-013 – Purple – 01 – _DSC4625 (cropped: 0.3, 0.45, 0.5)"
+        },
+        {
+          "src": "/assets/images/phalsa-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Phalsa: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-013 – Purple – 05 – _DSC4629"
         }
       ],
       "crops": {
@@ -1313,6 +1531,29 @@
       "categoryEvidence": {
         "banarasi": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-013, Banarasi – Premium",
         "banarasi-premium-silk": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-013, Banarasi – Premium"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "28%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 3,
+          "s": 2,
+          "ox": "50%",
+          "oy": "0%",
+          "op": "50% 0%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2.6,
+          "ox": "58%",
+          "oy": "63%",
+          "op": "50% 100%"
+        }
       }
     },
     {
@@ -1345,7 +1586,7 @@
         "border": "Gold border",
         "motif": "Botanical pallu with birds",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -1407,7 +1648,28 @@
           "width": 1593,
           "height": 2390,
           "alt": "Moonga up close: flowering branches and birds on the coral pallu, edged in gold",
-          "role": "detail"
+          "role": "detail",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/moonga-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Moonga: the border, up close",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-006 – 01 (primary) – _DSC4767 (cropped: 0.22, 0.4, 0.45)"
+        },
+        {
+          "src": "/assets/images/moonga-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Moonga: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-006 – 05 – _DSC4771"
         }
       ],
       "crops": {
@@ -1523,6 +1785,29 @@
         "sources": [
           "Drive saree clips / 040.mp4"
         ]
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.5,
+          "ox": "5%",
+          "oy": "50%",
+          "op": "50% 35%"
+        },
+        "border": {
+          "img": 3,
+          "s": 2,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2.5,
+          "ox": "17%",
+          "oy": "50%",
+          "op": "50% 80%"
+        }
       }
     },
     {
@@ -1555,7 +1840,7 @@
         "border": "Tone-on-tone lacework",
         "motif": "Rose floral embroidery",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -1612,7 +1897,28 @@
           "width": 1594,
           "height": 2391,
           "alt": "Chameli up close: embroidered roses and tone-on-tone lacework on ivory",
-          "role": "detail"
+          "role": "detail",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/chameli-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Chameli: the border, up close",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-032 – 01 (primary) – _DSC4546 (cropped: 0.04, 0.28, 0.5)"
+        },
+        {
+          "src": "/assets/images/chameli-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Chameli: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-032 – 05 – _DSC4550"
         }
       ],
       "crops": {
@@ -1728,6 +2034,29 @@
       "categoryEvidence": {
         "banarasi": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-032, Banarasi – Premium",
         "banarasi-premium-silk": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-032, Banarasi – Premium"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "border": {
+          "img": 3,
+          "s": 2,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2.6,
+          "ox": "34%",
+          "oy": "47%",
+          "op": "50% 0%"
+        }
       }
     },
     {
@@ -1760,7 +2089,7 @@
         "border": "Pink-striped border",
         "motif": "Floral pallu panels",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": "Brocade",
         "origin": null,
         "availability": null,
@@ -1820,7 +2149,18 @@
           "width": 1594,
           "height": 2392,
           "alt": "Kasni up close: lavender brocade pleats, pink-striped border and floral pallu panels",
-          "role": "detail"
+          "role": "detail",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/kasni-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kasni: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-029 – Lilac – 05 – _DSC4685"
         }
       ],
       "crops": {
@@ -1929,6 +2269,29 @@
       "categoryEvidence": {
         "banarasi": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-029, Banarasi – Premium",
         "banarasi-premium-silk": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-029, Banarasi – Premium"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.5,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 80%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.8,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 2.4,
+          "ox": "84%",
+          "oy": "0%",
+          "op": "50% 0%"
+        }
       }
     },
     {
@@ -1967,7 +2330,7 @@
         "border": "Gold border edged in pink",
         "motif": "Floral jaal",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -2022,7 +2385,18 @@
           "width": 1747,
           "height": 2182,
           "alt": "Mehendi up close: pale floral jaal on olive, with a gold border edged in pink",
-          "role": "detail"
+          "role": "detail",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/mehendi-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mehendi: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-034 – 05 – _DSC4577"
         }
       ],
       "crops": {
@@ -2131,6 +2505,29 @@
       "categoryEvidence": {
         "banarasi": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-034, Banarasi – Premium",
         "banarasi-premium-silk": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-034, Banarasi – Premium"
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.6,
+          "ox": "0%",
+          "oy": "17%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 2,
+          "s": 2,
+          "ox": "90%",
+          "oy": "10%",
+          "op": "50% 0%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2.8,
+          "ox": "19%",
+          "oy": "58%",
+          "op": "50% 100%"
+        }
       }
     },
     {
@@ -2219,7 +2616,18 @@
           "width": 1593,
           "height": 2390,
           "alt": "Kamal up close: white embroidery along the border of the pink saree",
-          "role": "detail"
+          "role": "detail",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/kamal-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kamal: the border, up close",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-005 – 01 (primary) – _DSC4528 (cropped: 0.35, 0.1, 0.5)"
         }
       ],
       "crops": {
@@ -2328,6 +2736,29 @@
       "categoryEvidence": {
         "banarasi": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-005, Banarasi – Premium",
         "banarasi-premium-silk": "Drive workbook \"Pendrive Photo Audit – Banarasi\": SN-005, Banarasi – Premium"
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "border": {
+          "img": 2,
+          "s": 2.2,
+          "ox": "50%",
+          "oy": "13%",
+          "op": "50% 0%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2.6,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 35%"
+        }
       }
     },
     {
@@ -2469,6 +2900,29 @@
             "Red and gold"
           ]
         ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "50%",
+          "oy": "27%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "59%",
+          "oy": "73%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 3.2,
+          "ox": "65%",
+          "oy": "4%",
+          "op": "50% 0%"
+        }
       }
     },
     {
@@ -3517,6 +3971,29 @@
             "Gold, tasselled pallu"
           ]
         ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "41%",
+          "oy": "50%",
+          "op": "50% 10%"
+        },
+        "border": {
+          "img": 1,
+          "s": 2.8,
+          "ox": "84%",
+          "oy": "82%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 3,
+          "ox": "42%",
+          "oy": "89%",
+          "op": "50% 100%"
+        }
       }
     },
     {
@@ -3653,6 +4130,29 @@
             "Ikat and gold"
           ]
         ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "41%",
+          "oy": "0%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "87%",
+          "oy": "88%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 3.2,
+          "ox": "28%",
+          "oy": "50%",
+          "op": "50% 50%"
+        }
       }
     },
     {
@@ -3796,6 +4296,29 @@
             "Mustard"
           ]
         ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 2.4,
+          "ox": "16%",
+          "oy": "44%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 1,
+          "s": 2,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.8,
+          "ox": "53%",
+          "oy": "50%",
+          "op": "50% 98%"
+        }
       }
     },
     {
@@ -3938,6 +4461,29 @@
             "Mustard and red"
           ]
         ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 2.2,
+          "ox": "22%",
+          "oy": "32%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 1,
+          "s": 2.4,
+          "ox": "100%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.6,
+          "ox": "58%",
+          "oy": "55%",
+          "op": "50% 100%"
+        }
       }
     },
     {
@@ -4774,7 +5320,16 @@
           "teal video.mp4"
         ]
       },
-      "categories": []
+      "categories": [],
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.6,
+          "ox": "37%",
+          "oy": "23%",
+          "op": "0% 50%"
+        }
+      }
     },
     {
       "slug": "gulkand",
@@ -6266,7 +6821,7 @@
         "border": "Broad lilac zari border with an olive edge",
         "motif": "Orange and lilac peonies on trailing stems",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -6321,6 +6876,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-001 – 03 (whole)",
           "sn": "SN-001",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/sosan-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sosan: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-001 – 05 – _DSC4711"
         }
       ],
       "crops": {
@@ -6473,7 +7038,7 @@
         "border": "Gold border with a violet edge",
         "motif": "Gold buta; rosette and diamond medallions on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -6528,6 +7093,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-036 – 03 (whole)",
           "sn": "SN-036",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/khus-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Khus: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-036 – 05 – _DSC4751"
         }
       ],
       "crops": {
@@ -6681,7 +7256,7 @@
         "border": "Broad gold zari border with a rose edge",
         "motif": "Zari birds; trees, parrots, deer, elephants and a lion on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -6730,6 +7305,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-035 – 02 (whole)",
           "sn": "SN-035",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/haldi-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Haldi: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-035 – 05 – _DSC4782"
         }
       ],
       "crops": {
@@ -6878,7 +7463,7 @@
         "border": "Gold border with a temple edge",
         "motif": "Gold coin buti; flowers on curling vines on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -6933,6 +7518,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-007 – 02 (whole)",
           "sn": "SN-007",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/rani-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Rani: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-007 – 05 – _DSC4701"
         }
       ],
       "crops": {
@@ -7087,7 +7682,7 @@
         "border": "Broad rose-gold zari border, temple edge, magenta selvedge",
         "motif": "Elephants, camels and geometric florets",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -7142,6 +7737,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-003 – 03 (whole)",
           "sn": "SN-003",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/sawari-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sawari: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-003 – 05 – _DSC4661"
         }
       ],
       "crops": {
@@ -7295,7 +7900,7 @@
         "border": "Gold lattice border with a red edge",
         "motif": "Lotuses, buds and lily pads",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -7350,6 +7955,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-021 – 03 (whole)",
           "sn": "SN-021",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/taal-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Taal: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-021 – 05 – _DSC4716"
         }
       ],
       "crops": {
@@ -7504,7 +8119,7 @@
         "border": "Mustard edge with an ivory temple border",
         "motif": "Gold leaf buti; peacocks, deer and flowers on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -7559,6 +8174,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-008 – 02 (whole)",
           "sn": "SN-008",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/mor-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mor: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-008 – 05 – _DSC4722"
         }
       ],
       "crops": {
@@ -7713,7 +8338,7 @@
         "border": "Wide zari leaf border with violet and green bands, gold edge",
         "motif": "Flowering stems; diamond squares in the border",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -7762,6 +8387,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-027 – 03 (whole)",
           "sn": "SN-027",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/palash-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Palash: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-027 – 04 – _DSC4731"
         }
       ],
       "crops": {
@@ -7966,6 +8601,16 @@
           "sn": "SN-045",
           "bg": "#F6F1EA",
           "gallery": false
+        },
+        {
+          "src": "/assets/images/mehfil-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mehfil: the border, up close",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-045 – 01 (primary) – _SKS6622 (cropped: 0.15, 0.46, 0.5)"
         }
       ],
       "crops": {
@@ -8115,7 +8760,7 @@
         "border": "Violet zari lattice border",
         "motif": "Gold and silver buta; parrots on flowering branches on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -8164,6 +8809,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-020 – 02 (whole)",
           "sn": "SN-020",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/mishri-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mishri: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-020 – 05 – _DSC4756"
         }
       ],
       "crops": {
@@ -8312,7 +8967,7 @@
         "border": "Broad zari lattice border",
         "motif": "Gold buta; large paisleys on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -8367,6 +9022,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-012 – 03 (whole)",
           "sn": "SN-012",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/ambi-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Ambi: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-012 – 05 – _DSC4593"
         }
       ],
       "crops": {
@@ -8520,7 +9185,7 @@
         "border": "Gold floral border with a purple edge",
         "motif": "All-over jaal of small multicolour flowers",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -8575,6 +9240,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-026 – 03 (whole)",
           "sn": "SN-026",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/bahaar-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Bahaar: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-026 – 05 – _DSC4666"
         }
       ],
       "crops": {
@@ -8724,7 +9399,7 @@
         "border": "Zari border of wavy lines, magenta edge",
         "motif": "Gold and silver buta; flowering vines on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -8773,6 +9448,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-038 – 02 (whole)",
           "sn": "SN-038",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/shagun-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Shagun: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-038 – 05 – _DSC4745"
         }
       ],
       "crops": {
@@ -8921,7 +9606,7 @@
         "border": "Broad gold zari border",
         "motif": "All-over gold floral buti; zari bands on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -8976,6 +9661,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-011 – 03 (whole)",
           "sn": "SN-011",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/mangal-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mangal: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-011 – 05 – _DSC4588"
         }
       ],
       "crops": {
@@ -9143,14 +9838,25 @@
           }
         },
         {
-          "src": "/assets/images/aasmaan-original.jpg",
-          "width": 1200,
-          "height": 1800,
+          "src": "/assets/images/aasmaan-folded.jpg",
+          "width": 1080,
+          "height": 1620,
           "role": "product",
-          "fit": "contain",
-          "bg": "#707C87",
-          "alt": "Aasmaan, folded: the saree itself, powder blue with an embroidered flower border",
-          "source": "Drive: Original Product Photos - Pendrive / SN-004 – 01 (primary)",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Aasmaan, folded: the saree itself, powder blue with silver stripes and an embroidered flower border",
+          "source": "Client, 19 Nov 2026: folded product photo",
+          "sn": "SN-004"
+        },
+        {
+          "src": "/assets/images/aasmaan-border-closeup.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Aasmaan up close: the embroidered border of multicolour flowers beside the silver-striped body",
+          "source": "Client, 19 Nov 2026: border close-up",
           "sn": "SN-004"
         },
         {
@@ -9161,17 +9867,6 @@
           "fit": "contain",
           "alt": "Aasmaan up close: fine silver stripes; embroidered flowers on vines",
           "source": "Drive: Original Product Photos - Pendrive / SN-004 – 04 (whole)",
-          "sn": "SN-004",
-          "bg": "#F6F1EA"
-        },
-        {
-          "src": "/assets/images/aasmaan-border.jpg",
-          "width": 1200,
-          "height": 1800,
-          "role": "product",
-          "fit": "contain",
-          "alt": "Aasmaan: the border beside the print, embroidered border of multicolour flowers",
-          "source": "Drive: Original Product Photos - Pendrive / SN-004 – 03 (whole)",
           "sn": "SN-004",
           "bg": "#F6F1EA"
         }
@@ -9193,25 +9888,25 @@
           "oy": "50%"
         },
         "border": {
-          "img": 3,
+          "img": 2,
           "s": 1.6,
           "ox": "30%",
           "oy": "50%"
         },
         "weave": {
-          "img": 2,
+          "img": 3,
           "s": 1.3,
           "ox": "50%",
           "oy": "50%"
         },
         "borderDetail": {
-          "img": 3,
+          "img": 2,
           "s": 1.8,
           "ox": "30%",
           "oy": "50%"
         },
         "motif": {
-          "img": 2,
+          "img": 3,
           "s": 1.6,
           "ox": "50%",
           "oy": "50%"
@@ -9223,7 +9918,7 @@
           "oy": "50%"
         },
         "swatch": {
-          "img": 2,
+          "img": 3,
           "s": 2,
           "ox": "30%",
           "oy": "70%"
@@ -9330,7 +10025,7 @@
         "border": "Fine silver border",
         "motif": "Peach and silver rosettes; elephants on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -9379,6 +10074,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-033 – 02 (whole)",
           "sn": "SN-033",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/airavat-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Airavat: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-033 – 05 – _DSC4634"
         }
       ],
       "crops": {
@@ -9523,7 +10228,7 @@
         "border": "Red edge; a band of gold checks on the pallu",
         "motif": "Gold buta; embroidered flowers and leaves on the red pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -9578,6 +10283,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-028 – 02 (whole)",
           "sn": "SN-028",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/shringaar-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Shringaar: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-028 – 05 – _DSC4727"
         }
       ],
       "crops": {
@@ -9933,7 +10648,7 @@
         "border": "Dense embroidered rose border on the pallu",
         "motif": "Trailing rose sprays in pink, wine and sage",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -9982,6 +10697,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-025 – 02 (whole)",
           "sn": "SN-025",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/gulistan-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Gulistan: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-025 – 05 – _DSC4570"
         }
       ],
       "crops": {
@@ -10139,7 +10864,7 @@
         "border": "Dense zari border; fringed pallu",
         "motif": "Zari flowers over blocks of pink, orange, green and teal",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -10188,6 +10913,16 @@
           "source": "Drive: Original Product Photos - Pendrive / SN-019 – 03 (whole)",
           "sn": "SN-019",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/basant-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Basant: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Silk / Original Product Photos – Pendrive / SN-019 – 05 – _DSC4640"
         }
       ],
       "crops": {
@@ -10582,6 +11317,16 @@
           "source": "images/images/extra_photo_030.jpg (WhatsApp; SN-022 has no Drive folder)",
           "sn": "SN-022",
           "bg": "#F6F1EA"
+        },
+        {
+          "src": "/assets/images/megh-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Megh: the border, up close",
+          "source": "catalogue/sn-022.jpg (the folded photo, cropped: x 520, y 420, 900×1350 of 1800×1800)"
         }
       ],
       "crops": {
@@ -10662,7 +11407,30 @@
         {
           "slug": "lavender-tissue-chauthera-kadhwa"
         }
-      ]
+      ],
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 2.6,
+          "ox": "50%",
+          "oy": "9%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 1,
+          "s": 2,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.6,
+          "ox": "34%",
+          "oy": "50%",
+          "op": "50% 50%"
+        }
+      }
     },
     {
       "descriptionStatus": "draft",
@@ -13153,7 +13921,7 @@
         "border": "Broad gold zari border with rosettes",
         "motif": "Fine zari stripes; paisley medallions on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -13176,35 +13944,57 @@
           }
         },
         {
+          "src": "/assets/images/surmai-folded.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Surmai, folded: the grey body beside the gold zari pallu with its floral vines",
+          "source": "Client, 19 Nov 2026: folded product photo (replaces Drive SN-057 – 01)",
+          "sn": "SN-057"
+        },
+        {
+          "src": "/assets/images/surmai-fabric.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Surmai up close: the plain grey body, a fine silk weave",
+          "source": "Drive: Original folded images / SN-057 – 04",
+          "sn": "SN-057"
+        },
+        {
           "src": "/assets/images/surmai-original.jpg",
           "width": 1600,
           "height": 2400,
           "role": "product",
           "fit": "cover",
-          "alt": "Surmai, the saree itself: grey with a gold zari pallu",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-057 – 01",
+          "actual": true,
+          "alt": "Surmai: the gold zari border and pallu beside the grey body",
+          "source": "Drive: Original folded images / SN-057 – 01",
           "sn": "SN-057"
         },
         {
-          "src": "/assets/images/surmai-print.jpg",
+          "src": "/assets/images/surmai-border-zoom.jpg",
           "width": 1600,
           "height": 2400,
           "role": "product",
           "fit": "cover",
-          "alt": "Surmai up close: fine zari stripes; paisley medallions on the pallu",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-057 – 02",
-          "sn": "SN-057"
+          "actual": true,
+          "alt": "Surmai: the border, up close",
+          "source": "surmai-folded.jpg (the client's folded photo, 19 Nov 2026) (cropped: 0, 0.38, 0.6)"
         },
         {
-          "src": "/assets/images/surmai-border.jpg",
+          "src": "/assets/images/surmai-blouse.jpg",
           "width": 1600,
           "height": 2400,
-          "role": "product",
+          "role": "blouse",
           "fit": "cover",
-          "alt": "Surmai, another view: broad gold zari border with rosettes",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-057 – 03",
-          "sn": "SN-057",
-          "gallery": false
+          "actual": true,
+          "alt": "Surmai: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-057 – 05 – _DSC6835"
         }
       ],
       "crops": {
@@ -13348,7 +14138,7 @@
         "border": "Wide gold border with a magenta edge",
         "motif": "Gold lattice with small florets",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -13391,15 +14181,25 @@
           "sn": "SN-066"
         },
         {
-          "src": "/assets/images/zamurrad-border.jpg",
+          "src": "/assets/images/zamurrad-border-print.jpg",
           "width": 1600,
           "height": 2400,
           "role": "product",
           "fit": "cover",
-          "alt": "Zamurrad, another view: wide gold border with a magenta edge",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-066 – 05",
-          "sn": "SN-066",
-          "gallery": false
+          "actual": true,
+          "alt": "Zamurrad: the gold border beside the green jaal",
+          "source": "Drive: Original folded images / SN-066 – 03",
+          "sn": "SN-066"
+        },
+        {
+          "src": "/assets/images/zamurrad-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Zamurrad: the blouse piece",
+          "source": "Drive: 2day / 91 / _DSC7054"
         }
       ],
       "crops": {
@@ -13598,15 +14398,15 @@
           "sn": "SN-076"
         },
         {
-          "src": "/assets/images/shahtoot-border.jpg",
-          "width": 1279,
-          "height": 1919,
+          "src": "/assets/images/shahtoot-border-crop.jpg",
+          "width": 1200,
+          "height": 1600,
           "role": "product",
           "fit": "cover",
-          "alt": "Shahtoot, another view: broad silver-pink border; tasselled pallu",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-076 – 02",
-          "sn": "SN-076",
-          "gallery": false
+          "actual": true,
+          "alt": "Shahtoot up close: the silver floral border beside the appliqué flowers",
+          "source": "Drive: Original folded images / SN-076 – 01 (primary), cropped x650 y2250 1200×1600",
+          "sn": "SN-076"
         }
       ],
       "crops": {
@@ -13760,7 +14560,7 @@
         "border": "Broad gold border with a red selvedge",
         "motif": "Pastel jamdani flowers",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -13811,6 +14611,16 @@
           "alt": "Khubani, another view: broad gold border with a red selvedge",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-053 – 03",
           "sn": "SN-053"
+        },
+        {
+          "src": "/assets/images/khubani-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Khubani: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-053 – 04 – _DSC6951"
         }
       ],
       "crops": {
@@ -14007,15 +14817,15 @@
           "sn": "SN-071"
         },
         {
-          "src": "/assets/images/kachnar-border.jpg",
-          "width": 787,
-          "height": 1180,
+          "src": "/assets/images/kachnar-border-crop.jpg",
+          "width": 1050,
+          "height": 1400,
           "role": "product",
           "fit": "cover",
-          "alt": "Kachnar, another view: lime border with an ivory diamond lattice and temple edge",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-071 – 02",
-          "sn": "SN-071",
-          "gallery": false
+          "actual": true,
+          "alt": "Kachnar up close: the green temple border beside the pink body and its woven flower",
+          "source": "Drive: Original folded images / SN-071 – 01 (primary), cropped x150 y1300 1050×1400",
+          "sn": "SN-071"
         }
       ],
       "crops": {
@@ -14164,7 +14974,7 @@
         "border": "Gold zari border with coloured flowers",
         "motif": "Gold trellis with meenakari flowers; paisley pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -14215,6 +15025,16 @@
           "alt": "Jharokha, another view: gold zari border with coloured flowers",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-050 – 02",
           "sn": "SN-050"
+        },
+        {
+          "src": "/assets/images/jharokha-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Jharokha: the blouse piece",
+          "source": "Drive: 2day / 71 / _DSC6923"
         }
       ],
       "crops": {
@@ -14368,7 +15188,7 @@
         "border": "Broad black border of gold flowers on a vine",
         "motif": "Small gold buti; black and gold pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -14419,6 +15239,16 @@
           "alt": "Gunja, another view: broad black border of gold flowers on a vine",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-070 – 03",
           "sn": "SN-070"
+        },
+        {
+          "src": "/assets/images/gunja-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Gunja: the blouse piece",
+          "source": "Drive: 2day / 72 / _DSC6928"
         }
       ],
       "crops": {
@@ -14572,7 +15402,7 @@
         "border": "Paisley border in gold and colour; fringed pallu",
         "motif": "Scattered multicolour flowers",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -14623,6 +15453,16 @@
           "alt": "Gulbahar, another view: paisley border in gold and colour; fringed pallu",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-055 – 02",
           "sn": "SN-055"
+        },
+        {
+          "src": "/assets/images/gulbahar-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Gulbahar: the blouse piece",
+          "source": "Drive: 2day / 68 / _DSC6906"
         }
       ],
       "crops": {
@@ -14777,7 +15617,7 @@
         "border": "Broad purple border with pink and gold diamonds",
         "motif": "Large gold floral buti",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -14828,6 +15668,16 @@
           "alt": "Jaswand, another view: broad purple border with pink and gold diamonds",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-061 – 03",
           "sn": "SN-061"
+        },
+        {
+          "src": "/assets/images/jaswand-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Jaswand: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-061 – 05 – _DSC6841"
         }
       ],
       "crops": {
@@ -14966,7 +15816,7 @@
         "border": "Broad silver border of rosettes with a temple edge",
         "motif": "Silver floral buti",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -15017,6 +15867,16 @@
           "alt": "Tulsi, another view: broad silver border of rosettes with a temple edge",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-054 – 06",
           "sn": "SN-054"
+        },
+        {
+          "src": "/assets/images/tulsi-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Tulsi: the blouse piece",
+          "source": "Drive: 2day / 76 / _DSC6960"
         }
       ],
       "crops": {
@@ -15201,13 +16061,14 @@
           "sn": "SN-078"
         },
         {
-          "src": "/assets/images/tesu-border.jpg",
-          "width": 1601,
-          "height": 2400,
+          "src": "/assets/images/tesu-border-crop.jpg",
+          "width": 1050,
+          "height": 1400,
           "role": "product",
           "fit": "cover",
-          "alt": "Tesu, another view: self-coloured border",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-078 – 02",
+          "actual": true,
+          "alt": "Tesu up close: the gold border beside the orange buti body",
+          "source": "Drive: Original folded images / SN-078 – 01 (primary), cropped x1050 y2300 1050×1400",
           "sn": "SN-078"
         }
       ],
@@ -15361,7 +16222,7 @@
         "border": "Wide silver border of flowers on a vine",
         "motif": "Small orange, green and silver buti",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -15412,6 +16273,16 @@
           "alt": "Mitti, another view: wide silver border of flowers on a vine",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-056 – 03",
           "sn": "SN-056"
+        },
+        {
+          "src": "/assets/images/mitti-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mitti: the blouse piece",
+          "source": "Drive: 2day / 67 / _DSC6901"
         }
       ],
       "crops": {
@@ -15814,6 +16685,16 @@
           "alt": "Amavas, another view: vine border of ivory, red, yellow and turquoise flowers",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-074 – 04",
           "sn": "SN-074"
+        },
+        {
+          "src": "/assets/images/amavas-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Amavas: the border, up close",
+          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-074 – 01 (primary) – _SKS6621 (cropped: 0.1, 0.42, 0.5)"
         }
       ],
       "crops": {
@@ -16017,8 +16898,7 @@
           "fit": "cover",
           "alt": "Shikara, another view: paisley border in pink and green",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-083 – 03",
-          "sn": "SN-083",
-          "gallery": false
+          "sn": "SN-083"
         }
       ],
       "crops": {
@@ -16168,7 +17048,7 @@
         "border": "Broad grey-gold paisley border with a purple selvedge",
         "motif": "Gold floral buti",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -16219,6 +17099,16 @@
           "alt": "Saunf, another view: broad grey-gold paisley border with a purple selvedge",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-062 – 04",
           "sn": "SN-062"
+        },
+        {
+          "src": "/assets/images/saunf-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Saunf: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-062 – 05 – _DSC6887"
         }
       ],
       "crops": {
@@ -16365,7 +17255,7 @@
         "border": "Broad silver border with ogee medallions",
         "motif": "Hand-embroidered flower sprays",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -16408,15 +17298,25 @@
           "sn": "SN-082"
         },
         {
-          "src": "/assets/images/neem-border.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/neem-border-crop.jpg",
+          "width": 1200,
+          "height": 1600,
           "role": "product",
           "fit": "cover",
-          "alt": "Neem, another view: broad silver border with ogee medallions",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-082 – 04",
-          "sn": "SN-082",
-          "gallery": false
+          "actual": true,
+          "alt": "Neem up close: the silver border beside the green body and its hand-embroidered boota",
+          "source": "Drive: Original folded images / SN-082 – 01 (primary), cropped x1250 y2050 1200×1600",
+          "sn": "SN-082"
+        },
+        {
+          "src": "/assets/images/neem-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Neem: the blouse piece",
+          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-082 – 05 – _SKS6720"
         }
       ],
       "crops": {
@@ -16556,7 +17456,7 @@
         "border": "Silver floral border with a rani pink selvedge",
         "motif": "Silver geometric jaal of stars and lattices",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -16599,15 +17499,25 @@
           "sn": "SN-065"
         },
         {
-          "src": "/assets/images/sitara-border.jpg",
+          "src": "/assets/images/sitara-border-print.jpg",
           "width": 1600,
           "height": 2400,
           "role": "product",
           "fit": "cover",
-          "alt": "Sitara, another view: silver floral border with a rani pink selvedge",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-065 – 05",
-          "sn": "SN-065",
-          "gallery": false
+          "actual": true,
+          "alt": "Sitara: the border beside the navy and silver jaal",
+          "source": "Drive: Original folded images / SN-065 – 03",
+          "sn": "SN-065"
+        },
+        {
+          "src": "/assets/images/sitara-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sitara: the blouse piece",
+          "source": "Drive: 2day / 89 / _DSC7044"
         }
       ],
       "crops": {
@@ -17164,7 +18074,7 @@
         "border": "Geometric copper zari border with a violet edge",
         "motif": "All-over copper brocade of leaves, flowers and paisleys",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -17215,6 +18125,16 @@
           "alt": "Banafsha, another view: geometric copper zari border with a violet edge",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-068 – 05",
           "sn": "SN-068"
+        },
+        {
+          "src": "/assets/images/banafsha-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Banafsha: the blouse piece",
+          "source": "Drive: 2day / 83 / _DSC7011"
         }
       ],
       "crops": {
@@ -17571,7 +18491,7 @@
         "border": "Broad copper-gold border with a leaf edge",
         "motif": "Birds and flowers on curling vines; floral medallions on the pallu",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -17614,15 +18534,25 @@
           "sn": "SN-052"
         },
         {
-          "src": "/assets/images/maina-border.jpg",
+          "src": "/assets/images/maina-border-print.jpg",
           "width": 1600,
           "height": 2400,
           "role": "product",
           "fit": "cover",
-          "alt": "Maina, another view: broad copper-gold border with a leaf edge",
-          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-052 – 08",
-          "sn": "SN-052",
-          "gallery": false
+          "actual": true,
+          "alt": "Maina: the zari border beside the floral jaal",
+          "source": "Drive: Original folded images / SN-052 – 07",
+          "sn": "SN-052"
+        },
+        {
+          "src": "/assets/images/maina-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Maina: the blouse piece",
+          "source": "Drive: 2day / 73 / _DSC6943"
         }
       ],
       "crops": {
@@ -17825,7 +18755,18 @@
           "fit": "cover",
           "alt": "Pudina, another view: lime border of blue, orange and pink flowers",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-072 – 04",
-          "sn": "SN-072"
+          "sn": "SN-072",
+          "gallery": false
+        },
+        {
+          "src": "/assets/images/pudina-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Pudina: the border, up close",
+          "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-072 – 01 (primary) – _SKS6644 (cropped: 0.64, 0.4, 0.36)"
         }
       ],
       "crops": {
@@ -17974,7 +18915,7 @@
         "border": "Fine gold border; pallu of gold and pink diamonds",
         "motif": "Gold rosette buti",
         "length": null,
-        "blousePiece": null,
+        "blousePiece": "Included, unstitched (pictured)",
         "weave": null,
         "origin": null,
         "availability": null,
@@ -18025,6 +18966,16 @@
           "alt": "Laali, another view: fine gold border; pallu of gold and pink diamonds",
           "source": "Drive: 01 – Banarasi / Premium Semi-Silk / Original Product Photos – Pendrive / SN-064 – 04",
           "sn": "SN-064"
+        },
+        {
+          "src": "/assets/images/laali-blouse.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "blouse",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Laali: the blouse piece",
+          "source": "Drive: 2day / 88 / _DSC7039"
         }
       ],
       "crops": {
