@@ -14419,17 +14419,11 @@
       },
       "images": [
         {
-          "src": "/assets/images/hiran-1.jpg",
+          "src": "/assets/images/hiran-main.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Hiran — a vermilion saree with silver zari deer and tree-of-life medallions, worn standing at a lattice window in a blue room",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          }
+          "alt": "Hiran — a vermilion saree with silver zari deer and tree-of-life medallions, worn standing at a lattice window in a blue room"
         },
         {
           "src": "/assets/images/hiran-2.jpg",
