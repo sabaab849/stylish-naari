@@ -8,12 +8,12 @@
 // origin × (1 − 1/s), so s 1.15 with oy 80% shows 0.10–0.97 of the height.
 const fs = require('fs'); const f = 'assets/data/products.json'; const d = JSON.parse(fs.readFileSync(f, 'utf8'));
 const SET = {
-  gulkand: { frames: { 0: { x: 0.03, y: 0.155, w: 0.94, h: 0.8356 } }, silhouette: { img: 0, s: 1.1, ox: '50%', oy: '100%' } },
+  gulkand: { frames: { 0: { x: 0, y: 0.1111, w: 1, h: 0.8889 } }, silhouette: { img: 0, s: 1.1, ox: '50%', oy: '100%' } }, // real shoot, 20 Nov 2026
   parinda: {
     frames: { 0: { x: 0.036, y: 0.19, w: 0.838, h: 0.745 }, 2: { x: 0, y: 0.2, w: 0.9, h: 0.8 } },
     silhouette: { img: 0, s: 1.15, ox: '25%', oy: '80%' },
   },
-  elaichi: { frames: { 0: { x: 0.095, y: 0.22, w: 0.8775, h: 0.78 } }, silhouette: { img: 0, s: 1.15, ox: '20%', oy: '100%' } },
+  elaichi: { frames: { 0: { x: 0, y: 0.1111, w: 1, h: 0.8889 } }, silhouette: { img: 0, s: 1.15, ox: '20%', oy: '100%' } },
 };
 for (const [slug, s] of Object.entries(SET)) {
   const p = d.products.find((x) => x.slug === slug);

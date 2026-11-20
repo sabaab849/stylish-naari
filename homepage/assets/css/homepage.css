@@ -226,7 +226,19 @@ a:hover > .edit-card__text .link__arrow,
 .site-nav__link:hover,
 .site-nav__link[aria-expanded="true"] { background-size: 100% 1px; }
 
-.site-header__logo { justify-self: center; }
+/* Logo (client, 20 Nov 2026): the full emblem + script wordmark, centred, no dividing lines beside it.
+   logo.png = white artwork for the see-through header over the hero; logo-dark.png = the same with the white
+   parts in ink, for the solid ivory header. Both are the client's file with its baked-in checkerboard removed. */
+.site-header__logo { justify-self: center; display: inline-flex; align-items: center; }
+.site-header__logo-img { height: calc(var(--header-height) - 16px); width: auto; display: block; }
+.site-header__logo-img--dark,
+.site-header.is-solid .site-header__logo-img--light,
+.site-header.is-menu-open .site-header__logo-img--light { display: none; }
+.site-header.is-solid .site-header__logo-img--dark,
+.site-header.is-menu-open .site-header__logo-img--dark { display: block; }
+@media (max-width: 767px) {
+  .site-header__logo-img { height: calc(var(--header-height) - 8px); }
+}
 
 .icon-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
 .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
@@ -508,6 +520,8 @@ a:hover > .edit-card__text .link__arrow,
   transition: background-size var(--duration-base) var(--ease-out);
 }
 .footer-group li a:hover { background-size: 100% 1px; }
+.footer-group .footer-social { display: inline-flex; align-items: center; gap: var(--space-xs); }
+.footer-social__icon { flex: none; }
 /* Footer phone: line icon + number; the hover underline sits under the number only */
 
 .site-footer__bar {

@@ -822,7 +822,13 @@ button.video-card__glass:hover { background: rgba(255, 255, 255, 0.28); }
   box-shadow: 0 0 0 1px transparent; transition: box-shadow var(--duration-fast) var(--ease-out);
 }
 .pdp-colours__chip:hover::after { box-shadow: 0 0 0 1px var(--color-border-strong); }
-.pdp-colours__chip[aria-checked="true"]::after { box-shadow: 0 0 0 1px var(--color-ink); }
+.pdp-colours__chip[aria-checked="true"]::after,
+.pdp-colours__chip[aria-current="page"]::after { box-shadow: 0 0 0 1px var(--color-ink); }
+a.pdp-colours__chip { display: block; } /* colour siblings: each chip links to that saree's own page */
+/* Tighter under the price (client, 20 Nov 2026: too much space): the chips' 44px targets already pad the swatches. */
+.pdp-info .pdp-colours { margin-top: var(--space-sm); }
+.pdp-info .pdp-colours__list { margin-top: 0; }
+.pdp-info .pdp-colours + .pdp-info__description { margin-top: var(--space-xs); }
 .pdp-colours__chip:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 0; }
 .pdp-colours__note { margin-top: var(--spacing-1); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--color-text-muted); }
 @media (prefers-reduced-motion: reduce) { .pdp-colours__chip::after { transition: none; } }
@@ -927,3 +933,18 @@ button.video-card__glass:hover { background: rgba(255, 255, 255, 0.28); }
 .pdp-info__meta { margin-top: var(--space-lg); padding-top: var(--space-md); gap: var(--space-sm) var(--space-md); }
 .saree-swatch { margin-top: var(--space-lg); }
 @media (min-width: 1024px) { .pdp-info { padding-bottom: var(--space-md); } }
+
+/* Shipping & return / Disclaimer accordions under the buy box */
+.pdp-acc { margin-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+.pdp-acc__item { border-bottom: 1px solid var(--color-border); }
+.pdp-acc__item summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); padding-block: var(--space-md); cursor: pointer; list-style: none; font-family: var(--font-display); font-weight: 500; font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); text-transform: uppercase; }
+.pdp-acc__item summary::-webkit-details-marker { display: none; }
+.pdp-acc__chevron { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
+.pdp-acc__item[open] .pdp-acc__chevron { transform: rotate(180deg); }
+.pdp-acc__panel { padding-bottom: var(--space-md); font-family: var(--font-body); font-size: var(--font-size-body); line-height: 1.6; color: var(--color-text-muted, var(--color-text)); max-width: 36em; }
+.pdp-acc__panel p { margin: 0; }
+/* Sub-headings inside the policy panels: the same size as the body text, set apart only by weight (Inter Tight 500 vs Inter 400) and ink colour (client, 20 Nov 2026) */
+.pdp-acc__panel h3 { font-family: var(--font-display); font-weight: 500; font-size: var(--font-size-body); line-height: 1.5; letter-spacing: 0; color: var(--color-ink); margin: var(--space-lg) 0 var(--space-xs); }
+.pdp-acc__panel h3:first-child { margin-top: 0; }
+.pdp-acc__panel ul { padding-left: 1.2em; list-style: disc; display: grid; gap: var(--space-sm); }
+.pdp-acc__item summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }

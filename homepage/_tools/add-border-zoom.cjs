@@ -3,6 +3,7 @@
 //    slide, just before the blouse piece (or last when there is none). Crop = [x0, y0, width] as shares of the upright photo.
 //    The old border-only photo stays hidden (gallery: false); nothing else moves, so the crops that point at images by index
 //    keep working.
+// Kajal: no longer here (20 Nov 2026): its photo 01 is shown whole as the border slide (add-lion-colours.cjs).
 // Megh (SN-022, no Drive folder): cut the same way from its catalogue folded photo, catalogue/sn-022.jpg → megh-border-zoom.jpg,
 //    crop x 520, y 420, 900×1350 of 1800×1800 (added by hand, 19 Nov 2026).
 // 2. No print or border close-up from the AI photography in a Premium Silk gallery: the AI "detail" images are hidden
@@ -17,7 +18,6 @@ const ZOOM = {
   phalsa:  ['SN-013 – Purple – 01 – _DSC4625', [0.30, 0.45, 0.5]],
   moonga:  ['SN-006 – 01 (primary) – _DSC4767', [0.22, 0.40, 0.45]],
   chameli: ['SN-032 – 01 (primary) – _DSC4546', [0.04, 0.28, 0.5]],
-  kajal:   ['SN-002 – Black – 01 – _DSC4617', [0.40, 0.00, 0.5]],
   kamal:   ['SN-005 – 01 (primary) – _DSC4528', [0.35, 0.10, 0.5]],
 };
 

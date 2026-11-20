@@ -57,5 +57,8 @@ Everything needed to load the catalogue into Shopify is in `import/` (made by `n
   remove it.
 - What the CSV can't carry: the gallery's zoomed close-ups (they are crops made on the page, not files), the saree
   videos, and the colour edit pages' layouts. Shopify gets the photographs themselves.
+- **GSTIN goes on invoices only, never on the website** (client, 20 Nov 2026). Enter it in Shopify (Settings → Taxes
+  and duties → India → GST number, and the store's legal business details) so it prints on tax invoices and order
+  billing documents; use an invoice template or app that shows it if the default one doesn't.
 - **Moving onto a Shopify theme later** (instead of the Vercel site): the products, collections and handles are already
   in place; import `redirects.csv` (Content → Menus → URL redirects → Import) so old links keep working.

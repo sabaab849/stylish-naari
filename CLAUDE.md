@@ -67,8 +67,9 @@ Sizes come from the fluid tokens, not from these breakpoints. Use the breakpoint
 
 ### Rules
 
-- **Case:** sentence case for headings and buttons. UPPERCASE only for eyebrows/labels (Inter Tight 500,
+- **Case:** Title Case for every heading, h1–h6 (client, 20 Nov 2026; applied to every finished page in `render/includes.mjs` → `headingCase`, so write copy any way you like; minor words like "of" and "the" stay lower case). Sentence case for buttons. UPPERCASE only for eyebrows/labels (Inter Tight 500,
   `--letter-spacing-eyebrow`) and the approved caps headlines (hero, homepage banners, PDP colour name).
+- **Small sub-headings in body copy** (the PDP "Shipping & return" panel: Shipping, Returns & exchanges, Import duty): `--font-size-body`, the same size as the text under them; Inter Tight 500 in ink over Inter 400 muted: weight and colour make the hierarchy, never size (client, 20 Nov 2026).
 - **Weight:** 400 for headlines (they are large enough); 500 for product names, buttons and eyebrows; 600 for the
   header navigation links only.
 - **Measure:** paragraphs `max-width: 22–36em`; headlines `max-width` in `em` so they break into 2–3 lines.
@@ -82,7 +83,7 @@ Sizes come from the fluid tokens, not from these breakpoints. Use the breakpoint
   `--color-text-muted`, one line under the photograph (`.pdp-gallery__caption`). Every slide is captioned by what it
   really is (`render/pdp.mjs` → `isActual`): real photos of the saree (product shots, Drive pendrive / catalogue photos,
   `images[].actual`) read "Actual product photograph"; AI-made images, including close-ups and crops cut from them, read
-  "Styled imagery for representation"; real photoshoot sarees (`photoshoot: true`) carry no caption on their model photos.
+  "Styled imagery for representation"; real photoshoot sarees (`photoshoot: true`) read "Actual product photograph" on their model photos too (client, 20 Nov 2026; was no caption).
   New sarees: add them to `_tools/set-captions.cjs` if they are a real shoot or have real close-ups.
 - **New text:** pick the role from the table above and use its tokens (`font-family`, `font-size`,
   `line-height`, `letter-spacing`). Check it at 390px, 820px and 1440px before finishing.
@@ -115,7 +116,7 @@ component padding, image-to-text and type spacing. Don't add one-off pixel value
 The older fixed steps `--spacing-1…12` remain for existing rules; `--spacing-10` and `--spacing-11` now scale with
 the screen. Pages no longer override `--section-spacing` (the homepage and PDP used to); change the token instead.
 
-**Header height:** `--header-height` is 80px on tablet and up (72px until Nov 2026) and 56px on phones. Everything
+**Header height:** `--header-height` is 112px on tablet and up (72px, then 80px, until the logo went in: client, 20 Nov 2026) and 64px on phones. The logo is the client's full emblem + script wordmark (`assets/images/logo.png`, white, over the hero; `logo-dark.png`, white parts in ink, on the solid ivory header), `--header-height` − 16px tall, centred, no lines beside it (`homepage.css` → `.site-header__logo`). Both were cut from a file with a baked-in checkerboard, so ask the client for a real transparent PNG or SVG. Everything
 that sits below the header or sticks under it (page tops, the PDP's sticky columns, the menus) uses the token, so
 change the token, never a page.
 
@@ -170,12 +171,28 @@ change the token, never a page.
   skips it, and skips crops cut from it). List: `_tools/hide-border-only.cjs` — check every new saree's border shot by eye.
 - First-shoot Banarasi sarees (Kairi, Jamun, Neel, Bagh): model photo → real folded photo (`images[].second: true`, from the
   Drive folder "Stylissh Naari" flat-lays, turned upright: `_tools/originals-firstshoot.ps1` + `add-originals-firstshoot.cjs`)
-  → border crop → print crop. Kairi = IMG_7947, Bagh = IMG_7944. No flat-lay of Jamun or Neel in that folder yet (Jamun's real
+  → border crop → print crop. Kairi = IMG_7947, Bagh = IMG_7944. Kahani and Leela (client, 20 Nov 2026): their laid-flat product photo is slide 2 the same way (`second: true`). No flat-lay of Jamun or Neel in that folder yet (Jamun's real
   model shoot is IMG_8016–8029). The gallery caps crop zoom at 2.4, so `crops.border` and `crops.swatch` must point at
   different spots (hem border vs body print) or the two slides look the same.
 - "In detail" circles (client, 19 Nov 2026): fabric & colour, border and motif are cut only from real photos of the saree
   (`products.json` → `features`, set by `_tools/set-feature-crops.cjs`; otherwise only crops whose image passes
   `render/pdp.mjs` → `isRealPhoto`). "As styled" keeps the model photo. A saree with no real photo has no section.
+- Colour siblings (client, 20 Nov 2026): one print in several colours, each its own named saree and page, linked by a
+  "Colour" row of square chips under the price (`products.json → colourSiblings`, the same slug list on each member;
+  `render/pdp.mjs` → `renderColourSiblings`). First set: SN-002 lion motif = Kajal (black), Kishmish (plum), Gulmohar
+  (rani pink): `_tools/convert-lion-colours.cjs` + `add-lion-colours.cjs`, then `set-feature-crops.cjs`. Their blouse piece is
+  the buti cloth with the border (Drive photo 04 / 05). (`variants[]` is the other, older model: one page, `?colour=`.)
+  Second set: SN-029 tanchoi skirt border = Kasni (lilac), Basanti (Drive "Gold", mustard), Surkh (red):
+  `_tools/convert-kasni-colours.cjs` + `add-kasni-colours.cjs`, then `set-feature-crops.cjs`; blouse piece = the plain
+  striped body with the border (Gold 06, Red 05); Gold 02 (folded with the lilac) is not used; Kasni's reel stays lilac only.
+  The homepage shows only the first colour of a set (`render/collection.mjs` → `renderNewArrivals`); category pages show all.
+  Their model photos are the seated set sent 20 Nov 2026 (`kajal-model.jpg`, `kishmish-seated.jpg`, `gulmohar-seated.jpg`, 1024×1536):
+  3:4 frame from the bottom (y 0.1111), card `pos: 50% 70%`. The earlier padded `-space.jpg` photos are no longer used.
+- Slides 3–4 come from the original (client, 20 Nov 2026): model → original saree photo → print and border close-ups from the
+  original (or the Drive print / border shots) → blouse → film. Sarees with one original photo get their close-ups cut from
+  it (`_tools/detail-slides-from-original.cjs`: Kairi, Neel, Bagh, Rangoli, Saanjh, Sindoor, Kahani, Leela, Veena, Darbar,
+  Gajraj, Bansuri; the folded-photo sarees Lavanya, Bindiya, Sakhi, Chitra were set the same way by hand). 44 sarees have no
+  original photo yet (AI-only or real model shoot only): they keep model-photo slides until one is supplied.
 - Phone (≤767): full-width swipe gallery with a horizontal thumbnail strip under it; details below. Nothing sticky
   below 1024px except the buy bar (`pdp.js` swipe mode is `max-width: 767px`).
 
@@ -214,7 +231,7 @@ every order** — a fixed business rule, never add a charge or threshold; outsid
 no cash on delivery; these must match `store.shipping` in `products.json`. No returns; exchanges only for damage or misprints,
 within 14 days, unused with tags, unboxing video required, never for handloom, customised or sale items; customer pays
 exchange shipping; settled with a store credit note valid 15 days. Business (registered as "Stylissh Naari"): Brindaban Complex, Majiwada,
-Thane West; GSTIN 27AVTPM2829F2Z5; support stylisshnaari3552026@gmail.com, +91 73048 12124 (`store.support`); disputes: courts of Mumbai. A page shows the "Draft page" line only while its copy still contains
+Thane West; GSTIN 27AVTPM2829F2Z5 (never shown on the website: not in the footer, About, brand sections or policy pages; it belongs only on tax invoices and billing documents, which Shopify generates: client, 20 Nov 2026); support stylisshnaari3552026@gmail.com, +91 73048 12124 (`store.support`); disputes: courts of Mumbai. A page shows the "Draft page" line only while its copy still contains
 `[Insert …]` / `[Confirm …]`.
 
 ## Shopify (products, payment, checkout)
@@ -235,3 +252,21 @@ The first three circles (Fabric & colour, The border, The motif) are cut from th
 AI model photo or AI close-ups (client, 19 Nov 2026); only "As styled" uses the model shoot. Sarees with real photos
 use `products.json → features` (`_tools/set-feature-crops.cjs`: [image, focal x, focal y, zoom] per circle; add new sarees
 there). Sarees with no real photo yet (53 AI-only or photoshoot sarees) still use their old crops until one is supplied.
+
+Never blurry (client, 20 Nov 2026): every circle is pre-cut into its own 720×720 file, `assets/images/detail/<slug>-<key>.jpg`
+(`products.json → detailCircles`), by `_tools/make-detail-circles.mjs` (needs FFMPEG and FFPROBE). It cuts from the sharpest copy
+on disk (the Drive or `model photography/` original when it is the same picture), never uses fewer than 480 source pixels across
+a circle (a deeper zoom widens the view instead, leaning towards the saree), and scales with Lanczos. A cut is used only while its
+crop is unchanged (`render/pdp.mjs` → `circleSig`), so **re-run it after changing any crop, feature or photo**, and for new sarees.
+New camera shoots sent in chat (4000×6000): keep the full-size files in `model photography/<Saree> shoot (<date>)/` and point `images[].source` at them, so circles cut from the original (Elaichi, 20 Nov 2026; Genda the same day: standing → portrait → cuff close-up in the client's order, `_tools/set-genda-shoot.cjs`; two model photos at the client's request; Kumkum likewise: full length → lotus portrait → close-up → damask, `_tools/set-kumkum-shoot.cjs`). The tool reads EXIF Orientation, so sideways-stored camera JPEGs still match.
+
+## PDP "Shipping & return" and "Disclaimer" accordions
+
+Two collapsed `<details>` rows under the details block on every PDP (client, 20 Nov 2026; `render/pdp.mjs` → `renderPolicyAccordions`,
+styles `pdp.css` → `.pdp-acc`). "Shipping & return" holds Shipping (`store.shipping`), Returns & exchanges (same terms as `/exchanges`) and
+**Import duty, which is PLACEHOLDER text** (`[Insert import duty details]`) until the client supplies it. "Disclaimer" is about photographs
+(colour variation, handmade variation, model's blouse/jewellery is styling only). Copy lives as constants in `pdp.mjs`.
+
+Parinda (client, 20 Nov 2026) is the one exception to "one model photograph per product": its gallery is three real shoot photos in the
+client's order — seated on the balcony, standing between pillars, pallu close-up (`parinda-seat/stand/close.jpg`, `galleryListed`). Circles
+are cut from the standing (border) and close-up (fabric, motif) photos.

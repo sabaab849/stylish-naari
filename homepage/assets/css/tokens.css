@@ -129,7 +129,7 @@
   --grid-columns:      12;
   --page-margin:       48px;
   --grid-gutter:       24px;
-  --header-height:     80px;  /* the header at the top of the page; content below a solid header is offset by this (72px until Nov 2026) */
+  --header-height:     112px; /* the header at the top of the page; content below a solid header is offset by this (72px, then 80px, until the logo went in on 20 Nov 2026) */
   --header-height-compact: 56px; /* after the hero has scrolled away */
   --announcement-height: 36px;
 
@@ -150,7 +150,7 @@
   :root { --grid-columns: 8; --page-margin: 32px; --grid-gutter: 16px; }
 }
 @media (max-width: 767px) {
-  :root { --grid-columns: 4; --page-margin: 16px; --grid-gutter: 12px; --header-height: 56px; --header-height-compact: 48px; }
+  :root { --grid-columns: 4; --page-margin: 16px; --grid-gutter: 12px; --header-height: 64px; --header-height-compact: 48px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

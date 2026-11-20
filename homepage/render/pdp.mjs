@@ -92,9 +92,9 @@ function renderGallery(p) {
   // Caption under every photograph (client, Nov 16), from what the photo really is (isActual):
   //   real photo of the saree itself (folded / laid flat / Drive pendrive / catalogue)  → "Actual product photograph"
   //   anything AI-made: the model portrait and every close-up or crop cut from it      → "Styled imagery for representation"
-  //   a real photoshoot (products.json → photoshoot: true): its model photos are real, so they carry no caption
+  //   a real photoshoot (products.json → photoshoot: true): its model photos are real, so they read "Actual product photograph" (client, 20 Nov 2026)
   // The film carries none.
-  for (const v of views) v.caption = v.video ? '' : v.img.role === 'blouse' ? CAPTION.blouse : isActual(v.img) ? CAPTION.product : p.photoshoot ? '' : CAPTION.styled;
+  for (const v of views) v.caption = v.video ? '' : v.img.role === 'blouse' ? CAPTION.blouse : isActual(v.img) || p.photoshoot || v.img.real ? CAPTION.product : CAPTION.styled;
   const captioned = views.some((v) => v.caption);
   const many = views.length > 1;
   // The frame's shape: 3:4 when the first photo is framed; otherwise the first photo's own shape, but never wider than
@@ -202,9 +202,28 @@ function specRows(p) {
    own link (?colour=<key>), price and photo (variants[].imageIndex = its slide in the gallery). pdp.js swaps the
    name, price, photo, swatch and the bag button when a colour is chosen; the page renders the first colour. */
 export const variantsOf = (p) => (p.variants?.length > 1 ? p.variants : null);
-function renderColourChoice(p) {
+
+/* Colour siblings: the same print in other colours, each its own named saree with its own page (client, 20 Nov 2026:
+   Kajal / Kishmish / Gulmohar, SN-002). products.json → colourSiblings = the slugs in display order, the same list on
+   every member. Same look as the colour choice, but each chip is a link to that saree's page. */
+const siblingsOf = (p, data) => (p.colourSiblings || []).map((s) => data.products.find((x) => x.slug === s)).filter(Boolean);
+function renderColourSiblings(p, data) {
+  const sibs = siblingsOf(p, data);
+  if (sibs.length < 2) return '';
+  return `
+      <div class="pdp-colours">
+        <p class="pdp-colours__label"><span class="pdp-colours__eyebrow">Colour</span> <span class="pdp-colours__name">${esc(p.colours[0]?.name || p.name)}</span></p>
+        <ul class="pdp-colours__list" aria-label="Also in other colours">${sibs.map((x) => `
+          <li><a class="pdp-colours__chip" href="/products/${esc(x.slug)}"${x.slug === p.slug ? ' aria-current="page"' : ''}
+            aria-label="${esc(`${x.name}, ${x.colours[0]?.name || ''}`)}" title="${esc(`${x.name} · ${x.colours[0]?.name || ''}`)}"
+            style="--chip:${esc(x.colours[0]?.hex || '#ccc')}"></a></li>`).join('')}
+        </ul>
+      </div>`;
+}
+
+function renderColourChoice(p, data) {
   const vs = variantsOf(p);
-  if (!vs) return '';
+  if (!vs) return renderColourSiblings(p, data);
   const v = vs[0];
   const sharedNote = 'Shown together with the other colours in one photograph.';
   return `
@@ -243,15 +262,39 @@ function renderInfo(p, data, index, total) {
       ${p.nameMeaning ? `<p class="pdp-info__meaning"><em class="serif">${esc(p.nameMeaning)}</em></p>` : ''}
       <p class="pdp-info__descriptor">${esc(p.descriptor)}</p>
       ${hasPrice ? `<p class="pdp-info__price" data-price data-variant-price-text>${formatPrice(price)}</p>` : ''}
-      ${renderColourChoice(p)}
+      ${renderColourChoice(p, data)}
       ${p.description ? `<p class="pdp-info__description">${esc(p.description)}</p>` : ''}
       <div class="pdp-info__actions" data-pdp-cta>
         ${button}
       </div>${renderTrust(p, data)}
       ${meta ? `<dl class="pdp-info__meta">${meta}</dl>` : ''}
       ${data.store.shipping && !data.store.assurances?.length ? `<p class="pdp-info__shipping">${esc(data.store.shipping)}</p>` : ''}
+      ${renderPolicyAccordions(data)}
       ${p.video?.src ? '' : renderSareeSwatch(p, index, total)}
     </div>`;
+}
+
+/* Collapsible "Shipping & return" and "Disclaimer" under the buy box, on every PDP. Copy matches
+   /shipping and /exchanges (store.shipping). Import duty is PLACEHOLDER text until the client confirms it. */
+const POLICY_RETURNS = 'We do not accept returns. Exchanges are offered only for damaged items or misprints, within 14 days of delivery, if the saree is unused and has its tags. An unboxing video is required. Exchanges are not available for handloom, customised or sale items.';
+const POLICY_DUTY = '[Insert import duty details] Orders shipped outside India may attract customs duties, taxes or handling fees charged by the destination country. These are payable by the buyer on delivery.';
+const POLICY_DISCLAIMER = [
+  'Due to photographic lighting conditions and differences in screen resolutions, the colour of the actual product may slightly vary from the images provided.',
+  'There may be slight variation in design and measurement as these items are handmade. In fact, that ensures the authenticity of a handmade product.',
+  'The blouse or jewellery worn by the model are only for the purpose of photoshoot and styling references.',
+];
+const chevron = '<svg class="pdp-acc__chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 9.5l6 6 6-6"/></svg>';
+function renderPolicyAccordions(data) {
+  const ship = data.store.shipping;
+  const item = (title, body) => `
+        <details class="pdp-acc__item">
+          <summary><span>${title}</span>${chevron}</summary>
+          <div class="pdp-acc__panel">${body}</div>
+        </details>`;
+  const sub = (h, t) => `<h3>${h}</h3><p>${esc(t)}</p>`;
+  return `
+      <div class="pdp-acc">${item('Shipping &amp; return', `${ship ? sub('Shipping', ship) : ''}${sub('Returns &amp; exchanges', POLICY_RETURNS)}${sub('Import duty', POLICY_DUTY)}`)}${item('Disclaimer', `<ul>${POLICY_DISCLAIMER.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`)}
+      </div>`;
 }
 
 /* ─── Checkout + assurances, under Add to bag ─────────────
@@ -339,13 +382,15 @@ function circleCrop(p, crop, frame) {
   return { ...crop, s, ox: origin(middle(pct(crop.ox))), oy: origin((y - (1 - 1 / aspect) / 2) * aspect) };
 }
 // A real photograph of the saree: a real photoshoot, a product / folded / blouse shot, or one marked actual or from Drive
-const isRealPhoto = (p, img) => !!img && !!(p.photoshoot || img.actual || img.sn || img.second || ['product', 'blouse', 'source'].includes(img.role));
+const isRealPhoto = (p, img) => !!img && !!(p.photoshoot || img.real || img.actual || img.sn || img.second || ['product', 'blouse', 'source'].includes(img.role));
 const sameSpot = (a, b) => a && b && (a.img ?? 0) === (b.img ?? 0) && Math.abs(pct(a.ox) - pct(b.ox)) < 0.12 && Math.abs(pct(a.oy) - pct(b.oy)) < 0.12;
-function renderFeatures(p) {
+/* The four circles' crops, as the page shows them: { key, crop, title, text }. Exported for
+   _tools/make-detail-circles.mjs, which cuts each one into its own sharp 720×720 file (products.json → detailCircles). */
+export const circleSig = (p, crop) => [p.images[crop.img ?? 0]?.src, crop.s ?? 1, crop.ox ?? '', crop.oy ?? '', crop.op ?? ''].join('|');
+export function featureItems(p) {
   const a = p.attributes;
   const crops = p.crops || {};
   const feat = p.features || {}; // real-photo crops (_tools/set-feature-crops.cjs); the AI model photo is only for "As styled"
-  const sentence = (t) => (t && !/[.!?]$/.test(t) ? t + '.' : t);
   const cloth = [a.colourway || p.colours[0]?.name, a.fabric?.toLowerCase(), a.weave?.toLowerCase()].filter(Boolean).join(' ');
   // Fabric, border and motif are cut only from real photographs of the saree (client, 19 Nov 2026): never the AI
   // model photo or AI close-ups. A saree with no real photograph has no detail circles (and so no section).
@@ -354,19 +399,33 @@ function renderFeatures(p) {
   const motif = real(crops.motif);
   // The fabric circle never shows the same spot as the border or motif circle: it falls back to a wider crop
   const fabric = [crops.swatch, crops.colour, crops.weave].map(real).find((c) => c && !sameSpot(c, border) && !sameSpot(c, motif));
-  const items = [
-    [feat.fabric || (fabric && circleCrop(p, fabric, 5 / 4)), a.fabric || a.weave ? 'Fabric & colour' : 'Colour', cloth],
-    [feat.border || (border && circleCrop(p, border, 4 / 3)), 'The border', a.border],
-    [feat.motif || (motif && circleCrop(p, motif, 4 / 3)), 'The motif', a.motif],
-    [crops.styling && circleCrop(p, crops.styling), 'As styled', p.styling],
-  ].filter(([crop, , text]) => crop && text);
+  return [
+    ['fabric', feat.fabric || (fabric && circleCrop(p, fabric, 5 / 4)), a.fabric || a.weave ? 'Fabric & colour' : 'Colour', cloth],
+    ['border', feat.border || (border && circleCrop(p, border, 4 / 3)), 'The border', a.border],
+    ['motif', feat.motif || (motif && circleCrop(p, motif, 4 / 3)), 'The motif', a.motif],
+    ['styled', crops.styling && circleCrop(p, crops.styling), 'As styled', p.styling],
+  ].filter(([, crop, , text]) => crop && text).map(([key, crop, title, text]) => ({ key, crop, title, text }));
+}
+/* Each circle shows its own pre-cut file when there is one (client, 20 Nov 2026: never blurry): cut from the sharpest
+   photo on disk, zoomed out where the photo hasn't enough pixels, scaled with Lanczos. Otherwise the live crop. */
+function renderFeatures(p) {
+  const sentence = (t) => (t && !/[.!?]$/.test(t) ? t + '.' : t);
+  const items = featureItems(p);
   if (items.length < 2) return '';
-  const features = items.map(([crop, title, text]) => `
+  const features = items.map(({ key, crop, title, text }) => {
+    const cut = p.detailCircles?.[key];
+    const file = cut && cut.from === circleSig(p, crop) ? cut.src : null; // a stale cut (the crop changed since) is ignored
+    const alt = `${p.name}: ${title.toLowerCase()}`;
+    const img = file
+      ? `<img class="crop" src="${esc(file)}" alt="${esc(alt)}" width="720" height="720" loading="lazy" decoding="async">`
+      : cropImg(p, crop, { alt });
+    return `
         <li class="feature" data-reveal>
-          <div class="media feature__media">${cropImg(p, crop, { alt: `${p.name}: ${title.toLowerCase()}` })}</div>
+          <div class="media feature__media">${img}</div>
           <h3 class="feature__title">${esc(title)}</h3>
           <p class="feature__text">${esc(sentence(text))}</p>
-        </li>`).join('');
+        </li>`;
+  }).join('');
   return `
   <section class="features section" aria-labelledby="features-title">
     <div class="container">

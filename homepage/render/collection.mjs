@@ -142,7 +142,10 @@ export function renderWishlist(data) {
 
 /* ─── Homepage: new arrivals row (include:new-arrivals) ───── */
 export function renderNewArrivals(data) {
-  const list = data.products.filter((p) => p.isNew);
+  // One card per print: of a colour-sibling set (products.json → colourSiblings) only the first colour is shown; the
+  // others are a chip away on its PDP (client, 20 Nov 2026)
+  const firstColour = (p) => !p.colourSiblings?.length || p.colourSiblings[0] === p.slug;
+  const list = data.products.filter((p) => p.isNew && firstColour(p));
   // the homepage row carries no wishlist hearts: Quick add only
   return (list.length ? list : data.products).map((p, i) => productCard(p, i, { wishlist: false })).join('');
 }

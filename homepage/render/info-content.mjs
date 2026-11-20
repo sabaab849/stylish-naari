@@ -373,7 +373,7 @@ export const terms = {
   updated: POLICY_UPDATED,
   sections: [
     { id: 'overview', title: 'Overview', body: [
-      { p: 'This website is operated by Stylissh Naari, Brindaban Complex, Majiwada, Thane West, Maharashtra, India, GSTIN 27AVTPM2829F2Z5 (“Stylissh Naari”, “we”, “us”, “our”). “You” means anyone who uses the website or buys from us.' },
+      { p: 'This website is operated by Stylissh Naari, Brindaban Complex, Majiwada, Thane West, Maharashtra, India (“Stylissh Naari”, “we”, “us”, “our”). “You” means anyone who uses the website or buys from us.' },
       { p: 'These terms should be read with our [[Shipping policy|/shipping]], [[Exchange policy|/exchanges]] and [[Privacy policy|/privacy]], which form part of them.' },
     ] },
     { id: 'eligibility', title: 'Using the website', body: [

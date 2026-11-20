@@ -155,25 +155,21 @@ function renderContact(p, data) {
           <button class="button button--filled contact-form__submit" type="submit" data-contact-submit>Send message</button>
           <div class="contact-form__status" role="status" aria-live="polite" tabindex="-1" data-contact-status hidden></div>
         </form>`;
+  // Email, phone, hours and WhatsApp in one compact box (client, 20 Nov 2026; after nicobar.com/pages/contact-us), quick
+  // answers below it. Each row: a line icon, a small label, the value.
+  const icon = (d) => `<svg class="contact-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${d}</svg>`;
+  const ICONS = {
+    email: icon('<rect x="3" y="5.5" width="18" height="13" rx="1"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/>'),
+    phone: icon('<path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/>'),
+    hours: icon('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+    whatsapp: icon('<path d="M4.5 19.5 5.6 16A8 8 0 1 1 8.4 18.6Z"/><path d="M9.3 8.8c.2 2.6 2.4 5 5.2 5.6l1-1.2-1.6-.9-.8.6a4.6 4.6 0 0 1-2.2-2.2l.6-.8-.9-1.6Z"/>'),
+  };
+  const row = (key, label, value) => `
+            <li class="contact-card__row">${ICONS[key]}<div><h2 class="contact-card__label">${esc(label)}</h2><p class="contact-card__value">${value}</p></div></li>`;
   const details = `
         <aside class="contact-details" aria-label="Other ways to reach us">
-          <div class="contact-details__item">
-            <h2 class="eyebrow">Email</h2>
-            <p>${email}</p>
-          </div>
-${s.hours ? `
-          <div class="contact-details__item">
-            <h2 class="eyebrow">Support hours</h2>
-            <p>${esc(s.hours)}</p>
-          </div>` : ''}${s.phone ? `
-          <div class="contact-details__item">
-            <h2 class="eyebrow">Phone</h2>
-            <p><a class="info__link" href="tel:${esc(s.phone.replace(/\s/g, ''))}">${esc(s.phone)}</a></p>
-          </div>` : ''}${s.whatsapp ? `
-          <div class="contact-details__item">
-            <h2 class="eyebrow">WhatsApp</h2>
-            <p><a class="info__link" href="https://wa.me/${esc(s.whatsapp.replace(/\D/g, ''))}">${esc(s.whatsapp)}</a></p>
-          </div>` : ''}
+          <ul class="contact-card">${row('email', 'Email us', email)}${s.phone ? row('phone', 'Call us', `<a class="info__link" href="tel:${esc(s.phone.replace(/s/g, ''))}">${esc(s.phone)}</a>`) : ''}${s.whatsapp ? row('whatsapp', 'WhatsApp', `<a class="info__link" href="https://wa.me/${esc(s.whatsapp.replace(/D/g, ''))}">${esc(s.whatsapp)}</a>`) : ''}${s.hours ? row('hours', 'Support hours', esc(s.hours)) : ''}
+          </ul>
           <div class="contact-details__item">
             <h2 class="eyebrow">Quick answers</h2>
             <ul class="contact-details__links">

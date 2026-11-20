@@ -9,7 +9,7 @@ const HIDE = {
   kamal: 'kamal-border.jpg', mehfil: 'mehfil-border.jpg', surmai: 'surmai-border.jpg', zamurrad: 'zamurrad-border.jpg',
   shahtoot: 'shahtoot-border.jpg', kachnar: 'kachnar-border.jpg', shikara: 'shikara-border.jpg', neem: 'neem-border.jpg',
   sitara: 'sitara-border.jpg', maina: 'maina-border.jpg',
-  gulkand: 'gulkand-detail.jpg', elaichi: 'elaichi-detail.jpg', // model close-ups of the border and blouse only
+  // (gulkand, elaichi: real shoot photos since 20 Nov 2026, no border-only slide) // model close-ups of the border and blouse only
 };
 for (const [slug, file] of Object.entries(HIDE)) {
   const p = d.products.find((x) => x.slug === slug);
