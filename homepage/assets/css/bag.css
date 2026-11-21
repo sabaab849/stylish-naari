@@ -1,16 +1,20 @@
 /* Stylissh Naari — bag drawer and header count. Shared by every page. */
 
-.bag-icon { position: relative; }
-.bag-icon__count {
+/* Count badges on the header heart and bag: top-right of the 20px icon, hidden at zero (the `hidden` attribute) */
+.site-util { position: relative; }
+.site-util__badge {
   position: absolute; top: 6px; right: 4px;
   min-width: 16px; height: 16px; padding: 0 4px;
   border-radius: var(--radius-full);
-  background: currentColor;
+  font-family: var(--font-body);
   font-size: 11px; line-height: 16px; text-align: center; font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
 }
+.site-util__badge[hidden] { display: none; }
 /* the number sits in the opposite colour of the header text */
-.bag-icon__count { color: var(--color-ivory); background: var(--color-ink); }
-.site-header:not(.is-solid):not(.is-menu-open) .bag-icon__count { color: var(--color-ink); background: var(--color-ivory); }
+.site-util__badge { color: var(--color-ivory); background: var(--color-ink); }
+.site-header:not(.is-solid):not(.is-menu-open) .site-util__badge { color: var(--color-ink); background: var(--color-ivory); }
 
 .bag-overlay {
   position: fixed; inset: 0; z-index: 70;

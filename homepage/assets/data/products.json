@@ -7685,13 +7685,7 @@
           "width": 1600,
           "height": 2400,
           "real": true,
-          "pos": "50% 60%",
-          "frame": {
-            "x": 0,
-            "y": 0.1111,
-            "w": 1,
-            "h": 0.8889
-          },
+          "pos": "50% 50%",
           "alt": "Elaichi, a deep green saree with silver zari booti, a broad zari pallu and a pale aqua border, worn standing before a carved gold and copper door",
           "source": "model photography/Elaichi shoot (20 Nov 2026)/elaichi-shoot.jpg"
         },
@@ -8148,12 +8142,6 @@
           "height": 1536,
           "real": true,
           "pos": "50% 50%",
-          "frame": {
-            "x": 0,
-            "y": 0.1111,
-            "w": 1,
-            "h": 0.8889
-          },
           "alt": "Genda, a marigold orange saree with silver zari booti and a floral zari border crossed over a wine brocade blouse, worn standing in a terracotta arch",
           "source": "model photography/Genda shoot (20 Nov 2026)/genda-shoot.png"
         },
@@ -8368,12 +8356,7 @@
           "height": 2400,
           "real": true,
           "alt": "Kesar — a coral red Banarasi saree with silver zari booti and a scalloped floral pallu, worn standing in an arched alcove, the pallu held open",
-          "frame": {
-            "x": 0,
-            "y": 0.07,
-            "w": 1,
-            "h": 0.8889
-          }
+          "pos": "50% 50%"
         },
         {
           "src": "/assets/images/kesar-closeup.jpg",
@@ -8575,12 +8558,7 @@
           "height": 2400,
           "real": true,
           "alt": "Nilofer — a lilac Banarasi saree with a broad zari border and zari trees, worn standing in a terracotta arch with a red brocade blouse",
-          "frame": {
-            "x": 0,
-            "y": 0.07,
-            "w": 1,
-            "h": 0.8889
-          }
+          "pos": "50% 50%"
         },
         {
           "src": "/assets/images/nilofer-2.jpg",
@@ -8819,12 +8797,7 @@
           "height": 2400,
           "real": true,
           "alt": "Alta — a coral red silk saree with a broad diagonal zari border and gold roundels, worn standing against a terracotta wall with a purple brocade blouse",
-          "frame": {
-            "x": 0,
-            "y": 0.03,
-            "w": 1,
-            "h": 0.8889
-          }
+          "pos": "50% 50%"
         },
         {
           "src": "/assets/images/alta-2.jpg",
@@ -14423,7 +14396,8 @@
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Hiran — a vermilion saree with silver zari deer and tree-of-life medallions, worn standing at a lattice window in a blue room"
+          "alt": "Hiran — a vermilion saree with silver zari deer and tree-of-life medallions, worn standing at a lattice window in a blue room",
+          "pos": "50% 50%"
         },
         {
           "src": "/assets/images/hiran-2.jpg",
@@ -15609,12 +15583,7 @@
           "height": 1536,
           "alt": "Gulaabi — a blush pink saree with turquoise, coral and marigold flower butis, worn with a mustard blouse beside a stained-glass door",
           "source": "Gulaabi 1 (full length).png",
-          "frame": {
-            "x": 0,
-            "y": 0.04,
-            "w": 1,
-            "h": 0.8889
-          }
+          "pos": "50% 50%"
         },
         {
           "src": "/assets/images/gulaabi-detail.jpg",

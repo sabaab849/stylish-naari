@@ -29,6 +29,11 @@
       btn.setAttribute('aria-label', on ? 'Remove ' + name + ' from your wishlist' : 'Save ' + name + ' to your wishlist');
     });
     document.querySelectorAll('[data-wishlist-count]').forEach(function (el) { el.textContent = list.length ? ' (' + list.length + ')' : ''; }); // "(n)" only once something is saved
+    // header heart: a small badge, hidden at zero
+    document.querySelectorAll('[data-wishlist-badge]').forEach(function (el) { el.textContent = list.length; el.hidden = !list.length; });
+    document.querySelectorAll('[data-wishlist-link]').forEach(function (el) {
+      el.setAttribute('aria-label', list.length ? 'Wishlist, ' + list.length + ' saved' : 'Wishlist');
+    });
     paintWishlistPage(list);
   }
 

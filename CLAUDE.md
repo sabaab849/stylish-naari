@@ -116,7 +116,7 @@ component padding, image-to-text and type spacing. Don't add one-off pixel value
 The older fixed steps `--spacing-1…12` remain for existing rules; `--spacing-10` and `--spacing-11` now scale with
 the screen. Pages no longer override `--section-spacing` (the homepage and PDP used to); change the token instead.
 
-**Header height:** `--header-height` is 112px on tablet and up (72px, then 80px, until the logo went in: client, 20 Nov 2026) and 64px on phones. The logo is the client's full emblem + script wordmark (`assets/images/logo.png`, white, over the hero; `logo-dark.png`, white parts in ink, on the solid ivory header), `--header-height` − 16px tall, centred, no lines beside it (`homepage.css` → `.site-header__logo`). Both were cut from a file with a baked-in checkerboard, so ask the client for a real transparent PNG or SVG. Everything
+**Header height:** `--header-height` is 112px on tablet and up (72px, then 80px, until the logo went in: client, 20 Nov 2026) and 64px on phones. The logo is the client's full emblem + script wordmark (`assets/images/logo.png`, white, over the hero; `logo-dark.png`, white parts in ink, on the solid ivory header), 72px tall on tablet and up and 48px on phones (scaled down: client, 21 Nov 2026), centred, no lines beside it (`homepage.css` → `.site-header__logo`). Both were cut from a file with a baked-in checkerboard, so ask the client for a real transparent PNG or SVG. Everything
 that sits below the header or sticks under it (page tops, the PDP's sticky columns, the menus) uses the token, so
 change the token, never a page.
 
@@ -126,6 +126,8 @@ change the token, never a page.
   so the space either side is equal. Photo width `--pdp-photo-w` = the larger of "fits the screen height" and 36vw,
   at most 660px, and never so wide that the details drop below 360px. Never move the rail below the photograph on desktop.
 - Frame shape: 3:4 when the first photo has a `frame`; otherwise the first photo's own shape, never wider than square.
+  Full-length first photo (client, 20 Nov 2026): Genda, Elaichi, Kesar, Nilofer, Alta, Hiran, Gulaabi show their first photo whole
+  (no `frame`, 2:3), head to hem: `_tools/full-length-first.cjs`, run after any script that sets frames.
 - Model photos are cropped to a 3:4 window around the model and the saree so the backdrop doesn't dominate:
   `products.json` → `images[].frame` = { x, y, w, h } as shares of the photo (`render/pdp.mjs` turns it into
   `--fw` / `--fx` / `--fy`). Set one for every new model photo; catalogue photos without a frame are shown whole.
@@ -195,6 +197,13 @@ change the token, never a page.
   original photo yet (AI-only or real model shoot only): they keep model-photo slides until one is supplied.
 - Phone (≤767): full-width swipe gallery with a horizontal thumbnail strip under it; details below. Nothing sticky
   below 1024px except the buy bar (`pdp.js` swipe mode is `max-width: 767px`).
+
+## Header utilities
+
+Right side of the header (client, 21 Nov 2026): Search (icon + word), then Wishlist, Account and Bag as outline icons only (Lucide shapes,
+20px, stroke 1.5, 44px targets; `partials/header.html`, styles `homepage.css` → `.site-util`). Counts are badges: wishlist from `shop.js`
+(`[data-wishlist-badge]`), bag from `bag.js` (`[data-bag-badge]`); hidden at zero; styles `bag.css` → `.site-util__badge`. Hover is a 200ms
+fade, never a scale. Phones keep menu + logo + search icon + bag; Wishlist and Account live in the menu. Account still links to `#` (no page yet).
 
 ## Search
 

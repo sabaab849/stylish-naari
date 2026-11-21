@@ -22,22 +22,38 @@
         </ul>
       </nav>
 
-      <a class="wordmark site-header__logo" href="/" aria-label="Stylissh Naari — home">Stylissh Naari</a>
+      <a class="site-header__logo" href="/" aria-label="Stylissh Naari — home"><img class="site-header__logo-img site-header__logo-img--light" src="/assets/images/logo.png" width="225" height="300" alt="" decoding="async" fetchpriority="high"><img class="site-header__logo-img site-header__logo-img--dark" src="/assets/images/logo-dark.png" width="225" height="300" alt="" decoding="async"></a>
 
+      <!-- Utilities (client, 21 Nov 2026): Search keeps its word; Wishlist, Account and Bag are outline icons (Lucide shapes)
+           with counts as small badges. Counts come from shop.js (wishlist) and bag.js (bag); a badge hides at zero.
+           Phones keep their own pattern: the search icon and the bag; Wishlist and Account live in the menu. -->
       <ul class="site-utilities">
-        <li class="hide-mobile"><button class="site-nav__link" type="button" data-search-open aria-controls="site-search" aria-expanded="false">Search</button></li>
-        <li class="hide-mobile"><a class="site-nav__link" href="/wishlist">Wishlist<span data-wishlist-count></span></a></li>
-        <li class="hide-tablet"><a class="site-nav__link" href="#">Account</a></li>
-        <li class="hide-mobile"><button class="site-nav__link" type="button" data-bag-open aria-controls="bag-drawer">Bag (<span data-bag-count>0</span>)</button></li>
-        <li class="show-mobile">
-          <button class="icon-button" type="button" aria-label="Search" data-search-open aria-controls="site-search" aria-expanded="false">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+        <li class="hide-mobile">
+          <button class="site-util site-util--search" type="button" data-search-open aria-controls="site-search" aria-expanded="false">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4.2-4.2"/></svg>
+            <span>Search</span>
           </button>
         </li>
         <li class="show-mobile">
-          <button class="icon-button bag-icon" type="button" data-bag-open aria-controls="bag-drawer" aria-label="Bag">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
-            <span class="bag-icon__count" data-bag-count data-bag-badge hidden>0</span>
+          <button class="site-util icon-button" type="button" aria-label="Search" data-search-open aria-controls="site-search" aria-expanded="false">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7.5"/><path d="m20.5 20.5-4.2-4.2"/></svg>
+          </button>
+        </li>
+        <li class="hide-mobile">
+          <a class="site-util icon-button" href="/wishlist" aria-label="Wishlist" data-wishlist-link>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="site-util__badge" data-wishlist-badge hidden></span>
+          </a>
+        </li>
+        <li class="hide-mobile">
+          <a class="site-util icon-button" href="#" aria-label="Account">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+          </a>
+        </li>
+        <li>
+          <button class="site-util icon-button bag-icon" type="button" data-bag-open aria-controls="bag-drawer" aria-label="Bag">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="site-util__badge" data-bag-count data-bag-badge hidden>0</span>
           </button>
         </li>
       </ul>

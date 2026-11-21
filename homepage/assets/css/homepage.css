@@ -230,18 +230,37 @@ a:hover > .edit-card__text .link__arrow,
    logo.png = white artwork for the see-through header over the hero; logo-dark.png = the same with the white
    parts in ink, for the solid ivory header. Both are the client's file with its baked-in checkerboard removed. */
 .site-header__logo { justify-self: center; display: inline-flex; align-items: center; }
-.site-header__logo-img { height: calc(var(--header-height) - 16px); width: auto; display: block; }
+/* Scaled down (client, 21 Nov 2026): 72px tall on tablet and up (was the header height − 16px = 96px), 48px on phones. */
+.site-header__logo-img { height: 72px; width: auto; display: block; }
 .site-header__logo-img--dark,
 .site-header.is-solid .site-header__logo-img--light,
 .site-header.is-menu-open .site-header__logo-img--light { display: none; }
 .site-header.is-solid .site-header__logo-img--dark,
 .site-header.is-menu-open .site-header__logo-img--dark { display: block; }
 @media (max-width: 767px) {
-  .site-header__logo-img { height: calc(var(--header-height) - 8px); }
+  .site-header__logo-img { height: 48px; }
 }
 
 .icon-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
 .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+
+/* Header utilities (client, 21 Nov 2026): Search keeps its word beside the icon; Wishlist, Account and Bag are icons only,
+   each a 44px target. Hover: a quiet fade (no scaling). Badges: bag.css → .site-util__badge. */
+.site-utilities { gap: var(--space-2xs); }
+.site-util {
+  cursor: pointer;
+  stroke-linecap: round; stroke-linejoin: round;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+.site-util .icon { stroke-linecap: round; stroke-linejoin: round; }
+.site-util:hover { opacity: 0.6; }
+.site-util--search {
+  display: inline-flex; align-items: center; gap: var(--space-xs); min-height: 44px;
+  margin-right: var(--space-xs);
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-header-nav);
+}
 
 .site-header__menu-toggle,
 .show-mobile { display: none; }
@@ -538,7 +557,7 @@ a:hover > .edit-card__text .link__arrow,
 
 /* ─── Laptop ≤1279 ─────────────────────────────────────── */
 @media (max-width: 1279px) {
-  .site-nav__list, .site-utilities { gap: var(--spacing-5); }
+  .site-nav__list { gap: var(--spacing-5); }
   .craft__text { grid-column: 8 / 13; }
 }
 
