@@ -10473,7 +10473,8 @@
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Nilofer — a lilac Banarasi saree with zari trees, worn standing in a terracotta arch with a red brocade blouse"
+          "alt": "Nilofer — a lilac Banarasi saree with zari trees, worn standing in a terracotta arch with a red brocade blouse",
+          "pos": "50% 50%"
         },
         {
           "src": "/assets/images/nilofer-n3.jpg",
@@ -10703,38 +10704,40 @@
       },
       "images": [
         {
-          "src": "/assets/images/alta-1.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/alta-arch.jpg",
+          "width": 1122,
+          "height": 1402,
           "real": true,
-          "alt": "Alta — a coral red silk saree with a broad diagonal zari border and gold roundels, worn standing against a terracotta wall with a purple brocade blouse",
+          "alt": "Alta, a coral red silk saree with fine zari stripes, a diagonal floral border and gold roundels on the pallu, worn full length beneath a carved terracotta arch with a purple brocade blouse",
+          "source": "model photography/Alta shoot (23 Nov 2026)/alta-arch.png",
           "pos": "50% 50%"
         },
         {
-          "src": "/assets/images/alta-2.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/alta-pillar.jpg",
+          "width": 1080,
+          "height": 1350,
           "real": true,
-          "alt": "Alta — the pallu in fine zari stripes with tiny floral buti, worn with a purple brocade blouse and a gold pendant",
+          "alt": "Alta worn by a terracotta pillar under a blue sky, the striped pallu held out with tiny meenakari booti across it",
+          "source": "model photography/Alta shoot (23 Nov 2026)/alta-pillar.jpg",
           "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+            "x": 0.0313,
+            "y": 0,
+            "w": 0.9375,
+            "h": 1
+          }
         },
         {
-          "src": "/assets/images/alta-3.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/alta-closeup.jpg",
+          "width": 1080,
+          "height": 1350,
           "real": true,
-          "alt": "Alta — the gold roundels and diagonal floral border at the pleats",
+          "alt": "Alta up close with a purple brocade blouse, a carnelian pendant and alta-painted hands on the striped drape",
+          "source": "model photography/Alta shoot (23 Nov 2026)/alta-closeup.jpg",
           "frame": {
-            "x": 0,
-            "y": 0.12,
-            "w": 1,
-            "h": 0.8889
+            "x": 0.0313,
+            "y": 0,
+            "w": 0.9375,
+            "h": 1
           },
           "fit": "cover"
         },
@@ -10745,6 +10748,20 @@
           "role": "detail",
           "alt": "Alta up close: fine wavy zari stripes on red, scattered with tiny pink, green and white meenakari booti",
           "source": "Vivid Red Silk Sari and Gold Pendant.png"
+        },
+        {
+          "src": "/assets/images/alta-niche.jpg",
+          "width": 1122,
+          "height": 1402,
+          "real": true,
+          "alt": "Alta worn standing in a terracotta niche, the pallu in front with its gold roundels and diagonal floral border",
+          "source": "model photography/Alta shoot (23 Nov 2026)/alta-niche.png",
+          "frame": {
+            "x": 0.0314,
+            "y": 0,
+            "w": 0.9372,
+            "h": 1
+          }
         }
       ],
       "crops": {
@@ -10759,18 +10776,16 @@
           "op": "50% 100%"
         },
         "pallu": {
-          "img": 2,
+          "img": 4,
           "s": 1.6,
-          "ox": "100%",
-          "oy": "50%",
-          "op": "50% 80%"
+          "ox": "45%",
+          "oy": "65%"
         },
         "border": {
-          "img": 2,
+          "img": 4,
           "s": 2,
-          "ox": "94%",
-          "oy": "100%",
-          "op": "50% 100%"
+          "ox": "47%",
+          "oy": "78%"
         },
         "weave": {
           "img": 3,
@@ -10779,25 +10794,22 @@
           "oy": "55%"
         },
         "borderDetail": {
-          "img": 2,
+          "img": 4,
           "s": 2.4,
-          "ox": "88%",
-          "oy": "100%",
-          "op": "50% 100%"
+          "ox": "47%",
+          "oy": "75%"
         },
         "motif": {
-          "img": 2,
-          "s": 3,
-          "ox": "38%",
-          "oy": "93%",
-          "op": "50% 100%"
+          "img": 4,
+          "s": 2.4,
+          "ox": "39%",
+          "oy": "60%"
         },
         "colour": {
           "img": 0,
           "s": 1.5,
-          "ox": "65%",
-          "oy": "65%",
-          "op": "50% 100%"
+          "ox": "50%",
+          "oy": "55%"
         },
         "swatch": {
           "img": 3,
@@ -10808,9 +10820,9 @@
         "styling": {
           "img": 1,
           "s": 1.3,
-          "ox": "61%",
-          "oy": "50%",
-          "op": "50% 14%"
+          "ox": "58%",
+          "oy": "30%",
+          "op": "50% 20%"
         }
       },
       "looks": [],
@@ -10837,50 +10849,28 @@
           ]
         ]
       },
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/alta-fabric.jpg",
-          "from": "/assets/images/alta-2.jpg|2.4|84%|89%|50% 100%",
-          "px": 667
-        },
-        "border": {
-          "src": "/assets/images/detail/alta-border.jpg",
-          "from": "/assets/images/alta-3.jpg|2.8|84%|100%|50% 100%",
-          "px": 571
-        },
-        "motif": {
-          "src": "/assets/images/detail/alta-motif.jpg",
-          "from": "/assets/images/alta-3.jpg|3|38%|93%|50% 100%",
-          "px": 533
-        },
-        "styled": {
-          "src": "/assets/images/detail/alta-styled.jpg",
-          "from": "/assets/images/alta-2.jpg|1.3|61%|50%|50% 14%",
-          "px": 1231
-        }
-      },
       "photoshoot": true,
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "84%",
-          "oy": "89%",
-          "op": "50% 100%"
-        },
-        "border": {
           "img": 2,
-          "s": 2.8,
-          "ox": "84%",
+          "s": 1.6,
+          "ox": "100%",
           "oy": "100%",
           "op": "50% 100%"
         },
+        "border": {
+          "img": 4,
+          "s": 2.2,
+          "ox": "45%",
+          "oy": "87%",
+          "op": "50% 100%"
+        },
         "motif": {
-          "img": 2,
-          "s": 3,
-          "ox": "38%",
-          "oy": "93%",
+          "img": 4,
+          "s": 2.4,
+          "ox": "31%",
+          "oy": "50%",
           "op": "50% 100%"
         }
       },
@@ -10894,6 +10884,28 @@
         "sources": [
           "model photography/saree videos/saree model vids/alta/alta.MP4 (0:06–0:11; enhanced by _tools/enhance-reel.sh, client-approved 23 Nov 2026; no sound)"
         ]
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/alta-fabric.jpg",
+          "from": "/assets/images/alta-closeup.jpg|1.6|100%|100%|50% 100%",
+          "px": 675
+        },
+        "border": {
+          "src": "/assets/images/detail/alta-border.jpg",
+          "from": "/assets/images/alta-niche.jpg|2.2|45%|87%|50% 100%",
+          "px": 510
+        },
+        "motif": {
+          "src": "/assets/images/detail/alta-motif.jpg",
+          "from": "/assets/images/alta-niche.jpg|2.4|31%|50%|50% 100%",
+          "px": 480
+        },
+        "styled": {
+          "src": "/assets/images/detail/alta-styled.jpg",
+          "from": "/assets/images/alta-pillar.jpg|1.3|58%|30%|50% 20%",
+          "px": 831
+        }
       }
     },
     {
@@ -16334,7 +16346,8 @@
           "height": 1536,
           "real": true,
           "alt": "Hiran worn full length beside a jaali window: zari deer and medallions over the vermilion body, the woven pallu over one arm",
-          "source": "model photography/Hiran shoot (sent in chat 23 Nov 2026)/hiran-window.png"
+          "source": "model photography/Hiran shoot (sent in chat 23 Nov 2026)/hiran-window.png",
+          "pos": "50% 50%"
         },
         {
           "src": "/assets/images/hiran-incense.jpg",
@@ -17566,28 +17579,53 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/gulaabi.jpg",
-          "width": 1024,
-          "height": 1536,
-          "alt": "Gulaabi — a blush pink saree with turquoise, coral and marigold flower butis, worn with a mustard blouse beside a stained-glass door",
-          "source": "Gulaabi 1 (full length).png",
+          "src": "/assets/images/gulaabi-n1.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Gulaabi, a blush-pink Banarasi saree with teal, coral and marigold flower booti and a gold zari pallu, worn full length at a stained-glass door",
+          "source": "model photography/Gulaabi shoot (sent in chat 23 Nov 2026)/gulaabi-full.png",
           "pos": "50% 50%"
         },
         {
-          "src": "/assets/images/gulaabi-detail.jpg",
-          "width": 1024,
-          "height": 1536,
-          "role": "detail",
-          "alt": "Gulaabi up close: woven flower butis and the zari border across the shoulder",
-          "source": "Gulaabi 2 (close-up).png"
+          "src": "/assets/images/gulaabi-n2.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Gulaabi, the gold zari pallu border with red flower booti falling over the arm, on blush pink silk",
+          "source": "model photography/Gulaabi shoot (sent in chat 23 Nov 2026)/gulaabi-border-photo.png",
+          "fit": "cover"
         },
         {
-          "src": "/assets/images/gulaabi-border.jpg",
-          "width": 1024,
-          "height": 1536,
-          "role": "detail",
-          "alt": "Gulaabi up close: the pale zari border of vines and coral flowers, and the flower butis",
-          "source": "Gulaabi 3 (border).png"
+          "src": "/assets/images/gulaabi-n3.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Gulaabi close up: the zari border at the shoulder and teal, coral and marigold flower booti, with the yellow blouse",
+          "source": "model photography/Gulaabi shoot (sent in chat 23 Nov 2026)/gulaabi-closeup.png",
+          "fit": "cover"
+        },
+        {
+          "src": "/assets/images/gulaabi-border-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "real": true,
+          "alt": "Gulaabi border up close: a gold zari border with red booti on blush pink",
+          "source": "model photography/Gulaabi shoot (sent in chat 23 Nov 2026)/gulaabi-border-photo.png (cropped x390 y560 330×440, spline 3.5×, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
+        },
+        {
+          "src": "/assets/images/gulaabi-booti-zoom.jpg",
+          "width": 1600,
+          "height": 2400,
+          "real": true,
+          "alt": "Gulaabi booti up close: teal, coral and marigold flower booti on blush pink",
+          "source": "model photography/Gulaabi shoot (sent in chat 23 Nov 2026)/gulaabi-closeup.png (cropped x360 y840 360×480, spline 3×, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
         }
       ],
       "crops": {
@@ -17669,26 +17707,60 @@
         ]
       },
       "photoshoot": true,
+      "video": {
+        "src": "/assets/video/gulaabi-reel.mp4",
+        "srcSmall": "/assets/video/gulaabi-reel-small.mp4",
+        "poster": "/assets/images/gulaabi-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/gulabi/gulabi.MP4 0–10 s; enhanced by _tools/enhance-reel.sh (SMOOTH=15), 23 Nov 2026; no sound"
+        ]
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.8,
+          "ox": "84%",
+          "oy": "88%",
+          "op": "50% 100%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.8,
+          "ox": "68%",
+          "oy": "50%",
+          "op": "50% 65%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "40%",
+          "oy": "66%",
+          "op": "50% 100%"
+        }
+      },
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/gulaabi-fabric.jpg",
-          "from": "/assets/images/gulaabi-detail.jpg|1.3|50%|81%|",
-          "px": 788
+          "from": "/assets/images/gulaabi-n3.jpg|1.8|84%|88%|50% 100%",
+          "px": 1111
         },
         "border": {
           "src": "/assets/images/detail/gulaabi-border.jpg",
-          "from": "/assets/images/gulaabi-border.jpg|1.3|40%|57%|",
-          "px": 788
+          "from": "/assets/images/gulaabi-n2.jpg|1.8|68%|50%|50% 65%",
+          "px": 1111
         },
         "motif": {
           "src": "/assets/images/detail/gulaabi-motif.jpg",
-          "from": "/assets/images/gulaabi-border.jpg|1.6|70%|17%|",
-          "px": 640
+          "from": "/assets/images/gulaabi-n3.jpg|2|40%|66%|50% 100%",
+          "px": 1000
         },
         "styled": {
           "src": "/assets/images/detail/gulaabi-styled.jpg",
-          "from": "/assets/images/gulaabi.jpg|1.3|50%|30%|50% 10%",
-          "px": 788
+          "from": "/assets/images/gulaabi-n1.jpg|1.3|50%|30%|50% 10%",
+          "px": 1538
         }
       }
     },
@@ -18152,7 +18224,8 @@
         "height": 1920,
         "silent": true,
         "sources": [
-          "model photography/saree videos/saree model vids/dariya/dariya.MP4 0–6 s, slowed to 0.8×; re-graded 23 Nov 2026 (client: background too bright, steadier): enhance-reel-slow.sh with SMOOTH=45 MAXSHIFT=40 GRADE=\"lutyuv=y='if(gt(255*pow(val/255,1.12),160),160+(255*pow(val/255,1.12)-160)*0.42,255*pow(val/255,1.12))',eq=contrast=1.06:saturation=1.08,hqdn3d=1:1:2:2,unsharp=5:5:0.4:5:5:0\" (deeper mids, glare rolled off, no white-balance change); no sound"
+          "model photography/saree videos/saree model vids/dariya/dariya.MP4 0–6 s, slowed to 0.8×; re-graded 23 Nov 2026 (client: background too bright, steadier): enhance-reel-slow.sh with SMOOTH=90 MAXSHIFT=45 STABZOOM=\"optzoom=0:zoom=7:crop=keep\" (twirl steadied, client 23 Nov 2026) GRADE=\"lutyuv=y='if(gt(255*pow(val/255,1.12),160),160+(255*pow(val/255,1.12)-160)*0.42,255*pow(val/255,1.12))',eq=contrast=1.06:saturation=1.08,hqdn3d=1:1:2:2,unsharp=5:5:0.4:5:5:0\" (deeper mids, glare rolled off, no white-balance change); no sound",
+          "Then the grey smudges on the raised upper arm cleaned, 0–4.4 s: _tools/clean-dariya-arm.sh (client, 23 Nov 2026)"
         ]
       }
     },
@@ -18912,6 +18985,16 @@
           "source": "model photography/Baingani shoot (20 Nov 2026)/baingani-full.jpg"
         },
         {
+          "src": "/assets/images/baingani-pallu.jpg",
+          "width": 1600,
+          "height": 2400,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Baingani: the pallu over the shoulder, its silver zari border and meenakari flowers",
+          "source": "model photography/Baingani shoot (20 Nov 2026)/baingani-pallu.jpg"
+        },
+        {
           "src": "/assets/images/baingani-closeup.jpg",
           "width": 1600,
           "height": 2400,
@@ -18922,14 +19005,14 @@
           "source": "model photography/Baingani shoot (20 Nov 2026)/baingani-closeup.jpg"
         },
         {
-          "src": "/assets/images/baingani-pallu.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/baingani-booti-zoom.jpg",
+          "width": 1300,
+          "height": 1950,
           "role": "product",
           "fit": "cover",
           "actual": true,
-          "alt": "Baingani: the pallu over the shoulder, its silver zari border and meenakari flowers",
-          "source": "model photography/Baingani shoot (20 Nov 2026)/baingani-pallu.jpg"
+          "alt": "Baingani booti up close: small silver buta woven over the purple silk",
+          "source": "model photography/Baingani shoot (20 Nov 2026)/baingani-closeup.jpg (upright, cropped x2500 y900 1300×1950, full resolution)"
         }
       ],
       "crops": {
@@ -18947,43 +19030,43 @@
           "op": "50% 100%"
         },
         "pallu": {
-          "img": 1,
+          "img": 2,
           "s": 1.5,
           "ox": "60%",
           "oy": "60%"
         },
         "border": {
-          "img": 1,
+          "img": 2,
           "s": 1.6,
           "ox": "30%",
           "oy": "40%"
         },
         "weave": {
-          "img": 1,
+          "img": 2,
           "s": 1.4,
           "ox": "70%",
           "oy": "30%"
         },
         "borderDetail": {
-          "img": 1,
+          "img": 2,
           "s": 1.8,
           "ox": "30%",
           "oy": "40%"
         },
         "motif": {
-          "img": 1,
+          "img": 2,
           "s": 2.2,
           "ox": "62%",
           "oy": "60%"
         },
         "colour": {
-          "img": 1,
+          "img": 2,
           "s": 1.4,
           "ox": "70%",
           "oy": "30%"
         },
         "swatch": {
-          "img": 1,
+          "img": 2,
           "s": 2,
           "ox": "75%",
           "oy": "30%"
@@ -19023,8 +19106,8 @@
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/baingani-fabric.jpg",
-          "from": "/assets/images/baingani-closeup.jpg|2.4|93%|41%|50% 0%",
-          "px": 1667
+          "from": "/assets/images/baingani-booti-zoom.jpg|1.4|50%|50%|50% 50%",
+          "px": 929
         },
         "border": {
           "src": "/assets/images/detail/baingani-border.jpg",
@@ -19033,8 +19116,8 @@
         },
         "motif": {
           "src": "/assets/images/detail/baingani-motif.jpg",
-          "from": "/assets/images/baingani-closeup.jpg|2.2|72%|50%|50% 80%",
-          "px": 1818
+          "from": "/assets/images/baingani-booti-zoom.jpg|2|60%|50%|50% 35%",
+          "px": 650
         },
         "styled": {
           "src": "/assets/images/detail/baingani-styled.jpg",
@@ -19045,26 +19128,37 @@
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "93%",
-          "oy": "41%",
-          "op": "50% 0%"
+          "img": 3,
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
         },
         "border": {
-          "img": 1,
+          "img": 2,
           "s": 3,
           "ox": "39%",
           "oy": "38%",
           "op": "50% 0%"
         },
         "motif": {
-          "img": 1,
-          "s": 2.2,
-          "ox": "72%",
+          "img": 3,
+          "s": 2,
+          "ox": "60%",
           "oy": "50%",
-          "op": "50% 80%"
+          "op": "50% 35%"
         }
+      },
+      "video": {
+        "src": "/assets/video/baingani-reel.mp4",
+        "srcSmall": "/assets/video/baingani-reel-small.mp4",
+        "poster": "/assets/images/baingani-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/baingani/baingani.MP4 0–5 s, slowed to 2/3 speed; enhanced by _tools/enhance-reel-slow.sh (SMOOTH=45 MAXSHIFT=40, default grade), 23 Nov 2026; no sound"
+        ]
       }
     },
     {

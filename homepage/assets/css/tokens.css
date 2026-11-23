@@ -129,7 +129,7 @@
   --grid-columns:      12;
   --page-margin:       48px;
   --grid-gutter:       24px;
-  --header-height:     112px; /* the header at the top of the page; content below a solid header is offset by this (72px, then 80px, until the logo went in on 20 Nov 2026) */
+  --header-height:     76px; /* the header at the top of the page; content below a solid header is offset by this (was 112px with a 72px logo; slimmed to 76px with a 58px logo, 23 Nov 2026) */
   --header-height-compact: 56px; /* after the hero has scrolled away */
   --announcement-height: 36px;
 

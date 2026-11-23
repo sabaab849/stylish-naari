@@ -45,8 +45,9 @@ const SPECS = {
   gajraj:  { fabric: [1, .3, .17, 2.2], border: [1, .42, .8, 5.0], motif: [1, .64, .55, 2.6] },
   darbar:  { fabric: [1, .52, .4, 3.0], border: [1, .62, .3, 5.0], motif: [1, .38, .22, 3.0] },
   veena:   { fabric: [1, .5, .25, 3.0], border: [1, .66, .4, 4.5], motif: [1, .63, .6, 3.0] },
+  gulaabi: { fabric: [2, .65, .78, 1.8], border: [1, .58, .55, 1.8], motif: [2, .45, .72, 2.0] }, // real photos + border and booti zooms, 23 Nov 2026 (set-gulaabi-shoot.cjs)
   nilofer: { fabric: [1, .4, .7, 2.2], border: [2, .14, .4, 2.4], motif: [3, .5, .7, 1.6] }, // full length, seated, close-up, booti, 23 Nov 2026 (set-nilofer-shoot.cjs)
-  alta: { fabric: [1, .7, .82, 2.4], border: [2, .72, .93, 2.8], motif: [2, .42, .86, 3.0] }, // real shoot photos, 20 Nov 2026
+  alta: { fabric: [2, .72, .82, 1.6], border: [4, .47, .76, 2.2], motif: [4, .39, .6, 2.4] }, // 23 Nov 2026 shoot (set-alta-shoot.cjs): 2 = close-up, 4 = niche
   chandni: { fabric: [1, .6, .38, 2.2], border: [1, .35, .22, 2.6], motif: [1, .85, .2, 3.2] }, // gallery = the three real photos, 20 Nov 2026
   narangi: { fabric: [2, .55, .82, 2.2], border: [2, .9, .3, 2.2], motif: [3, .5, .7, 1.6] }, // full length, profile, close-up, booti, 23 Nov 2026 (set-narangi-shoot.cjs)
   hiran: { fabric: [2, .3, .85, 2.2], border: [2, .1, .62, 2.2], motif: [2, .46, .6, 2.3] }, // the client's close-up, 23 Nov 2026 (set-hiran-shoot.cjs)
@@ -57,7 +58,7 @@ const SPECS = {
   parinda: { fabric: [3, .22, .62, 2.0], border: [3, .48, .6, 2.0], motif: [3, .36, .38, 2.1] }, // the client's close-up, 23 Nov 2026 (set-parinda-shoot.cjs)
   bulbul: { fabric: [1, .42, .62, 2.2], border: [1, .8, .72, 2.4], motif: [3, .5, .55, 1.0] }, // standing + seated + booti close-up, 23 Nov 2026
   kesar:   { fabric: [4, .72, .42, 2.5], border: [4, .7, .83, 3.0], motif: [4, .5, .55, 3.0] },
-  baingani: { fabric: [1, .75, .3, 2.4], border: [1, .43, .28, 3.0], motif: [1, .62, .6, 2.2] }, // shoot photos, 20 Nov 2026
+  baingani: { fabric: [3, .5, .5, 1.4], border: [2, .43, .28, 3.0], motif: [3, .55, .45, 2.0] }, // close-up = 2, booti zoom = 3 (set-baingani-shoot.cjs, 23 Nov 2026)
   pista:   { fabric: [1, .5, .62, 2.2], border: [3, .5, .22, 1.6], motif: [4, .5, .5, 1.8] }, // camera originals + border and booti zooms, 23 Nov 2026 (set-pista-shoot.cjs)
   gulnaar: { fabric: [0, .35, .72, 2.6], border: [0, .66, .64, 3.2], motif: [0, .15, .82, 3.0] },
   saawan:  { fabric: [0, .4, .9, 2.6], border: [0, .62, .455, 3.0], motif: [0, .4, .66, 3.0] },

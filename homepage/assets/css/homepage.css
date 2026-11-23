@@ -229,16 +229,28 @@ a:hover > .edit-card__text .link__arrow,
 /* Logo (client, 20 Nov 2026): the full emblem + script wordmark, centred, no dividing lines beside it.
    logo.png = white artwork for the see-through header over the hero; logo-dark.png = the same with the white
    parts in ink, for the solid ivory header. Both are the client's file with its baked-in checkerboard removed. */
-.site-header__logo { justify-self: center; display: inline-flex; align-items: center; }
-/* Scaled down (client, 21 Nov 2026): 72px tall on tablet and up (was the header height − 16px = 96px), 48px on phones. */
-.site-header__logo-img { height: 72px; width: auto; display: block; }
+.site-header__logo { position: relative; isolation: isolate; justify-self: center; display: inline-flex; align-items: center; }
+/* Legibility over the hero (client, 23 Nov 2026): a soft, low-opacity radial scrim behind the white logo (no box) and a tight drop shadow
+   on the white artwork. Both go away on the solid ivory header, where the dark logo is used. */
+.site-header__logo::before {
+  /* Only behind the lettering under the emblem; closest-side makes the fade reach zero exactly at the edges of its box, so there is no visible cut line. */
+  content: ''; position: absolute; left: -70px; right: -70px; top: 42%; bottom: -30px; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(20, 10, 8, 0.34) 0%, rgba(20, 10, 8, 0.2) 40%, rgba(20, 10, 8, 0.07) 72%, rgba(20, 10, 8, 0) 100%);
+  transition: opacity 300ms ease-in-out;
+}
+.site-header.is-solid .site-header__logo::before,
+.site-header.is-menu-open .site-header__logo::before,
+.site-header.is-floating .site-header__logo::before { opacity: 0; }
+/* 62px tall on tablet and up in a 76px header (client, 23 Nov 2026; was 72px in 112px), 54px on phones in 64px. object-fit keeps the artwork whole and crisp. */
+.site-header__logo-img { height: 62px; width: auto; display: block; object-fit: contain; }
+.site-header__logo-img--light { filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.35)); }
 .site-header__logo-img--dark,
 .site-header.is-solid .site-header__logo-img--light,
 .site-header.is-menu-open .site-header__logo-img--light { display: none; }
 .site-header.is-solid .site-header__logo-img--dark,
 .site-header.is-menu-open .site-header__logo-img--dark { display: block; }
 @media (max-width: 767px) {
-  .site-header__logo-img { height: 48px; }
+  .site-header__logo-img { height: 54px; }
 }
 
 .icon-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; }
