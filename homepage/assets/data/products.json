@@ -18276,49 +18276,46 @@
         "blousePiece": null,
         "weave": null,
         "origin": null,
-        "availability": null
+        "availability": null,
+        "booti": "Silver and gold zari flower booti"
       },
       "images": [
         {
-          "src": "/assets/images/tota-1.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/tota-n1.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "alt": "Tota — a parrot green silk saree with silver and gold zari flower buta and a lotus-vine zari border, worn against a white wall with a navy shuttered window",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          }
+          "alt": "Tota, a parrot-green Banarasi silk with silver and gold zari booti and a broad pallu showing temple and bridge scenes, worn full length in a flowered gazebo",
+          "source": "model photography/Tota shoot (sent in chat 23 Nov 2026)/tota-full-video-frame.jpg (video frame, cut to 2:3 from the bottom)"
         },
         {
-          "src": "/assets/images/tota-2.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/tota-n2.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "alt": "Tota — smiling over the shoulder, the pallu with its lotus-vine border and woven village scenes",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Tota worn at a navy shutter, hand to chin, the green silk with its scattered zari booti and gold border",
+          "source": "model photography/Tota shoot (sent in chat 23 Nov 2026)/tota-window.png",
           "fit": "cover"
         },
         {
-          "src": "/assets/images/tota-3.jpg",
+          "src": "/assets/images/tota-n3.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Tota close up, smiling: the gold floral border at the shoulder and silver and gold booti on parrot-green silk",
+          "source": "model photography/Tota shoot (sent in chat 23 Nov 2026)/tota-closeup.png",
+          "fit": "cover"
+        },
+        {
+          "src": "/assets/images/tota-booti-zoom.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Tota — the pallu swept to the side, showing the zari buta and the woven border",
-          "frame": {
-            "x": 0,
-            "y": 0.08,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Tota booti up close: silver and gold zari flower sprigs on parrot-green silk",
+          "source": "model photography/Tota shoot (sent in chat 23 Nov 2026)/tota-closeup.png (cropped x200 y800 400×533, spline 4×, light denoise)"
         }
       ],
       "crops": {
@@ -18385,8 +18382,8 @@
           "img": 1,
           "s": 1.3,
           "ox": "50%",
-          "oy": "39%",
-          "op": "50% 0%"
+          "oy": "30%",
+          "op": "50% 20%"
         }
       },
       "backdrop": {
@@ -18413,50 +18410,61 @@
         ]
       },
       "photoshoot": true,
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/tota-fabric.jpg",
-          "from": "/assets/images/tota-3.jpg|2.4|50%|50%|50% 86%",
-          "px": 667
-        },
-        "border": {
-          "src": "/assets/images/detail/tota-border.jpg",
-          "from": "/assets/images/tota-3.jpg|2.6|100%|83%|50% 100%",
-          "px": 615
-        },
-        "motif": {
-          "src": "/assets/images/detail/tota-motif.jpg",
-          "from": "/assets/images/tota-2.jpg|3|68%|50%|50% 98%",
-          "px": 533
-        },
-        "styled": {
-          "src": "/assets/images/detail/tota-styled.jpg",
-          "from": "/assets/images/tota-2.jpg|1.3|50%|39%|50% 0%",
-          "px": 1231
-        }
-      },
       "galleryListed": true,
       "features": {
         "fabric": {
           "img": 2,
-          "s": 2.4,
+          "s": 1.8,
           "ox": "50%",
-          "oy": "50%",
-          "op": "50% 86%"
+          "oy": "61%",
+          "op": "50% 100%"
         },
         "border": {
           "img": 2,
-          "s": 2.6,
+          "s": 1.8,
           "ox": "100%",
-          "oy": "83%",
-          "op": "50% 100%"
+          "oy": "50%",
+          "op": "50% 65%"
         },
         "motif": {
-          "img": 1,
-          "s": 3,
-          "ox": "68%",
-          "oy": "50%",
-          "op": "50% 98%"
+          "img": 3,
+          "s": 2,
+          "ox": "94%",
+          "oy": "0%",
+          "op": "50% 0%"
+        }
+      },
+      "video": {
+        "src": "/assets/video/tota-reel.mp4",
+        "srcSmall": "/assets/video/tota-reel-small.mp4",
+        "poster": "/assets/images/tota-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/tota/tota.MP4 0.5 s–12 s; enhanced by _tools/enhance-reel.sh (SMOOTH=15) with GRADE=\"lutyuv=y='if(gt(val,190),190+(val-190)*0.6,val)',eq=contrast=1.03:saturation=1.0,hqdn3d=1:1:2:2,unsharp=5:5:0.4:5:5:0\"; 23 Nov 2026; no sound"
+        ]
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/tota-fabric.jpg",
+          "from": "/assets/images/tota-n3.jpg|1.8|50%|61%|50% 100%",
+          "px": 1111
+        },
+        "border": {
+          "src": "/assets/images/detail/tota-border.jpg",
+          "from": "/assets/images/tota-n3.jpg|1.8|100%|50%|50% 65%",
+          "px": 1111
+        },
+        "motif": {
+          "src": "/assets/images/detail/tota-motif.jpg",
+          "from": "/assets/images/tota-booti-zoom.jpg|2|94%|0%|50% 0%",
+          "px": 800
+        },
+        "styled": {
+          "src": "/assets/images/detail/tota-styled.jpg",
+          "from": "/assets/images/tota-n2.jpg|1.3|50%|30%|50% 20%",
+          "px": 1538
         }
       }
     },

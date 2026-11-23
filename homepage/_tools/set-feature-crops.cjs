@@ -53,7 +53,7 @@ const SPECS = {
   hiran: { fabric: [2, .3, .85, 2.2], border: [2, .1, .62, 2.2], motif: [2, .46, .6, 2.3] }, // the client's close-up, 23 Nov 2026 (set-hiran-shoot.cjs)
   dariya:  { fabric: [4, .5, .55, 1.3], border: [3, .5, .5, 1.4], motif: [4, .31, .29, 1.8] }, // border + booti zooms (set-dariya-shoot.cjs), 23 Nov 2026
   saagar: { fabric: [2, .8, .55, 2.4], border: [2, .62, .84, 2.6], motif: [3, .8, .88, 3.0] }, // five real photos, 20 Nov 2026
-  tota: { fabric: [2, .5, .62, 2.4], border: [2, .88, .8, 2.6], motif: [1, .62, .66, 3.0] }, // three real photos, 20 Nov 2026
+  tota: { fabric: [2, .5, .7, 1.8], border: [2, .78, .55, 1.8], motif: [3, .72, .14, 2.0] }, // full-length frame, window, close-up, booti zoom, 23 Nov 2026 (set-tota-shoot.cjs)
   gagan: { fabric: [1, .6, .76, 2.4], border: [2, .66, .66, 2.4], motif: [2, .45, .84, 3.0] }, // three real photos, 20 Nov 2026
   parinda: { fabric: [3, .22, .62, 2.0], border: [3, .48, .6, 2.0], motif: [3, .36, .38, 2.1] }, // the client's close-up, 23 Nov 2026 (set-parinda-shoot.cjs)
   bulbul: { fabric: [1, .42, .62, 2.2], border: [1, .8, .72, 2.4], motif: [3, .5, .55, 1.0] }, // standing + seated + booti close-up, 23 Nov 2026
