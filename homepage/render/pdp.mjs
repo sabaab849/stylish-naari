@@ -36,7 +36,7 @@ const CAPTION = { styled: 'Styled imagery for representation', product: 'Actual 
 export const isActual = (img) => !!(img && (imageKind(img) === 'product' || img.sn || img.actual));
 
 /* ─── 01 Hero: gallery + sticky product information ───────── */
-function renderGallery(p) {
+export function galleryViews(p) {
   // Views: each photograph, then closer views of the fall, pallu and border cut from those photographs.
   // (These replaced the separate "On the body" section, so the rail has more than one or two images.)
   const cropStyle = (c) => [c.s ? `--s:${c.s}` : '', c.ox ? `--ox:${c.ox}` : '', c.oy ? `--oy:${c.oy}` : '', c.op ? `object-position:${c.op}` : ''].filter(Boolean).join('; ');
@@ -72,7 +72,8 @@ function renderGallery(p) {
   const cropView = (key, label, maxZoom) => {
     const c = p.crops?.[key];
     const img = c && p.images[c.img ?? 0];
-    if (img && img.gallery !== false) views.push({ img, style: cropStyle({ ...c, s: Math.min(c.s ?? 1, maxZoom) }), alt: `${p.name}: ${label}` });
+    const crop = { ...c, s: Math.min(c.s ?? 1, maxZoom) };
+    if (img && img.gallery !== false) views.push({ img, style: cropStyle(crop), alt: `${p.name}: ${label}`, cropKey: key, crop });
   };
   if (p.galleryListed) {
     // already complete
@@ -95,17 +96,29 @@ function renderGallery(p) {
   //   a real photoshoot (products.json → photoshoot: true): its model photos are real, so they read "Actual product photograph" (client, 20 Nov 2026)
   // The film carries none.
   for (const v of views) v.caption = v.video ? '' : v.img.role === 'blouse' ? CAPTION.blouse : isActual(v.img) || p.photoshoot || v.img.real ? CAPTION.product : CAPTION.styled;
-  const captioned = views.some((v) => v.caption);
-  const many = views.length > 1;
   // The frame's shape: 3:4 when the first photo is framed; otherwise the first photo's own shape, but never wider than
   // square (a landscape catalogue photo sits whole inside a square frame), so the picture always fits the screen.
   const first = views[0].img;
   const [rw, rh] = views[0].frame ? [3, 4] : first.width > first.height ? [1, 1] : [first.width, first.height];
+  return { views, rw, rh };
+}
+/* Gallery crop slides (border / fabric close-ups cut from a photo) are pre-cut sharp by _tools/make-slide-cuts.mjs into
+   assets/images/slides/<slug>-<key>.jpg (products.json → slideCuts, client 23 Nov 2026: "not pixelated"). A cut is used only
+   while its crop and the frame shape are unchanged, so re-run the tool after changing a crop, photo or first photo. */
+export const slideSig = (v, rw, rh) => [v.img.src, v.crop.s ?? 1, v.crop.ox ?? '', v.crop.oy ?? '', v.crop.op ?? '', `${rw}/${rh}`].join('|');
+function renderGallery(p) {
+  const { views, rw, rh } = galleryViews(p);
+  views.forEach((v, i) => {
+    const cut = v.cropKey && p.slideCuts?.[v.cropKey];
+    if (cut && cut.from === slideSig(v, rw, rh)) views[i] = { ...v, img: { ...v.img, src: cut.src, width: cut.w, height: cut.h }, style: '' };
+  });
+  const captioned = views.some((v) => v.caption);
+  const many = views.length > 1;
   const ratio = `--ratio:${rw} / ${rh}; --ratio-n:${(rw / rh).toFixed(4)}`;
   const slides = views.map((v, i) => v.video ? `
         <figure class="pdp-gallery__slide pdp-gallery__slide--video" data-gallery-slide data-gallery-video aria-label="Video, ${i + 1} of ${views.length}" aria-hidden="true">
           <video class="pdp-gallery__video" muted loop playsinline preload="none" poster="${esc(v.video.poster || '')}" data-src="${esc(v.video.src)}" width="${v.img.width}" height="${v.img.height}" aria-label="${esc(v.alt)}"></video>
-          <button class="pdp-gallery__sound" type="button" data-video-sound aria-pressed="false" aria-label="Turn sound on">Sound off</button>
+          ${v.video.silent ? '' : '<button class="pdp-gallery__sound" type="button" data-video-sound aria-pressed="false" aria-label="Turn sound on">Sound off</button>'}
         </figure>` : `
         <figure class="pdp-gallery__slide${i === 0 ? ' is-active' : ''}${v.whole ? ' pdp-gallery__slide--whole' : ''}${v.frame ? ' pdp-gallery__slide--framed' : ''}" data-gallery-slide data-caption="${esc(v.caption)}" aria-label="Image ${i + 1} of ${views.length}"${i ? ' aria-hidden="true"' : ''}>
           <img class="crop" src="${esc(v.img.src)}" alt="${esc(v.alt)}" width="${v.img.width}" height="${v.img.height}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" style="${esc(v.style)}">
@@ -142,12 +155,12 @@ function renderFilmCard(p, { full = true, cls = '' } = {}) {
       <figure class="video-card${cls ? ' ' + cls : ''}" data-vcard>
         <video class="video-card__video" data-vcard-video muted loop playsinline preload="none" poster="${esc(v.poster || '')}" data-src="${esc(v.src)}" width="${v.width || 720}" height="${v.height || 1280}" aria-label="${esc(p.name)}: the saree in motion"></video>
         <div class="video-card__shade" aria-hidden="true"></div>
-        <figcaption class="video-card__bar">
+        <figcaption class="video-card__bar">${v.silent ? '<span></span>' /* video.silent: the clip has no sound, so no sound control */ : `
           <button class="video-card__glass video-card__sound" type="button" data-vcard-sound aria-pressed="false">
             <span data-vcard-icon-off>${icon('<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/>')}</span>
             <span data-vcard-icon-on hidden>${icon('<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>')}</span>
             <span data-vcard-sound-label>Sound off</span>
-          </button>
+          </button>`}
           <span class="video-card__right">
             <span class="video-card__glass video-card__time" data-vcard-time>0:00</span>
             ${full ? `<button class="video-card__glass video-card__full" type="button" data-vcard-full aria-label="Watch full screen">${icon('<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>')}</button>` : ''}
@@ -189,6 +202,7 @@ function specRows(p) {
     ['Colour', a.colourway || colourNames],
     ['Border', a.border],
     ['Motif', a.motif],
+    ['Booti work', a.booti], // client, 23 Nov 2026: _tools/set-booti.cjs
     ['Weave', a.weave],
     ['Length', a.length],
     ['Blouse piece', a.blousePiece],
@@ -247,7 +261,7 @@ function renderInfo(p, data, index, total) {
   const chips = false && p.colours.length ? `<span class="pdp-info__chips">${p.colours.map((c) => `<span class="pdp-info__chip" style="background:${esc(c.hex)}" title="${esc(c.name)}"></span>`).join('')}</span>` : '';
   // The first four details, plus the blouse piece whenever it is known (client, 18 Nov 2026)
   const rows = specRows(p);
-  const meta = [...rows.slice(0, 4), ...rows.slice(4).filter(([k]) => k === 'Blouse piece')].map(([k, v]) => k === 'Colour' && vs
+  const meta = [...rows.slice(0, 4), ...rows.slice(4).filter(([k]) => k === 'Booti work' || k === 'Blouse piece')].map(([k, v]) => k === 'Colour' && vs
     ? `<div><dt>${esc(k)}</dt><dd data-variant-label>${esc(vs[0].name)}</dd></div>`
     : `<div><dt>${esc(k)}</dt><dd>${esc(v)}${k === 'Colour' ? chips : ''}</dd></div>`).join('');
   const variantAttr = vs ? ` data-variant="${esc(vs[0].key)}"` : '';

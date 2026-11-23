@@ -12,73 +12,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
 import { featureItems, circleSig } from '../render/pdp.mjs';
+import { FF, ROOT, bestSource, isOriginal } from './originals.mjs'; // sharpest copy on disk (shared with make-slide-cuts.mjs)
 
-const FF = process.env.FFMPEG, FP = process.env.FFPROBE;
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FILE = path.join(ROOT, 'assets', 'data', 'products.json');
 const OUTDIR = path.join(ROOT, 'assets', 'images', 'detail');
 const MIN = 480, MIN_SMALL = 360, SIZE = 720;
-const DRIVE = 'G:/My Drive/Stylish Naari – Saree Photography/';
 fs.mkdirSync(OUTDIR, { recursive: true });
-
-// size as ffmpeg decodes it: camera JPEGs stored sideways with EXIF Orientation 5–8 come out turned upright, so swap
-const dims = (f) => {
-  const out = execFileSync(FP, ['-v', 'error', '-show_entries', 'frame=width,height:frame_tags=Orientation', '-read_intervals', '%+#1', '-of', 'default=nw=1', f]).toString();
-  const get = (k) => Number((out.match(new RegExp(`${k}=\\s*(\\d+)`)) || [])[1]);
-  const [w, h, o] = [get('width'), get('height'), get('TAG:Orientation') || 1];
-  return o >= 5 && o <= 8 ? [h, w] : [w, h];
-};
-const thumb = (f, vf) => execFileSync(FF, ['-v', 'error', '-nostdin', '-i', f, '-vf', `${vf ? vf + ',' : ''}scale=24:36,format=gray`, '-f', 'rawvideo', '-'], { maxBuffer: 1e7 });
 const pct = (v, d = 0.5) => (v == null || v === '' ? d : typeof v === 'number' ? v : parseFloat(v) / 100);
-
-// images[].source → a local original, if one exists
-function original(img) {
-  const s = (img.source || '').replace(/\s*\((cropped|whole|pasted|sent|the client)[^)]*\)\s*$/i, '').trim();
-  const tries = [];
-  const m = s.match(/^Drive: (?:(.+?) \/ )?Original Product Photos [–-] Pendrive \/ (SN-\d{3})(.*)$/);
-  if (m) {
-    // no range named: look in both Banarasi ranges; "SN-045 – 03" may be the start of a longer name ("… – _SKS6624")
-    const ranges = m[1] ? [m[1].replace(/ \/ /g, '/')] : ['01 – Banarasi/Premium Silk', '01 – Banarasi/Premium Semi-Silk'];
-    for (const r of ranges) {
-      const base = `${DRIVE}${r}/Original Product Photos – Pendrive`;
-      if (!fs.existsSync(base)) continue;
-      for (const d of fs.readdirSync(base)) if (d.startsWith(m[2] + ' ')) {
-        const dir = path.join(base, d);
-        for (const f of fs.readdirSync(dir)) {
-          const stem = f.replace(/\.jpe?g$/i, '');
-          if (stem !== f && (stem === m[2] + m[3] || stem.startsWith(m[2] + m[3] + ' '))) tries.push(path.join(dir, f));
-        }
-      }
-    }
-  }
-  if (/^model photography\//.test(s)) tries.push(path.join(ROOT, '..', s));
-  if (/^[^/:]+\.(png|jpe?g)$/i.test(s)) tries.push(path.join(ROOT, '..', 'model photography', s));
-  return tries.find((f) => fs.existsSync(f));
-}
-
-// is the original the same picture as the site photo, and in which turn?
-const cache = new Map();
-function bestSource(img) {
-  const site = path.join(ROOT, img.src.replace(/^\//, ''));
-  if (cache.has(site)) return cache.get(site);
-  const [W, H] = dims(site);
-  let best = { file: site, vf: '', W, H };
-  const orig = original(img);
-  if (orig) {
-    const [ow, oh] = dims(orig);
-    const a = thumb(site, '');
-    for (const [vf, tw, th] of [['', ow, oh], ['transpose=1', oh, ow], ['transpose=2', oh, ow], ['hflip,vflip', ow, oh]]) {
-      if (Math.abs(tw / th - W / H) > 0.012 || tw <= W) continue;
-      const b = thumb(orig, vf);
-      let diff = 0; for (let i = 0; i < a.length; i++) diff += Math.abs(a[i] - b[i]);
-      if (diff / a.length < 14) { best = { file: orig, vf, W: tw, H: th }; break; }
-    }
-  }
-  cache.set(site, best);
-  return best;
-}
 
 const only = process.argv.slice(2);
 const data = JSON.parse(fs.readFileSync(FILE, 'utf8'));
@@ -117,7 +58,7 @@ for (const p of data.products) {
     const vf = [src.vf, `crop=${side}:${side}:${x}:${y}`, `scale=${SIZE}:${SIZE}:flags=lanczos`, side < SIZE ? 'unsharp=5:5:0.5' : ''].filter(Boolean).join(',');
     execFileSync(FF, ['-v', 'error', '-y', '-nostdin', '-i', src.file, '-vf', vf, '-q:v', '2', path.join(OUTDIR, out)]);
     (results[p.slug] ||= {})[key] = { src: `/assets/images/detail/${out}`, from: circleSig(p, crop), px: side };
-    report.push(`${String(side).padStart(5)}  ${p.slug} ${key}${src.file.includes('My Drive') || src.file.includes('model photography') ? '  (original)' : ''}`);
+    report.push(`${String(side).padStart(5)}  ${p.slug} ${key}${isOriginal(src.file) ? '  (original)' : ''}`);
   }
 }
 // write onto a fresh read, so edits made meanwhile by other tools are kept

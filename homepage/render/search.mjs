@@ -15,6 +15,7 @@ export function searchIndex(data) {
       ...(p.categories || []).map((c) => catName[c]),
       ...(p.edits || []).map((e) => editName[e]),
       a.blousePiece ? 'blouse piece' : '',
+      a.booti ? `${a.booti} booti buti buta` : '', // booti work (set-booti.cjs): every spelling matches
     ].filter(Boolean).join(' · ');
     return {
       s: p.slug,

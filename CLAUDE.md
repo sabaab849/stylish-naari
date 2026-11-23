@@ -195,6 +195,17 @@ change the token, never a page.
   it (`_tools/detail-slides-from-original.cjs`: Kairi, Neel, Bagh, Rangoli, Saanjh, Sindoor, Kahani, Leela, Veena, Darbar,
   Gajraj, Bansuri; the folded-photo sarees Lavanya, Bindiya, Sakhi, Chitra were set the same way by hand). 44 sarees have no
   original photo yet (AI-only or real model shoot only): they keep model-photo slides until one is supplied.
+- Close-up slides cut sharp (client, 23 Nov 2026: "the 3rd and 4th image mustn't be pixelated"): the gallery's crop slides
+  (crops.border / swatch / borderDetail) are pre-cut into `assets/images/slides/<slug>-<key>.jpg`, 1320px wide at the frame's
+  shape (`products.json → slideCuts`), by `_tools/make-slide-cuts.mjs` (needs FFMPEG and FFPROBE). It cuts from the sharpest copy
+  on disk (`_tools/originals.mjs`, shared with the circle tool) and never uses fewer than 600 source px across (80% of the photo's
+  width for photos too small for that), so a crop deeper than the photo can hold widens instead of going soft. A cut is used only
+  while its crop and the frame shape are unchanged (`render/pdp.mjs` → `slideSig`): **re-run it after changing any crop, photo
+  or first photo**, and for new sarees. The small WhatsApp block-print photos (Patti, Jaali, Chaand: ~700px) can't give a deep sharp
+  close-up; ask the client for larger files.
+- Booti work (client, 23 Nov 2026): sarees whose close-up slides show booti (small separate motifs repeated over the body: woven,
+  embroidered or block-printed) carry `attributes.booti`, a "Booti work" row always shown under the price like the blouse piece,
+  and match booti / buti / buta in search. List and wording: `_tools/set-booti.cjs` (46 sarees; checked by eye on the close-ups).
 - Phone (≤767): full-width swipe gallery with a horizontal thumbnail strip under it; details below. Nothing sticky
   below 1024px except the buy bar (`pdp.js` swipe mode is `max-width: 767px`).
 
@@ -279,3 +290,7 @@ styles `pdp.css` → `.pdp-acc`). "Shipping & return" holds Shipping (`store.shi
 Parinda (client, 20 Nov 2026) is the one exception to "one model photograph per product": its gallery is three real shoot photos in the
 client's order — seated on the balcony, standing between pillars, pallu close-up (`parinda-seat/stand/close.jpg`, `galleryListed`). Circles
 are cut from the standing (border) and close-up (fabric, motif) photos.
+
+Gulkand (client, 23 Nov 2026) is a second exception: main photo → back view (pallu held out) → border close-up (cut from a 488px photo sent in chat; ask for the full-size file) → booti close-up (cut from the back view; cleaned of JPEG blocking, no sharpening, so it reads smooth) → aanchal; the film goes after it when supplied. Circles come from the 20 Nov close-up, kept as `images[5]` with `gallery: false`. Originals: `model photography/Gulkand shoot (20–23 Nov 2026)/`.
+
+Reel enhancement (client-approved, 23 Nov 2026): raw model videos go through `homepage/_tools/enhance-reel.sh <slug> "<original>" [start] [duration]` (light vid.stab stabilisation capped at 24px, highlight roll-off only, no white-balance change, contrast +4%, saturation +3%, light denoise + gentle sharpen, 1080×1920 at 25fps, no sound). It keeps the original, writes `<name> - enhanced.mp4` beside it, the site reel + small copy + poster. Always send the client a side-by-side preview first. A clip with no sound sets `video.silent: true`, which removes the sound buttons (`render/pdp.mjs`, `pdp.js`). First: Gulkand, from 0:02. Elaichi (23 Nov 2026): 1 s–8 s, with `GRADE=` for its sunlit background (luma only: gamma 0.95, highlights above 125 compressed to 40 %, contrast +8 %, saturation +6 %); the command is in `_tools/set-elaichi-shoot.cjs`'s video entry. Its gallery is the client's four photos in order (door → pillar with rose → close-up → peacock feather; pillar and door originals kept hidden for the circles): `_tools/set-elaichi-shoot.cjs`. Photos 2 and 4 are chat copies (~1100px): ask for the full-size files.

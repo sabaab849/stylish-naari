@@ -454,7 +454,7 @@
     // choosing the video is itself a request to play it, even under reduced motion
     var thumb = document.querySelector('.pdp-gallery__thumb--video');
     if (thumb) thumb.addEventListener('click', function () { gv.dataset.asked = '1'; setTimeout(sync, 0); });
-    sound.addEventListener('click', function () {
+    if (sound) sound.addEventListener('click', function () { // no button when the clip has no sound (video.silent)
       gv.muted = !gv.muted;
       sound.setAttribute('aria-pressed', String(!gv.muted));
       sound.textContent = gv.muted ? 'Sound off' : 'Sound on';
@@ -474,12 +474,13 @@
     cv.addEventListener('error', function () { card.hidden = true; });
     var setSound = function (on) {
       cv.muted = !on;
+      if (!soundBtn) return; // silent clip: no sound control
       soundBtn.setAttribute('aria-pressed', String(on));
       label.textContent = on ? 'Sound on' : 'Sound off';
       iconOn.hidden = !on; iconOff.hidden = on;
       if (on) tryPlay(cv);
     };
-    soundBtn.addEventListener('click', function () { setSound(cv.muted); });
+    if (soundBtn) soundBtn.addEventListener('click', function () { setSound(cv.muted); });
     var fullBtn = card.querySelector('[data-vcard-full]');
     if (fullBtn) fullBtn.addEventListener('click', function () {
       if (document.fullscreenElement) { document.exitFullscreen(); return; }

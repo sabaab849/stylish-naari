@@ -9,10 +9,10 @@ const file = 'assets/data/products.json';
 const data = JSON.parse(fs.readFileSync(file, 'utf8'));
 const SPECS = {
   kajal:   { fabric: [3, .6, .2, 1.8], border: [3, .62, .62, 2.0], motif: [3, .45, .5, 2.2] }, // SN-002 colours: add-lion-colours.cjs
-  elaichi: { fabric: [2, .3, .84, 2.4], border: [1, .3, .6, 2.0], motif: [0, .5, .87, 4.5] }, // real shoot, 20 Nov 2026
+  elaichi: { fabric: [4, .3, .84, 2.4], border: [2, .3, .6, 2.0], motif: [0, .5, .87, 4.5] }, // real shoot, 20 Nov 2026; indices after set-elaichi-shoot.cjs (4 = pillar, 2 = close-up)
   genda:   { fabric: [2, .9, .55, 2.0], border: [2, .72, .42, 2.0], motif: [2, .61, .74, 2.6] }, // real shoot cuff close-up, 20 Nov 2026 (set-genda-shoot.cjs)
   kumkum:  { fabric: [2, .72, .42, 2.0], border: [2, .8, .75, 2.0], motif: [2, .62, .33, 2.4] }, // real shoot close-up, 20 Nov 2026 (set-kumkum-shoot.cjs)
-  gulkand: { fabric: [1, .14, .72, 2.2], border: [1, .45, .76, 2.2], motif: [1, .45, .42, 2.4] }, // real shoot close-up, 20 Nov 2026
+  gulkand: { fabric: [5, .14, .72, 2.2], border: [5, .45, .76, 2.2], motif: [5, .45, .42, 2.4] }, // the 20 Nov close-up (images[5], gallery: false; cut from its 4000px original)
   kishmish: { fabric: [3, .5, .3, 1.8], border: [3, .4, .76, 2.0], motif: [3, .5, .55, 2.2] },
   gulmohar: { fabric: [3, .4, .3, 1.8], border: [3, .65, .75, 2.0], motif: [3, .3, .65, 2.2] },
   panna:   { fabric: [2, .5, .5, 1.3], border: [3, .7, .93, 2.0], motif: [3, .2, .85, 2.4] },
@@ -46,7 +46,7 @@ const SPECS = {
   tota: { fabric: [2, .5, .62, 2.4], border: [2, .88, .8, 2.6], motif: [1, .62, .66, 3.0] }, // three real photos, 20 Nov 2026
   gagan: { fabric: [1, .6, .76, 2.4], border: [2, .66, .66, 2.4], motif: [2, .45, .84, 3.0] }, // three real photos, 20 Nov 2026
   parinda: { fabric: [2, .38, .63, 2.4], border: [1, .55, .9, 3.0], motif: [2, .45, .72, 3.0] }, // three real shoot photos, 20 Nov 2026
-  bulbul:  { fabric: [0, .5, .62, 2.2], border: [0, .85, .62, 3.0], motif: [0, .36, .64, 3.0] },
+  bulbul: { fabric: [1, .42, .62, 2.2], border: [1, .8, .72, 2.4], motif: [3, .5, .55, 1.0] }, // standing + seated + booti close-up, 23 Nov 2026
   kesar:   { fabric: [0, .72, .42, 2.5], border: [0, .7, .83, 3.0], motif: [0, .5, .55, 3.0] },
   baingani: { fabric: [1, .75, .3, 2.4], border: [1, .43, .28, 3.0], motif: [1, .62, .6, 2.2] }, // shoot photos, 20 Nov 2026
   pista:   { fabric: [1, .45, .6, 2.0], border: [1, .62, .38, 2.6], motif: [1, .5, .48, 3.6] }, // new shoot photos, 20 Nov 2026
