@@ -42,6 +42,9 @@
       </div>
     </section>
 
+    <!-- Slide 2 parked (client, 23 Nov 2026: "remove slide 02 for now, we will get to it later"). A <template> is never shown or loaded and the
+         carousel only counts <section> children; to restore it, delete the <template> wrapper. -->
+    <template data-parked-slide>
     <!-- ─── 01b The Art of the Saree (client, 23 Nov 2026): the client's campaign artwork with every word as live HTML.
          The <picture> (desktop 16:9 + optional dedicated 9:16 portrait art, AVIF/WebP/JPEG, never upscaled) is written by
          _tools/art-hero-images.mjs from the client's text-free files; until they arrive it uses an interim clean plate
@@ -75,6 +78,7 @@
           </nav>
         </div>
     </section>
+    </template>
 
     <!-- ─── 01c The Dulhan Edit film (client, 23 Nov 2026): the client's film fills the hero (never stretched or graded). Landscape screens get a 16:9 window cut
          from the 4K master that follows the model (_tools/dulhan-landscape.sh); portrait screens get the 9:16 film itself. Original audio kept; plays WITH sound until the visitor presses the sound button (a browser that refuses sound autoplay gets it muted, with the button showing that). Loads only when the slide is first opened; plays only while it is showing.

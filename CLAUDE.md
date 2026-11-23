@@ -337,6 +337,10 @@ Saawan (client, 23 Nov 2026): the client's three photos in order (seated full le
 
 ## Homepage hero carousel
 
+**Now (client, 23 Nov 2026):** two slides, the original hero and the Dulhan Edit film.
+- "The Art of the Saree" is parked: its markup sits inside `<template data-parked-slide>` in `index.html`, so it is never shown or loaded. Delete the wrapper to bring it back. A Saagar-for-Jamuni swap was started (`_tools/art-hero-swap-bandhani.mjs`) and not finished.
+- The film slide is not on the 6 s clock. It plays once (no loop), its pager line follows the film, and on `ended` the carousel moves on to 01 (`hero-carousel.js`).
+
 Client, 23 Nov 2026. Slide 1 is the original hero, unchanged in markup and style. Slide 2 is "The Art of the Saree". Slide 3 will be the Dulhan Edit film: add it as another `<section>` inside `[data-hero-carousel]`. Files: `index.html`, `assets/css/hero-carousel.css`, `assets/js/hero-carousel.js`. `?slide=2` opens a slide directly.
 
 These are client exceptions to brand guidelines §7.2 and §13:

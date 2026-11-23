@@ -1,5 +1,5 @@
 /* Stylissh Naari — homepage hero carousel (client, 23 Nov 2026)
-   Slide 1 = the original hero (left exactly as it was), slide 2 = "The Art of the Saree", slide 3 = the Dulhan Edit film (portrait film shown whole, original audio, sound button).
+   Slide 1 = the original hero (left exactly as it was), then the Dulhan Edit film ("The Art of the Saree" is parked in a <template> in index.html for now). The film slide is not timed: it stays until the film ends, its pager line following the film, then moves on. Earlier: slide 3 = the Dulhan Edit film (portrait film shown whole, original audio, sound button).
    Autoplay (client, 23 Nov 2026, replacing the brand guidelines §13 no-auto-advance rule for this hero): every slide shows for 6 s, then the
    next unfolds in (CSS .is-entering / .is-leaving); it loops. The only visible control is the pagination (01 ━━ 02 ─ 03 ─): click any
    number to go there; one 50 ms clock fills the active line and advances when it is full, so the timer and the line can never drift
@@ -43,6 +43,7 @@
     pager.hidden = false;
   }
   var DUR = 6000, STEP = 50, elapsed = 0, last = 0, clock = 0;
+  function onFilm() { return !!(vid && slides[index] && slides[index].hasAttribute('data-film-hero') && !userPaused); }
   function paused() { return hover || focusIn || filmHeld || document.hidden; }
   function syncPause() { root.classList.toggle('is-paused', paused()); }
   function tick() {
@@ -50,8 +51,12 @@
     var dt = last ? Math.min(now - last, 200) : 0; // a long gap (tab away, throttled timer) never counts as play time
     last = now;
     if (paused()) return;
-    elapsed += dt;
     var fill = items[index] && items[index].firstChild.nextSibling.firstChild;
+    if (onFilm()) { // the film slide waits for the film: its line follows the film, and "ended" moves on (see below)
+      if (fill && vid.duration) fill.style.transform = 'scaleX(' + Math.min(1, vid.currentTime / vid.duration).toFixed(4) + ')';
+      return;
+    }
+    elapsed += dt;
     if (fill) fill.style.transform = 'scaleX(' + Math.min(1, elapsed / DUR).toFixed(4) + ')';
     if (elapsed >= DUR) show(index + 1, false, true);
   }
@@ -185,6 +190,14 @@
     filmSync();
   }
   if (vid) {
+    // In the carousel the film plays once through, then the slideshow moves on (client, 23 Nov 2026: never back to 01 before the film has finished)
+    vid.loop = false;
+    vid.addEventListener('ended', function () {
+      if (slides[index] !== filmSlide) return;
+      if (reduce) { try { vid.currentTime = 0; } catch (e) {} filmSync(); return; } // no autoplay: just replay
+      show(index + 1, false, true);
+      try { vid.currentTime = 0; } catch (e) {}
+    });
     vid.muted = false; soundUi(); // sound on by default
     document.addEventListener('visibilitychange', filmSync);
     var onShape = function () { if (loaded) { filmSource(); filmSync(); } };

@@ -102,7 +102,14 @@
 .craft-hero__frame { z-index: 1; }
 .craft-hero__type { z-index: 3; pointer-events: none; }
 @media (min-aspect-ratio: 16/9) {
-  .craft-hero__frame, .craft-hero__type { --fw: min(100cqw, 100cqh * 1.919); top: 0; bottom: auto; left: calc((100cqw - var(--fw)) / 2); }
+  /* Full bleed (client, 23 Nov 2026: "scale it up, no blurred edges"): the picture AND its live type are scaled up together until they cover the
+     slide's whole width, so nothing shows at the sides. Taller than the slide, so the overflow is cut from the bottom, with at most 3 % of the
+     picture's height trimmed from the top. Screens wider than ~2:1 lose the foot of the picture (hems, and then the intro line). */
+  .craft-hero__frame, .craft-hero__type {
+    --fw: 100cqw; --fh: calc(100cqw / 1.7768);
+    left: 0; bottom: auto;
+    top: max(calc(var(--fh) * -0.03), calc(100cqh - var(--fh)));
+  }
 }
 .craft-hero__picture, .craft-hero__art { display: block; width: 100%; height: 100%; }
 .craft-hero__art { object-fit: cover; }
