@@ -7,13 +7,14 @@
   <meta name="description" content="Sarees in plum, emerald, coral, lavender and more. Tradition, reimagined for today.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/images/hero-bagh-wide.jpg" media="(min-width: 768px)">
   <link rel="preload" as="image" href="assets/images/bagh-back.jpg" media="(max-width: 767px)">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/homepage.css">
   <link rel="stylesheet" href="assets/css/bag.css">
   <link rel="stylesheet" href="assets/css/shop.css">
+  <link rel="stylesheet" href="assets/css/hero-carousel.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="home">
@@ -23,6 +24,10 @@
 
   <main id="main">
 
+    <!-- ─── 01 Hero carousel (client, 23 Nov 2026): slide 1 = the original hero, unchanged; slide 2 = "The Art of the Saree",
+         five crafts in one composition from real photographs only; slide 3 = the Dulhan Edit film.
+         Never auto-advances (brand guidelines §13); assets/js/hero-carousel.js, styles assets/css/hero-carousel.css ─ -->
+    <div class="hero-carousel" data-hero-carousel role="region" aria-roledescription="carousel" aria-label="Featured">
     <!-- ─── 01 Hero ──────────────────────────────────────────── -->
     <section class="hero" data-hero aria-label="Tradition, reimagined">
       <picture>
@@ -36,6 +41,66 @@
         <a class="link link--on-dark" href="#new-arrivals"><span class="link__label">Explore the collection</span></a>
       </div>
     </section>
+
+    <!-- ─── 01b The Art of the Saree (client, 23 Nov 2026): the client's campaign artwork with every word as live HTML.
+         The <picture> (desktop 16:9 + optional dedicated 9:16 portrait art, AVIF/WebP/JPEG, never upscaled) is written by
+         _tools/art-hero-images.mjs from the client's text-free files; until they arrive it uses an interim clean plate
+         (_tools/art-hero-clean-plate.mjs). The text sits in the frame in units of the artwork's own width (cqw), exactly where
+         the client placed it. ─ -->
+    <section class="craft-hero" data-craft-hero aria-roledescription="slide" aria-labelledby="craft-hero-title">
+      <div class="craft-hero__fill" aria-hidden="true"></div>
+      <div class="craft-hero__frame">
+        <!-- art-hero:picture (written by _tools/art-hero-images.mjs; do not edit by hand) -->
+        <picture class="craft-hero__picture">
+          <source type="image/avif" sizes="(min-aspect-ratio: 16/9) 100vw, 108vw" srcset="assets/images/craft-hero/art-desktop-1280.avif 1280w, assets/images/craft-hero/art-desktop-1672.avif 1672w">
+          <source type="image/webp" sizes="(min-aspect-ratio: 16/9) 100vw, 108vw" srcset="assets/images/craft-hero/art-desktop-1280.webp 1280w, assets/images/craft-hero/art-desktop-1672.webp 1672w">
+          <source type="image/jpeg" sizes="(min-aspect-ratio: 16/9) 100vw, 108vw" srcset="assets/images/craft-hero/art-desktop-1280.jpg 1280w, assets/images/craft-hero/art-desktop-1672.jpg 1672w">
+          <img class="craft-hero__art" src="assets/images/craft-hero/art-desktop-1672.jpg" width="1672" height="941" loading="eager" fetchpriority="low" decoding="async"
+               alt="Four women in one painted room of teal, gold and burgundy: a Kalamkari saree with its pallu flying, a black Banarasi seen from behind, a magenta Bandhani and an indigo block print">
+        </picture>
+        <!-- /art-hero:picture -->
+      </div>
+      <div class="craft-hero__type">
+          <div class="craft-hero__copy">
+            <h2 class="craft-hero__title" id="craft-hero-title"><a href="/craft"><span class="craft-hero__line">The art</span> <span class="craft-hero__line">of the saree</span></a></h2>
+            <p class="craft-hero__tagline">Five traditions. Generations of artistry.</p>
+            <p class="craft-hero__intro">Painted, printed and woven by hand,<br> discover the textile traditions behind our collection.</p>
+            <span class="craft-hero__rule" aria-hidden="true"></span>
+          </div>
+          <nav class="craft-hero__labels" aria-label="Shop by craft">
+            <a class="craft-hero__label" href="/categories/kalamkari" style="--x:8.49;--b:29.86">Kalamkari</a>
+            <a class="craft-hero__label" href="/categories/banarasi" style="--x:31.82;--b:13.60">Banarasi</a>
+            <a class="craft-hero__label" href="/categories/bandhani" style="--x:55.50;--b:28.48">Bandhani</a>
+            <a class="craft-hero__label" href="/categories/block-prints" style="--x:89.89;--b:14.67">Block Print</a>
+          </nav>
+        </div>
+    </section>
+
+    <!-- ─── 01c The Dulhan Edit film (client, 23 Nov 2026): the client's film fills the hero (never stretched or graded). Landscape screens get a 16:9 window cut
+         from the 4K master that follows the model (_tools/dulhan-landscape.sh); portrait screens get the 9:16 film itself. Original audio kept; plays WITH sound until the visitor presses the sound button (a browser that refuses sound autoplay gets it muted, with the button showing that). Loads only when the slide is first opened; plays only while it is showing.
+         Master: model photography/saree videos/saree model vids/homepage - sets/set 01 - dulhan.mp4 (2160×3840 HEVC) ─ -->
+    <section class="film-hero" data-film-hero aria-roledescription="slide" aria-labelledby="film-hero-title">
+      <video class="film-hero__video" data-film loop playsinline preload="none" poster="assets/images/dulhan-hero-wide-poster.jpg"
+             data-wide="assets/video/dulhan-hero-wide.mp4" data-wide-small="assets/video/dulhan-hero-wide-small.mp4" data-wide-poster="assets/images/dulhan-hero-wide-poster.jpg"
+             data-tall="assets/video/dulhan-hero.mp4" data-tall-small="assets/video/dulhan-hero-small.mp4" data-tall-poster="assets/images/dulhan-hero-poster.jpg"
+             aria-label="The Dulhan Edit film: a model in a saree in front of a carved golden doorway"></video>
+      <div class="film-hero__stack">
+        <h2 class="film-hero__id" id="film-hero-title"><span class="film-hero__the serif">The</span> <span class="film-hero__name">Dulhan Edit</span></h2>
+        <div class="film-hero__tools">
+        <button type="button" class="film-hero__btn" data-film-play aria-label="Pause film" aria-pressed="false">
+          <svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+          <svg class="i-play" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 5.5l10 6.5-10 6.5z"/></svg>
+        </button>
+        <button type="button" class="film-hero__btn" data-film-sound aria-label="Turn sound on" aria-pressed="false">
+          <svg class="i-off" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+          <svg class="i-on" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11"/></svg>
+        </button>
+      </div>
+      </div>
+    </section>
+
+    <div class="hero-pager" data-carousel-pager role="group" aria-label="Choose a slide" hidden></div>
+    </div>
 
     <!-- ─── 02 New arrivals — cards rendered from products.json (isNew) ─ -->
     <section class="section new-arrivals" id="new-arrivals" aria-labelledby="new-arrivals-title">
@@ -224,6 +289,7 @@
 
 
   <script src="assets/js/homepage.js" defer></script>
+  <script src="assets/js/hero-carousel.js" defer></script>
   <script src="assets/js/bag.js" defer></script>
   <script src="assets/js/shop.js" defer></script>
   <script src="assets/js/search.js" defer></script>

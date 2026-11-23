@@ -172,6 +172,7 @@ change the token, never a page.
   print, is not a gallery slide. It stays in `images` with `gallery: false` (crops still use it by index; `render/pdp.mjs`
   skips it, and skips crops cut from it). List: `_tools/hide-border-only.cjs` — check every new saree's border shot by eye.
 - First-shoot Banarasi sarees Kairi, Jamun, Neel, Bagh (client, 23 Nov 2026, replaces the note below): the folded / laid-flat photos are NOT these sarees and are removed. Gallery = model photo → border zoom → print zoom (`<slug>-border-zoom.jpg`, `<slug>-print-zoom.jpg`, cut from the ~1100px model photo: light nlmeans, spline scaling to 1320×1760, no sharpening), galleryListed; circles from those zooms. The old note below is superseded; add-originals-firstshoot.cjs and detail-slides-from-original.cjs no longer touch them. Larger camera originals of the model photos would make the zooms sharper.
+  Neel (client, 23 Nov 2026): the client's standing photo (forest backdrop, flower-braided plait) is slide 2, before the group photo: `homepage/_tools/set-neel-standing.cjs` (1086×1448 chat copy, kept at its own size; ask for the full-size file).
 - First-shoot Banarasi sarees (Kairi, Jamun, Neel, Bagh): model photo → real folded photo (`images[].second: true`, from the
   Drive folder "Stylissh Naari" flat-lays, turned upright: `_tools/originals-firstshoot.ps1` + `add-originals-firstshoot.cjs`)
   → border crop → print crop. Kairi = IMG_7947, Bagh = IMG_7944. Kahani and Leela (client, 20 Nov 2026): their laid-flat product photo is slide 2 the same way (`second: true`). No flat-lay of Jamun or Neel in that folder yet (Jamun's real
@@ -201,6 +202,8 @@ change the token, never a page.
   Fifth set (client, 23 Nov 2026): Kairi's floral buta weave in Sabza (sage green, lilac pallu), Mohini (magenta, rose pink pallu),
   Mahavar (crimson, rose pink pallu), `_tools/add-kairi-colours.cjs`, unlisted; folded photos + booti and border close-ups. Kairi's
   reel was removed for the same reason.
+  Sixth set (client, 23 Nov 2026): a new Banarasi saree, Shyama (black, rani pink border, silver floral buti; model photo → border zoom → print zoom), with Kanha (purple, lime), Mehroon (maroon, pista green), Phagun (magenta, orange), Sumbul (lilac, lime), unlisted; each colour = two folded photos → border close-up → print close-up, cut at full resolution from the 8064×6048 originals in `model photography/Shyama colours (23 Nov 2026)/` (`homepage/_tools/add-shyama-colours.cjs`, crop windows listed there). Shyama's photo is a 1087px chat copy: ask for the full-size file.
+  Seventh set (client, 23 Nov 2026): a new Banarasi saree, Suhaag (red, bottle green zari floral border, silver buti; model photo → border zoom → print zoom), with Ratanjot (purple, lime green pallu) and Nisha (navy, maroon pallu), unlisted; each colour = its folded photo → the group photo of both → border close-up → print close-up, cut from the 4284×5712 originals at their own pixel size (`homepage/_tools/add-suhaag-colours.cjs`). The client said four colours; two were sent: add the rest to SPEC and SIBS.
   Their model photos are the seated set sent 20 Nov 2026 (`kajal-model.jpg`, `kishmish-seated.jpg`, `gulmohar-seated.jpg`, 1024×1536):
   3:4 frame from the bottom (y 0.1111), card `pos: 50% 70%`. The earlier padded `-space.jpg` photos are no longer used.
 - Slides 3–4 come from the original (client, 20 Nov 2026): model → original saree photo → print and border close-ups from the
@@ -228,6 +231,8 @@ Right side of the header (client, 21 Nov 2026): Search (icon + word), then Wishl
 20px, stroke 1.5, 44px targets; `partials/header.html`, styles `homepage.css` → `.site-util`). Counts are badges: wishlist from `shop.js`
 (`[data-wishlist-badge]`), bag from `bag.js` (`[data-bag-badge]`); hidden at zero; styles `bag.css` → `.site-util__badge`. Hover is a 200ms
 fade, never a scale. Phones keep menu + logo + search icon + bag; Wishlist and Account live in the menu. Account still links to `#` (no page yet).
+
+**Homepage header over the hero** (client, 23 Nov 2026): see-through at the very top, so it merges with the carousel (white logo and links); the Ivory background, hairline and dark logo come in as soon as the page scrolls, while the pointer is on the header or focus is in it, and on a light slide (`homepage.js` → `updateHeader`, 300ms fade). The carousel runs up under the header (`.home #main` has no top padding; `.hero` is `100svh` minus the announcement). Every other page keeps the solid header.
 
 ## Search
 
@@ -329,3 +334,49 @@ Dariya (client, 23 Nov 2026): the client's three photos in order (arcade → pal
 Alta (client, 23 Nov 2026): four new shoot photos — full length under the carved arch (shown whole; the wall shadow removed at the client's request: `_tools/alta-arch-deshadow.cjs`, wall pixels only, original kept) → by the pillar → close-up → [the zari-stripe close-up `alta-detail.jpg`, kept 4th at the client's request] → standing in the niche → reel (unchanged); `_tools/set-alta-shoot.cjs` (then full-length-first, set-feature-crops, make-detail-circles). Circles: fabric from the close-up, border and motif from the niche photo. ~1100px chat copies: ask for full-size files.
 
 Saawan (client, 23 Nov 2026): the client's three photos in order (seated full length → standing, pallu in the wind → close-up) → border zoom (teal band with gold stripes on the tissue pallu, from photo 1; light nlmeans, spline, no sharpening) → reel (sawan.MP4 3 s–end, enhance-reel.sh, default grade, SMOOTH=30). No booti on this saree, so no booti slide. `_tools/set-saawan-shoot.cjs`; 1024px chat copies: ask for full-size files. Pass enhance-reel.sh an ABSOLUTE video path (it runs ffmpeg from a temp folder).
+
+## Homepage hero carousel
+
+Client, 23 Nov 2026. Slide 1 is the original hero, unchanged in markup and style. Slide 2 is "The Art of the Saree". Slide 3 will be the Dulhan Edit film: add it as another `<section>` inside `[data-hero-carousel]`. Files: `index.html`, `assets/css/hero-carousel.css`, `assets/js/hero-carousel.js`. `?slide=2` opens a slide directly.
+
+These are client exceptions to brand guidelines §7.2 and §13:
+- It is a carousel at all.
+- It shows a "01 / 02" counter with arrows.
+- Slide 2 has a light pointer drift, max 10px, fine pointers only, off under reduced motion. Set `DRIFT = false` in the JS to remove it.
+
+It never auto-advances. Visitors move it with the arrows, a swipe or the arrow keys. While a light slide shows, `<html data-hero-slide>` keeps the header solid (dark logo); see `homepage.js`.
+
+Slide 2 (client, 23 Nov 2026): the client's campaign artwork, **text-free, with every word as live HTML** (h2 headline linked to /craft, tagline, intro, rule, and the four craft labels in a nav).
+- `index.html` → `.craft-hero`. Styles are the "Slide 2" block of `hero-carousel.css`.
+- Images:
+  - `homepage/_tools/art-hero-images.mjs` builds AVIF/WebP/JPEG at 1280…3840 (never wider than the source) and writes the `<picture>` between the `art-hero:picture` markers.
+  - Sources go in `model photography/Art of the Saree hero (23 Nov 2026)/`:
+    - `art-desktop.png`: 16:9, 3840×2160 (min 3000×1688).
+    - `art-portrait.png`: 9:16, 2160×3840 (min 1440×2560), shown at max-aspect-ratio 4/5. Its presence sets `data-portrait-art`.
+  - Re-run the tool whenever art arrives.
+  - Until then: an interim clean plate, with the painted words lifted out by `_tools/art-hero-clean-plate.mjs` from the client's 1672×941 picture. The arrows had already been painted out.
+- Live type:
+  - The text layer `.craft-hero__type` shares the picture's geometry and is a size container, so all type is in cqw of the artwork. It was measured against the client's lettering at 1672 px: headline Cormorant Garamond 400 3.62cqw/0.87 +0.062em; tagline 1.34cqw; intro 0.99cqw on 1.35cqw; labels 1.41cqw at `--x/--b` (left / baseline, % of the art).
+  - Cormorant Garamond is loaded on the homepage only (approved exception).
+- Portrait art: set the text block with `--pt` and the labels with `--px/--pb` once the art is in. Interim, with no portrait art: the desktop art pans once (7 s) while the words stay fixed at the foot, and the labels sit in a row under the header.
+- `--ui-top` = announcement bar + header, because the hero runs under both.
+- Framing:
+  - Narrower than 16:9: bottom-anchored, at most ~8 % off the sides.
+  - Wider: top-anchored, with blurred side margins.
+- Motion:
+  - Wavy left-to-right unroll; labels rise as it passes, then the words; 1.5 % push over 24 s.
+  - Autoplay (6 s) and the 01/02/03 pager are the carousel's (`hero-carousel.js`).
+  - Nothing moves under reduced motion.
+
+## Homepage editorial refinement (client brief, 23 Nov 2026)
+
+- **Header is solid Ivory on the homepage too**, above the carousel and never over the pictures (this replaces brand guidelines §12.4 "transparent over the hero" for the homepage only). `homepage.js` → `updateHeader` sets `is-solid` always; `.home #main` pads by `--header-height`; `.hero` is `100svh − announcement − header`, so every slide fits what is left (slide 2's composition is percentage-based and scales with it). The old transparent / light-logo CSS is now unused.
+- **Announcement bar** is Ivory (same as the header, so the two read as one block) and set as an eyebrow: Inter Tight 500, uppercase, tracked, Taupe Grey.
+- **Header details:** nav links 32 → 48px apart; header icons 18px / stroke 1.25 (`.site-header .icon`), 40px wide targets, the icon glyphs sitting on the page margin. The brief asked for "Helvetica Neue": the brand family is Inter Tight, so that is what is used.
+- **Carousel counter:** "03 ── 03" (Inter Tight 500, eyebrow size, current number full, total at 60%, a 28px hairline between), 14px / 1.25 chevrons, soft shadow so it reads over busy artwork.
+- **Dulhan slide:** our identifier is a small stack bottom left: serif italic "The" over "DULHAN EDIT" as an eyebrow, then 32px translucent pause / sound buttons (44px targets). The big "DULHAN By Stylissh Naari" is baked into the film. Only overlay: the same floor shade as slide 1.
+- **Homepage announcement sits ON the hero** (client, 23 Nov 2026, after the see-through header came back): `.home .announcement` is absolutely positioned at the top of the page, transparent, ivory words with a soft brown shade from the top edge (0.44 → 0 over 140px); `.hero` is `100svh`. Other pages keep the Ivory bar.
+
+**Homepage hero carousel** (client, 23 Nov 2026; overrides the brand guidelines' no-auto-advance rule for this hero only): no arrows. Autoplay every 6 s, looping; the incoming slide unfolds left to right (a soft-edged mask sweep + fade, 1.6 s) over the outgoing one, which only dims (it must stay opaque: slide 1 sits underneath). The only control is the pagination bottom right, "01 ━━ 02 ─ 03 ─" (`.hero-pager`, built by `hero-carousel.js`): click any number; the active line fills over the 6 s. One 50 ms clock drives both the line and the autoplay (CSS animationend / rAF don't run in headless Edge, so they can't be tested). Pauses while the mouse is on something clickable in the hero (pagination, links, film buttons: never the whole hero, which fills the screen, so a resting mouse would stop it for good), keyboard focus is inside it, the tab is hidden, or the film's sound / play has been chosen; reduced motion = no autoplay, no sweep. Autoplay reaching the film starts it muted. Swipe and arrow keys still work.
+
+- **Craft slide full bleed on wide screens** (client, 23 Nov 2026: "scale it up, no blurred edges"): above 16:9 the frame is scaled UP to `width: 100cqw` (`hero-carousel.css` → the `min-aspect-ratio: 16/9` block), so nothing shows at the sides; the overflow is cut from the bottom (top offset: at most 3 % of the picture height). Frame-relative text must use the same top (`max(-3% of fh, 100cqh - fh)`). Above ~2:1 the foot of the picture, the sarees' hems, is lost. Source art is 1672px wide, so it is enlarged beyond ~1680px screens: ask the client for a 2560px+ original.

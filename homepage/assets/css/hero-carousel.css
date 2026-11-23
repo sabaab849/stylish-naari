@@ -1,0 +1,232 @@
+/* ─── Hero carousel + "The Art of the Saree" (client, 23 Nov 2026) ─────────────────────────────────────────────
+   Slide 1 is the original .hero, untouched: it stays in normal flow and sets the carousel's height. Later slides sit on top
+   of it (absolute) and unfold in. Autoplay every 6 s with editorial pagination, no arrows (client, 23 Nov 2026, replacing the
+   brand guidelines §13 no-auto-advance rule for this hero only): see .hero-pager below. Formerly: the visitor moved the slides with the arrows,
+   a swipe or the arrow keys. Without JS only slide 1 shows.
+
+   Slide 2: the client's finished artwork as a static image (see the Slide 2 block). */
+
+.hero-carousel { position: relative; }
+.js .hero-carousel .craft-hero { position: absolute; inset: 0; }
+.craft-hero { display: none; }
+.js .craft-hero { display: block; }
+/* Slide change (client, 23 Nov 2026): the incoming slide unfolds from left to right like a length of fabric drawn across — a wide,
+   soft-edged mask sweeps over it while it fades up — and the outgoing slide stays underneath, dimming gently, until it is covered.
+   No zoom, no bounce. Inactive slides are hidden; slide 1 stays in flow (visible, at the bottom) so the height never jumps. */
+.js .hero-carousel > [data-slide]:not(.is-active):not(.is-leaving) { opacity: 0; visibility: hidden; }
+.js .hero-carousel > .hero[data-slide]:not(.is-active):not(.is-leaving) { visibility: visible; opacity: 1; z-index: 0; }
+.js .hero-carousel > [data-slide].is-active { opacity: 1; visibility: visible; z-index: 2; }
+.js .hero-carousel > [data-slide].is-leaving { visibility: visible; z-index: 1; animation: hero-leave 1600ms cubic-bezier(.45, 0, .25, 1) both; }
+.js .hero-carousel > [data-slide].is-entering {
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 60%, transparent 100%);
+          mask-image: linear-gradient(90deg, #000 0%, #000 40%, transparent 60%, transparent 100%);
+  -webkit-mask-size: 250% 100%; mask-size: 250% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  animation: hero-unfold 1600ms cubic-bezier(.6, .04, .3, 1) both;
+}
+@keyframes hero-unfold {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; opacity: .35; }
+  35%  { opacity: 1; }
+  to   { -webkit-mask-position: 0 0; mask-position: 0 0; opacity: 1; }
+}
+@keyframes hero-leave { /* dims only: it must stay opaque, or slide 1 (always underneath) would show through */
+  from { filter: brightness(1); }
+  to   { filter: brightness(.78); }
+}
+
+/* ─── Pagination (client, 23 Nov 2026): the only control. Bottom right, every slide listed as "01 ━━ 02 ─ 03 ─": Inter Tight 500 at eyebrow
+   size, a hairline after each number. The active item's line is longer and fills in ivory over the 6 s the slide is shown (one JS clock
+   drives the fill and the autoplay, so the line and the timer can never disagree); inactive items sit at 50 %, 80 % on hover.
+   Ink on a light slide. Paused (line holds) while the pointer is over the hero, focus is inside it, or the tab is hidden. ─── */
+.hero-pager {
+  position: absolute; z-index: 3; right: var(--page-margin); bottom: var(--spacing-6);
+  display: flex; align-items: center; gap: var(--space-xs);
+  color: var(--color-ivory);
+  font-family: var(--font-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-eyebrow); letter-spacing: var(--letter-spacing-eyebrow); font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 10px rgba(30, 22, 16, 0.55); /* keeps the fine numerals and lines readable over busy artwork */
+  filter: drop-shadow(0 0 5px rgba(30, 22, 16, 0.4));
+  transition: color var(--duration-slow) var(--ease-out);
+}
+.hero-pager[hidden] { display: none; }
+.hero-carousel.is-light .hero-pager { color: var(--color-ink); text-shadow: none; filter: none; }
+.hero-pager__item {
+  position: relative; display: inline-flex; align-items: center; gap: var(--space-xs);
+  min-height: 44px; padding: 0 2px; background: none; border: 0; color: inherit; font: inherit; letter-spacing: inherit; cursor: pointer;
+  opacity: .5; transition: opacity 500ms var(--ease-out);
+}
+.hero-pager__item:hover { opacity: .8; }
+.hero-pager__item[aria-current="true"] { opacity: 1; }
+.hero-pager__item:focus-visible { outline: 1px solid currentColor; outline-offset: 2px; }
+.hero-pager__track {
+  position: relative; display: block; width: 20px; height: 1px; overflow: hidden;
+  background: currentColor; opacity: .55;
+  transition: width 700ms cubic-bezier(.6, .04, .3, 1), opacity 500ms var(--ease-out);
+}
+.hero-pager__item[aria-current="true"] .hero-pager__track { width: 64px; opacity: 1; background: rgba(246, 241, 234, .3); }
+.hero-carousel.is-light .hero-pager__item[aria-current="true"] .hero-pager__track { background: rgba(43, 33, 28, .22); }
+.hero-pager__fill { position: absolute; inset: 0; background: currentColor; transform: scaleX(0); transform-origin: left center; transition: transform 60ms linear; }
+/* the fill is set every frame by hero-carousel.js (one clock for the line and the autoplay) */
+.hero-pager__item:not([aria-current="true"]) .hero-pager__fill { transition: transform 400ms var(--ease-out); }
+@media (max-width: 767px) {
+  .hero-pager { gap: 6px; }
+  .hero-pager__track { width: 14px; }
+  .hero-pager__item[aria-current="true"] .hero-pager__track { width: 44px; }
+}
+/* Reduced motion: no autoplay, no sweep; slides simply swap and the active line shows full. */
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-carousel > [data-slide].is-entering, .js .hero-carousel > [data-slide].is-leaving { animation: none; -webkit-mask-image: none; mask-image: none; }
+}
+
+/* ─── Slide 2: The Art of the Saree ─────────────────────────────────────────────────────────────────────────── */
+/* The client's campaign artwork (text-free) with live text placed exactly where the client set it.
+   Two layers share one geometry: .craft-hero__frame (the <picture>) and .craft-hero__type (the words). Both keep the
+   artwork's shape and are size containers, so every size and position of the words is in units of the artwork
+   (cqw = 1 % of its width; top/left in % of it): the words scale with the picture and stay registered on it.
+   Desktop art (16:9): narrower screens = bottom-anchored, at most ~8 % off the sides, a blurred copy of the art fills any
+   strip at the top; wider than 16:9 = top-anchored, thin blurred side margins.
+   Portrait art (9:16, data-portrait-art, switched by <picture> at max-aspect-ratio 4/5): shown whole under the header,
+   with its own text positions (--pt, and --px/--pb per label). Without portrait art (interim only) phones get the desktop
+   art panning once left to right while the words stay fixed and readable at the foot.
+   Entrance: a wavy mask unrolls the artwork left to right (~2.4 s, every visit to the slide); the labels rise in as it
+   passes them, then the words; then a 2 % push over 24 s. Nothing moves under reduced motion. */
+.craft-hero { --ui-top: calc(var(--announcement-height, 0px) + var(--header-height)); /* the hero runs under the announcement bar and header */
+  height: 100%; overflow: hidden; isolation: isolate; container-type: size; background: #1E2629; color: #F3EBDD; }
+.craft-hero__fill { position: absolute; inset: -8%; z-index: 0;
+  background: url("../images/craft-hero/art-desktop-1280.jpg") 50% 50% / cover no-repeat; filter: blur(28px) brightness(0.45); }
+.craft-hero__frame, .craft-hero__type {
+  --fw: max(100cqw, min(100cqh * 1.7768, 100cqw * 1.08));
+  position: absolute; bottom: 0; aspect-ratio: 1672 / 941; width: var(--fw);
+  left: calc((100cqw - var(--fw)) * 0.55);
+  container-type: inline-size;
+}
+.craft-hero__frame { z-index: 1; }
+.craft-hero__type { z-index: 3; pointer-events: none; }
+@media (min-aspect-ratio: 16/9) {
+  .craft-hero__frame, .craft-hero__type { --fw: min(100cqw, 100cqh * 1.919); top: 0; bottom: auto; left: calc((100cqw - var(--fw)) / 2); }
+}
+.craft-hero__picture, .craft-hero__art { display: block; width: 100%; height: 100%; }
+.craft-hero__art { object-fit: cover; }
+
+/* Live type (Cormorant Garamond, the approved homepage-only exception). Measured off the client's artwork at 1672 px:
+   headline caps 38 px (≈60 px type on 52 px lines), tagline ≈21 px, intro ≈16.5 px on 20 px lines, labels ≈20 px. */
+.craft-hero__copy { position: absolute; left: 49.88%; top: 65.35%; translate: -50% 0; width: 34cqw; text-align: center; pointer-events: auto;
+  font-family: "Cormorant Garamond", var(--font-accent), Georgia, serif; color: #F3EBDD; text-shadow: 0 0.1cqw 1.2cqw rgba(10, 6, 4, 0.35); }
+.craft-hero__title { margin: 0; font: 400 3.62cqw/0.87 "Cormorant Garamond", var(--font-accent), Georgia, serif; letter-spacing: 0.062em; text-transform: uppercase; }
+.craft-hero__title a { color: inherit; text-decoration: none; }
+.craft-hero__title a:focus-visible { outline: 1px solid rgba(243, 235, 221, 0.8); outline-offset: 0.6cqw; }
+.craft-hero__line { display: block; white-space: nowrap; }
+.craft-hero__tagline { margin: 0.85cqw 0 0; font-size: 1.34cqw; line-height: 1.2; font-weight: 400; letter-spacing: 0.005em; }
+.craft-hero__intro { margin: 0.95cqw 0 0; font-size: 0.99cqw; line-height: 1.35cqw; font-weight: 400; color: rgba(243, 235, 221, 0.9); }
+.craft-hero__rule { display: block; width: 5.15cqw; height: max(1px, 0.07cqw); margin: 1.1cqw auto 0; background: rgba(243, 235, 221, 0.6); }
+.craft-hero__labels { position: absolute; inset: 0; }
+.craft-hero__label { position: absolute; left: calc(var(--x) * 1%); bottom: calc(100% - var(--b) * 1%); pointer-events: auto;
+  font: 400 1.41cqw/1 "Cormorant Garamond", var(--font-accent), Georgia, serif; letter-spacing: 0.01em; color: #F3EBDD; text-decoration: none;
+  text-shadow: 0 0.06cqw 0.8cqw rgba(10, 6, 4, 0.5); padding-bottom: 0.35cqw; margin-bottom: -0.35cqw;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size var(--duration-base) var(--ease-out); }
+.craft-hero__label:hover, .craft-hero__label:focus-visible { background-size: 100% 1px; }
+.craft-hero__label:focus-visible { outline: 1px solid rgba(243, 235, 221, 0.8); outline-offset: 4px; }
+
+/* ─── Portrait screens ─── */
+@media (max-aspect-ratio: 4/5) {
+  /* dedicated 9:16 portrait art: whole, under the header; words on its calm lower third */
+  .craft-hero[data-portrait-art] :is(.craft-hero__frame, .craft-hero__type) { --fw: min(100cqw, (100cqh - var(--ui-top)) * 0.5625);
+    aspect-ratio: 9 / 16; top: auto; bottom: 0; left: calc((100cqw - var(--fw)) / 2); }
+  .craft-hero[data-portrait-art] .craft-hero__fill { background-image: url("../images/craft-hero/art-portrait-720.jpg"); }
+  .craft-hero[data-portrait-art] .craft-hero__copy { top: calc(var(--pt, 66) * 1%); width: 86cqw; }
+  .craft-hero[data-portrait-art] .craft-hero__title { font-size: 9.4cqw; }
+  .craft-hero[data-portrait-art] .craft-hero__tagline { font-size: 4.3cqw; margin-top: 3.2cqw; }
+  .craft-hero[data-portrait-art] .craft-hero__intro { font-size: 3.5cqw; line-height: 4.4cqw; margin-top: 3cqw; }
+  .craft-hero[data-portrait-art] .craft-hero__rule { width: 14cqw; margin-top: 3.4cqw; }
+  .craft-hero[data-portrait-art] .craft-hero__label { font-size: 4cqw; left: calc(var(--px, var(--x)) * 1%); bottom: calc(100% - var(--pb, var(--b)) * 1%); }
+
+  /* interim, no portrait art: the art fills the height under the header and pans once left to right (7 s, inside the
+     6 s autoplay plus the crossfade); the type layer is the slide itself, words at the foot over a shade, labels in a row */
+  .craft-hero:not([data-portrait-art]) .craft-hero__frame { --fw: calc((100cqh - var(--ui-top)) * 1.7768); top: var(--ui-top); bottom: auto; left: 0; }
+  .craft-hero:not([data-portrait-art]) .craft-hero__type { inset: 0; width: auto; aspect-ratio: auto; left: 0; }
+  .craft-hero:not([data-portrait-art]) .craft-hero__type::before { content: ""; position: absolute; inset: auto 0 0; height: 48%;
+    background: linear-gradient(to top, rgba(14, 10, 8, 0.94) 0%, rgba(14, 10, 8, 0.72) 48%, rgba(14, 10, 8, 0) 100%); }
+  .craft-hero:not([data-portrait-art]) .craft-hero__copy { top: auto; bottom: 78px; width: calc(100cqw - 2 * var(--page-margin)); }
+  .craft-hero:not([data-portrait-art]) .craft-hero__title { font-size: clamp(32px, 9.6cqw, 64px); }
+  .craft-hero:not([data-portrait-art]) .craft-hero__tagline { font-size: clamp(17px, 4.7cqw, 24px); margin-top: 12px; }
+  .craft-hero:not([data-portrait-art]) .craft-hero__intro { font-size: clamp(15px, 3.9cqw, 19px); line-height: 1.35; margin-top: 10px; }
+  .craft-hero:not([data-portrait-art]) .craft-hero__rule { width: 56px; height: 1px; margin-top: 14px; }
+  .craft-hero:not([data-portrait-art]) .craft-hero__labels { inset: calc(var(--ui-top) + 12px) 0 auto; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 1.1em; padding: 0 var(--page-margin); }
+  .craft-hero:not([data-portrait-art]) .craft-hero__label { position: static; font-size: clamp(16px, 4.3cqw, 20px); font-weight: 500; }
+  .craft-hero:not([data-portrait-art]) :is(.craft-hero__tagline, .craft-hero__intro) { font-weight: 500; }
+  .js .craft-hero.craft-hero:not([data-portrait-art]).is-revealed .craft-hero__frame {
+    animation: craft-unroll 2400ms cubic-bezier(.5, .08, .25, 1) 150ms both, craft-pan 7s cubic-bezier(.45, .05, .35, 1) 300ms both; }
+  @keyframes craft-pan { from { left: 0px; } to { left: calc(100cqw - var(--fw)); } }
+}
+
+/* ─── Entrance and ambient motion ─── */
+.js .craft-hero:not(.is-revealed) .craft-hero__frame { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+.js .craft-hero .craft-hero__frame {
+  --wave: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 100' preserveAspectRatio='none'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='.7' stop-color='%23fff'/><stop offset='1' stop-color='%23fff' stop-opacity='0'/></linearGradient><filter id='b'><feGaussianBlur stdDeviation='2 3'/></filter></defs><path filter='url(%23b)' fill='url(%23g)' d='M-10,-10 H104 C126,6 90,22 112,40 S94,72 118,86 L108,112 H-10 Z'/></svg>");
+  -webkit-mask: var(--wave) 0 0 / 300% 100% no-repeat; mask: var(--wave) 0 0 / 300% 100% no-repeat;
+}
+.js .craft-hero.is-revealed .craft-hero__frame { animation: craft-unroll 2400ms cubic-bezier(.5, .08, .25, 1) 150ms both; }
+@keyframes craft-unroll { from { -webkit-mask-position: 100% 0; mask-position: 100% 0; } to { -webkit-mask-position: 0 0; mask-position: 0 0; } }
+.js .craft-hero.is-revealed .craft-hero__picture { animation: craft-breathe 24s ease-in-out 2.6s infinite alternate; transform-origin: 50% 70%; }
+@keyframes craft-breathe { from { scale: 1; } to { scale: 1.015; } }
+.js .craft-hero:not(.is-revealed) :is(.craft-hero__copy > *, .craft-hero__label) { opacity: 0; translate: 0 10px; }
+.js .craft-hero :is(.craft-hero__copy > *, .craft-hero__label) { transition: opacity 900ms var(--ease-out), translate 1100ms var(--ease-out), background-size var(--duration-base) var(--ease-out); }
+.js .craft-hero .craft-hero__copy > :nth-child(1) { transition-delay: 1500ms; }
+.js .craft-hero .craft-hero__copy > :nth-child(2) { transition-delay: 1650ms; }
+.js .craft-hero .craft-hero__copy > :nth-child(3) { transition-delay: 1750ms; }
+.js .craft-hero .craft-hero__copy > :nth-child(4) { transition-delay: 1850ms; }
+.js .craft-hero .craft-hero__label:nth-child(1) { transition-delay: 600ms, 600ms, 0s; }
+.js .craft-hero .craft-hero__label:nth-child(2) { transition-delay: 1000ms, 1000ms, 0s; }
+.js .craft-hero .craft-hero__label:nth-child(3) { transition-delay: 1450ms, 1450ms, 0s; }
+.js .craft-hero .craft-hero__label:nth-child(4) { transition-delay: 1900ms, 1900ms, 0s; }
+.js .craft-hero.is-revealed .craft-hero__label:hover { transition-delay: 0s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-carousel > [data-slide] { transition: none; }
+  .js .craft-hero .craft-hero__frame, .js .craft-hero .craft-hero__picture { animation: none !important; -webkit-mask: none !important; mask: none !important; }
+  .js .craft-hero :is(.craft-hero__copy > *, .craft-hero__label) { opacity: 1 !important; translate: none !important; transition: none !important; }
+}
+@media (prefers-reduced-motion: reduce) and (max-aspect-ratio: 4/5) {
+  .craft-hero:not([data-portrait-art]) .craft-hero__frame { left: calc((100cqw - var(--fw)) * 0.5) !important; }
+}
+
+/* ─── Slide 3: The Dulhan Edit film (client, 23 Nov 2026) ─────────────────────────────────────────────────────────
+   The film fills the whole slide (object-fit: cover, never stretched, no bars). Landscape screens play a 16:9 window cut from
+   the 4K master whose height follows the model shot by shot (_tools/dulhan-landscape.sh); portrait screens play the original
+   9:16 film. The huge "DULHAN By Stylissh Naari" is in the film itself, so our own words stay a small campaign identifier:
+   bottom left, a serif italic "The" over "DULHAN EDIT" as an eyebrow, with the two film buttons under it. The only overlay is the
+   same soft floor shade as slide 1 (bottom 38%, 0.38 → 0), so the amber of the film is left as shot. Counter: bottom right. */
+.film-hero { display: none; }
+.js .film-hero { display: block; }
+.js .hero-carousel .film-hero { position: absolute; inset: 0; }
+.film-hero { height: 100%; overflow: hidden; isolation: isolate; background: #5A2E12; color: var(--color-ivory); }
+.film-hero::after { /* the floor shade, the same recipe as slide 1's .hero__scrim */
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to top, rgba(30, 22, 16, 0.38) 0%, rgba(30, 22, 16, 0) 38%);
+}
+.film-hero__video { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.film-hero__stack {
+  position: absolute; z-index: 4; left: var(--page-margin); bottom: var(--spacing-6);
+  display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-md);
+}
+.film-hero__id { margin: 0; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2xs); font-weight: 400; }
+.film-hero__the { font-size: var(--font-size-h3); line-height: 1; letter-spacing: 0; }
+.film-hero__name {
+  font-family: var(--font-display); font-weight: var(--font-weight-medium); text-transform: uppercase;
+  font-size: var(--font-size-eyebrow); line-height: 1.2; letter-spacing: var(--letter-spacing-eyebrow);
+}
+.film-hero__tools { display: flex; gap: var(--space-xs); }
+.film-hero__btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; padding: 0;
+  border-radius: 50%; color: var(--color-ivory); cursor: pointer;
+  background: rgba(246, 241, 234, 0.14); border: 1px solid rgba(246, 241, 234, 0.4);
+  transition: background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+.film-hero__btn::after { content: ''; position: absolute; inset: -6px; } /* a 44px target around the 32px button */
+.film-hero__btn svg { width: 14px; height: 14px; stroke-width: 1.25; }
+.film-hero__btn:hover { background: rgba(246, 241, 234, 0.26); border-color: rgba(246, 241, 234, 0.7); }
+.film-hero__btn:focus-visible { outline: 1px solid var(--color-ivory); outline-offset: 2px; }
+.film-hero__btn .i-play, .film-hero__btn .i-on { display: none; }
+.film-hero__btn[data-film-play][aria-pressed="true"] .i-pause { display: none; }
+.film-hero__btn[data-film-play][aria-pressed="true"] .i-play { display: block; }
+.film-hero__btn[data-film-sound][aria-pressed="true"] .i-off { display: none; }
+.film-hero__btn[data-film-sound][aria-pressed="true"] .i-on { display: block; }

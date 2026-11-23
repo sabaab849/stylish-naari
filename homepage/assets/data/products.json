@@ -1482,6 +1482,14 @@
           }
         },
         {
+          "src": "/assets/images/neel-standing.jpg",
+          "width": 1086,
+          "height": 1448,
+          "real": true,
+          "alt": "Neel worn standing before a painted forest backdrop: navy silk with woven lotus buti, an aqua zari pallu and border, a flower-braided plait over the shoulder",
+          "source": "model photography/Neel shoot (sent in chat 23 Nov 2026)/neel-standing.png"
+        },
+        {
           "src": "/assets/images/neel-colours-group.jpg",
           "width": 1086,
           "height": 1448,
@@ -1527,10 +1535,10 @@
           "oy": "85%"
         },
         "border": {
-          "img": 2
+          "img": 3
         },
         "weave": {
-          "img": 3
+          "img": 4
         },
         "zari": {
           "img": 0,
@@ -1539,7 +1547,7 @@
           "oy": "68%"
         },
         "borderDetail": {
-          "img": 2
+          "img": 3
         },
         "motif": {
           "img": 0,
@@ -1554,7 +1562,7 @@
           "oy": "66%"
         },
         "swatch": {
-          "img": 3
+          "img": 4
         },
         "styling": {
           "img": 0,
@@ -1596,21 +1604,21 @@
       },
       "features": {
         "fabric": {
-          "img": 3,
+          "img": 4,
           "s": 1.4,
           "ox": "50%",
           "oy": "50%",
           "op": "50% 10%"
         },
         "border": {
-          "img": 2,
+          "img": 3,
           "s": 1.4,
           "ox": "50%",
           "oy": "62%",
           "op": "50% 100%"
         },
         "motif": {
-          "img": 3,
+          "img": 4,
           "s": 2,
           "ox": "74%",
           "oy": "30%",
@@ -2417,7 +2425,2102 @@
         }
       },
       "photoshoot": true,
-      "galleryListed": true
+      "galleryListed": true,
+      "video": {
+        "src": "/assets/video/bagh-colours-reel.mp4",
+        "srcSmall": "/assets/video/bagh-colours-reel-small.mp4",
+        "poster": "/assets/images/bagh-colours-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/bagh variaitons.MOV (all of it, 4.8 s); enhanced by _tools/enhance-reel.sh (SMOOTH=15, highlight roll-off), 23 Nov 2026; no sound"
+        ]
+      },
+      "colourSiblings": [
+        "bagh",
+        "angoor",
+        "kajri",
+        "neembu"
+      ]
+    },
+    {
+      "slug": "angoor",
+      "name": "Angoor",
+      "nameMeaning": "grape",
+      "descriptor": "Purple with a rose pink zari pallu",
+      "description": "Angoor is purple silk woven with a silver and gold tree-of-life jaal, the same weave as Bagh, finished with a rose pink zari border and pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Purple silk with a rose pink pallu.",
+      "colourLineStatus": "draft",
+      "price": 32500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast",
+        "festive"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Purple",
+          "hex": "#4E1F6E",
+          "text": "#F6F1EA"
+        }
+      ],
+      "colourSiblings": [
+        "bagh",
+        "angoor",
+        "kajri",
+        "neembu"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Purple",
+        "border": "Rose pink zari border",
+        "motif": "Tree-of-life jaal",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Purple, edged in rose pink.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Purple"
+          ],
+          [
+            "Motif",
+            "Tree-of-life jaal"
+          ],
+          [
+            "Border",
+            "rose pink zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/angoor-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Angoor: folded open to the rose pink zari pallu",
+          "source": "model photography/Bagh colours (23 Nov 2026)/angoor.jpg"
+        },
+        {
+          "src": "/assets/images/angoor-print.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Angoor: the silver and gold tree-of-life jaal on purple silk",
+          "source": "model photography/Bagh colours (23 Nov 2026)/angoor.jpg"
+        },
+        {
+          "src": "/assets/images/angoor-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Angoor: the rose pink zari border up close",
+          "source": "model photography/Bagh colours (23 Nov 2026)/angoor.jpg"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 1
+        },
+        "weave": {
+          "img": 1
+        },
+        "motif": {
+          "img": 1,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "video": {
+        "src": "/assets/video/bagh-colours-reel.mp4",
+        "srcSmall": "/assets/video/bagh-colours-reel-small.mp4",
+        "poster": "/assets/images/bagh-colours-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/bagh variaitons.MOV (all of it, 4.8 s); enhanced by _tools/enhance-reel.sh (SMOOTH=15, highlight roll-off), 23 Nov 2026; no sound"
+        ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 1.2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "0%",
+          "op": "50% 0%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "41%",
+          "op": "50% 0%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/angoor-fabric.jpg",
+          "from": "/assets/images/angoor-print.jpg|1.2|50%|50%|50% 50%",
+          "px": 1100
+        },
+        "border": {
+          "src": "/assets/images/detail/angoor-border.jpg",
+          "from": "/assets/images/angoor-border.jpg|1.4|50%|0%|50% 0%",
+          "px": 943
+        },
+        "motif": {
+          "src": "/assets/images/detail/angoor-motif.jpg",
+          "from": "/assets/images/angoor-print.jpg|1.6|50%|41%|50% 0%",
+          "px": 825
+        }
+      }
+    },
+    {
+      "slug": "kajri",
+      "name": "Kajri",
+      "nameMeaning": "dark monsoon clouds",
+      "descriptor": "Black with a red zari pallu",
+      "description": "Kajri is black silk woven with a silver and gold tree-of-life jaal, the same weave as Bagh, finished with a red zari border and pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Black silk with a red pallu.",
+      "colourLineStatus": "draft",
+      "price": 32500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast",
+        "festive"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#1B1A1E",
+          "text": "#F6F1EA"
+        }
+      ],
+      "colourSiblings": [
+        "bagh",
+        "angoor",
+        "kajri",
+        "neembu"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Black",
+        "border": "Red zari border",
+        "motif": "Tree-of-life jaal",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Black, edged in red.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Black"
+          ],
+          [
+            "Motif",
+            "Tree-of-life jaal"
+          ],
+          [
+            "Border",
+            "red zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/kajri-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kajri: folded open to the red zari pallu",
+          "source": "model photography/Bagh colours (23 Nov 2026)/kajri.jpg"
+        },
+        {
+          "src": "/assets/images/kajri-print.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kajri: the silver and gold tree-of-life jaal on black silk",
+          "source": "model photography/Bagh colours (23 Nov 2026)/kajri.jpg"
+        },
+        {
+          "src": "/assets/images/kajri-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kajri: the red zari border up close",
+          "source": "model photography/Bagh colours (23 Nov 2026)/kajri.jpg"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 1
+        },
+        "weave": {
+          "img": 1
+        },
+        "motif": {
+          "img": 1,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "video": {
+        "src": "/assets/video/bagh-colours-reel.mp4",
+        "srcSmall": "/assets/video/bagh-colours-reel-small.mp4",
+        "poster": "/assets/images/bagh-colours-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/bagh variaitons.MOV (all of it, 4.8 s); enhanced by _tools/enhance-reel.sh (SMOOTH=15, highlight roll-off), 23 Nov 2026; no sound"
+        ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 1.2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "41%",
+          "op": "50% 0%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/kajri-fabric.jpg",
+          "from": "/assets/images/kajri-print.jpg|1.2|50%|50%|50% 50%",
+          "px": 1100
+        },
+        "border": {
+          "src": "/assets/images/detail/kajri-border.jpg",
+          "from": "/assets/images/kajri-border.jpg|1.2|50%|50%|50% 50%",
+          "px": 1100
+        },
+        "motif": {
+          "src": "/assets/images/detail/kajri-motif.jpg",
+          "from": "/assets/images/kajri-print.jpg|1.6|50%|41%|50% 0%",
+          "px": 825
+        }
+      }
+    },
+    {
+      "slug": "neembu",
+      "name": "Neembu",
+      "nameMeaning": "lime",
+      "descriptor": "Lime with a bottle green zari pallu",
+      "description": "Neembu is lime silk woven with a silver and gold tree-of-life jaal, the same weave as Bagh, finished with a bottle green zari border and pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Lime silk with a bottle green pallu.",
+      "colourLineStatus": "draft",
+      "price": 32500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast",
+        "festive"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Lime",
+          "hex": "#C3D12B",
+          "text": "#1F1A16"
+        }
+      ],
+      "colourSiblings": [
+        "bagh",
+        "angoor",
+        "kajri",
+        "neembu"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Lime",
+        "border": "Bottle green zari border",
+        "motif": "Tree-of-life jaal",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Lime, edged in bottle green.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Lime"
+          ],
+          [
+            "Motif",
+            "Tree-of-life jaal"
+          ],
+          [
+            "Border",
+            "bottle green zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/neembu-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Neembu: folded open to the bottle green zari pallu",
+          "source": "model photography/Bagh colours (23 Nov 2026)/neembu.jpg"
+        },
+        {
+          "src": "/assets/images/neembu-print.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Neembu: the silver and gold tree-of-life jaal on lime silk",
+          "source": "model photography/Bagh colours (23 Nov 2026)/neembu.jpg"
+        },
+        {
+          "src": "/assets/images/neembu-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Neembu: the bottle green zari border up close",
+          "source": "model photography/Bagh colours (23 Nov 2026)/neembu.jpg"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 1
+        },
+        "weave": {
+          "img": 1
+        },
+        "motif": {
+          "img": 1,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "video": {
+        "src": "/assets/video/bagh-colours-reel.mp4",
+        "srcSmall": "/assets/video/bagh-colours-reel-small.mp4",
+        "poster": "/assets/images/bagh-colours-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/bagh variaitons.MOV (all of it, 4.8 s); enhanced by _tools/enhance-reel.sh (SMOOTH=15, highlight roll-off), 23 Nov 2026; no sound"
+        ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "93%",
+          "oy": "50%",
+          "op": "50% 10%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.4,
+          "ox": "15%",
+          "oy": "50%",
+          "op": "50% 90%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "41%",
+          "op": "50% 0%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/neembu-fabric.jpg",
+          "from": "/assets/images/neembu-print.jpg|1.3|93%|50%|50% 10%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/neembu-border.jpg",
+          "from": "/assets/images/neembu-border.jpg|1.4|15%|50%|50% 90%",
+          "px": 943
+        },
+        "motif": {
+          "src": "/assets/images/detail/neembu-motif.jpg",
+          "from": "/assets/images/neembu-print.jpg|1.6|50%|41%|50% 0%",
+          "px": 825
+        }
+      }
+    },
+    {
+      "slug": "shyama",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "categoryEvidence": {
+        "banarasi": "Client, 23 Nov 2026: \"this comes under Banarasi\""
+      },
+      "colourSiblings": [
+        "shyama",
+        "kanha",
+        "mehroon",
+        "phagun",
+        "sumbul"
+      ],
+      "galleryListed": true,
+      "looks": [],
+      "name": "Shyama",
+      "nameMeaning": "the dusky one",
+      "descriptor": "Black silk with a rani pink zari border",
+      "description": "Shyama is black silk woven with silver floral buti, finished with a rani pink border and pallu edged in silver zari.",
+      "descriptionStatus": "draft",
+      "colourLine": "Black silk, edged in rani pink.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with red roses and jasmine in the hair, an oxidised silver choker, long necklace and wide silver cuffs.",
+      "stylingStatus": "draft",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#1A1819",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Rani pink",
+          "hex": "#D6206F",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Black and rani pink",
+        "border": "Rani pink zari border",
+        "motif": "Floral buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null,
+        "booti": "Silver floral booti"
+      },
+      "closer": {
+        "heading": "Black, edged in rani pink.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Black"
+          ],
+          [
+            "Motif",
+            "Floral buti"
+          ],
+          [
+            "Border",
+            "Rani pink zari"
+          ]
+        ]
+      },
+      "photoshoot": true,
+      "images": [
+        {
+          "src": "/assets/images/shyama.jpg",
+          "width": 1087,
+          "height": 1446,
+          "real": true,
+          "alt": "Shyama worn seated before a deep red disc: black silk with silver floral buti and a rani pink zari border, roses in the hair",
+          "source": "model photography/Shyama colours (23 Nov 2026)/shyama-model.png"
+        },
+        {
+          "src": "/assets/images/shyama-border-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Shyama border up close: the rani pink border with silver zari beside the black body and its buti",
+          "source": "model photography/Shyama colours (23 Nov 2026)/shyama-model.png (cropped x700 y1000 290×387, light denoise, spline)"
+        },
+        {
+          "src": "/assets/images/shyama-print-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Shyama buti up close: silver floral buti woven over the black silk",
+          "source": "model photography/Shyama colours (23 Nov 2026)/shyama-model.png (cropped x520 y830 280×373, light denoise, spline)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1
+        },
+        "swatch": {
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "60%",
+          "oy": "70%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "55%",
+          "oy": "35%",
+          "op": "50% 20%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "55% 45%",
+        "posMobile": "55% 45%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 70%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.8,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/shyama-fabric.jpg",
+          "from": "/assets/images/shyama-print-zoom.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/shyama-border.jpg",
+          "from": "/assets/images/shyama-border-zoom.jpg|1.3|50%|50%|50% 70%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/shyama-motif.jpg",
+          "from": "/assets/images/shyama-print-zoom.jpg|1.8|50%|50%|50% 50%",
+          "px": 733
+        },
+        "styled": {
+          "src": "/assets/images/detail/shyama-styled.jpg",
+          "from": "/assets/images/shyama.jpg|1.3|55%|35%|50% 20%",
+          "px": 836
+        }
+      }
+    },
+    {
+      "slug": "kanha",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "categoryEvidence": {
+        "banarasi": "Client, 23 Nov 2026: \"this comes under Banarasi\""
+      },
+      "colourSiblings": [
+        "shyama",
+        "kanha",
+        "mehroon",
+        "phagun",
+        "sumbul"
+      ],
+      "galleryListed": true,
+      "looks": [],
+      "name": "Kanha",
+      "nameMeaning": "Krishna, the peacock-feathered",
+      "descriptor": "Purple with a lime yellow zari border",
+      "description": "Kanha is purple silk woven with silver floral buti, the same weave as Shyama, with a lime yellow border and pallu edged in zari.",
+      "descriptionStatus": "draft",
+      "colourLine": "Purple silk with a lime yellow border and pallu.",
+      "colourLineStatus": "draft",
+      "colours": [
+        {
+          "name": "Purple",
+          "hex": "#4B2C8F",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Lime",
+          "hex": "#D4E021",
+          "text": "#1F1A16"
+        }
+      ],
+      "unlisted": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Purple and lime yellow",
+        "border": "Lime yellow zari border",
+        "motif": "Floral buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null,
+        "booti": "Silver floral booti"
+      },
+      "closer": {
+        "heading": "Purple, edged in lime yellow.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Purple"
+          ],
+          [
+            "Motif",
+            "Floral buti"
+          ],
+          [
+            "Border",
+            "Lime yellow zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/kanha-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kanha: folded, silver floral buti on purple silk above the lime yellow border",
+          "source": "model photography/Shyama colours (23 Nov 2026)/kanha-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/kanha-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kanha: folded open to the lime yellow pallu",
+          "source": "model photography/Shyama colours (23 Nov 2026)/kanha-folded-2-orig.jpg"
+        },
+        {
+          "src": "/assets/images/kanha-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kanha: the lime yellow border and its zari edging up close",
+          "source": "model photography/Shyama colours (23 Nov 2026)/kanha-folded-orig.jpg (close-up, full resolution)"
+        },
+        {
+          "src": "/assets/images/kanha-print.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kanha: a silver floral buti on purple silk up close",
+          "source": "model photography/Shyama colours (23 Nov 2026)/kanha-folded-orig.jpg (close-up, full resolution)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 3
+        },
+        "weave": {
+          "img": 3
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/kanha-fabric.jpg",
+          "from": "/assets/images/kanha-print.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/kanha-border.jpg",
+          "from": "/assets/images/kanha-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/kanha-motif.jpg",
+          "from": "/assets/images/kanha-print.jpg|2|50%|50%|50% 30%",
+          "px": 660
+        }
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 30%"
+        }
+      }
+    },
+    {
+      "slug": "mehroon",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "categoryEvidence": {
+        "banarasi": "Client, 23 Nov 2026: \"this comes under Banarasi\""
+      },
+      "colourSiblings": [
+        "shyama",
+        "kanha",
+        "mehroon",
+        "phagun",
+        "sumbul"
+      ],
+      "galleryListed": true,
+      "looks": [],
+      "name": "Mehroon",
+      "nameMeaning": "maroon",
+      "descriptor": "Maroon with a pista green zari border",
+      "description": "Mehroon is maroon silk woven with silver floral buti, the same weave as Shyama, with a pista green border and pallu edged in zari.",
+      "descriptionStatus": "draft",
+      "colourLine": "Maroon silk with a pista green border and pallu.",
+      "colourLineStatus": "draft",
+      "colours": [
+        {
+          "name": "Maroon",
+          "hex": "#8A1E1E",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Pista green",
+          "hex": "#B5CDA8",
+          "text": "#1F1A16"
+        }
+      ],
+      "unlisted": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Maroon and pista green",
+        "border": "Pista green zari border",
+        "motif": "Floral buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null,
+        "booti": "Silver floral booti"
+      },
+      "closer": {
+        "heading": "Maroon, edged in pista green.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Maroon"
+          ],
+          [
+            "Motif",
+            "Floral buti"
+          ],
+          [
+            "Border",
+            "Pista green zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/mehroon-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mehroon: folded, silver floral buti on maroon silk above the pista green border",
+          "source": "model photography/Shyama colours (23 Nov 2026)/mehroon-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/mehroon-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mehroon: folded open to the pista green pallu",
+          "source": "model photography/Shyama colours (23 Nov 2026)/mehroon-folded-2-orig.jpg"
+        },
+        {
+          "src": "/assets/images/mehroon-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mehroon: the pista green border and its zari edging up close",
+          "source": "model photography/Shyama colours (23 Nov 2026)/mehroon-folded-orig.jpg (close-up, full resolution)"
+        },
+        {
+          "src": "/assets/images/mehroon-print.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mehroon: a silver floral buti on maroon silk up close",
+          "source": "model photography/Shyama colours (23 Nov 2026)/mehroon-folded-orig.jpg (close-up, full resolution)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 3
+        },
+        "weave": {
+          "img": 3
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/mehroon-fabric.jpg",
+          "from": "/assets/images/mehroon-print.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/mehroon-border.jpg",
+          "from": "/assets/images/mehroon-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/mehroon-motif.jpg",
+          "from": "/assets/images/mehroon-print.jpg|2|50%|50%|50% 70%",
+          "px": 660
+        }
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 70%"
+        }
+      }
+    },
+    {
+      "slug": "phagun",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "categoryEvidence": {
+        "banarasi": "Client, 23 Nov 2026: \"this comes under Banarasi\""
+      },
+      "colourSiblings": [
+        "shyama",
+        "kanha",
+        "mehroon",
+        "phagun",
+        "sumbul"
+      ],
+      "galleryListed": true,
+      "looks": [],
+      "name": "Phagun",
+      "nameMeaning": "the spring month of Holi",
+      "descriptor": "Magenta with a orange zari border",
+      "description": "Phagun is magenta silk woven with silver floral buti, the same weave as Shyama, with a orange border and pallu edged in zari.",
+      "descriptionStatus": "draft",
+      "colourLine": "Magenta silk with a orange border and pallu.",
+      "colourLineStatus": "draft",
+      "colours": [
+        {
+          "name": "Magenta",
+          "hex": "#B8186E",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Orange",
+          "hex": "#E8641E",
+          "text": "#1F1A16"
+        }
+      ],
+      "unlisted": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Magenta and orange",
+        "border": "Orange zari border",
+        "motif": "Floral buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null,
+        "booti": "Silver floral booti"
+      },
+      "closer": {
+        "heading": "Magenta, edged in orange.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Magenta"
+          ],
+          [
+            "Motif",
+            "Floral buti"
+          ],
+          [
+            "Border",
+            "Orange zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/phagun-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Phagun: folded, silver floral buti on magenta silk above the orange border",
+          "source": "model photography/Shyama colours (23 Nov 2026)/phagun-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/phagun-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Phagun: folded open to the orange pallu",
+          "source": "model photography/Shyama colours (23 Nov 2026)/phagun-folded-2-orig.jpg"
+        },
+        {
+          "src": "/assets/images/phagun-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Phagun: the orange border and its zari edging up close",
+          "source": "model photography/Shyama colours (23 Nov 2026)/phagun-folded-orig.jpg (close-up, full resolution)"
+        },
+        {
+          "src": "/assets/images/phagun-print.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Phagun: a silver floral buti on magenta silk up close",
+          "source": "model photography/Shyama colours (23 Nov 2026)/phagun-folded-2-orig.jpg (close-up, full resolution)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 3
+        },
+        "weave": {
+          "img": 3
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/phagun-fabric.jpg",
+          "from": "/assets/images/phagun-print.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/phagun-border.jpg",
+          "from": "/assets/images/phagun-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/phagun-motif.jpg",
+          "from": "/assets/images/phagun-print.jpg|2|50%|50%|50% 70%",
+          "px": 660
+        }
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 70%"
+        }
+      }
+    },
+    {
+      "slug": "sumbul",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "categoryEvidence": {
+        "banarasi": "Client, 23 Nov 2026: \"this comes under Banarasi\""
+      },
+      "colourSiblings": [
+        "shyama",
+        "kanha",
+        "mehroon",
+        "phagun",
+        "sumbul"
+      ],
+      "galleryListed": true,
+      "looks": [],
+      "name": "Sumbul",
+      "nameMeaning": "hyacinth",
+      "descriptor": "Lilac with a lime yellow zari border",
+      "description": "Sumbul is lilac silk woven with silver floral buti, the same weave as Shyama, with a lime yellow border and pallu edged in zari.",
+      "descriptionStatus": "draft",
+      "colourLine": "Lilac silk with a lime yellow border and pallu.",
+      "colourLineStatus": "draft",
+      "colours": [
+        {
+          "name": "Lilac",
+          "hex": "#B591C8",
+          "text": "#1F1A16"
+        },
+        {
+          "name": "Lime",
+          "hex": "#D4E021",
+          "text": "#1F1A16"
+        }
+      ],
+      "unlisted": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Lilac and lime yellow",
+        "border": "Lime yellow zari border",
+        "motif": "Floral buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null,
+        "booti": "Silver floral booti"
+      },
+      "closer": {
+        "heading": "Lilac, edged in lime yellow.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Lilac"
+          ],
+          [
+            "Motif",
+            "Floral buti"
+          ],
+          [
+            "Border",
+            "Lime yellow zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/sumbul-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sumbul: folded, silver floral buti on lilac silk above the lime yellow border",
+          "source": "model photography/Shyama colours (23 Nov 2026)/sumbul-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/sumbul-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sumbul: folded open to the lime yellow pallu",
+          "source": "model photography/Shyama colours (23 Nov 2026)/sumbul-folded-2-orig.jpg"
+        },
+        {
+          "src": "/assets/images/sumbul-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sumbul: the lime yellow border and its zari edging up close",
+          "source": "model photography/Shyama colours (23 Nov 2026)/sumbul-folded-orig.jpg (close-up, full resolution)"
+        },
+        {
+          "src": "/assets/images/sumbul-print.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sumbul: a silver floral buti on lilac silk up close",
+          "source": "model photography/Shyama colours (23 Nov 2026)/sumbul-folded-2-orig.jpg (close-up, full resolution)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 3
+        },
+        "weave": {
+          "img": 3
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/sumbul-fabric.jpg",
+          "from": "/assets/images/sumbul-print.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/sumbul-border.jpg",
+          "from": "/assets/images/sumbul-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/sumbul-motif.jpg",
+          "from": "/assets/images/sumbul-print.jpg|2|50%|50%|50% 70%",
+          "px": 660
+        }
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 70%"
+        }
+      }
+    },
+    {
+      "slug": "suhaag",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "categoryEvidence": {
+        "banarasi": "Client, 23 Nov 2026: \"this comes under Banarasi\""
+      },
+      "colourSiblings": [
+        "suhaag",
+        "ratanjot",
+        "nisha"
+      ],
+      "galleryListed": true,
+      "looks": [],
+      "name": "Suhaag",
+      "nameMeaning": "marital bliss",
+      "descriptor": "Red silk with a bottle green zari border",
+      "description": "Suhaag is red silk scattered with small silver floral buti, edged in a bottle green border woven with a zari floral jaal.",
+      "descriptionStatus": "draft",
+      "colourLine": "Red silk, edged in bottle green and gold.",
+      "colourLineStatus": "draft",
+      "styling": "Shown with a red rose in the braid, a maang tikka, chandbali earrings, stacked gold cuffs and a mirror-work kamarbandh.",
+      "stylingStatus": "draft",
+      "colours": [
+        {
+          "name": "Red",
+          "hex": "#D9261C",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Bottle green",
+          "hex": "#1F3B2E",
+          "text": "#F6F1EA"
+        }
+      ],
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Red and bottle green",
+        "border": "Bottle green zari floral border",
+        "motif": "Floral buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null,
+        "booti": "Silver floral booti"
+      },
+      "closer": {
+        "heading": "Red, edged in bottle green.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Red"
+          ],
+          [
+            "Motif",
+            "Floral buti"
+          ],
+          [
+            "Border",
+            "Bottle green zari"
+          ]
+        ]
+      },
+      "photoshoot": true,
+      "images": [
+        {
+          "src": "/assets/images/suhaag.jpg",
+          "width": 1086,
+          "height": 1448,
+          "real": true,
+          "alt": "Suhaag worn seated before a deep red disc: red silk with silver floral buti and a bottle green zari border, chin resting on her hands",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/suhaag-model.png"
+        },
+        {
+          "src": "/assets/images/suhaag-border-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Suhaag border up close: the bottle green border of gold floral jaal beside the red silk",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/suhaag-model.png (cropped x410 y1048 300×400, light denoise, spline)"
+        },
+        {
+          "src": "/assets/images/suhaag-print-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Suhaag buti up close: small silver floral buti on the red silk",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/suhaag-model.png (cropped x680 y1020 320×427, light denoise, spline)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 1
+        },
+        "borderDetail": {
+          "img": 1
+        },
+        "swatch": {
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0,
+          "s": 1.6,
+          "ox": "65%",
+          "oy": "80%"
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "55%",
+          "oy": "35%",
+          "op": "50% 20%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "55% 40%",
+        "posMobile": "55% 40%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "0%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "70%",
+          "oy": "25%",
+          "op": "50% 0%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/suhaag-fabric.jpg",
+          "from": "/assets/images/suhaag-print-zoom.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/suhaag-border.jpg",
+          "from": "/assets/images/suhaag-border-zoom.jpg|1.3|0%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/suhaag-motif.jpg",
+          "from": "/assets/images/suhaag-print-zoom.jpg|2|70%|25%|50% 0%",
+          "px": 660
+        },
+        "styled": {
+          "src": "/assets/images/detail/suhaag-styled.jpg",
+          "from": "/assets/images/suhaag.jpg|1.3|55%|35%|50% 20%",
+          "px": 835
+        }
+      }
+    },
+    {
+      "slug": "ratanjot",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "categoryEvidence": {
+        "banarasi": "Client, 23 Nov 2026: \"this comes under Banarasi\""
+      },
+      "colourSiblings": [
+        "suhaag",
+        "ratanjot",
+        "nisha"
+      ],
+      "galleryListed": true,
+      "looks": [],
+      "name": "Ratanjot",
+      "nameMeaning": "the root that dyes purple",
+      "descriptor": "Purple with a lime green zari pallu",
+      "description": "Ratanjot is purple silk with small floral buti and zari medallions, the same weave as Suhaag, with a lime green border and pallu woven with a zari floral jaal.",
+      "descriptionStatus": "draft",
+      "colourLine": "Purple silk with a lime green pallu.",
+      "colourLineStatus": "draft",
+      "colours": [
+        {
+          "name": "Purple",
+          "hex": "#7A1FA0",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Lime green",
+          "hex": "#A9B52A",
+          "text": "#1F1A16"
+        }
+      ],
+      "unlisted": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Purple and lime green",
+        "border": "Lime green zari floral border",
+        "motif": "Floral buti and zari medallions",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null,
+        "booti": "Floral booti in silver and coloured silk"
+      },
+      "closer": {
+        "heading": "Purple, with lime green.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Purple"
+          ],
+          [
+            "Motif",
+            "Floral buti"
+          ],
+          [
+            "Border",
+            "Lime green zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/ratanjot-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Ratanjot: folded open to the lime green pallu of zari floral jaal",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/ratanjot-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/suhaag-colours-group.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Navy with a maroon pallu and purple with a lime green pallu, folded side by side",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/suhaag-colours-group-orig.jpg"
+        },
+        {
+          "src": "/assets/images/ratanjot-border.jpg",
+          "width": 1284,
+          "height": 1712,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Ratanjot: the lime green border and pallu of zari floral jaal up close",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/ratanjot-folded-orig.jpg (close-up, full resolution)"
+        },
+        {
+          "src": "/assets/images/ratanjot-print.jpg",
+          "width": 1112,
+          "height": 1482,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Ratanjot: a zari medallion and floral buti on purple silk up close",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/ratanjot-folded-orig.jpg (close-up, full resolution)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 3
+        },
+        "weave": {
+          "img": 3
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 90%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.6,
+          "ox": "23%",
+          "oy": "23%",
+          "op": "50% 0%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/ratanjot-fabric.jpg",
+          "from": "/assets/images/ratanjot-print.jpg|1.3|50%|50%|50% 90%",
+          "px": 855
+        },
+        "border": {
+          "src": "/assets/images/detail/ratanjot-border.jpg",
+          "from": "/assets/images/ratanjot-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 988
+        },
+        "motif": {
+          "src": "/assets/images/detail/ratanjot-motif.jpg",
+          "from": "/assets/images/ratanjot-print.jpg|1.6|23%|23%|50% 0%",
+          "px": 695
+        }
+      }
+    },
+    {
+      "slug": "nisha",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "categoryEvidence": {
+        "banarasi": "Client, 23 Nov 2026: \"this comes under Banarasi\""
+      },
+      "colourSiblings": [
+        "suhaag",
+        "ratanjot",
+        "nisha"
+      ],
+      "galleryListed": true,
+      "looks": [],
+      "name": "Nisha",
+      "nameMeaning": "night",
+      "descriptor": "Navy with a maroon zari pallu",
+      "description": "Nisha is navy silk with small floral buti and zari medallions, the same weave as Suhaag, with a maroon border and pallu woven with a zari floral jaal.",
+      "descriptionStatus": "draft",
+      "colourLine": "Navy silk with a maroon pallu.",
+      "colourLineStatus": "draft",
+      "colours": [
+        {
+          "name": "Navy",
+          "hex": "#1E2340",
+          "text": "#F6F1EA"
+        },
+        {
+          "name": "Maroon",
+          "hex": "#8E1F24",
+          "text": "#F6F1EA"
+        }
+      ],
+      "unlisted": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Navy and maroon",
+        "border": "Maroon zari floral border",
+        "motif": "Floral buti and zari medallions",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null,
+        "booti": "Floral booti in silver and coloured silk"
+      },
+      "closer": {
+        "heading": "Navy, with maroon.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Navy"
+          ],
+          [
+            "Motif",
+            "Floral buti"
+          ],
+          [
+            "Border",
+            "Maroon zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/nisha-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Nisha: folded open to the maroon pallu of zari floral jaal",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/nisha-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/suhaag-colours-group.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Navy with a maroon pallu and purple with a lime green pallu, folded side by side",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/suhaag-colours-group-orig.jpg"
+        },
+        {
+          "src": "/assets/images/nisha-border.jpg",
+          "width": 1284,
+          "height": 1712,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Nisha: the maroon border and pallu of zari floral jaal up close",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/nisha-folded-orig.jpg (close-up, full resolution)"
+        },
+        {
+          "src": "/assets/images/nisha-print.jpg",
+          "width": 1028,
+          "height": 1370,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Nisha: a zari medallion and floral buti on navy silk up close",
+          "source": "model photography/Suhaag colours (23 Nov 2026)/nisha-folded-orig.jpg (close-up, full resolution)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 2
+        },
+        "borderDetail": {
+          "img": 2
+        },
+        "swatch": {
+          "img": 3
+        },
+        "weave": {
+          "img": 3
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 100%"
+        },
+        "border": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.6,
+          "ox": "63%",
+          "oy": "50%",
+          "op": "50% 10%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/nisha-fabric.jpg",
+          "from": "/assets/images/nisha-print.jpg|1.3|50%|100%|50% 100%",
+          "px": 791
+        },
+        "border": {
+          "src": "/assets/images/detail/nisha-border.jpg",
+          "from": "/assets/images/nisha-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 988
+        },
+        "motif": {
+          "src": "/assets/images/detail/nisha-motif.jpg",
+          "from": "/assets/images/nisha-print.jpg|1.6|63%|50%|50% 10%",
+          "px": 643
+        }
+      }
     },
     {
       "slug": "kajal",
@@ -18885,15 +20988,6 @@
           "px": 788
         }
       },
-      "slideCuts": {
-        "borderDetail": {
-          "src": "/assets/images/slides/nilam-borderDetail.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/nilam-detail.jpg|1.5|75%|60%||3/4",
-          "px": 683
-        }
-      },
       "galleryListed": true,
       "video": {
         "src": "/assets/video/nilam-reel.mp4",
@@ -19344,22 +21438,6 @@
           "px": 788
         }
       },
-      "slideCuts": {
-        "border": {
-          "src": "/assets/images/slides/kamdhenu-border.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/kamdhenu.jpg|1.4|50%|58%||3/4",
-          "px": 731
-        },
-        "swatch": {
-          "src": "/assets/images/slides/kamdhenu-swatch.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/kamdhenu.jpg|1.8|50%|58%||3/4",
-          "px": 600
-        }
-      },
       "galleryListed": true,
       "video": {
         "src": "/assets/video/kamdhenu-reel.mp4",
@@ -19441,25 +21519,41 @@
       },
       "images": [
         {
-          "src": "/assets/images/gulnaar-shoot.jpg",
+          "src": "/assets/images/gulnaar-n1.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Gulnaar, a magenta striped silk with hand-embroidered roses along the border and pallu, worn full length at a white arched window",
+          "source": "model photography/Gulnaar shoot (sent in chat 23 Nov 2026)/gulnaar-1.png"
+        },
+        {
+          "src": "/assets/images/gulnaar-n2.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Gulnaar seen from behind, the pallu spread out with its embroidered roses and gold stripes",
+          "source": "model photography/Gulnaar shoot (sent in chat 23 Nov 2026)/gulnaar-2.png",
+          "fit": "cover"
+        },
+        {
+          "src": "/assets/images/gulnaar-n3.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Gulnaar close up: embroidered roses and flowers along the pallu edge on magenta striped silk",
+          "source": "model photography/Gulnaar shoot (sent in chat 23 Nov 2026)/gulnaar-3.png",
+          "fit": "cover"
+        },
+        {
+          "src": "/assets/images/gulnaar-border-zoom.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Gulnaar — a magenta saree with fine zari stripes and a border of embroidered roses, seen from behind against a white arched wall",
-          "frame": {
-            "x": 0,
-            "y": 0.11,
-            "w": 1,
-            "h": 0.8889
-          }
-        },
-        {
-          "src": "/assets/images/gulnaar-detail.jpg",
-          "width": 1024,
-          "height": 1280,
-          "alt": "Gulnaar up close: roses and blossoms embroidered in coral, peach and ivory above the zari stripes",
-          "source": "Embroidered Magenta Sari Portrait (1) 1.png",
-          "role": "detail"
+          "alt": "Gulnaar border up close: embroidered roses and flowers on magenta silk beside the gold stripes",
+          "source": "model photography/Gulnaar shoot (sent in chat 23 Nov 2026)/gulnaar-3.png (cropped x70 y900 330×440, spline, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
         }
       ],
       "crops": {
@@ -19518,11 +21612,11 @@
           "oy": "88%"
         },
         "styling": {
-          "img": 0,
+          "img": 2,
           "s": 1.3,
-          "ox": "73%",
-          "oy": "39%",
-          "op": "50% 0%"
+          "ox": "50%",
+          "oy": "30%",
+          "op": "50% 20%"
         }
       },
       "backdrop": {
@@ -19551,56 +21645,59 @@
       "photoshoot": true,
       "features": {
         "fabric": {
-          "img": 0,
-          "s": 2.6,
-          "ox": "26%",
-          "oy": "63%",
+          "img": 2,
+          "s": 1.8,
+          "ox": "73%",
+          "oy": "78%",
           "op": "50% 100%"
         },
         "border": {
-          "img": 0,
-          "s": 3.2,
-          "ox": "73%",
+          "img": 3,
+          "s": 1.4,
+          "ox": "50%",
           "oy": "50%",
-          "op": "50% 92%"
+          "op": "50% 5%"
         },
         "motif": {
-          "img": 0,
-          "s": 3,
-          "ox": "0%",
-          "oy": "84%",
-          "op": "50% 100%"
+          "img": 2,
+          "s": 1.8,
+          "ox": "16%",
+          "oy": "39%",
+          "op": "50% 0%"
         }
+      },
+      "galleryListed": true,
+      "video": {
+        "src": "/assets/video/gulnaar-reel.mp4",
+        "srcSmall": "/assets/video/gulnaar-reel-small.mp4",
+        "poster": "/assets/images/gulnaar-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/gulnaar/gulnaar.MP4 1 s–12 s; enhanced by _tools/enhance-reel.sh (SMOOTH=20, highlight roll-off, saturation untouched), 23 Nov 2026; no sound"
+        ]
       },
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/gulnaar-fabric.jpg",
-          "from": "/assets/images/gulnaar-shoot.jpg|2.6|26%|63%|50% 100%",
-          "px": 615
+          "from": "/assets/images/gulnaar-n3.jpg|1.8|73%|78%|50% 100%",
+          "px": 1111
         },
         "border": {
           "src": "/assets/images/detail/gulnaar-border.jpg",
-          "from": "/assets/images/gulnaar-shoot.jpg|3.2|73%|50%|50% 92%",
-          "px": 500
+          "from": "/assets/images/gulnaar-border-zoom.jpg|1.4|50%|50%|50% 5%",
+          "px": 1143
         },
         "motif": {
           "src": "/assets/images/detail/gulnaar-motif.jpg",
-          "from": "/assets/images/gulnaar-shoot.jpg|3|0%|84%|50% 100%",
-          "px": 533
+          "from": "/assets/images/gulnaar-n3.jpg|1.8|16%|39%|50% 0%",
+          "px": 1111
         },
         "styled": {
           "src": "/assets/images/detail/gulnaar-styled.jpg",
-          "from": "/assets/images/gulnaar-shoot.jpg|1.3|73%|39%|50% 0%",
-          "px": 1231
-        }
-      },
-      "slideCuts": {
-        "borderDetail": {
-          "src": "/assets/images/slides/gulnaar-borderDetail.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/gulnaar-detail.jpg|1.5|60%|55%||3/4",
-          "px": 640
+          "from": "/assets/images/gulnaar-n3.jpg|1.3|50%|30%|50% 20%",
+          "px": 1538
         }
       }
     },

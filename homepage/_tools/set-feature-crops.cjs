@@ -25,7 +25,7 @@ const SPECS = {
   mehendi: { fabric: [3, .3, .25, 1.6], border: [2, .7, .2, 2.0], motif: [2, .3, .7, 2.8] },
   kamal:   { fabric: [3, .5, .85, 1.6], border: [2, .5, .2, 2.2], motif: [2, .5, .45, 2.6] },
   kairi:   { fabric: [2, .5, .5, 1.4], border: [1, .5, .5, 1.4], motif: [2, .5, .55, 2.0] }, // zooms from the model photo (client, 23 Nov 2026; folded photos removed)
-  neel:    { fabric: [3, .5, .4, 1.4], border: [2, .5, .65, 1.4], motif: [3, .62, .3, 2.0] }, // zooms from the model photo; group photo is images[1] (23 Nov 2026)
+  neel:    { fabric: [4, .5, .4, 1.4], border: [3, .5, .65, 1.4], motif: [4, .62, .3, 2.0] }, // zooms from the model photo; standing photo images[1], group photo images[2] (23 Nov 2026)
   abeer:   { fabric: [2, .5, .3, 1.3], border: [3, .5, .5, 1.3], motif: [2, .4, .45, 2.0] }, // Neel colours (add-neel-colours.cjs)
   kopal:   { fabric: [2, .5, .3, 1.3], border: [3, .5, .5, 1.3], motif: [2, .45, .45, 2.0] },
   bhanwra: { fabric: [2, .5, .3, 1.3], border: [3, .5, .5, 1.3], motif: [2, .4, .4, 2.0] },
@@ -46,6 +46,17 @@ const SPECS = {
   darbar:  { fabric: [1, .52, .4, 3.0], border: [1, .62, .3, 5.0], motif: [1, .38, .22, 3.0] },
   veena:   { fabric: [1, .5, .25, 3.0], border: [1, .66, .4, 4.5], motif: [1, .63, .6, 3.0] },
   gulaabi: { fabric: [2, .65, .78, 1.8], border: [1, .58, .55, 1.8], motif: [2, .45, .72, 2.0] }, // real photos + border and booti zooms, 23 Nov 2026 (set-gulaabi-shoot.cjs)
+  angoor:  { fabric: [1, .5, .5, 1.2], border: [2, .5, .22, 1.4], motif: [1, .5, .35, 1.6] }, // Bagh colours, 23 Nov 2026 (add-bagh-colours.cjs)
+  shyama:  { fabric: [2, .5, .5, 1.3], border: [1, .5, .55, 1.3], motif: [2, .5, .5, 1.8] }, // zooms cut from the model photo, 23 Nov 2026 (add-shyama-colours.cjs)
+  kanha:   { fabric: [3, .5, .5, 1.3], border: [2, .5, .5, 1.3], motif: [3, .5, .45, 2.0] }, // Shyama colours: border and print close-ups from the camera originals
+  mehroon: { fabric: [3, .5, .5, 1.3], border: [2, .5, .5, 1.3], motif: [3, .5, .55, 2.0] },
+  phagun:  { fabric: [3, .5, .5, 1.3], border: [2, .5, .5, 1.3], motif: [3, .5, .55, 2.0] },
+  sumbul:  { fabric: [3, .5, .5, 1.3], border: [2, .5, .5, 1.3], motif: [3, .5, .55, 2.0] },
+  suhaag:  { fabric: [2, .5, .5, 1.3], border: [1, .3, .5, 1.3], motif: [2, .6, .28, 2.0] }, // zooms cut from the model photo, 23 Nov 2026 (add-suhaag-colours.cjs)
+  ratanjot: { fabric: [3, .5, .6, 1.3], border: [2, .5, .5, 1.3], motif: [3, .4, .3, 1.6] }, // Suhaag colours: close-ups from the camera originals
+  nisha:   { fabric: [3, .5, .75, 1.3], border: [2, .5, .5, 1.3], motif: [3, .55, .4, 1.6] },
+  kajri:   { fabric: [1, .5, .5, 1.2], border: [2, .5, .5, 1.2], motif: [1, .5, .35, 1.6] },
+  neembu:  { fabric: [1, .6, .4, 1.3], border: [2, .4, .6, 1.4], motif: [1, .5, .35, 1.6] },
   nilofer: { fabric: [1, .4, .7, 2.2], border: [2, .14, .4, 2.4], motif: [3, .5, .7, 1.6] }, // full length, seated, close-up, booti, 23 Nov 2026 (set-nilofer-shoot.cjs)
   alta: { fabric: [2, .72, .82, 1.6], border: [4, .47, .76, 2.2], motif: [4, .39, .6, 2.4] }, // 23 Nov 2026 shoot (set-alta-shoot.cjs): 2 = close-up, 4 = niche
   chandni: { fabric: [1, .6, .38, 2.2], border: [1, .35, .22, 2.6], motif: [1, .85, .2, 3.2] }, // gallery = the three real photos, 20 Nov 2026
@@ -60,7 +71,7 @@ const SPECS = {
   kesar:   { fabric: [4, .72, .42, 2.5], border: [4, .7, .83, 3.0], motif: [4, .5, .55, 3.0] },
   baingani: { fabric: [3, .5, .5, 1.4], border: [2, .43, .28, 3.0], motif: [3, .55, .45, 2.0] }, // close-up = 2, booti zoom = 3 (set-baingani-shoot.cjs, 23 Nov 2026)
   pista:   { fabric: [1, .5, .62, 2.2], border: [3, .5, .22, 1.6], motif: [4, .5, .5, 1.8] }, // camera originals + border and booti zooms, 23 Nov 2026 (set-pista-shoot.cjs)
-  gulnaar: { fabric: [0, .35, .72, 2.6], border: [0, .66, .64, 3.2], motif: [0, .15, .82, 3.0] },
+  gulnaar: { fabric: [2, .6, .75, 1.8], border: [3, .5, .35, 1.4], motif: [2, .35, .3, 1.8] }, // camera photos + border zoom, 23 Nov 2026 (set-gulnaar-shoot.cjs)
   saawan:  { fabric: [2, .4, .8, 1.6], border: [3, .5, .5, 1.3], motif: [1, .4, .75, 2.0] }, // 23 Nov 2026 shoot (set-saawan-shoot.cjs): 2 = close-up, 3 = border zoom, 1 = standing
   neelambari: { fabric: [4, .5, .5, 1.4], border: [3, .5, .55, 1.4], motif: [4, .45, .55, 1.8] }, // the client's zooms, 23 Nov 2026 (set-neelambari-shoot.cjs)
   megh:    { fabric: [1, .5, .25, 2.6], border: [1, .5, .75, 2.0], motif: [1, .4, .5, 2.6] },

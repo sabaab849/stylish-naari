@@ -24,15 +24,17 @@
   var announcement = document.querySelector('.announcement');
   var ticking = false;
   var menuOpen = false;
+  var headerActive = false;
 
   function updateHeader() {
     var y = window.scrollY;
     var annH = announcement ? announcement.offsetHeight : 0;
     header.style.setProperty('--header-top', Math.max(0, annH - y) + 'px');
 
-    // Transparent over the hero only at the very top; solid as soon as the page scrolls (client, 17 Nov 2026).
-    // Pages without a full-bleed hero are always solid. The bar never changes size or width.
-    var solid = !hero || y > 0;
+    // Homepage (client, 23 Nov 2026, replaces the solid-only brief of the same day): see-through over the hero at the very top, so the
+    // bar merges with the photograph; the Ivory background comes in as soon as the page scrolls, or while the visitor points at /
+    // tabs into the header, or a light carousel slide is showing. Pages without a full-bleed hero are always solid.
+    var solid = !hero || y > 4 || headerActive || document.documentElement.hasAttribute('data-hero-slide');
     header.classList.toggle('is-solid', solid);
 
     ticking = false;
@@ -41,6 +43,12 @@
     window.addEventListener('scroll', function () {
       if (!ticking) { window.requestAnimationFrame(updateHeader); ticking = true; }
     }, { passive: true });
+    window.addEventListener('heroslide', updateHeader);
+    var setActive = function (on) { headerActive = on; updateHeader(); };
+    header.addEventListener('mouseenter', function () { setActive(true); });
+    header.addEventListener('mouseleave', function () { setActive(!!header.querySelector(':focus-visible')); });
+    header.addEventListener('focusin', function () { setActive(true); });
+    header.addEventListener('focusout', function (e) { if (!header.contains(e.relatedTarget)) setActive(header.matches(':hover')); });
     updateHeader();
   }
 
