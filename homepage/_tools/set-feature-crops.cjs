@@ -52,22 +52,24 @@ const SPECS = {
   narangi: { fabric: [2, .55, .82, 2.2], border: [2, .9, .3, 2.2], motif: [3, .5, .7, 1.6] }, // full length, profile, close-up, booti, 23 Nov 2026 (set-narangi-shoot.cjs)
   hiran: { fabric: [2, .3, .85, 2.2], border: [2, .1, .62, 2.2], motif: [2, .46, .6, 2.3] }, // the client's close-up, 23 Nov 2026 (set-hiran-shoot.cjs)
   dariya:  { fabric: [4, .5, .55, 1.3], border: [3, .5, .5, 1.4], motif: [4, .31, .29, 1.8] }, // border + booti zooms (set-dariya-shoot.cjs), 23 Nov 2026
-  saagar: { fabric: [2, .8, .55, 2.4], border: [2, .62, .84, 2.6], motif: [3, .8, .88, 3.0] }, // five real photos, 20 Nov 2026
+  saagar: { fabric: [3, .8, .4, 1.6], border: [3, .5, .55, 1.6], motif: [2, .62, .25, 1.9] }, // four camera photos, 23 Nov 2026 (set-saagar-shoot.cjs)
   tota: { fabric: [2, .5, .7, 1.8], border: [2, .78, .55, 1.8], motif: [3, .72, .14, 2.0] }, // full-length frame, window, close-up, booti zoom, 23 Nov 2026 (set-tota-shoot.cjs)
-  gagan: { fabric: [1, .6, .76, 2.4], border: [2, .66, .66, 2.4], motif: [2, .45, .84, 3.0] }, // three real photos, 20 Nov 2026
+  gagan: { fabric: [0, .5, .78, 1.8], border: [3, .5, .85, 1.5], motif: [3, .5, .5, 1.5] }, // car shoot photos + zooms, 23 Nov 2026 (set-gagan-shoot.cjs)
   parinda: { fabric: [3, .22, .62, 2.0], border: [3, .48, .6, 2.0], motif: [3, .36, .38, 2.1] }, // the client's close-up, 23 Nov 2026 (set-parinda-shoot.cjs)
   bulbul: { fabric: [1, .42, .62, 2.2], border: [1, .8, .72, 2.4], motif: [3, .5, .55, 1.0] }, // standing + seated + booti close-up, 23 Nov 2026
   kesar:   { fabric: [4, .72, .42, 2.5], border: [4, .7, .83, 3.0], motif: [4, .5, .55, 3.0] },
   baingani: { fabric: [3, .5, .5, 1.4], border: [2, .43, .28, 3.0], motif: [3, .55, .45, 2.0] }, // close-up = 2, booti zoom = 3 (set-baingani-shoot.cjs, 23 Nov 2026)
   pista:   { fabric: [1, .5, .62, 2.2], border: [3, .5, .22, 1.6], motif: [4, .5, .5, 1.8] }, // camera originals + border and booti zooms, 23 Nov 2026 (set-pista-shoot.cjs)
   gulnaar: { fabric: [0, .35, .72, 2.6], border: [0, .66, .64, 3.2], motif: [0, .15, .82, 3.0] },
-  saawan:  { fabric: [0, .4, .9, 2.6], border: [0, .62, .455, 3.0], motif: [0, .4, .66, 3.0] },
+  saawan:  { fabric: [2, .4, .8, 1.6], border: [3, .5, .5, 1.3], motif: [1, .4, .75, 2.0] }, // 23 Nov 2026 shoot (set-saawan-shoot.cjs): 2 = close-up, 3 = border zoom, 1 = standing
   neelambari: { fabric: [4, .5, .5, 1.4], border: [3, .5, .55, 1.4], motif: [4, .45, .55, 1.8] }, // the client's zooms, 23 Nov 2026 (set-neelambari-shoot.cjs)
   megh:    { fabric: [1, .5, .25, 2.6], border: [1, .5, .75, 2.0], motif: [1, .4, .5, 2.6] },
   lavanya: { fabric: [1, .5, .42, 2.6], border: [1, .8, .45, 5.5], motif: [1, .62, .3, 3.6] }, // client's flat-lay, 20 Nov 2026
   bindiya: { fabric: [1, .5, .22, 2.6], border: [1, .5, .465, 3.4], motif: [1, .5, .7, 3.0] }, // client's flat-lay, 20 Nov 2026
   sakhi: { fabric: [1, .5, .2, 2.6], border: [1, .5, .875, 3.0], motif: [1, .6, .66, 2.4] }, // client's flat-lay, 20 Nov 2026
   chitra: { fabric: [1, .45, .22, 2.6], border: [1, .47, .8, 3.2], motif: [1, .55, .6, 2.4] }, // client's laid-out photo, 20 Nov 2026
+  nilam: { fabric: [0, .52, .5, 3.4], border: [0, .33, .75, 3.0], motif: [0, .42, .86, 2.8] }, // the client's car photo, 23 Nov 2026 (set-nilam-shoot.cjs)
+  kamdhenu: { fabric: [1, .5, .82, 3.0], border: [1, .42, .47, 3.4], motif: [1, .36, .55, 2.6] }, // the client's second photo, 23 Nov 2026
   hariyali: { fabric: [3, .3, .4, 1.6] }, // green body with buti (product photo); border and motif keep their real-photo crops
 };
 const clamp = (v, a, b) => Math.min(Math.max(v, a), b);

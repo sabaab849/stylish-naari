@@ -57,7 +57,7 @@ for (const slug of SIBS) {
     descriptionStatus: 'draft',
     colourLine: s.colourLine, colourLineStatus: 'draft',
     colours: [s.colour],
-    colourSiblings: SIBS,
+    colourSiblings: SIBS, unlisted: true,
   });
   p.attributes = { ...p.attributes, colourway: s.colour.name, motif: 'Lion motifs', border: 'Floral border in gold and silver', blousePiece: 'Included, unstitched (pictured)' };
   const sn = 'SN-002';

@@ -9,7 +9,8 @@
    Chat copies, kept at their own size (never enlarged), saved as top-quality JPEGs (q 1, 4:4:4) so they don't block up;
    originals in model photography/Alta shoot (23 Nov 2026)/. Old alta-1/-2/-3 stay on disk.
    Run from homepage/: FFMPEG=<ffmpeg.exe> IN=<chat images> node _tools/set-alta-shoot.cjs,
-   then full-length-first.cjs, set-feature-crops.cjs, make-detail-circles.mjs alta, export-shopify.cjs. */
+   then (client: "remove the shadow completely") the wall shadow is taken out of photo 1 with _tools/alta-arch-deshadow.cjs
+   (ffmpeg → raw rgb24 → node → "alta-arch (shadow removed).png" → alta-arch.jpg q 1), then full-length-first.cjs, set-feature-crops.cjs, make-detail-circles.mjs alta, export-shopify.cjs. */
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');

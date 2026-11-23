@@ -2899,7 +2899,8 @@
           "from": "/assets/images/kishmish-seated.jpg|1.3|44%|33%|50% 30%",
           "px": 788
         }
-      }
+      },
+      "unlisted": true
     },
     {
       "slug": "gulmohar",
@@ -3140,7 +3141,8 @@
           "from": "/assets/images/gulmohar-seated.jpg|1.3|44%|33%|50% 30%",
           "px": 788
         }
-      }
+      },
+      "unlisted": true
     },
     {
       "slug": "panna",
@@ -4692,7 +4694,8 @@
           "from": "/assets/images/basanti-seated.jpg|1.3|100%|50%|50% 0%",
           "px": 788
         }
-      }
+      },
+      "unlisted": true
     },
     {
       "slug": "surkh",
@@ -4948,7 +4951,8 @@
           "from": "/assets/images/surkh-seated.jpg|1.3|100%|50%|50% 0%",
           "px": 788
         }
-      }
+      },
+      "unlisted": true
     },
     {
       "slug": "mehendi",
@@ -10416,7 +10420,7 @@
         "height": 1920,
         "silent": true,
         "sources": [
-          "model photography/saree videos/saree model vids/kesar/kesar.MP4 (first 10 s; enhanced by _tools/enhance-reel.sh, client-approved 23 Nov 2026; no sound)"
+          "model photography/saree videos/saree model vids/kesar/kesar.MP4 (0 s–8.6 s, ends as she looks up; enhanced by _tools/enhance-reel.sh, client-approved 23 Nov 2026; no sound)"
         ]
       }
     },
@@ -10709,7 +10713,7 @@
           "height": 1402,
           "real": true,
           "alt": "Alta, a coral red silk saree with fine zari stripes, a diagonal floral border and gold roundels on the pallu, worn full length beneath a carved terracotta arch with a purple brocade blouse",
-          "source": "model photography/Alta shoot (23 Nov 2026)/alta-arch.png",
+          "source": "model photography/Alta shoot (23 Nov 2026)/alta-arch (shadow removed).png (wall shadow removed by _tools/alta-arch-deshadow.cjs from alta-arch.png)",
           "pos": "50% 50%"
         },
         {
@@ -18520,76 +18524,43 @@
         "blousePiece": null,
         "weave": null,
         "origin": null,
-        "availability": null
+        "availability": null,
+        "booti": "Gold and silver zari flower booti"
       },
       "images": [
         {
-          "src": "/assets/images/saagar-1.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/saagar-n1.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "alt": "Saagar — a teal saree with large zari flowers and a wide coral zari border of flowering vines, worn in front of a navy arched door",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          }
+          "alt": "Saagar, a sea-blue Banarasi silk with gold and silver zari flower booti and a coral and gold border and pallu, worn full length at a navy arched door",
+          "source": "model photography/Saagar shoot (sent in chat 23 Nov 2026)/saagar-1.png"
         },
         {
-          "src": "/assets/images/saagar-2.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/saagar-n2.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "alt": "Saagar — leaning on the door frame, the pallu falling open to show its coral border",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Saagar worn looking down, the coral-bordered pallu swinging over the arm, with a red brocade blouse",
+          "source": "model photography/Saagar shoot (sent in chat 23 Nov 2026)/saagar-2.png",
           "fit": "cover"
         },
         {
-          "src": "/assets/images/saagar-5.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/saagar-n3.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "alt": "Saagar — close up of the zari flowers on the diagonal check texture and the coral vine border",
-          "frame": {
-            "x": 0,
-            "y": 0.05,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Saagar close up: the coral and gold floral border and zari flower booti on sea-blue silk",
+          "source": "model photography/Saagar shoot (sent in chat 23 Nov 2026)/saagar-3.png",
           "fit": "cover"
         },
         {
-          "src": "/assets/images/saagar-3.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/saagar-n4.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "alt": "Saagar — the pallu lifted, showing the zari flowers and the coral border",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
-        },
-        {
-          "src": "/assets/images/saagar-4.jpg",
-          "width": 1600,
-          "height": 2400,
-          "real": true,
-          "alt": "Saagar — the zari flowers on the diagonal check texture, and the pallu with its coral border",
-          "frame": {
-            "x": 0,
-            "y": 0.08,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Saagar pallu border up close: a coral and gold floral vine border beside the zari flower booti",
+          "source": "model photography/Saagar shoot (sent in chat 23 Nov 2026)/saagar-4.png",
           "fit": "cover"
         }
       ],
@@ -18605,7 +18576,7 @@
           "op": "50% 100%"
         },
         "pallu": {
-          "img": 4,
+          "img": 0,
           "s": 1.6,
           "ox": "77%",
           "oy": "50%",
@@ -18656,9 +18627,9 @@
         "styling": {
           "img": 1,
           "s": 1.3,
-          "ox": "39%",
-          "oy": "32%",
-          "op": "50% 0%"
+          "ox": "50%",
+          "oy": "25%",
+          "op": "50% 15%"
         }
       },
       "backdrop": {
@@ -18685,51 +18656,40 @@
         ]
       },
       "photoshoot": true,
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/saagar-fabric.jpg",
-          "from": "/assets/images/saagar-5.jpg|2.4|100%|50%|50% 65%",
-          "px": 667
-        },
-        "border": {
-          "src": "/assets/images/detail/saagar-border.jpg",
-          "from": "/assets/images/saagar-5.jpg|2.6|70%|92%|50% 100%",
-          "px": 615
-        },
-        "motif": {
-          "src": "/assets/images/detail/saagar-motif.jpg",
-          "from": "/assets/images/saagar-3.jpg|3|95%|98%|50% 100%",
-          "px": 533
-        },
-        "styled": {
-          "src": "/assets/images/detail/saagar-styled.jpg",
-          "from": "/assets/images/saagar-2.jpg|1.3|39%|32%|50% 0%",
-          "px": 1231
-        }
-      },
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 2,
-          "s": 2.4,
+          "img": 3,
+          "s": 1.6,
           "ox": "100%",
+          "oy": "50%",
+          "op": "50% 20%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.6,
+          "ox": "50%",
           "oy": "50%",
           "op": "50% 65%"
         },
-        "border": {
-          "img": 2,
-          "s": 2.6,
-          "ox": "70%",
-          "oy": "92%",
-          "op": "50% 100%"
-        },
         "motif": {
-          "img": 3,
-          "s": 3,
-          "ox": "95%",
-          "oy": "98%",
-          "op": "50% 100%"
+          "img": 2,
+          "s": 1.9,
+          "ox": "75%",
+          "oy": "24%",
+          "op": "50% 0%"
         }
+      },
+      "video": {
+        "src": "/assets/video/saagar-reel.mp4",
+        "srcSmall": "/assets/video/saagar-reel-small.mp4",
+        "poster": "/assets/images/saagar-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/saagar/sagar.MP4 8 s–12.7 s (no face: starts after it leaves the frame; ends before she turns her back), slowed to half speed and heavily stabilised (SMOOTH=40); enhanced by _tools/enhance-reel-slow.sh, 23 Nov 2026; no sound"
+        ]
       }
     },
     {
@@ -18789,6 +18749,14 @@
       },
       "images": [
         {
+          "src": "/assets/images/nilam-car.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Nilam worn standing beside a pale blue vintage car: sapphire silk with a meenakari pallu of roses and leaves, a silver zari border",
+          "source": "model photography/Nilam shoot (sent in chat 23 Nov 2026)/nilam-car.png"
+        },
+        {
           "src": "/assets/images/nilam.jpg",
           "width": 1024,
           "height": 1536,
@@ -18813,58 +18781,58 @@
       ],
       "crops": {
         "silhouette": {
-          "img": 0
+          "img": 1
         },
         "fall": {
-          "img": 0,
+          "img": 1,
           "s": 1.5,
           "ox": "50%",
           "oy": "90%"
         },
         "pallu": {
-          "img": 0,
+          "img": 1,
           "s": 1.5,
           "ox": "60%",
           "oy": "60%"
         },
         "border": {
-          "img": 1,
+          "img": 2,
           "s": 1.4,
           "ox": "75%",
           "oy": "55%"
         },
         "weave": {
-          "img": 1,
+          "img": 2,
           "s": 1.3,
           "ox": "45%",
           "oy": "60%"
         },
         "borderDetail": {
-          "img": 1,
+          "img": 2,
           "s": 1.5,
           "ox": "75%",
           "oy": "60%"
         },
         "motif": {
-          "img": 1,
+          "img": 2,
           "s": 2,
           "ox": "50%",
           "oy": "75%"
         },
         "colour": {
-          "img": 0,
+          "img": 1,
           "s": 1.3,
           "ox": "60%",
           "oy": "60%"
         },
         "swatch": {
-          "img": 1,
+          "img": 2,
           "s": 1.8,
           "ox": "45%",
           "oy": "80%"
         },
         "styling": {
-          "img": 0,
+          "img": 1,
           "s": 1.3,
           "ox": "48%",
           "oy": "28%",
@@ -18898,18 +18866,18 @@
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/nilam-fabric.jpg",
-          "from": "/assets/images/nilam.jpg|1.3|60%|63%|",
-          "px": 788
+          "from": "/assets/images/nilam-car.jpg|3.4|53%|50%|50% 50%",
+          "px": 461
         },
         "border": {
           "src": "/assets/images/detail/nilam-border.jpg",
-          "from": "/assets/images/nilam-detail.jpg|1.5|75%|63%|",
-          "px": 683
+          "from": "/assets/images/nilam-car.jpg|3|25%|69%|50% 100%",
+          "px": 461
         },
         "motif": {
           "src": "/assets/images/detail/nilam-motif.jpg",
-          "from": "/assets/images/nilam-detail.jpg|2|50%|83%|",
-          "px": 512
+          "from": "/assets/images/nilam-car.jpg|2.8|38%|95%|50% 100%",
+          "px": 461
         },
         "styled": {
           "src": "/assets/images/detail/nilam-styled.jpg",
@@ -18924,6 +18892,41 @@
           "h": 1760,
           "from": "/assets/images/nilam-detail.jpg|1.5|75%|60%||3/4",
           "px": 683
+        }
+      },
+      "galleryListed": true,
+      "video": {
+        "src": "/assets/video/nilam-reel.mp4",
+        "srcSmall": "/assets/video/nilam-reel-small.mp4",
+        "poster": "/assets/images/nilam-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/nilam/nilam.MP4 8–15 s at 0.8×; enhanced by _tools/enhance-reel-slow.sh (SMOOTH=60 MAXSHIFT=45, zoom fixed at 7 %, default grade), 23 Nov 2026; no sound"
+        ]
+      },
+      "features": {
+        "fabric": {
+          "img": 0,
+          "s": 3.4,
+          "ox": "53%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 0,
+          "s": 3,
+          "ox": "25%",
+          "oy": "69%",
+          "op": "50% 100%"
+        },
+        "motif": {
+          "img": 0,
+          "s": 2.8,
+          "ox": "38%",
+          "oy": "95%",
+          "op": "50% 100%"
         }
       }
     },
@@ -19225,6 +19228,14 @@
             "w": 1,
             "h": 0.8889
           }
+        },
+        {
+          "src": "/assets/images/kamdhenu-smile.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Kamdhenu worn with the pallu across the shoulder: embroidered cows below an ivory scallop edge on dusty rose, tasselled ends",
+          "source": "model photography/Kamdhenu shoot (sent in chat 23 Nov 2026)/kamdhenu-smile.png"
         }
       ],
       "crops": {
@@ -19312,15 +19323,20 @@
       },
       "photoshoot": true,
       "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/kamdhenu-fabric.jpg",
+          "from": "/assets/images/kamdhenu-smile.jpg|3|50%|84%|50% 100%",
+          "px": 461
+        },
         "border": {
           "src": "/assets/images/detail/kamdhenu-border.jpg",
-          "from": "/assets/images/kamdhenu.jpg|1.5|50%|61%|",
-          "px": 683
+          "from": "/assets/images/kamdhenu-smile.jpg|3.4|39%|50%|50% 41%",
+          "px": 461
         },
         "motif": {
           "src": "/assets/images/detail/kamdhenu-motif.jpg",
-          "from": "/assets/images/kamdhenu.jpg|2|50%|61%|",
-          "px": 512
+          "from": "/assets/images/kamdhenu-smile.jpg|2.6|27%|50%|50% 65%",
+          "px": 461
         },
         "styled": {
           "src": "/assets/images/detail/kamdhenu-styled.jpg",
@@ -19342,6 +19358,41 @@
           "h": 1760,
           "from": "/assets/images/kamdhenu.jpg|1.8|50%|58%||3/4",
           "px": 600
+        }
+      },
+      "galleryListed": true,
+      "video": {
+        "src": "/assets/video/kamdhenu-reel.mp4",
+        "srcSmall": "/assets/video/kamdhenu-reel-small.mp4",
+        "poster": "/assets/images/kamdhenu-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/kamdhenu/kamdhenu 02.MP4 5–13 s (replaces kamdhenu.MP4, client 23 Nov 2026); enhanced by _tools/enhance-reel.sh (SMOOTH=20, default grade); no sound"
+        ]
+      },
+      "features": {
+        "fabric": {
+          "img": 1,
+          "s": 3,
+          "ox": "50%",
+          "oy": "84%",
+          "op": "50% 100%"
+        },
+        "border": {
+          "img": 1,
+          "s": 3.4,
+          "ox": "39%",
+          "oy": "50%",
+          "op": "50% 41%"
+        },
+        "motif": {
+          "img": 1,
+          "s": 2.6,
+          "ox": "27%",
+          "oy": "50%",
+          "op": "50% 65%"
         }
       }
     },
@@ -19603,17 +19654,57 @@
       },
       "images": [
         {
-          "src": "/assets/images/saawan-shoot.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/saawan-seated.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Saawan — a teal saree with broad mottled stripes of moss green and rust and a gold-striped teal pallu, worn standing on white steps with the pallu in the wind",
+          "alt": "Saawan, a teal saree in broad mottled stripes of moss green and rust with a gold-tissue pallu edged in teal, worn seated against a white wall, the pallu flying out",
+          "source": "model photography/Saawan shoot (sent in chat 23 Nov 2026)/saawan-seated.png",
           "frame": {
             "x": 0,
-            "y": 0.11,
+            "y": 0.1111,
             "w": 1,
             "h": 0.8889
           }
+        },
+        {
+          "src": "/assets/images/saawan-wind.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Saawan worn standing on a white terrace beside a cobalt urn, the pallu blowing out in the wind",
+          "source": "model photography/Saawan shoot (sent in chat 23 Nov 2026)/saawan-wind.png",
+          "frame": {
+            "x": 0,
+            "y": 0.08,
+            "w": 1,
+            "h": 0.8889
+          }
+        },
+        {
+          "src": "/assets/images/saawan-closeup.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Saawan up close: the striped pallu drawn over the shoulder with a black blouse and a silver bird ring",
+          "source": "model photography/Saawan shoot (sent in chat 23 Nov 2026)/saawan-closeup.png",
+          "frame": {
+            "x": 0,
+            "y": 0.05,
+            "w": 1,
+            "h": 0.8889
+          }
+        },
+        {
+          "src": "/assets/images/saawan-border-zoom.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Saawan border up close: a teal band with fine gold stripes along the gold-tissue pallu",
+          "source": "model photography/Saawan shoot (sent in chat 23 Nov 2026)/saawan-seated.png (cropped x560 y560 340×510, spline 3×, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
         }
       ],
       "crops": {
@@ -19672,11 +19763,11 @@
           "oy": "62%"
         },
         "styling": {
-          "img": 0,
+          "img": 2,
           "s": 1.3,
-          "ox": "34%",
-          "oy": "50%",
-          "op": "50% 8%"
+          "ox": "55%",
+          "oy": "25%",
+          "op": "50% 10%"
         }
       },
       "backdrop": {
@@ -19705,64 +19796,38 @@
       "photoshoot": true,
       "features": {
         "fabric": {
-          "img": 0,
-          "s": 2.6,
-          "ox": "34%",
+          "img": 2,
+          "s": 1.6,
+          "ox": "23%",
           "oy": "100%",
           "op": "50% 100%"
         },
         "border": {
-          "img": 0,
-          "s": 3,
-          "ox": "68%",
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
           "oy": "50%",
-          "op": "50% 37%"
+          "op": "50% 50%"
         },
         "motif": {
-          "img": 0,
-          "s": 3,
-          "ox": "35%",
-          "oy": "50%",
-          "op": "50% 98%"
+          "img": 1,
+          "s": 2,
+          "ox": "30%",
+          "oy": "75%",
+          "op": "50% 100%"
         }
       },
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/saawan-fabric.jpg",
-          "from": "/assets/images/saawan-shoot.jpg|2.6|34%|100%|50% 100%",
-          "px": 615
-        },
-        "border": {
-          "src": "/assets/images/detail/saawan-border.jpg",
-          "from": "/assets/images/saawan-shoot.jpg|3|68%|50%|50% 37%",
-          "px": 533
-        },
-        "motif": {
-          "src": "/assets/images/detail/saawan-motif.jpg",
-          "from": "/assets/images/saawan-shoot.jpg|3|35%|50%|50% 98%",
-          "px": 533
-        },
-        "styled": {
-          "src": "/assets/images/detail/saawan-styled.jpg",
-          "from": "/assets/images/saawan-shoot.jpg|1.3|34%|50%|50% 8%",
-          "px": 1231
-        }
-      },
-      "slideCuts": {
-        "border": {
-          "src": "/assets/images/slides/saawan-border.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/saawan-shoot.jpg|1.4|40%|62%||3/4",
-          "px": 1143
-        },
-        "swatch": {
-          "src": "/assets/images/slides/saawan-swatch.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/saawan-shoot.jpg|1.8|40%|62%||3/4",
-          "px": 889
-        }
+      "galleryListed": true,
+      "video": {
+        "src": "/assets/video/saawan-reel.mp4",
+        "srcSmall": "/assets/video/saawan-reel-small.mp4",
+        "poster": "/assets/images/saawan-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/sawan/sawan.MP4 3 s – end; enhanced by _tools/enhance-reel.sh with SMOOTH=30 (default grade: highlight roll-off, contrast +4 %, saturation +3 %, no white-balance change), 23 Nov 2026; no sound"
+        ]
       }
     },
     {
@@ -19810,45 +19875,41 @@
       },
       "images": [
         {
-          "src": "/assets/images/gagan-1.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/gagan-n2.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "alt": "Gagan — a sheer sky blue saree with large ivory flowers and a scalloped embroidered border, worn leaning on a turquoise vintage car",
-          "frame": {
-            "x": 0,
-            "y": 0.15,
-            "w": 1,
-            "h": 0.8889
-          }
+          "alt": "Gagan, a sky-blue organza saree with ivory applique flowers and an embroidered scalloped border, worn seated in an open turquoise car",
+          "source": "model photography/Gagan shoot (sent in chat 23 Nov 2026)/gagan-2.png"
         },
         {
-          "src": "/assets/images/gagan-2.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/gagan-n3.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "alt": "Gagan — seated in the open car door, the ivory flowers rising from the hem",
-          "frame": {
-            "x": 0,
-            "y": 0.2,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Gagan worn leaning on a turquoise car door, the pallu edge embroidered with roses and the hem with applique flowers",
+          "source": "model photography/Gagan shoot (sent in chat 23 Nov 2026)/gagan-3.png",
           "fit": "cover"
         },
         {
-          "src": "/assets/images/gagan-3.jpg",
+          "src": "/assets/images/gagan-n1.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Gagan half length, face turned, the scalloped pallu edge embroidered with roses",
+          "source": "model photography/Gagan shoot (sent in chat 23 Nov 2026)/gagan-1.png",
+          "fit": "cover"
+        },
+        {
+          "src": "/assets/images/gagan-border-zoom.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Gagan — the pallu with its scalloped border embroidered in pink, peach and ivory roses",
-          "frame": {
-            "x": 0,
-            "y": 0.05,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "alt": "Gagan hem up close: ivory applique flowers and a scalloped embroidered border on sky-blue organza",
+          "source": "model photography/Gagan shoot (sent in chat 23 Nov 2026)/gagan-2.png (cropped x290 y960 420×560, spline, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
         }
       ],
       "crops": {
@@ -19915,8 +19976,8 @@
           "img": 2,
           "s": 1.3,
           "ox": "50%",
-          "oy": "50%",
-          "op": "50% 5%"
+          "oy": "25%",
+          "op": "50% 15%"
         }
       },
       "backdrop": {
@@ -19943,50 +20004,61 @@
         ]
       },
       "photoshoot": true,
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/gagan-fabric.jpg",
-          "from": "/assets/images/gagan-2.jpg|2.4|67%|74%|50% 100%",
-          "px": 667
-        },
-        "border": {
-          "src": "/assets/images/detail/gagan-border.jpg",
-          "from": "/assets/images/gagan-3.jpg|2.4|77%|50%|50% 98%",
-          "px": 667
-        },
-        "motif": {
-          "src": "/assets/images/detail/gagan-motif.jpg",
-          "from": "/assets/images/gagan-3.jpg|3|42%|89%|50% 100%",
-          "px": 533
-        },
-        "styled": {
-          "src": "/assets/images/detail/gagan-styled.jpg",
-          "from": "/assets/images/gagan-3.jpg|1.3|50%|50%|50% 5%",
-          "px": 1231
-        }
-      },
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "67%",
-          "oy": "74%",
+          "img": 0,
+          "s": 1.8,
+          "ox": "50%",
+          "oy": "88%",
           "op": "50% 100%"
         },
         "border": {
-          "img": 2,
-          "s": 2.4,
-          "ox": "77%",
-          "oy": "50%",
-          "op": "50% 98%"
+          "img": 3,
+          "s": 1.5,
+          "ox": "50%",
+          "oy": "100%",
+          "op": "50% 100%"
         },
         "motif": {
-          "img": 2,
-          "s": 3,
-          "ox": "42%",
-          "oy": "89%",
-          "op": "50% 100%"
+          "img": 3,
+          "s": 1.5,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        }
+      },
+      "video": {
+        "src": "/assets/video/gagan-reel.mp4",
+        "srcSmall": "/assets/video/gagan-reel-small.mp4",
+        "poster": "/assets/images/gagan-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/gagan/gagan.MP4 3 s–8.4 s (ends before the push-in on her face), slowed to half speed and heavily stabilised (SMOOTH=40); enhanced by _tools/enhance-reel-slow.sh, 23 Nov 2026; no sound"
+        ]
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/gagan-fabric.jpg",
+          "from": "/assets/images/gagan-n2.jpg|1.8|50%|88%|50% 100%",
+          "px": 1111
+        },
+        "border": {
+          "src": "/assets/images/detail/gagan-border.jpg",
+          "from": "/assets/images/gagan-border-zoom.jpg|1.5|50%|100%|50% 100%",
+          "px": 1067
+        },
+        "motif": {
+          "src": "/assets/images/detail/gagan-motif.jpg",
+          "from": "/assets/images/gagan-border-zoom.jpg|1.5|50%|50%|50% 50%",
+          "px": 1067
+        },
+        "styled": {
+          "src": "/assets/images/detail/gagan-styled.jpg",
+          "from": "/assets/images/gagan-n1.jpg|1.3|50%|25%|50% 15%",
+          "px": 1538
         }
       }
     },

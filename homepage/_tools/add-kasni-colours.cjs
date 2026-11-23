@@ -90,7 +90,7 @@ for (const slug of SIBS.slice(1)) {
     },
     backdrop: { img: s.backdrop, pos: '50% 50%', posMobile: '50% 50%' },
     closer: { heading: s.colourLine, headingStatus: 'draft', items: s.closer },
-    colourSiblings: SIBS,
+    colourSiblings: SIBS, unlisted: true,
     galleryListed: true,
   });
   p.attributes = { ...kasni.attributes, colourway: s.colour.name, border: s.border, blousePiece: 'Included, unstitched (pictured)' };
