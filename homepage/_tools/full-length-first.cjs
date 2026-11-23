@@ -5,7 +5,7 @@
 const fs = require('fs');
 const file = 'assets/data/products.json';
 const data = JSON.parse(fs.readFileSync(file, 'utf8'));
-const SLUGS = ['genda', 'elaichi', 'kesar', 'nilofer', 'alta', 'hiran', 'gulaabi'];
+const SLUGS = ['genda', 'elaichi', 'kesar', 'nilofer', 'alta', 'hiran', 'gulaabi']; // hiran's first photo is a close-up since 23 Nov 2026 (no frame either way)
 for (const slug of SLUGS) {
   const p = data.products.find((x) => x.slug === slug);
   if (!p) { console.log('missing', slug); continue; }

@@ -25,7 +25,8 @@ const SHOOTS = {
     styling: [.6, .26], pallu: [.4, .5], fall: [.65, .85], colour: [.65, .65] },
   bulbul: { file: 'bulbul-shoot.jpg', y: 0.11, alt: 'Bulbul — a plum Banarasi saree with silver zari birds and flowering trees, worn seated on a tiled floor holding a pink lotus',
     styling: [.45, .33], pallu: [.78, .6], fall: [.6, .9], colour: [.5, .7] },
-  kesar: { file: 'kesar-shoot.jpg', y: 0.07, alt: 'Kesar — a coral red Banarasi saree with silver zari booti and a scalloped floral pallu, worn standing in an arched alcove, the pallu held open',
+  // kesar: superseded by the 23 Nov 2026 shoot (kesar-arch/jewel/pallu, galleryListed)
+  _kesar_old: { file: 'kesar-shoot.jpg', y: 0.07, alt: 'Kesar — a coral red Banarasi saree with silver zari booti and a scalloped floral pallu, worn standing in an arched alcove, the pallu held open',
     styling: [.4, .2], pallu: [.72, .55], fall: [.55, .9], colour: [.65, .4] },
 };
 for (const [slug, s] of Object.entries(SHOOTS)) {

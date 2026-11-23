@@ -10,7 +10,7 @@ const fs = require('fs'); const f = 'assets/data/products.json'; const d = JSON.
 const SET = {
   gulkand: { frames: { 0: { x: 0, y: 0.1111, w: 1, h: 0.8889 } }, silhouette: { img: 0, s: 1.1, ox: '50%', oy: '100%' } }, // real shoot, 20 Nov 2026
   parinda: {
-    frames: { 0: { x: 0.036, y: 0.19, w: 0.838, h: 0.745 }, 2: { x: 0, y: 0.2, w: 0.9, h: 0.8 } },
+    frames: {}, // 23 Nov 2026: the client's 2:3 photos are shown whole (set-parinda-shoot.cjs)
     silhouette: { img: 0, s: 1.15, ox: '25%', oy: '80%' },
   },
   elaichi: { frames: { 0: { x: 0, y: 0.1111, w: 1, h: 0.8889 } }, silhouette: { img: 0, s: 1.15, ox: '20%', oy: '100%' } },

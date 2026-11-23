@@ -174,25 +174,24 @@
           }
         },
         {
-          "src": "/assets/images/kairi-original.jpg",
-          "width": 1350,
-          "height": 2400,
+          "src": "/assets/images/kairi-border-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
           "role": "product",
           "fit": "cover",
-          "second": true,
-          "alt": "Kairi, folded: the saree itself, rose pink with small zari buti, the chartreuse pallu folded open with its gold zari border",
-          "source": "model photography/folded originals nov19/kairi folded.jpg (sent in chat, November 19)",
-          "actual": true
+          "real": true,
+          "alt": "Kairi up close: the zari border",
+          "source": "kairi.jpg (zoom cut from the model photo, client 23 Nov 2026: cleaned with light nlmeans, spline scaling, no sharpening)"
         },
         {
-          "src": "/assets/images/kairi-closeup.jpg",
-          "width": 1350,
-          "height": 2400,
+          "src": "/assets/images/kairi-print-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
           "role": "product",
           "fit": "cover",
-          "second": true,
-          "alt": "Kairi up close: rose pink with zari buti meeting the chartreuse pallu, its gold zari border and meenakari flowers",
-          "source": "model photography/folded originals nov19/kairi closeup.jpg (sent in chat, November 19)"
+          "real": true,
+          "alt": "Kairi up close: the woven print on the body",
+          "source": "kairi.jpg (zoom cut from the model photo, client 23 Nov 2026: cleaned with light nlmeans, spline scaling, no sharpening)"
         }
       ],
       "crops": {
@@ -212,16 +211,10 @@
           "oy": "62%"
         },
         "border": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "41%",
-          "oy": "73%"
+          "img": 1
         },
         "weave": {
-          "img": 0,
-          "s": 4.6,
-          "ox": "66%",
-          "oy": "80%"
+          "img": 2
         },
         "zari": {
           "img": 0,
@@ -230,10 +223,7 @@
           "oy": "88%"
         },
         "borderDetail": {
-          "img": 0,
-          "s": 4.5,
-          "ox": "45%",
-          "oy": "72%"
+          "img": 1
         },
         "motif": {
           "img": 0,
@@ -248,14 +238,11 @@
           "oy": "85%"
         },
         "swatch": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "33%",
-          "oy": "43%"
+          "img": 2
         },
         "styling": {
           "img": 0,
-          "s": 2.2,
+          "s": 1.3,
           "ox": "50%",
           "oy": "50%",
           "op": "50% 17%"
@@ -294,73 +281,586 @@
       "features": {
         "fabric": {
           "img": 2,
-          "s": 2,
-          "ox": "60%",
-          "oy": "3%",
-          "op": "50% 0%"
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
         },
         "border": {
-          "img": 2,
-          "s": 2.2,
-          "ox": "0%",
+          "img": 1,
+          "s": 1.4,
+          "ox": "50%",
           "oy": "50%",
-          "op": "50% 61%"
+          "op": "50% 50%"
         },
         "motif": {
           "img": 2,
-          "s": 2.6,
-          "ox": "34%",
+          "s": 2,
+          "ox": "50%",
           "oy": "50%",
-          "op": "50% 32%"
+          "op": "50% 70%"
         }
-      },
-      "video": {
-        "src": "/assets/video/kairi-reel.mp4",
-        "srcSmall": "/assets/video/kairi-reel-small.mp4",
-        "poster": "/assets/images/kairi-reel-poster.jpg",
-        "width": 720,
-        "height": 1280,
-        "sources": [
-          "model photography/saree videos/saree shoot/saree reels/kairi video.mp4"
-        ]
       },
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/kairi-fabric.jpg",
-          "from": "/assets/images/kairi-closeup.jpg|2|60%|3%|50% 0%",
-          "px": 675
+          "from": "/assets/images/kairi-print-zoom.jpg|1.4|50%|50%|50% 50%",
+          "px": 943
         },
         "border": {
           "src": "/assets/images/detail/kairi-border.jpg",
-          "from": "/assets/images/kairi-closeup.jpg|2.2|0%|50%|50% 61%",
-          "px": 614
+          "from": "/assets/images/kairi-border-zoom.jpg|1.4|50%|50%|50% 50%",
+          "px": 943
         },
         "motif": {
           "src": "/assets/images/detail/kairi-motif.jpg",
-          "from": "/assets/images/kairi-closeup.jpg|2.6|34%|50%|50% 32%",
-          "px": 519
+          "from": "/assets/images/kairi-print-zoom.jpg|2|50%|50%|50% 70%",
+          "px": 660
         },
         "styled": {
           "src": "/assets/images/detail/kairi-styled.jpg",
-          "from": "/assets/images/kairi.jpg|2.2|50%|50%|50% 17%",
-          "px": 496
+          "from": "/assets/images/kairi.jpg|1.3|50%|50%|50% 17%",
+          "px": 840
         }
       },
       "photoshoot": true,
-      "slideCuts": {
+      "galleryListed": true,
+      "colourSiblings": [
+        "kairi",
+        "sabza",
+        "mohini",
+        "mahavar"
+      ]
+    },
+    {
+      "slug": "sabza",
+      "name": "Sabza",
+      "nameMeaning": "greenery",
+      "descriptor": "Sage green with a lilac pallu",
+      "description": "Sabza is sage green silk with silver floral buta and a paisley zari border, the same weave as Kairi, with a lilac pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Sage green silk with a lilac pallu.",
+      "colourLineStatus": "draft",
+      "price": 24500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "bright"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Sage green",
+          "hex": "#8FA878",
+          "text": "#1F1A16"
+        }
+      ],
+      "colourSiblings": [
+        "kairi",
+        "sabza",
+        "mohini",
+        "mahavar"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Sage green and lilac",
+        "border": "Paisley zari border",
+        "motif": "Floral buta",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Sage green, with lilac.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Sage green"
+          ],
+          [
+            "Motif",
+            "Floral buta"
+          ],
+          [
+            "Border",
+            "Paisley zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/sabza-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sabza: the saree, folded, the paisley border along the hem",
+          "source": "model photography/Kairi colours (23 Nov 2026)/sabza-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/sabza-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sabza: folded, showing the lilac pallu",
+          "source": "model photography/Kairi colours (23 Nov 2026)/sabza-folded-2-orig.jpg"
+        },
+        {
+          "src": "/assets/images/sabza-booti.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sabza: a silver floral buta on sage green silk",
+          "source": "model photography/Kairi colours (23 Nov 2026)/sabza-folded-orig.jpg (close-up)"
+        },
+        {
+          "src": "/assets/images/sabza-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Sabza: the paisley zari border up close",
+          "source": "model photography/Kairi colours (23 Nov 2026)/sabza-folded-orig.jpg (close-up)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
         "border": {
-          "src": "/assets/images/slides/kairi-border.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/kairi-original.jpg|2.4|41%|73%||3/4",
-          "px": 938
+          "img": 3
+        },
+        "borderDetail": {
+          "img": 3
         },
         "swatch": {
-          "src": "/assets/images/slides/kairi-swatch.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/kairi-original.jpg|2.4|33%|43%||3/4",
-          "px": 938
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "50%",
+          "oy": "30%",
+          "op": "50% 0%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/sabza-fabric.jpg",
+          "from": "/assets/images/sabza-booti.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/sabza-border.jpg",
+          "from": "/assets/images/sabza-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/sabza-motif.jpg",
+          "from": "/assets/images/sabza-booti.jpg|2|50%|30%|50% 0%",
+          "px": 660
+        }
+      }
+    },
+    {
+      "slug": "mohini",
+      "name": "Mohini",
+      "nameMeaning": "enchantress",
+      "descriptor": "Magenta with a rose pink pallu",
+      "description": "Mohini is magenta silk with silver floral buta and a paisley zari border, the same weave as Kairi, with a rose pink pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Magenta silk with a rose pink pallu.",
+      "colourLineStatus": "draft",
+      "price": 24500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "bright"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Magenta",
+          "hex": "#B0207A",
+          "text": "#F6F1EA"
+        }
+      ],
+      "colourSiblings": [
+        "kairi",
+        "sabza",
+        "mohini",
+        "mahavar"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Magenta and rose pink",
+        "border": "Paisley zari border",
+        "motif": "Floral buta",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Magenta, with rose pink.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Magenta"
+          ],
+          [
+            "Motif",
+            "Floral buta"
+          ],
+          [
+            "Border",
+            "Paisley zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/mohini-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mohini: the saree, folded, the paisley border along the hem",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mohini-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/mohini-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mohini: folded, showing the rose pink pallu",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mohini-folded-2-orig.jpg"
+        },
+        {
+          "src": "/assets/images/mohini-folded-3.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mohini: folded, showing the rose pink pallu",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mohini-folded-3-orig.jpg"
+        },
+        {
+          "src": "/assets/images/mohini-booti.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mohini: a silver floral buta on magenta silk",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mohini-folded-orig.jpg (close-up)"
+        },
+        {
+          "src": "/assets/images/mohini-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mohini: the paisley zari border up close",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mohini-folded-orig.jpg (close-up)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 4
+        },
+        "borderDetail": {
+          "img": 4
+        },
+        "swatch": {
+          "img": 3
+        },
+        "weave": {
+          "img": 3
+        },
+        "motif": {
+          "img": 3,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 4,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 3,
+          "s": 2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 70%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/mohini-fabric.jpg",
+          "from": "/assets/images/mohini-booti.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/mohini-border.jpg",
+          "from": "/assets/images/mohini-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/mohini-motif.jpg",
+          "from": "/assets/images/mohini-booti.jpg|2|50%|50%|50% 70%",
+          "px": 660
+        }
+      }
+    },
+    {
+      "slug": "mahavar",
+      "name": "Mahavar",
+      "nameMeaning": "the red dye painted on the feet",
+      "descriptor": "Crimson with a rose pink pallu",
+      "description": "Mahavar is crimson silk with silver floral buta and a paisley zari border, the same weave as Kairi, with a rose pink pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Crimson silk with a rose pink pallu.",
+      "colourLineStatus": "draft",
+      "price": 24500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "bright"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Crimson",
+          "hex": "#9A1B22",
+          "text": "#F6F1EA"
+        }
+      ],
+      "colourSiblings": [
+        "kairi",
+        "sabza",
+        "mohini",
+        "mahavar"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Crimson and rose pink",
+        "border": "Paisley zari border",
+        "motif": "Floral buta",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Crimson, with rose pink.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Crimson"
+          ],
+          [
+            "Motif",
+            "Floral buta"
+          ],
+          [
+            "Border",
+            "Paisley zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/mahavar-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mahavar: the saree, folded, the paisley border along the hem",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mahavar-folded-orig.jpg"
+        },
+        {
+          "src": "/assets/images/mahavar-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mahavar: folded, showing the rose pink pallu",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mahavar-folded-2-orig.jpg"
+        },
+        {
+          "src": "/assets/images/mahavar-booti.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mahavar: a silver floral buta on crimson silk",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mahavar-folded-orig.jpg (close-up)"
+        },
+        {
+          "src": "/assets/images/mahavar-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mahavar: the paisley zari border up close",
+          "source": "model photography/Kairi colours (23 Nov 2026)/mahavar-folded-orig.jpg (close-up)"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 3
+        },
+        "borderDetail": {
+          "img": 3
+        },
+        "swatch": {
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/mahavar-fabric.jpg",
+          "from": "/assets/images/mahavar-booti.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/mahavar-border.jpg",
+          "from": "/assets/images/mahavar-border.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/mahavar-motif.jpg",
+          "from": "/assets/images/mahavar-booti.jpg|2|50%|50%|50% 50%",
+          "px": 660
         }
       }
     },
@@ -418,6 +918,26 @@
             "w": 0.7,
             "h": 0.7
           }
+        },
+        {
+          "src": "/assets/images/jamun-border-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "real": true,
+          "alt": "Jamun up close: the zari border",
+          "source": "jamun.jpg (zoom cut from the model photo, client 23 Nov 2026: cleaned with light nlmeans, spline scaling, no sharpening)"
+        },
+        {
+          "src": "/assets/images/jamun-print-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "real": true,
+          "alt": "Jamun up close: the woven print on the body",
+          "source": "jamun.jpg (zoom cut from the model photo, client 23 Nov 2026: cleaned with light nlmeans, spline scaling, no sharpening)"
         }
       ],
       "crops": {
@@ -437,16 +957,10 @@
           "oy": "48%"
         },
         "border": {
-          "img": 0,
-          "s": 3.4,
-          "ox": "85%",
-          "oy": "90%"
+          "img": 1
         },
         "weave": {
-          "img": 0,
-          "s": 5.6,
-          "ox": "77%",
-          "oy": "87%"
+          "img": 2
         },
         "zari": {
           "img": 0,
@@ -455,11 +969,7 @@
           "oy": "72%"
         },
         "borderDetail": {
-          "img": 0,
-          "s": 4,
-          "ox": "62%",
-          "oy": "96%",
-          "op": "50% 100%"
+          "img": 1
         },
         "motif": {
           "img": 0,
@@ -474,14 +984,11 @@
           "oy": "74%"
         },
         "swatch": {
-          "img": 0,
-          "s": 4.8,
-          "ox": "70%",
-          "oy": "60%"
+          "img": 2
         },
         "styling": {
           "img": 0,
-          "s": 2.2,
+          "s": 1.3,
           "ox": "68%",
           "oy": "50%",
           "op": "50% 18%"
@@ -520,40 +1027,403 @@
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/jamun-fabric.jpg",
-          "from": "/assets/images/jamun.jpg|3.6|72%|64%|",
-          "px": 480
+          "from": "/assets/images/jamun-print-zoom.jpg|1.4|50%|50%|50% 10%",
+          "px": 943
         },
         "border": {
           "src": "/assets/images/detail/jamun-border.jpg",
-          "from": "/assets/images/jamun.jpg|3.6|62%|96%|50% 100%",
-          "px": 480
+          "from": "/assets/images/jamun-border-zoom.jpg|1.4|50%|50%|50% 70%",
+          "px": 943
         },
         "motif": {
           "src": "/assets/images/detail/jamun-motif.jpg",
-          "from": "/assets/images/jamun.jpg|3.6|86%|86%|",
-          "px": 480
+          "from": "/assets/images/jamun-print-zoom.jpg|2|30%|30%|50% 0%",
+          "px": 660
         },
         "styled": {
           "src": "/assets/images/detail/jamun-styled.jpg",
-          "from": "/assets/images/jamun.jpg|2.2|68%|50%|50% 18%",
-          "px": 494
+          "from": "/assets/images/jamun.jpg|1.3|68%|50%|50% 18%",
+          "px": 835
         }
       },
       "photoshoot": true,
-      "slideCuts": {
+      "galleryListed": true,
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 10%"
+        },
         "border": {
-          "src": "/assets/images/slides/jamun-border.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/jamun.jpg|2.4|85%|90%||3/4",
-          "px": 600
+          "img": 1,
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 70%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "30%",
+          "oy": "30%",
+          "op": "50% 0%"
+        }
+      },
+      "colourSiblings": [
+        "jamun",
+        "tamra",
+        "mirchi"
+      ]
+    },
+    {
+      "slug": "tamra",
+      "name": "Tamra",
+      "nameMeaning": "copper",
+      "descriptor": "Copper orange with a rani pink zari pallu",
+      "description": "Tamra is copper orange silk scattered with silver zari buta, the same weave as Jamun, finished with a rani pink zari border and pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Copper orange silk with a rani pink pallu.",
+      "colourLineStatus": "draft",
+      "price": 28900,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast",
+        "festive"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Copper orange",
+          "hex": "#B8461C",
+          "text": "#F6F1EA"
+        }
+      ],
+      "colourSiblings": [
+        "jamun",
+        "tamra",
+        "mirchi"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Copper orange",
+        "border": "Rani pink zari border",
+        "motif": "Silver zari buta",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Copper orange, edged in rani pink.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Copper orange"
+          ],
+          [
+            "Motif",
+            "Silver buta"
+          ],
+          [
+            "Border",
+            "rani pink zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/tamra-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Tamra: folded, the rani pink zari border along the hem",
+          "source": "model photography/Jamun colours (23 Nov 2026)/tamra-2.jpg"
+        },
+        {
+          "src": "/assets/images/tamra-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Tamra: folded open to the rani pink zari pallu",
+          "source": "model photography/Jamun colours (23 Nov 2026)/tamra-1.jpg"
+        },
+        {
+          "src": "/assets/images/tamra-booti.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Tamra: silver zari buta on copper orange silk",
+          "source": "model photography/Jamun colours (23 Nov 2026)/tamra-2.jpg"
+        },
+        {
+          "src": "/assets/images/tamra-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Tamra: the rani pink border woven with zari florals",
+          "source": "model photography/Jamun colours (23 Nov 2026)/tamra-2.jpg"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 3
+        },
+        "borderDetail": {
+          "img": 3
         },
         "swatch": {
-          "src": "/assets/images/slides/jamun-swatch.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/jamun.jpg|2.4|70%|60%||3/4",
-          "px": 600
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 70%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/tamra-fabric.jpg",
+          "from": "/assets/images/tamra-booti.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/tamra-border.jpg",
+          "from": "/assets/images/tamra-border.jpg|1.3|50%|50%|50% 70%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/tamra-motif.jpg",
+          "from": "/assets/images/tamra-booti.jpg|2|50%|50%|50% 50%",
+          "px": 660
+        }
+      }
+    },
+    {
+      "slug": "mirchi",
+      "name": "Mirchi",
+      "nameMeaning": "chilli",
+      "descriptor": "Chilli red with a bottle green zari pallu",
+      "description": "Mirchi is chilli red silk scattered with silver zari buta, the same weave as Jamun, finished with a bottle green zari border and pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Chilli red silk with a bottle green pallu.",
+      "colourLineStatus": "draft",
+      "price": 28900,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast",
+        "festive"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Chilli red",
+          "hex": "#9E1F1C",
+          "text": "#F6F1EA"
+        }
+      ],
+      "colourSiblings": [
+        "jamun",
+        "tamra",
+        "mirchi"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Chilli red",
+        "border": "Bottle green zari border",
+        "motif": "Silver zari buta",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Chilli red, edged in bottle green.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Chilli red"
+          ],
+          [
+            "Motif",
+            "Silver buta"
+          ],
+          [
+            "Border",
+            "bottle green zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/mirchi-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mirchi: folded, the bottle green zari border along the hem",
+          "source": "model photography/Jamun colours (23 Nov 2026)/mirchi-1.jpg"
+        },
+        {
+          "src": "/assets/images/mirchi-folded-2.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mirchi: folded open to the bottle green zari pallu",
+          "source": "model photography/Jamun colours (23 Nov 2026)/mirchi-2.jpg"
+        },
+        {
+          "src": "/assets/images/mirchi-booti.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mirchi: silver zari buta on chilli red silk",
+          "source": "model photography/Jamun colours (23 Nov 2026)/mirchi-1.jpg"
+        },
+        {
+          "src": "/assets/images/mirchi-border.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Mirchi: the bottle green border woven with zari florals",
+          "source": "model photography/Jamun colours (23 Nov 2026)/mirchi-1.jpg"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 3
+        },
+        "borderDetail": {
+          "img": 3
+        },
+        "swatch": {
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        }
+      },
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 70%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "10%",
+          "oy": "17%",
+          "op": "50% 0%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/mirchi-fabric.jpg",
+          "from": "/assets/images/mirchi-booti.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/mirchi-border.jpg",
+          "from": "/assets/images/mirchi-border.jpg|1.3|50%|50%|50% 70%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/mirchi-motif.jpg",
+          "from": "/assets/images/mirchi-booti.jpg|2|10%|17%|50% 0%",
+          "px": 660
         }
       }
     },
@@ -612,25 +1482,32 @@
           }
         },
         {
-          "src": "/assets/images/neel-original.jpg",
-          "width": 1350,
-          "height": 2400,
-          "role": "product",
-          "fit": "cover",
-          "second": true,
-          "alt": "Neel, folded: the saree itself, indigo fading to mint at one end, with silver zari lotus buti and a silver brocade pallu folded open",
-          "source": "model photography/folded originals nov19/neel folded.jpg (sent in chat, November 19)",
-          "actual": true
+          "src": "/assets/images/neel-colours-group.jpg",
+          "width": 1086,
+          "height": 1448,
+          "real": true,
+          "alt": "Neel worn seated before a painted forest with lotuses, beside the three other colours of the lotus buti weave, folded",
+          "source": "model photography/Neel colours (23 Nov 2026)/neel-colours-group.png"
         },
         {
-          "src": "/assets/images/neel-closeup.jpg",
-          "width": 1350,
-          "height": 2400,
+          "src": "/assets/images/neel-border-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
           "role": "product",
           "fit": "cover",
-          "second": true,
-          "alt": "Neel up close: a silver zari lotus buti on indigo, the brocade pallu and its silver border",
-          "source": "model photography/folded originals nov19/neel closeup.jpg (sent in chat, November 19)"
+          "real": true,
+          "alt": "Neel up close: the zari border",
+          "source": "neel.jpg (zoom cut from the model photo, client 23 Nov 2026: cleaned with light nlmeans, spline scaling, no sharpening)"
+        },
+        {
+          "src": "/assets/images/neel-print-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "real": true,
+          "alt": "Neel up close: the woven print on the body",
+          "source": "neel.jpg (zoom cut from the model photo, client 23 Nov 2026: cleaned with light nlmeans, spline scaling, no sharpening)"
         }
       ],
       "crops": {
@@ -650,16 +1527,10 @@
           "oy": "85%"
         },
         "border": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "41%",
-          "oy": "64%"
+          "img": 2
         },
         "weave": {
-          "img": 0,
-          "s": 5.2,
-          "ox": "60%",
-          "oy": "62%"
+          "img": 3
         },
         "zari": {
           "img": 0,
@@ -668,10 +1539,7 @@
           "oy": "68%"
         },
         "borderDetail": {
-          "img": 0,
-          "s": 4.6,
-          "ox": "45%",
-          "oy": "68%"
+          "img": 2
         },
         "motif": {
           "img": 0,
@@ -686,14 +1554,11 @@
           "oy": "66%"
         },
         "swatch": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "41%",
-          "oy": "39%"
+          "img": 3
         },
         "styling": {
           "img": 0,
-          "s": 2,
+          "s": 1.3,
           "ox": "62%",
           "oy": "37%",
           "op": "50% 0%"
@@ -729,76 +1594,615 @@
       "categoryEvidence": {
         "banarasi": "Original brief: first shoot"
       },
-      "video": {
-        "src": "/assets/video/neel-reel.mp4",
-        "srcSmall": "/assets/video/neel-reel-small.mp4",
-        "poster": "/assets/images/neel-reel-poster.jpg",
-        "width": 720,
-        "height": 1280,
-        "sources": [
-          "model photography/saree videos/saree shoot/saree reels/neel video.mp4"
-        ]
-      },
       "features": {
         "fabric": {
-          "img": 2,
-          "s": 2,
-          "ox": "60%",
+          "img": 3,
+          "s": 1.4,
+          "ox": "50%",
           "oy": "50%",
-          "op": "50% 32%"
+          "op": "50% 10%"
         },
         "border": {
           "img": 2,
-          "s": 2.4,
-          "ox": "100%",
-          "oy": "40%",
-          "op": "50% 0%"
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "62%",
+          "op": "50% 100%"
         },
         "motif": {
-          "img": 2,
-          "s": 2.8,
-          "ox": "0%",
-          "oy": "3%",
+          "img": 3,
+          "s": 2,
+          "ox": "74%",
+          "oy": "30%",
           "op": "50% 0%"
         }
       },
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/neel-fabric.jpg",
-          "from": "/assets/images/neel-closeup.jpg|2|60%|50%|50% 32%",
-          "px": 675
+          "from": "/assets/images/neel-print-zoom.jpg|1.4|50%|50%|50% 10%",
+          "px": 943
         },
         "border": {
           "src": "/assets/images/detail/neel-border.jpg",
-          "from": "/assets/images/neel-closeup.jpg|2.4|100%|40%|50% 0%",
-          "px": 563
+          "from": "/assets/images/neel-border-zoom.jpg|1.4|50%|62%|50% 100%",
+          "px": 943
         },
         "motif": {
           "src": "/assets/images/detail/neel-motif.jpg",
-          "from": "/assets/images/neel-closeup.jpg|2.8|0%|3%|50% 0%",
-          "px": 482
+          "from": "/assets/images/neel-print-zoom.jpg|2|74%|30%|50% 0%",
+          "px": 660
         },
         "styled": {
           "src": "/assets/images/detail/neel-styled.jpg",
-          "from": "/assets/images/neel.jpg|2|62%|37%|50% 0%",
-          "px": 546
+          "from": "/assets/images/neel.jpg|1.3|62%|37%|50% 0%",
+          "px": 840
         }
       },
       "photoshoot": true,
-      "slideCuts": {
+      "galleryListed": true,
+      "colourSiblings": [
+        "neel",
+        "abeer",
+        "kopal",
+        "bhanwra"
+      ]
+    },
+    {
+      "slug": "abeer",
+      "name": "Abeer",
+      "nameMeaning": "festival colour powder",
+      "descriptor": "Magenta with a orange zari pallu",
+      "description": "Abeer is magenta silk woven with silver lotus buti, the same weave as Neel, finished with a orange zari border and pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Magenta silk with a orange pallu.",
+      "colourLineStatus": "draft",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Magenta",
+          "hex": "#A3175E",
+          "text": "#F6F1EA"
+        }
+      ],
+      "colourSiblings": [
+        "neel",
+        "abeer",
+        "kopal",
+        "bhanwra"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Magenta",
+        "border": "Orange zari border",
+        "motif": "Lotus buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Magenta, edged in orange.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Magenta"
+          ],
+          [
+            "Motif",
+            "Lotus buti"
+          ],
+          [
+            "Border",
+            "orange zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/abeer-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Abeer: folded open to the orange zari pallu",
+          "source": "model photography/Neel colours (23 Nov 2026)/abeer.jpg"
+        },
+        {
+          "src": "/assets/images/neel-colours-group.jpg",
+          "width": 1086,
+          "height": 1448,
+          "real": true,
+          "alt": "Neel worn seated before a painted forest with lotuses, beside the three other colours of the lotus buti weave, folded",
+          "source": "model photography/Neel colours (23 Nov 2026)/neel-colours-group.png"
+        },
+        {
+          "src": "/assets/images/abeer-booti.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Abeer: a silver lotus buti on magenta silk",
+          "source": "model photography/Neel colours (23 Nov 2026)/abeer.jpg"
+        },
+        {
+          "src": "/assets/images/abeer-pallu.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Abeer: the orange zari pallu up close",
+          "source": "model photography/Neel colours (23 Nov 2026)/abeer.jpg"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
         "border": {
-          "src": "/assets/images/slides/neel-border.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/neel-original.jpg|2.4|41%|64%||3/4",
-          "px": 938
+          "img": 3
+        },
+        "borderDetail": {
+          "img": 3
         },
         "swatch": {
-          "src": "/assets/images/slides/neel-swatch.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/neel-original.jpg|2.4|41%|39%||3/4",
-          "px": 938
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "55%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "styling": "Shown folded beside Neel, the same lotus buti weave in indigo, worn with silver jewellery.",
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "7%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "30%",
+          "oy": "50%",
+          "op": "50% 30%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/abeer-fabric.jpg",
+          "from": "/assets/images/abeer-booti.jpg|1.3|50%|7%|50% 0%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/abeer-border.jpg",
+          "from": "/assets/images/abeer-pallu.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/abeer-motif.jpg",
+          "from": "/assets/images/abeer-booti.jpg|2|30%|50%|50% 30%",
+          "px": 660
+        },
+        "styled": {
+          "src": "/assets/images/detail/abeer-styled.jpg",
+          "from": "/assets/images/neel-colours-group.jpg|1.3|55%|40%|50% 30%",
+          "px": 835
+        }
+      }
+    },
+    {
+      "slug": "kopal",
+      "name": "Kopal",
+      "nameMeaning": "a new leaf",
+      "descriptor": "Pista green with a rose pink zari pallu",
+      "description": "Kopal is pista green silk woven with silver lotus buti, the same weave as Neel, finished with a rose pink zari border and pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Pista green silk with a rose pink pallu.",
+      "colourLineStatus": "draft",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Pista green",
+          "hex": "#9DBB6E",
+          "text": "#1F1A16"
+        }
+      ],
+      "colourSiblings": [
+        "neel",
+        "abeer",
+        "kopal",
+        "bhanwra"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Pista green",
+        "border": "Rose pink zari border",
+        "motif": "Lotus buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Pista green, edged in rose pink.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Pista green"
+          ],
+          [
+            "Motif",
+            "Lotus buti"
+          ],
+          [
+            "Border",
+            "rose pink zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/kopal-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kopal: folded open to the rose pink zari pallu",
+          "source": "model photography/Neel colours (23 Nov 2026)/kopal.jpg"
+        },
+        {
+          "src": "/assets/images/neel-colours-group.jpg",
+          "width": 1086,
+          "height": 1448,
+          "real": true,
+          "alt": "Neel worn seated before a painted forest with lotuses, beside the three other colours of the lotus buti weave, folded",
+          "source": "model photography/Neel colours (23 Nov 2026)/neel-colours-group.png"
+        },
+        {
+          "src": "/assets/images/kopal-booti.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kopal: a silver lotus buti on pista green silk",
+          "source": "model photography/Neel colours (23 Nov 2026)/kopal.jpg"
+        },
+        {
+          "src": "/assets/images/kopal-pallu.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kopal: the rose pink zari pallu up close",
+          "source": "model photography/Neel colours (23 Nov 2026)/kopal.jpg"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 3
+        },
+        "borderDetail": {
+          "img": 3
+        },
+        "swatch": {
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "55%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "styling": "Shown folded beside Neel, the same lotus buti weave in indigo, worn with silver jewellery.",
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "7%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "40%",
+          "oy": "50%",
+          "op": "50% 30%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/kopal-fabric.jpg",
+          "from": "/assets/images/kopal-booti.jpg|1.3|50%|7%|50% 0%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/kopal-border.jpg",
+          "from": "/assets/images/kopal-pallu.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/kopal-motif.jpg",
+          "from": "/assets/images/kopal-booti.jpg|2|40%|50%|50% 30%",
+          "px": 660
+        },
+        "styled": {
+          "src": "/assets/images/detail/kopal-styled.jpg",
+          "from": "/assets/images/neel-colours-group.jpg|1.3|55%|40%|50% 30%",
+          "px": 835
+        }
+      }
+    },
+    {
+      "slug": "bhanwra",
+      "name": "Bhanwra",
+      "nameMeaning": "bumblebee",
+      "descriptor": "Violet with a lemon yellow zari pallu",
+      "description": "Bhanwra is violet silk woven with silver lotus buti, the same weave as Neel, finished with a lemon yellow zari border and pallu.",
+      "descriptionStatus": "draft",
+      "colourLine": "Violet silk with a lemon yellow pallu.",
+      "colourLineStatus": "draft",
+      "price": 26500,
+      "priceIsPlaceholder": true,
+      "edits": [
+        "jewel",
+        "contrast"
+      ],
+      "categories": [
+        "banarasi"
+      ],
+      "colours": [
+        {
+          "name": "Violet",
+          "hex": "#4B2A9E",
+          "text": "#F6F1EA"
+        }
+      ],
+      "colourSiblings": [
+        "neel",
+        "abeer",
+        "kopal",
+        "bhanwra"
+      ],
+      "unlisted": true,
+      "galleryListed": true,
+      "attributes": {
+        "fabric": "Silk",
+        "colourway": "Violet",
+        "border": "Lemon yellow zari border",
+        "motif": "Lotus buti",
+        "length": null,
+        "blousePiece": null,
+        "weave": null,
+        "origin": null,
+        "availability": null
+      },
+      "looks": [],
+      "closer": {
+        "heading": "Violet, edged in lemon yellow.",
+        "headingStatus": "draft",
+        "items": [
+          [
+            "Colour",
+            "Violet"
+          ],
+          [
+            "Motif",
+            "Lotus buti"
+          ],
+          [
+            "Border",
+            "lemon yellow zari"
+          ]
+        ]
+      },
+      "images": [
+        {
+          "src": "/assets/images/bhanwra-folded.jpg",
+          "width": 1650,
+          "height": 2200,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Bhanwra: folded open to the lemon yellow zari pallu",
+          "source": "model photography/Neel colours (23 Nov 2026)/bhanwra.jpg"
+        },
+        {
+          "src": "/assets/images/neel-colours-group.jpg",
+          "width": 1086,
+          "height": 1448,
+          "real": true,
+          "alt": "Neel worn seated before a painted forest with lotuses, beside the three other colours of the lotus buti weave, folded",
+          "source": "model photography/Neel colours (23 Nov 2026)/neel-colours-group.png"
+        },
+        {
+          "src": "/assets/images/bhanwra-booti.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Bhanwra: a silver lotus buti on violet silk",
+          "source": "model photography/Neel colours (23 Nov 2026)/bhanwra.jpg"
+        },
+        {
+          "src": "/assets/images/bhanwra-pallu.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Bhanwra: the lemon yellow zari pallu up close",
+          "source": "model photography/Neel colours (23 Nov 2026)/bhanwra.jpg"
+        }
+      ],
+      "crops": {
+        "silhouette": {
+          "img": 0
+        },
+        "border": {
+          "img": 3
+        },
+        "borderDetail": {
+          "img": 3
+        },
+        "swatch": {
+          "img": 2
+        },
+        "weave": {
+          "img": 2
+        },
+        "motif": {
+          "img": 2,
+          "s": 1.4
+        },
+        "colour": {
+          "img": 0
+        },
+        "styling": {
+          "img": 1,
+          "s": 1.3,
+          "ox": "55%",
+          "oy": "40%",
+          "op": "50% 30%"
+        }
+      },
+      "styling": "Shown folded beside Neel, the same lotus buti weave in indigo, worn with silver jewellery.",
+      "backdrop": {
+        "img": 0,
+        "pos": "50% 50%",
+        "posMobile": "50% 50%"
+      },
+      "features": {
+        "fabric": {
+          "img": 2,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "7%",
+          "op": "50% 0%"
+        },
+        "border": {
+          "img": 3,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
+        },
+        "motif": {
+          "img": 2,
+          "s": 2,
+          "ox": "30%",
+          "oy": "50%",
+          "op": "50% 10%"
+        }
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/bhanwra-fabric.jpg",
+          "from": "/assets/images/bhanwra-booti.jpg|1.3|50%|7%|50% 0%",
+          "px": 1015
+        },
+        "border": {
+          "src": "/assets/images/detail/bhanwra-border.jpg",
+          "from": "/assets/images/bhanwra-pallu.jpg|1.3|50%|50%|50% 50%",
+          "px": 1015
+        },
+        "motif": {
+          "src": "/assets/images/detail/bhanwra-motif.jpg",
+          "from": "/assets/images/bhanwra-booti.jpg|2|30%|50%|50% 10%",
+          "px": 660
+        },
+        "styled": {
+          "src": "/assets/images/detail/bhanwra-styled.jpg",
+          "from": "/assets/images/neel-colours-group.jpg|1.3|55%|40%|50% 30%",
+          "px": 835
         }
       }
     },
@@ -858,15 +2262,24 @@
           }
         },
         {
-          "src": "/assets/images/bagh-original.jpg",
-          "width": 1800,
-          "height": 2400,
+          "src": "/assets/images/bagh-border-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
           "role": "product",
           "fit": "cover",
-          "second": true,
-          "alt": "Bagh, folded: the saree itself, magenta with silver flower buti and the orange zari pallu folded open",
-          "source": "Drive \"Stylissh Naari\" IMG_7944.JPG",
-          "actual": true
+          "real": true,
+          "alt": "Bagh up close: the zari border",
+          "source": "bagh-front.jpg (zoom cut from the model photo, client 23 Nov 2026: cleaned with light nlmeans, spline scaling, no sharpening)"
+        },
+        {
+          "src": "/assets/images/bagh-print-zoom.jpg",
+          "width": 1320,
+          "height": 1760,
+          "role": "product",
+          "fit": "cover",
+          "real": true,
+          "alt": "Bagh up close: the woven print on the body",
+          "source": "bagh-front.jpg (zoom cut from the model photo, client 23 Nov 2026: cleaned with light nlmeans, spline scaling, no sharpening)"
         }
       ],
       "crops": {
@@ -886,16 +2299,10 @@
           "oy": "36%"
         },
         "border": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "41%",
-          "oy": "55%"
+          "img": 1
         },
         "weave": {
-          "img": 0,
-          "s": 4.8,
-          "ox": "77%",
-          "oy": "80%"
+          "img": 2
         },
         "zari": {
           "img": 0,
@@ -904,10 +2311,7 @@
           "oy": "68%"
         },
         "borderDetail": {
-          "img": 0,
-          "s": 4,
-          "ox": "57%",
-          "oy": "68%"
+          "img": 1
         },
         "motif": {
           "img": 0,
@@ -922,14 +2326,11 @@
           "oy": "76%"
         },
         "swatch": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "33%",
-          "oy": "33%"
+          "img": 2
         },
         "styling": {
           "img": 0,
-          "s": 2.2,
+          "s": 1.3,
           "ox": "76%",
           "oy": "50%",
           "op": "50% 30%"
@@ -972,66 +2373,51 @@
       },
       "features": {
         "fabric": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "84%",
+          "img": 2,
+          "s": 1.4,
+          "ox": "50%",
           "oy": "50%",
-          "op": "50% 18%"
+          "op": "50% 90%"
         },
         "border": {
           "img": 1,
-          "s": 2.2,
-          "ox": "13%",
-          "oy": "68%",
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "100%",
           "op": "50% 100%"
         },
         "motif": {
-          "img": 1,
-          "s": 3.2,
-          "ox": "22%",
+          "img": 2,
+          "s": 2,
+          "ox": "40%",
           "oy": "50%",
-          "op": "50% 10%"
+          "op": "50% 30%"
         }
       },
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/bagh-fabric.jpg",
-          "from": "/assets/images/bagh-original.jpg|2.4|84%|50%|50% 18%",
-          "px": 750
+          "from": "/assets/images/bagh-print-zoom.jpg|1.4|50%|50%|50% 90%",
+          "px": 943
         },
         "border": {
           "src": "/assets/images/detail/bagh-border.jpg",
-          "from": "/assets/images/bagh-original.jpg|2.2|13%|68%|50% 100%",
-          "px": 818
+          "from": "/assets/images/bagh-border-zoom.jpg|1.4|50%|100%|50% 100%",
+          "px": 943
         },
         "motif": {
           "src": "/assets/images/detail/bagh-motif.jpg",
-          "from": "/assets/images/bagh-original.jpg|3.2|22%|50%|50% 10%",
-          "px": 563
+          "from": "/assets/images/bagh-print-zoom.jpg|2|40%|50%|50% 30%",
+          "px": 660
         },
         "styled": {
           "src": "/assets/images/detail/bagh-styled.jpg",
-          "from": "/assets/images/bagh-front.jpg|2.2|76%|50%|50% 30%",
-          "px": 494
+          "from": "/assets/images/bagh-front.jpg|1.3|76%|50%|50% 30%",
+          "px": 835
         }
       },
       "photoshoot": true,
-      "slideCuts": {
-        "border": {
-          "src": "/assets/images/slides/bagh-border.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/bagh-original.jpg|2.4|41%|55%||3/4",
-          "px": 750
-        },
-        "swatch": {
-          "src": "/assets/images/slides/bagh-swatch.jpg",
-          "w": 1320,
-          "h": 1760,
-          "from": "/assets/images/bagh-original.jpg|2.4|33%|33%||3/4",
-          "px": 750
-        }
-      }
+      "galleryListed": true
     },
     {
       "slug": "kajal",
@@ -1182,7 +2568,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.9,
+          "s": 1.3,
           "ox": "44%",
           "oy": "33%",
           "op": "50% 30%"
@@ -1269,8 +2655,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kajal-styled.jpg",
-          "from": "/assets/images/kajal-model.jpg|1.9|44%|33%|50% 30%",
-          "px": 539
+          "from": "/assets/images/kajal-model.jpg|1.3|44%|33%|50% 30%",
+          "px": 788
         }
       }
     },
@@ -1423,7 +2809,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.9,
+          "s": 1.3,
           "ox": "44%",
           "oy": "33%",
           "op": "50% 30%"
@@ -1510,8 +2896,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kishmish-styled.jpg",
-          "from": "/assets/images/kishmish-seated.jpg|1.9|44%|33%|50% 30%",
-          "px": 539
+          "from": "/assets/images/kishmish-seated.jpg|1.3|44%|33%|50% 30%",
+          "px": 788
         }
       }
     },
@@ -1664,7 +3050,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.9,
+          "s": 1.3,
           "ox": "44%",
           "oy": "33%",
           "op": "50% 30%"
@@ -1751,8 +3137,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gulmohar-styled.jpg",
-          "from": "/assets/images/gulmohar-seated.jpg|1.9|44%|33%|50% 30%",
-          "px": 539
+          "from": "/assets/images/gulmohar-seated.jpg|1.3|44%|33%|50% 30%",
+          "px": 788
         }
       }
     },
@@ -1796,16 +3182,18 @@
       },
       "images": [
         {
-          "src": "/assets/images/panna-model.jpg",
-          "width": 1106,
-          "height": 1422,
-          "alt": "Panna — an emerald silk saree with a floral jaal and gold zari border, worn standing against a warm studio wall, the pallu over the shoulder",
+          "src": "/assets/images/panna-stairs.jpg",
+          "width": 1750,
+          "height": 3109,
+          "pos": "50% 60%",
           "frame": {
-            "x": 0.03,
-            "y": 0,
-            "w": 0.9643,
-            "h": 1
-          }
+            "x": 0,
+            "y": 0.21,
+            "w": 1,
+            "h": 0.7505
+          },
+          "alt": "Panna, an emerald silk saree with a floral jaal, gold zari border and paisley pallu, worn seated on candle-lit stairs, seen from behind with the pallu spread down the steps",
+          "source": "model photography/Panna (23 Nov 2026)/panna-stairs.png"
         },
         {
           "src": "/assets/images/panna-original.jpg",
@@ -1864,15 +3252,15 @@
           "img": 0,
           "s": 1.5,
           "ox": "50%",
-          "oy": "100%",
-          "op": "50% 100%"
+          "oy": "85%",
+          "op": "50% 85%"
         },
         "pallu": {
           "img": 0,
           "s": 1.6,
-          "ox": "93%",
-          "oy": "50%",
-          "op": "50% 5%"
+          "ox": "70%",
+          "oy": "75%",
+          "op": "50% 75%"
         },
         "border": {
           "img": 4,
@@ -1904,9 +3292,9 @@
         "colour": {
           "img": 0,
           "s": 1.5,
-          "ox": "65%",
-          "oy": "92%",
-          "op": "50% 100%"
+          "ox": "45%",
+          "oy": "60%",
+          "op": "50% 60%"
         },
         "swatch": {
           "img": 4,
@@ -1916,10 +3304,10 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
-          "ox": "43%",
-          "oy": "0%",
-          "op": "50% 0%"
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 30%"
         }
       },
       "looks": [],
@@ -1998,8 +3386,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/panna-styled.jpg",
-          "from": "/assets/images/panna-model.jpg|1.8|43%|0%|50% 0%",
-          "px": 614
+          "from": "/assets/images/panna-stairs.jpg|1.3|50%|40%|50% 30%",
+          "px": 1346
         }
       }
     },
@@ -2168,7 +3556,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "35%",
           "oy": "38%",
           "op": "50% 40%"
@@ -2250,8 +3638,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/phalsa-styled.jpg",
-          "from": "/assets/images/phalsa-model.jpg|1.8|31%|0%|50% 0%",
-          "px": 680
+          "from": "/assets/images/phalsa-shoot.jpg|1.3|35%|38%|50% 40%",
+          "px": 1231
         }
       }
     },
@@ -2426,7 +3814,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 2.4,
+          "s": 1.3,
           "ox": "41%",
           "oy": "50%",
           "op": "50% 7%"
@@ -2526,8 +3914,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/moonga-styled.jpg",
-          "from": "/assets/images/moonga.jpg|2.4|41%|50%|50% 7%",
-          "px": 610
+          "from": "/assets/images/moonga.jpg|1.3|41%|50%|50% 7%",
+          "px": 1127
         }
       }
     },
@@ -2697,7 +4085,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "39%",
           "op": "50% 50%"
@@ -2797,8 +4185,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/chameli-styled.jpg",
-          "from": "/assets/images/chameli-seated.jpg|1.8|50%|39%|50% 50%",
-          "px": 814
+          "from": "/assets/images/chameli-seated.jpg|1.3|50%|39%|50% 50%",
+          "px": 1127
         }
       }
     },
@@ -2841,21 +4229,18 @@
       },
       "images": [
         {
-          "src": "/assets/images/kasni.jpg",
-          "width": 1594,
-          "height": 2390,
-          "alt": "Kasni — a lavender brocade saree with a pink border, worn seated on a stone block, the pallu falling to the floor",
-          "focus": {
-            "s": 1.25,
-            "ox": "80%",
-            "oy": "68%"
-          },
+          "src": "/assets/images/kasni-seated.jpg",
+          "width": 1024,
+          "height": 1536,
+          "alt": "Kasni, a lavender brocade saree with a meenakari skirt border and pink-striped pallu, worn seated on a stone block beside brass bells and rose petals, the pallu falling to the floor",
+          "pos": "75% 50%",
           "frame": {
-            "x": 0.2,
-            "y": 0.2843,
+            "x": 0.19999999999999996,
+            "y": 0.25,
             "w": 0.8,
-            "h": 0.7114
-          }
+            "h": 0.7111
+          },
+          "source": "model photography/SN-029 colours seated (23 Nov 2026)/kasni-seated.png"
         },
         {
           "src": "/assets/images/kasni-original.jpg",
@@ -2913,14 +4298,14 @@
         "fall": {
           "img": 0,
           "s": 1.9,
-          "ox": "56%",
-          "oy": "70%"
+          "ox": "75%",
+          "oy": "85%"
         },
         "pallu": {
           "img": 0,
           "s": 1.7,
-          "ox": "78%",
-          "oy": "80%"
+          "ox": "75%",
+          "oy": "70%"
         },
         "border": {
           "img": 4,
@@ -2946,8 +4331,8 @@
         "colour": {
           "img": 0,
           "s": 1.5,
-          "ox": "70%",
-          "oy": "62%"
+          "ox": "55%",
+          "oy": "55%"
         },
         "swatch": {
           "img": 4,
@@ -2957,10 +4342,10 @@
         },
         "styling": {
           "img": 0,
-          "s": 2.6,
-          "ox": "94%",
+          "s": 1.3,
+          "ox": "100%",
           "oy": "50%",
-          "op": "50% 14%"
+          "op": "50% 0%"
         }
       },
       "looks": [],
@@ -3059,8 +4444,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kasni-styled.jpg",
-          "from": "/assets/images/kasni.jpg|2.6|94%|50%|50% 14%",
-          "px": 613
+          "from": "/assets/images/kasni-seated.jpg|1.3|100%|50%|50% 0%",
+          "px": 788
         }
       }
     },
@@ -3108,18 +4493,18 @@
       },
       "images": [
         {
-          "src": "/assets/images/basanti.jpg",
-          "width": 1129,
-          "height": 1393,
-          "alt": "Basanti — a mustard brocade saree with a pink-striped border and meenakari pallu panels, worn seated on a stone block, the pallu falling to the floor",
-          "pos": "50% 30%",
+          "src": "/assets/images/basanti-seated.jpg",
+          "width": 1024,
+          "height": 1536,
+          "alt": "Basanti, a mustard brocade saree with a meenakari skirt border and pink-striped pallu, worn seated on a stone block beside brass bells and rose petals, the pallu falling to the floor",
+          "pos": "75% 50%",
           "frame": {
-            "x": 0.0373,
-            "y": 0,
-            "w": 0.9254,
-            "h": 1
+            "x": 0.19999999999999996,
+            "y": 0.25,
+            "w": 0.8,
+            "h": 0.7111
           },
-          "source": "Client, 20 Nov 2026 (model photo, mustard)"
+          "source": "model photography/SN-029 colours seated (23 Nov 2026)/basanti-seated.png"
         },
         {
           "src": "/assets/images/basanti-folded.jpg",
@@ -3173,14 +4558,14 @@
         "fall": {
           "img": 0,
           "s": 1.9,
-          "ox": "30%",
-          "oy": "70%"
+          "ox": "75%",
+          "oy": "85%"
         },
         "pallu": {
           "img": 0,
           "s": 1.7,
-          "ox": "65%",
-          "oy": "75%"
+          "ox": "75%",
+          "oy": "70%"
         },
         "border": {
           "img": 3,
@@ -3206,8 +4591,8 @@
         "colour": {
           "img": 0,
           "s": 1.5,
-          "ox": "60%",
-          "oy": "60%"
+          "ox": "55%",
+          "oy": "55%"
         },
         "swatch": {
           "img": 2,
@@ -3217,10 +4602,10 @@
         },
         "styling": {
           "img": 0,
-          "s": 2.4,
-          "ox": "62%",
-          "oy": "12%",
-          "op": "50% 12%"
+          "s": 1.3,
+          "ox": "100%",
+          "oy": "50%",
+          "op": "50% 0%"
         }
       },
       "looks": [],
@@ -3304,8 +4689,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/basanti-styled.jpg",
-          "from": "/assets/images/basanti.jpg|2.4|62%|12%|50% 12%",
-          "px": 480
+          "from": "/assets/images/basanti-seated.jpg|1.3|100%|50%|50% 0%",
+          "px": 788
         }
       }
     },
@@ -3353,18 +4738,18 @@
       },
       "images": [
         {
-          "src": "/assets/images/surkh.jpg",
-          "width": 1129,
-          "height": 1393,
-          "alt": "Surkh — a red brocade saree with a gold-striped border and meenakari pallu panels, worn seated on a stone block, the pallu falling to the floor",
-          "pos": "50% 30%",
+          "src": "/assets/images/surkh-seated.jpg",
+          "width": 1024,
+          "height": 1536,
+          "alt": "Surkh, a red brocade saree with a meenakari skirt border and gold-striped pallu, worn seated on a stone block beside brass bells and rose petals, the pallu falling to the floor",
+          "pos": "75% 50%",
           "frame": {
-            "x": 0.0373,
-            "y": 0,
-            "w": 0.9254,
-            "h": 1
+            "x": 0.19999999999999996,
+            "y": 0.25,
+            "w": 0.8,
+            "h": 0.7111
           },
-          "source": "Client, 20 Nov 2026 (model photo, red)"
+          "source": "model photography/SN-029 colours seated (23 Nov 2026)/surkh-seated.png"
         },
         {
           "src": "/assets/images/surkh-folded.jpg",
@@ -3429,14 +4814,14 @@
         "fall": {
           "img": 0,
           "s": 1.9,
-          "ox": "30%",
-          "oy": "70%"
+          "ox": "75%",
+          "oy": "85%"
         },
         "pallu": {
           "img": 0,
           "s": 1.7,
-          "ox": "65%",
-          "oy": "75%"
+          "ox": "75%",
+          "oy": "70%"
         },
         "border": {
           "img": 4,
@@ -3462,8 +4847,8 @@
         "colour": {
           "img": 0,
           "s": 1.5,
-          "ox": "60%",
-          "oy": "60%"
+          "ox": "55%",
+          "oy": "55%"
         },
         "swatch": {
           "img": 2,
@@ -3473,10 +4858,10 @@
         },
         "styling": {
           "img": 0,
-          "s": 2.4,
-          "ox": "62%",
-          "oy": "12%",
-          "op": "50% 12%"
+          "s": 1.3,
+          "ox": "100%",
+          "oy": "50%",
+          "op": "50% 0%"
         }
       },
       "looks": [],
@@ -3560,8 +4945,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/surkh-styled.jpg",
-          "from": "/assets/images/surkh.jpg|2.4|62%|12%|50% 12%",
-          "px": 480
+          "from": "/assets/images/surkh-seated.jpg|1.3|100%|50%|50% 0%",
+          "px": 788
         }
       }
     },
@@ -3721,10 +5106,10 @@
         },
         "styling": {
           "img": 0,
-          "s": 2,
-          "ox": "10%",
-          "oy": "50%",
-          "op": "50% 10%"
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "40%",
+          "op": "50% 20%"
         }
       },
       "looks": [],
@@ -3818,8 +5203,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/mehendi-styled.jpg",
-          "from": "/assets/images/mehendi.jpg|2|10%|50%|50% 10%",
-          "px": 978
+          "from": "/assets/images/mehendi.jpg|1.3|50%|40%|50% 20%",
+          "px": 1505
         }
       }
     },
@@ -3977,7 +5362,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "50%",
           "op": "50% 0%"
@@ -4074,8 +5459,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kamal-styled.jpg",
-          "from": "/assets/images/kamal-lotus.jpg|1.8|50%|50%|50% 0%",
-          "px": 971
+          "from": "/assets/images/kamal-lotus.jpg|1.3|50%|50%|50% 0%",
+          "px": 1344
         }
       }
     },
@@ -4191,7 +5576,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "22%",
           "op": "50% 0%"
@@ -4262,8 +5647,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/rangoli-styled.jpg",
-          "from": "/assets/images/rangoli.jpg|1.8|50%|22%|50% 0%",
-          "px": 623
+          "from": "/assets/images/rangoli.jpg|1.3|50%|22%|50% 0%",
+          "px": 863
         }
       },
       "slideCuts": {
@@ -4329,18 +5714,18 @@
       },
       "images": [
         {
-          "src": "/assets/images/anaar.jpg",
-          "width": 1024,
-          "height": 1536,
-          "alt": "Anaar — a maroon bandhani saree with a gold border, the floral pallu swinging out as she turns, in a lamplit room",
-          "pos": "50% 62%",
-          "source": "Moody Maroon Saree Editorial Interior (2).png",
+          "src": "/assets/images/anaar-side.jpg",
+          "width": 1091,
+          "height": 1442,
+          "pos": "40% 50%",
           "frame": {
-            "x": 0.05,
-            "y": 0.1378,
-            "w": 0.95,
-            "h": 0.8444
-          }
+            "x": 0.0044,
+            "y": 0,
+            "w": 0.9913,
+            "h": 1
+          },
+          "alt": "Anaar, a maroon bandhani saree with a wide gold border and a floral pallu, seen from the side in a lamplit green room",
+          "source": "model photography/Anaar (23 Nov 2026)/anaar-side.png"
         }
       ],
       "crops": {
@@ -4350,44 +5735,44 @@
         "fall": {
           "img": 0,
           "s": 1.4,
-          "ox": "40%",
-          "oy": "86%"
+          "ox": "35%",
+          "oy": "82%"
         },
         "pallu": {
           "img": 0,
-          "s": 1.6,
-          "ox": "68%",
+          "s": 1.5,
+          "ox": "60%",
           "oy": "62%"
         },
         "border": {
           "img": 0,
-          "s": 1.6,
-          "ox": "50%",
+          "s": 1.5,
+          "ox": "30%",
           "oy": "88%"
         },
         "swatch": {
           "img": 0,
-          "s": 1.8,
-          "ox": "30%",
-          "oy": "76%"
+          "s": 1.5,
+          "ox": "48%",
+          "oy": "32%"
         },
         "weave": {
           "img": 0,
-          "s": 2,
-          "ox": "35%",
-          "oy": "60%"
+          "s": 1.6,
+          "ox": "45%",
+          "oy": "40%"
         },
         "colour": {
           "img": 0,
           "s": 1.3,
-          "ox": "45%",
-          "oy": "60%"
+          "ox": "40%",
+          "oy": "50%"
         },
         "styling": {
           "img": 0,
-          "s": 2.4,
-          "ox": "36%",
-          "oy": "29%",
+          "s": 1.3,
+          "ox": "30%",
+          "oy": "15%",
           "op": "50% 0%"
         }
       },
@@ -4418,8 +5803,8 @@
       "detailCircles": {
         "styled": {
           "src": "/assets/images/detail/anaar-styled.jpg",
-          "from": "/assets/images/anaar.jpg|2.4|36%|29%|50% 0%",
-          "px": 461
+          "from": "/assets/images/anaar-side.jpg|1.3|30%|15%|50% 0%",
+          "px": 839
         }
       },
       "slideCuts": {
@@ -4427,15 +5812,15 @@
           "src": "/assets/images/slides/anaar-border.jpg",
           "w": 1320,
           "h": 1760,
-          "from": "/assets/images/anaar.jpg|1.6|50%|88%||3/4",
-          "px": 640
+          "from": "/assets/images/anaar-side.jpg|1.5|30%|88%||3/4",
+          "px": 721
         },
         "swatch": {
           "src": "/assets/images/slides/anaar-swatch.jpg",
           "w": 1320,
           "h": 1760,
-          "from": "/assets/images/anaar.jpg|1.8|30%|76%||3/4",
-          "px": 600
+          "from": "/assets/images/anaar-side.jpg|1.5|48%|32%||3/4",
+          "px": 721
         }
       }
     },
@@ -4541,7 +5926,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "44%",
           "oy": "3%",
           "op": "50% 0%"
@@ -4574,8 +5959,8 @@
       "detailCircles": {
         "styled": {
           "src": "/assets/images/detail/chunari-styled.jpg",
-          "from": "/assets/images/chunari-model.jpg|1.8|44%|3%|50% 0%",
-          "px": 641
+          "from": "/assets/images/chunari-model.jpg|1.3|44%|3%|50% 0%",
+          "px": 888
         }
       },
       "slideCuts": {
@@ -4706,7 +6091,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "25%",
           "op": "45% 20%"
@@ -4777,8 +6162,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/sakhi-styled.jpg",
-          "from": "/assets/images/sakhi.jpg|1.8|45%|25%|45% 20%",
-          "px": 569
+          "from": "/assets/images/sakhi.jpg|1.3|45%|25%|45% 20%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -4897,7 +6282,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "40%",
           "oy": "25%",
           "op": "40% 20%"
@@ -4930,8 +6315,8 @@
       "detailCircles": {
         "styled": {
           "src": "/assets/images/detail/jamuni-styled.jpg",
-          "from": "/assets/images/jamuni.jpg|1.8|40%|25%|40% 20%",
-          "px": 559
+          "from": "/assets/images/jamuni.jpg|1.3|40%|25%|40% 20%",
+          "px": 774
         }
       },
       "slideCuts": {
@@ -5061,7 +6446,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "25%",
           "op": "45% 20%"
@@ -5132,8 +6517,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/bindiya-styled.jpg",
-          "from": "/assets/images/bindiya.jpg|1.8|45%|25%|45% 20%",
-          "px": 564
+          "from": "/assets/images/bindiya.jpg|1.3|45%|25%|45% 20%",
+          "px": 781
         }
       },
       "slideCuts": {
@@ -5252,7 +6637,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "42%",
           "oy": "25%",
           "op": "42% 20%"
@@ -5285,8 +6670,8 @@
       "detailCircles": {
         "styled": {
           "src": "/assets/images/detail/gulabo-styled.jpg",
-          "from": "/assets/images/gulabo.jpg|1.8|42%|25%|42% 20%",
-          "px": 569
+          "from": "/assets/images/gulabo.jpg|1.3|42%|25%|42% 20%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -5415,7 +6800,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "20%",
           "op": "50% 15%"
@@ -5486,8 +6871,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/lavanya-styled.jpg",
-          "from": "/assets/images/lavanya.jpg|1.8|50%|20%|50% 15%",
-          "px": 612
+          "from": "/assets/images/lavanya.jpg|1.3|50%|20%|50% 15%",
+          "px": 847
         }
       },
       "slideCuts": {
@@ -5613,7 +6998,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 2,
+          "s": 1.3,
           "ox": "44%",
           "oy": "13%",
           "op": "50% 0%"
@@ -5684,8 +7069,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/saanjh-styled.jpg",
-          "from": "/assets/images/saanjh.jpg|2|44%|13%|50% 0%",
-          "px": 559
+          "from": "/assets/images/saanjh.jpg|1.3|44%|13%|50% 0%",
+          "px": 859
         }
       },
       "slideCuts": {
@@ -5812,7 +7197,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 2.2,
+          "s": 1.3,
           "ox": "63%",
           "oy": "9%",
           "op": "50% 0%"
@@ -5883,8 +7268,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/sindoor-styled.jpg",
-          "from": "/assets/images/sindoor.jpg|2.2|63%|9%|50% 0%",
-          "px": 510
+          "from": "/assets/images/sindoor.jpg|1.3|63%|9%|50% 0%",
+          "px": 863
         }
       },
       "slideCuts": {
@@ -6018,7 +7403,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.7,
+          "s": 1.3,
           "ox": "43%",
           "oy": "50%",
           "op": "50% 20%"
@@ -6089,8 +7474,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kahani-styled.jpg",
-          "from": "/assets/images/kahani.jpg|1.7|43%|50%|50% 20%",
-          "px": 602
+          "from": "/assets/images/kahani.jpg|1.3|43%|50%|50% 20%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -6223,7 +7608,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 2,
+          "s": 1.3,
           "ox": "60%",
           "oy": "16%",
           "op": "50% 0%"
@@ -6294,8 +7679,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/leela-styled.jpg",
-          "from": "/assets/images/leela.jpg|2|60%|16%|50% 0%",
-          "px": 512
+          "from": "/assets/images/leela.jpg|1.3|60%|16%|50% 0%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -6424,7 +7809,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "10%",
           "op": "50% 0%"
@@ -6495,8 +7880,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/veena-styled.jpg",
-          "from": "/assets/images/veena.jpg|1.8|45%|10%|50% 0%",
-          "px": 569
+          "from": "/assets/images/veena.jpg|1.3|45%|10%|50% 0%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -6626,7 +8011,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "40%",
           "oy": "30%",
           "op": "40% 20%"
@@ -6697,8 +8082,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/darbar-styled.jpg",
-          "from": "/assets/images/darbar.jpg|1.8|40%|30%|40% 20%",
-          "px": 586
+          "from": "/assets/images/darbar.jpg|1.3|40%|30%|40% 20%",
+          "px": 812
         }
       },
       "slideCuts": {
@@ -6827,7 +8212,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "8%",
           "op": "50% 0%"
@@ -6858,10 +8243,25 @@
         ]
       },
       "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/chitra-fabric.jpg",
+          "from": "/assets/images/chitra-folded.jpg|2.6|42%|16%|50% 0%",
+          "px": 480
+        },
+        "border": {
+          "src": "/assets/images/detail/chitra-border.jpg",
+          "from": "/assets/images/chitra-folded.jpg|3.2|46%|84%|50% 100%",
+          "px": 480
+        },
+        "motif": {
+          "src": "/assets/images/detail/chitra-motif.jpg",
+          "from": "/assets/images/chitra-folded.jpg|2.4|59%|50%|50% 90%",
+          "px": 480
+        },
         "styled": {
           "src": "/assets/images/detail/chitra-styled.jpg",
-          "from": "/assets/images/chitra.jpg|1.8|50%|8%|50% 0%",
-          "px": 569
+          "from": "/assets/images/chitra.jpg|1.3|50%|8%|50% 0%",
+          "px": 788
         }
       },
       "features": {
@@ -7013,7 +8413,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "65%",
           "oy": "45%",
           "op": "60% 40%"
@@ -7084,8 +8484,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gajraj-styled.jpg",
-          "from": "/assets/images/gajraj.jpg|1.8|65%|45%|60% 40%",
-          "px": 599
+          "from": "/assets/images/gajraj.jpg|1.3|65%|45%|60% 40%",
+          "px": 830
         }
       },
       "slideCuts": {
@@ -7214,7 +8614,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "55%",
           "oy": "10%",
           "op": "50% 0%"
@@ -7285,8 +8685,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/bansuri-styled.jpg",
-          "from": "/assets/images/bansuri.jpg|1.8|55%|10%|50% 0%",
-          "px": 608
+          "from": "/assets/images/bansuri.jpg|1.3|55%|10%|50% 0%",
+          "px": 842
         }
       },
       "slideCuts": {
@@ -7442,7 +8842,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.9,
+          "s": 1.3,
           "ox": "50%",
           "oy": "39%",
           "op": "50% 0%"
@@ -7519,8 +8919,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/hariyali-styled.jpg",
-          "from": "/assets/images/hariyali-shoulder.jpg|1.9|50%|39%|50% 0%",
-          "px": 539
+          "from": "/assets/images/hariyali-shoulder.jpg|1.3|50%|39%|50% 0%",
+          "px": 788
         }
       }
     },
@@ -7696,7 +9096,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 2.2,
+          "s": 1.3,
           "ox": "49%",
           "oy": "30%",
           "op": "50% 0%"
@@ -7744,8 +9144,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gulkand-styled.jpg",
-          "from": "/assets/images/gulkand-front.jpg|2.2|49%|30%|50% 0%",
-          "px": 465
+          "from": "/assets/images/gulkand-front.jpg|1.3|49%|30%|50% 0%",
+          "px": 788
         }
       },
       "photoshoot": true,
@@ -7835,105 +9235,104 @@
       },
       "images": [
         {
-          "src": "/assets/images/parinda-seat.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/parinda-door.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Parinda — a maroon Banarasi saree with silver zari parrots, worn seated on a carved sandstone balcony against the sky, the pallu falling over the knee",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          }
+          "alt": "Parinda worn standing before a carved gold and copper door: maroon silk woven with zari parrots, the pallu over one arm, a mustard blouse",
+          "source": "model photography/Parinda shoot (sent in chat 23 Nov 2026)/parinda-door.png"
         },
         {
-          "src": "/assets/images/parinda-stand.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/parinda-pillar.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Parinda — worn standing between carved sandstone pillars, the pallu draped open to show the parrots and the border",
-          "frame": {
-            "x": 0,
-            "y": 0.09,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "alt": "Parinda beside a carved sandstone pillar, the pallu of zari parrots held out, the broad floral border falling to the floor",
+          "source": "model photography/Parinda shoot (sent in chat 23 Nov 2026)/parinda-pillar.png"
         },
         {
-          "src": "/assets/images/parinda-close.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/parinda-sky.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Parinda — the pallu in the wind, silver zari parrots on flowering branches against maroon",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "alt": "Parinda seated against a clear sky: the zari buta pallu across the lap and parrots all over the maroon skirt",
+          "source": "model photography/Parinda shoot (sent in chat 23 Nov 2026)/parinda-sky.png"
+        },
+        {
+          "src": "/assets/images/parinda-detail.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Parinda up close: zari parrots on flowering branches, the woven border and the buta pallu beside an embroidered mustard blouse",
+          "source": "model photography/Parinda shoot (sent in chat 23 Nov 2026)/parinda-detail.png"
+        },
+        {
+          "src": "/assets/images/parinda-booti.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Parinda booti up close: zari parrots on flowering branches and the buta of the pallu, cut from the seated photograph",
+          "source": "model photography/Parinda shoot (sent in chat 23 Nov 2026)/parinda-sky.png (cropped x60 y768 512×768, enlarged 2× bicubic)"
         }
       ],
       "crops": {
         "silhouette": {
-          "img": 0
+          "img": 2
         },
         "fall": {
-          "img": 1,
+          "img": 0,
           "s": 1.5,
           "ox": "95%",
           "oy": "100%",
           "op": "50% 100%"
         },
         "pallu": {
-          "img": 1,
+          "img": 0,
           "s": 1.6,
           "ox": "23%",
           "oy": "50%",
           "op": "50% 65%"
         },
         "border": {
-          "img": 2,
+          "img": 1,
           "s": 2,
           "ox": "52%",
           "oy": "92%"
         },
         "weave": {
-          "img": 2,
+          "img": 1,
           "s": 1.8,
           "ox": "50%",
           "oy": "55%"
         },
         "borderDetail": {
-          "img": 2,
+          "img": 1,
           "s": 2.4,
           "ox": "50%",
           "oy": "55%"
         },
         "motif": {
-          "img": 2,
+          "img": 1,
           "s": 3.2,
           "ox": "50%",
           "oy": "55%"
         },
         "colour": {
-          "img": 1,
+          "img": 0,
           "s": 1.5,
           "ox": "95%",
           "oy": "50%",
           "op": "50% 95%"
         },
         "swatch": {
-          "img": 2,
+          "img": 1,
           "s": 2,
           "ox": "50%",
           "oy": "55%"
         },
         "styling": {
-          "img": 1,
-          "s": 1.8,
+          "img": 0,
+          "s": 1.3,
           "ox": "66%",
           "oy": "42%",
           "op": "50% 0%"
@@ -7965,25 +9364,25 @@
       },
       "features": {
         "fabric": {
-          "img": 2,
-          "s": 2.4,
-          "ox": "29%",
+          "img": 3,
+          "s": 2,
+          "ox": "0%",
           "oy": "50%",
-          "op": "50% 89%"
+          "op": "50% 86%"
         },
         "border": {
-          "img": 1,
-          "s": 3,
-          "ox": "58%",
-          "oy": "100%",
-          "op": "50% 100%"
+          "img": 3,
+          "s": 2,
+          "ox": "46%",
+          "oy": "50%",
+          "op": "50% 80%"
         },
         "motif": {
-          "img": 2,
-          "s": 3,
-          "ox": "42%",
-          "oy": "62%",
-          "op": "50% 100%"
+          "img": 3,
+          "s": 2.1,
+          "ox": "23%",
+          "oy": "50%",
+          "op": "50% 14%"
         }
       },
       "photoshoot": true,
@@ -7991,24 +9390,35 @@
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/parinda-fabric.jpg",
-          "from": "/assets/images/parinda-close.jpg|2.4|29%|50%|50% 89%",
-          "px": 667
+          "from": "/assets/images/parinda-detail.jpg|2|0%|50%|50% 86%",
+          "px": 512
         },
         "border": {
           "src": "/assets/images/detail/parinda-border.jpg",
-          "from": "/assets/images/parinda-stand.jpg|3|58%|100%|50% 100%",
-          "px": 533
+          "from": "/assets/images/parinda-detail.jpg|2|46%|50%|50% 80%",
+          "px": 512
         },
         "motif": {
           "src": "/assets/images/detail/parinda-motif.jpg",
-          "from": "/assets/images/parinda-close.jpg|3|42%|62%|50% 100%",
-          "px": 533
+          "from": "/assets/images/parinda-detail.jpg|2.1|23%|50%|50% 14%",
+          "px": 488
         },
         "styled": {
           "src": "/assets/images/detail/parinda-styled.jpg",
-          "from": "/assets/images/parinda-stand.jpg|1.8|66%|42%|50% 0%",
-          "px": 889
+          "from": "/assets/images/parinda-door.jpg|1.3|66%|42%|50% 0%",
+          "px": 788
         }
+      },
+      "video": {
+        "src": "/assets/video/parinda-reel.mp4",
+        "srcSmall": "/assets/video/parinda-reel-small.mp4",
+        "poster": "/assets/images/parinda-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/parinda/painda.MP4 (3 s to 13 s; enhanced by _tools/enhance-reel.sh with a highlight roll-off for the sunlit stone, 23 Nov 2026; no sound)"
+        ]
       }
     },
     {
@@ -8061,21 +9471,21 @@
       },
       "images": [
         {
-          "src": "/assets/images/elaichi-shoot.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/elaichi-front.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
           "pos": "50% 50%",
-          "alt": "Elaichi, a deep green saree with silver zari booti, a broad zari pallu and a pale aqua border, worn standing before a carved gold and copper door",
-          "source": "model photography/Elaichi shoot (20 Nov 2026)/elaichi-shoot.jpg"
+          "alt": "Elaichi, a deep green saree with silver zari booti, a broad zari pallu and a pale aqua border, worn smiling before a carved gold and copper door",
+          "source": "model photography/Elaichi shoot (20 Nov 2026)/elaichi-front.png"
         },
         {
-          "src": "/assets/images/elaichi-rose.jpg",
-          "width": 1122,
-          "height": 1402,
+          "src": "/assets/images/elaichi-rose-hq.jpg",
+          "width": 1320,
+          "height": 1650,
           "real": true,
           "alt": "Elaichi from the side beside a carved sandstone pillar, a red rose held to the face, the zari pallu falling over the shoulder",
-          "source": "model photography/Elaichi shoot (20 Nov 2026)/sent in chat 23 Nov 2026/elaichi-rose.png"
+          "source": "model photography/Elaichi shoot (20 Nov 2026)/elaichi-rose.png (whole, scaled 1122→1320 with Lanczos)"
         },
         {
           "src": "/assets/images/elaichi-closeup.jpg",
@@ -8093,7 +9503,9 @@
           "height": 1350,
           "real": true,
           "alt": "Elaichi from the waist down beside a lotus pillar: silver booti on the green body, the zari pallu and the broad floral border",
-          "source": "model photography/Elaichi shoot (20 Nov 2026)/sent in chat 23 Nov 2026/elaichi-peacock.jpg"
+          "source": "model photography/Elaichi shoot (20 Nov 2026)/sent in chat 23 Nov 2026/elaichi-peacock.jpg",
+          "role": "product",
+          "fit": "cover"
         },
         {
           "src": "/assets/images/elaichi-pillar.jpg",
@@ -8124,6 +9536,16 @@
           "alt": "Elaichi with the pale aqua pallu end held out beside a gold door",
           "source": "model photography/Elaichi shoot (20 Nov 2026)/elaichi-door.jpg",
           "gallery": false
+        },
+        {
+          "src": "/assets/images/elaichi-shoot.jpg",
+          "width": 1600,
+          "height": 2400,
+          "real": true,
+          "pos": "50% 50%",
+          "alt": "Elaichi, a deep green saree with silver zari booti, a broad zari pallu and a pale aqua border, worn standing before a carved gold and copper door",
+          "source": "model photography/Elaichi shoot (20 Nov 2026)/elaichi-shoot.jpg",
+          "gallery": false
         }
       ],
       "crops": {
@@ -8134,14 +9556,14 @@
           "oy": "100%"
         },
         "fall": {
-          "img": 0,
+          "img": 6,
           "s": 1.5,
           "ox": "50%",
           "oy": "100%",
           "op": "50% 100%"
         },
         "pallu": {
-          "img": 0,
+          "img": 6,
           "s": 1.6,
           "ox": "55%",
           "oy": "70%",
@@ -8154,7 +9576,7 @@
           "oy": "60%"
         },
         "weave": {
-          "img": 0,
+          "img": 6,
           "s": 1.8,
           "ox": "50%",
           "oy": "55%",
@@ -8167,21 +9589,21 @@
           "oy": "60%"
         },
         "motif": {
-          "img": 0,
+          "img": 6,
           "s": 2.4,
           "ox": "50%",
           "oy": "75%",
           "op": "50% 100%"
         },
         "colour": {
-          "img": 0,
+          "img": 6,
           "s": 1.4,
           "ox": "50%",
           "oy": "55%",
           "op": "50% 100%"
         },
         "swatch": {
-          "img": 0,
+          "img": 6,
           "s": 2,
           "ox": "50%",
           "oy": "50%",
@@ -8189,9 +9611,9 @@
         },
         "styling": {
           "img": 0,
-          "s": 3,
-          "ox": "52%",
-          "oy": "50%",
+          "s": 1.3,
+          "ox": "54%",
+          "oy": "46%",
           "op": "50% 0%"
         }
       },
@@ -8237,8 +9659,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/elaichi-styled.jpg",
-          "from": "/assets/images/elaichi-shoot.jpg|3|52%|50%|50% 0%",
-          "px": 1333
+          "from": "/assets/images/elaichi-front.jpg|1.3|54%|46%|50% 0%",
+          "px": 788
         }
       },
       "photoshoot": true,
@@ -8259,7 +9681,7 @@
           "op": "50% 80%"
         },
         "motif": {
-          "img": 0,
+          "img": 6,
           "s": 4.5,
           "ox": "50%",
           "oy": "89%",
@@ -8419,7 +9841,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "41%",
           "oy": "5%",
           "op": "50% 0%"
@@ -8490,8 +9912,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/bulbul-styled.jpg",
-          "from": "/assets/images/bulbul-hall-standing.jpg|1.8|41%|5%|50% 0%",
-          "px": 889
+          "from": "/assets/images/bulbul-hall-standing.jpg|1.3|41%|5%|50% 0%",
+          "px": 1231
         }
       },
       "photoshoot": true,
@@ -8581,6 +10003,14 @@
           "source": "model photography/Genda shoot (20 Nov 2026)/genda-portrait.png"
         },
         {
+          "src": "/assets/images/genda-blouse.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Genda up close: the zari border with pink flowers wrapped across a wine and gold brocade blouse, silver booti on the orange body",
+          "source": "model photography/Genda shoot (20 Nov 2026)/genda-blouse.png (sent in chat 23 Nov 2026)"
+        },
+        {
           "src": "/assets/images/genda-cuff.jpg",
           "width": 1600,
           "height": 2400,
@@ -8608,25 +10038,25 @@
           "oy": "60%"
         },
         "border": {
-          "img": 2,
+          "img": 3,
           "s": 1.3,
           "ox": "72%",
           "oy": "42%"
         },
         "weave": {
-          "img": 2,
+          "img": 3,
           "s": 1.6,
           "ox": "85%",
           "oy": "60%"
         },
         "borderDetail": {
-          "img": 2,
+          "img": 3,
           "s": 2,
           "ox": "72%",
           "oy": "42%"
         },
         "motif": {
-          "img": 2,
+          "img": 3,
           "s": 2.4,
           "ox": "61%",
           "oy": "74%"
@@ -8638,14 +10068,14 @@
           "oy": "60%"
         },
         "swatch": {
-          "img": 2,
+          "img": 3,
           "s": 1.8,
           "ox": "82%",
           "oy": "75%"
         },
         "styling": {
           "img": 1,
-          "s": 1.6,
+          "s": 1.3,
           "ox": "55%",
           "oy": "30%",
           "op": "50% 20%"
@@ -8679,21 +10109,21 @@
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 2,
+          "img": 3,
           "s": 2,
           "ox": "100%",
           "oy": "50%",
           "op": "50% 65%"
         },
         "border": {
-          "img": 2,
+          "img": 3,
           "s": 2,
           "ox": "94%",
           "oy": "50%",
           "op": "50% 26%"
         },
         "motif": {
-          "img": 2,
+          "img": 3,
           "s": 2.6,
           "ox": "68%",
           "oy": "68%",
@@ -8718,9 +10148,20 @@
         },
         "styled": {
           "src": "/assets/images/detail/genda-styled.jpg",
-          "from": "/assets/images/genda-portrait.jpg|1.6|55%|30%|50% 20%",
-          "px": 640
+          "from": "/assets/images/genda-portrait.jpg|1.3|55%|30%|50% 20%",
+          "px": 788
         }
+      },
+      "video": {
+        "src": "/assets/video/genda-reel.mp4",
+        "srcSmall": "/assets/video/genda-reel-small.mp4",
+        "poster": "/assets/images/genda-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/genda/genda (1).MP4 (3 s to 10 s) + genda (2).MP4 (3 s to end), joined with a blur; enhanced by _tools/enhance-reel-merge.sh, 23 Nov 2026; no sound"
+        ]
       }
     },
     {
@@ -8773,12 +10214,52 @@
       },
       "images": [
         {
+          "src": "/assets/images/kesar-arch.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "pos": "50% 50%",
+          "alt": "Kesar, a coral orange silk saree with silver zari booti and a scalloped floral pallu, the pallu held open in a terracotta arch",
+          "source": "model photography/Kesar shoot (23 Nov 2026)/kesar-arch.png"
+        },
+        {
+          "src": "/assets/images/kesar-jewel.jpg",
+          "width": 1024,
+          "height": 1536,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kesar up close: the floral zari pallu in pink, blue, gold and green beside silver booti, with a brocade blouse",
+          "source": "model photography/Kesar shoot (23 Nov 2026)/kesar-jewel.png"
+        },
+        {
+          "src": "/assets/images/kesar-pallu.jpg",
+          "width": 1024,
+          "height": 1536,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kesar up close: the pallu over the shoulder, its zari florals in silver, coral and olive",
+          "source": "model photography/Kesar shoot (23 Nov 2026)/kesar-pallu.png"
+        },
+        {
+          "src": "/assets/images/kesar-fabric.jpg",
+          "width": 1320,
+          "height": 1980,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kesar up close: silver zari booti on coral silk",
+          "source": "the earlier 4th slide, kept as is (cut from kesar-shoot.jpg)"
+        },
+        {
           "src": "/assets/images/kesar-shoot.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
           "alt": "Kesar — a coral red Banarasi saree with silver zari booti and a scalloped floral pallu, worn standing in an arched alcove, the pallu held open",
-          "pos": "50% 50%"
+          "pos": "50% 50%",
+          "gallery": false
         },
         {
           "src": "/assets/images/kesar-closeup.jpg",
@@ -8789,7 +10270,8 @@
           "actual": true,
           "second": true,
           "alt": "Kesar up close: coral silk with a woven floral pallu and silver zari booti, worn with a dark brocade blouse",
-          "source": "Client, 20 Nov 2026 (photoshoot close-up)"
+          "source": "Client, 20 Nov 2026 (photoshoot close-up)",
+          "gallery": false
         }
       ],
       "crops": {
@@ -8797,62 +10279,62 @@
           "img": 0
         },
         "fall": {
-          "img": 0,
+          "img": 4,
           "s": 1.5,
           "ox": "65%",
           "oy": "100%",
           "op": "50% 100%"
         },
         "pallu": {
-          "img": 0,
+          "img": 4,
           "s": 1.6,
           "ox": "100%",
           "oy": "50%",
           "op": "50% 65%"
         },
         "border": {
-          "img": 0,
+          "img": 4,
           "s": 1.6,
           "ox": "70%",
           "oy": "82%"
         },
         "weave": {
-          "img": 1,
+          "img": 5,
           "s": 1.4,
           "ox": "70%",
           "oy": "70%"
         },
         "borderDetail": {
-          "img": 1,
+          "img": 5,
           "s": 1.3,
           "ox": "60%",
           "oy": "55%"
         },
         "motif": {
-          "img": 0,
+          "img": 4,
           "s": 1.6,
           "ox": "60%",
           "oy": "62%"
         },
         "colour": {
-          "img": 0,
+          "img": 4,
           "s": 1.5,
           "ox": "95%",
           "oy": "50%",
           "op": "50% 20%"
         },
         "swatch": {
-          "img": 0,
+          "img": 4,
           "s": 1.6,
           "ox": "28%",
           "oy": "74%"
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
-          "ox": "28%",
-          "oy": "5%",
-          "op": "50% 0%"
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "30%",
+          "op": "50% 10%"
         }
       },
       "looks": [],
@@ -8881,21 +10363,21 @@
       },
       "features": {
         "fabric": {
-          "img": 0,
+          "img": 4,
           "s": 2.5,
           "ox": "87%",
           "oy": "50%",
           "op": "50% 26%"
         },
         "border": {
-          "img": 0,
+          "img": 4,
           "s": 3,
           "ox": "80%",
           "oy": "87%",
           "op": "50% 100%"
         },
         "motif": {
-          "img": 0,
+          "img": 4,
           "s": 3,
           "ox": "50%",
           "oy": "50%",
@@ -8920,26 +10402,22 @@
         },
         "styled": {
           "src": "/assets/images/detail/kesar-styled.jpg",
-          "from": "/assets/images/kesar-shoot.jpg|1.8|28%|5%|50% 0%",
-          "px": 889
+          "from": "/assets/images/kesar-arch.jpg|1.3|50%|30%|50% 10%",
+          "px": 788
         }
       },
       "photoshoot": true,
-      "slideCuts": {
-        "border": {
-          "src": "/assets/images/slides/kesar-border.jpg",
-          "w": 1320,
-          "h": 1980,
-          "from": "/assets/images/kesar-shoot.jpg|1.6|70%|82%||1600/2400",
-          "px": 1000
-        },
-        "swatch": {
-          "src": "/assets/images/slides/kesar-swatch.jpg",
-          "w": 1320,
-          "h": 1980,
-          "from": "/assets/images/kesar-shoot.jpg|1.6|28%|74%||1600/2400",
-          "px": 1000
-        }
+      "galleryListed": true,
+      "video": {
+        "src": "/assets/video/kesar-reel.mp4",
+        "srcSmall": "/assets/video/kesar-reel-small.mp4",
+        "poster": "/assets/images/kesar-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/kesar/kesar.MP4 (first 10 s; enhanced by _tools/enhance-reel.sh, client-approved 23 Nov 2026; no sound)"
+        ]
       }
     },
     {
@@ -8991,54 +10469,37 @@
       },
       "images": [
         {
-          "src": "/assets/images/nilofer-1.jpg",
+          "src": "/assets/images/nilofer-n2.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Nilofer — a lilac Banarasi saree with a broad zari border and zari trees, worn standing in a terracotta arch with a red brocade blouse",
-          "pos": "50% 50%"
+          "alt": "Nilofer — a lilac Banarasi saree with zari trees, worn standing in a terracotta arch with a red brocade blouse"
         },
         {
-          "src": "/assets/images/nilofer-2.jpg",
+          "src": "/assets/images/nilofer-n3.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Nilofer — the pallu and border close up, with silver jewellery and a pink tasselled parandi",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Nilofer — seated, the lilac silk with woven zari trees falling over the lap",
           "fit": "cover"
         },
         {
-          "src": "/assets/images/nilofer-3.jpg",
+          "src": "/assets/images/nilofer-n5.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Nilofer — the broad zari border and pleats in detail",
-          "frame": {
-            "x": 0,
-            "y": 0.12,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Nilofer — close up of the lilac zari trees, the red brocade blouse and a pink tasselled parandi",
           "fit": "cover"
         },
         {
-          "src": "/assets/images/nilofer-4.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/nilofer-n4.jpg",
+          "width": 1320,
+          "height": 1760,
           "real": true,
-          "alt": "Nilofer — worn between terracotta pillars, the lilac silk catching the light",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "role": "product",
+          "fit": "cover",
+          "alt": "Nilofer — close up of the woven zari tree booti on lilac silk",
+          "source": "Client photo (seated), 520px window, light denoise"
         }
       ],
       "crops": {
@@ -9053,11 +10514,11 @@
           "op": "50% 100%"
         },
         "pallu": {
-          "img": 1,
-          "s": 1.6,
+          "img": 2,
+          "s": 1.2,
           "ox": "50%",
           "oy": "50%",
-          "op": "50% 65%"
+          "op": "50% 50%"
         },
         "border": {
           "img": 0,
@@ -9067,25 +10528,25 @@
           "op": "50% 100%"
         },
         "weave": {
-          "img": 2,
+          "img": 1,
           "s": 1.8,
-          "ox": "73%",
-          "oy": "100%",
+          "ox": "50%",
+          "oy": "85%",
           "op": "50% 100%"
         },
         "borderDetail": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "41%",
-          "oy": "50%",
-          "op": "50% 80%"
+          "img": 2,
+          "s": 2,
+          "ox": "14%",
+          "oy": "40%",
+          "op": "50% 50%"
         },
         "motif": {
-          "img": 0,
-          "s": 3,
-          "ox": "65%",
-          "oy": "62%",
-          "op": "50% 100%"
+          "img": 3,
+          "s": 1,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
         },
         "colour": {
           "img": 0,
@@ -9095,17 +10556,17 @@
           "op": "50% 100%"
         },
         "swatch": {
-          "img": 2,
-          "s": 2,
-          "ox": "70%",
-          "oy": "96%",
-          "op": "50% 100%"
+          "img": 3,
+          "s": 1,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
         },
         "styling": {
           "img": 1,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
-          "oy": "39%",
+          "oy": "25%",
           "op": "50% 0%"
         }
       },
@@ -9133,51 +10594,62 @@
           ]
         ]
       },
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/nilofer-fabric.jpg",
-          "from": "/assets/images/nilofer-4.jpg|2.4|59%|100%|50% 100%",
-          "px": 667
-        },
-        "border": {
-          "src": "/assets/images/detail/nilofer-border.jpg",
-          "from": "/assets/images/nilofer-2.jpg|3|25%|80%|50% 100%",
-          "px": 533
-        },
-        "motif": {
-          "src": "/assets/images/detail/nilofer-motif.jpg",
-          "from": "/assets/images/nilofer-3.jpg|3|58%|93%|50% 100%",
-          "px": 533
-        },
-        "styled": {
-          "src": "/assets/images/detail/nilofer-styled.jpg",
-          "from": "/assets/images/nilofer-2.jpg|1.8|50%|39%|50% 0%",
-          "px": 889
-        }
-      },
       "photoshoot": true,
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 3,
-          "s": 2.4,
-          "ox": "59%",
-          "oy": "100%",
+          "img": 1,
+          "s": 2.2,
+          "ox": "32%",
+          "oy": "59%",
           "op": "50% 100%"
         },
         "border": {
-          "img": 1,
-          "s": 3,
-          "ox": "25%",
-          "oy": "80%",
-          "op": "50% 100%"
+          "img": 2,
+          "s": 2.4,
+          "ox": "0%",
+          "oy": "50%",
+          "op": "50% 20%"
         },
         "motif": {
-          "img": 2,
-          "s": 3,
-          "ox": "58%",
-          "oy": "93%",
+          "img": 3,
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "77%",
           "op": "50% 100%"
+        }
+      },
+      "video": {
+        "src": "/assets/video/nilofer-reel.mp4",
+        "srcSmall": "/assets/video/nilofer-reel-small.mp4",
+        "poster": "/assets/images/nilofer-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/nilofer/nilfer (1).MP4 from 5 s + nilfer (2).MP4 2 s-5 s slowed to half speed and heavily stabilised, merged with a blur transition; enhanced by _tools/enhance-reel-merge-slow.sh, 23 Nov 2026; no sound"
+        ]
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/nilofer-fabric.jpg",
+          "from": "/assets/images/nilofer-n3.jpg|2.2|32%|59%|50% 100%",
+          "px": 727
+        },
+        "border": {
+          "src": "/assets/images/detail/nilofer-border.jpg",
+          "from": "/assets/images/nilofer-n5.jpg|2.4|0%|50%|50% 20%",
+          "px": 667
+        },
+        "motif": {
+          "src": "/assets/images/detail/nilofer-motif.jpg",
+          "from": "/assets/images/nilofer-n4.jpg|1.6|50%|77%|50% 100%",
+          "px": 825
+        },
+        "styled": {
+          "src": "/assets/images/detail/nilofer-styled.jpg",
+          "from": "/assets/images/nilofer-n3.jpg|1.3|50%|25%|50% 0%",
+          "px": 1231
         }
       }
     },
@@ -9335,7 +10807,7 @@
         },
         "styling": {
           "img": 1,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "61%",
           "oy": "50%",
           "op": "50% 14%"
@@ -9383,8 +10855,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/alta-styled.jpg",
-          "from": "/assets/images/alta-2.jpg|1.8|61%|50%|50% 14%",
-          "px": 889
+          "from": "/assets/images/alta-2.jpg|1.3|61%|50%|50% 14%",
+          "px": 1231
         }
       },
       "photoshoot": true,
@@ -9411,6 +10883,17 @@
           "oy": "93%",
           "op": "50% 100%"
         }
+      },
+      "video": {
+        "src": "/assets/video/alta-reel.mp4",
+        "srcSmall": "/assets/video/alta-reel-small.mp4",
+        "poster": "/assets/images/alta-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/alta/alta.MP4 (0:06–0:11; enhanced by _tools/enhance-reel.sh, client-approved 23 Nov 2026; no sound)"
+        ]
       }
     },
     {
@@ -9564,7 +11047,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "38%",
           "oy": "27%",
           "op": "38% 15%"
@@ -9633,8 +11116,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kattha-styled.jpg",
-          "from": "/assets/images/kattha.jpg|1.8|38%|27%|38% 15%",
-          "px": 603
+          "from": "/assets/images/kattha.jpg|1.3|38%|27%|38% 15%",
+          "px": 835
         }
       }
     },
@@ -9808,7 +11291,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "62%",
           "oy": "52%",
           "op": "62% 40%"
@@ -9873,8 +11356,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/sosan-styled.jpg",
-          "from": "/assets/images/sosan.jpg|1.8|62%|52%|62% 40%",
-          "px": 604
+          "from": "/assets/images/sosan.jpg|1.3|62%|52%|62% 40%",
+          "px": 837
         }
       }
     },
@@ -10048,7 +11531,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "24%",
           "op": "50% 12%"
@@ -10113,8 +11596,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/khus-styled.jpg",
-          "from": "/assets/images/khus.jpg|1.8|50%|24%|50% 12%",
-          "px": 603
+          "from": "/assets/images/khus.jpg|1.3|50%|24%|50% 12%",
+          "px": 835
         }
       }
     },
@@ -10282,7 +11765,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "20%",
           "op": "45% 8%"
@@ -10347,8 +11830,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/haldi-styled.jpg",
-          "from": "/assets/images/haldi.jpg|1.8|45%|20%|45% 8%",
-          "px": 536
+          "from": "/assets/images/haldi.jpg|1.3|45%|20%|45% 8%",
+          "px": 742
         }
       }
     },
@@ -10518,7 +12001,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "52%",
           "oy": "29%",
           "op": "52% 17%"
@@ -10583,8 +12066,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/rani-styled.jpg",
-          "from": "/assets/images/rani.jpg|1.8|52%|29%|52% 17%",
-          "px": 604
+          "from": "/assets/images/rani.jpg|1.3|52%|29%|52% 17%",
+          "px": 837
         }
       }
     },
@@ -10759,7 +12242,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "58%",
           "oy": "34%",
           "op": "58% 22%"
@@ -10824,8 +12307,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/sawari-styled.jpg",
-          "from": "/assets/images/sawari.jpg|1.8|58%|34%|58% 22%",
-          "px": 604
+          "from": "/assets/images/sawari.jpg|1.3|58%|34%|58% 22%",
+          "px": 837
         }
       }
     },
@@ -11000,7 +12483,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "48%",
           "oy": "27%",
           "op": "48% 15%"
@@ -11065,8 +12548,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/taal-styled.jpg",
-          "from": "/assets/images/taal.jpg|1.8|48%|27%|48% 15%",
-          "px": 641
+          "from": "/assets/images/taal.jpg|1.3|48%|27%|48% 15%",
+          "px": 887
         }
       }
     },
@@ -11242,7 +12725,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "24%",
           "op": "47% 12%"
@@ -11307,8 +12790,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/mor-styled.jpg",
-          "from": "/assets/images/mor.jpg|1.8|47%|24%|47% 12%",
-          "px": 604
+          "from": "/assets/images/mor.jpg|1.3|47%|24%|47% 12%",
+          "px": 837
         }
       }
     },
@@ -11478,7 +12961,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "23%",
           "op": "50% 11%"
@@ -11543,8 +13026,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/palash-styled.jpg",
-          "from": "/assets/images/palash.jpg|1.8|50%|23%|50% 11%",
-          "px": 535
+          "from": "/assets/images/palash.jpg|1.3|50%|23%|50% 11%",
+          "px": 741
         }
       }
     },
@@ -11715,7 +13198,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "29%",
           "op": "50% 17%"
@@ -11780,8 +13263,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/mehfil-styled.jpg",
-          "from": "/assets/images/mehfil.jpg|1.8|50%|29%|50% 17%",
-          "px": 629
+          "from": "/assets/images/mehfil.jpg|1.3|50%|29%|50% 17%",
+          "px": 871
         }
       }
     },
@@ -11946,7 +13429,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "24%",
           "op": "50% 12%"
@@ -12011,8 +13494,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/mishri-styled.jpg",
-          "from": "/assets/images/mishri.jpg|1.8|50%|24%|50% 12%",
-          "px": 535
+          "from": "/assets/images/mishri.jpg|1.3|50%|24%|50% 12%",
+          "px": 741
         }
       }
     },
@@ -12182,7 +13665,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "24%",
           "op": "45% 12%"
@@ -12247,8 +13730,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/ambi-styled.jpg",
-          "from": "/assets/images/ambi.jpg|1.8|45%|24%|45% 12%",
-          "px": 642
+          "from": "/assets/images/ambi.jpg|1.3|45%|24%|45% 12%",
+          "px": 889
         }
       }
     },
@@ -12422,7 +13905,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "48%",
           "oy": "20%",
           "op": "48% 8%"
@@ -12487,8 +13970,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/bahaar-styled.jpg",
-          "from": "/assets/images/bahaar.jpg|1.8|48%|20%|48% 8%",
-          "px": 603
+          "from": "/assets/images/bahaar.jpg|1.3|48%|20%|48% 8%",
+          "px": 835
         }
       }
     },
@@ -12653,7 +14136,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "24%",
           "op": "45% 12%"
@@ -12718,8 +14201,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/shagun-styled.jpg",
-          "from": "/assets/images/shagun.jpg|1.8|45%|24%|45% 12%",
-          "px": 535
+          "from": "/assets/images/shagun.jpg|1.3|45%|24%|45% 12%",
+          "px": 741
         }
       }
     },
@@ -12889,7 +14372,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "55%",
           "oy": "34%",
           "op": "55% 22%"
@@ -12954,8 +14437,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/mangal-styled.jpg",
-          "from": "/assets/images/mangal.jpg|1.8|55%|34%|55% 22%",
-          "px": 642
+          "from": "/assets/images/mangal.jpg|1.3|55%|34%|55% 22%",
+          "px": 889
         }
       }
     },
@@ -13109,7 +14592,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "58%",
           "oy": "42%",
           "op": "58% 30%"
@@ -13178,8 +14661,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/aasmaan-styled.jpg",
-          "from": "/assets/images/aasmaan.jpg|1.8|58%|42%|58% 30%",
-          "px": 604
+          "from": "/assets/images/aasmaan.jpg|1.3|58%|42%|58% 30%",
+          "px": 837
         }
       }
     },
@@ -13347,7 +14830,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "24%",
           "op": "45% 12%"
@@ -13412,8 +14895,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/airavat-styled.jpg",
-          "from": "/assets/images/airavat.jpg|1.8|45%|24%|45% 12%",
-          "px": 535
+          "from": "/assets/images/airavat.jpg|1.3|45%|24%|45% 12%",
+          "px": 741
         }
       }
     },
@@ -13579,7 +15062,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "38%",
           "oy": "22%",
           "op": "38% 10%"
@@ -13648,8 +15131,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/shringaar-styled.jpg",
-          "from": "/assets/images/shringaar.jpg|1.8|38%|22%|38% 10%",
-          "px": 642
+          "from": "/assets/images/shringaar.jpg|1.3|38%|22%|38% 10%",
+          "px": 889
         }
       }
     },
@@ -13809,7 +15292,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "78%",
           "oy": "22%",
           "op": "78% 10%"
@@ -13874,8 +15357,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/firoza-styled.jpg",
-          "from": "/assets/images/firoza.jpg|1.8|78%|22%|78% 10%",
-          "px": 630
+          "from": "/assets/images/firoza.jpg|1.3|78%|22%|78% 10%",
+          "px": 872
         }
       }
     },
@@ -14038,7 +15521,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "24%",
           "op": "50% 12%"
@@ -14107,8 +15590,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gulistan-styled.jpg",
-          "from": "/assets/images/gulistan.jpg|1.8|50%|24%|50% 12%",
-          "px": 535
+          "from": "/assets/images/gulistan.jpg|1.3|50%|24%|50% 12%",
+          "px": 741
         }
       }
     },
@@ -14276,7 +15759,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "22%",
           "op": "45% 10%"
@@ -14341,8 +15824,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/basant-styled.jpg",
-          "from": "/assets/images/basant.jpg|1.8|45%|22%|45% 10%",
-          "px": 535
+          "from": "/assets/images/basant.jpg|1.3|45%|22%|45% 10%",
+          "px": 741
         }
       }
     },
@@ -14497,7 +15980,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "24%",
           "op": "50% 12%"
@@ -14566,8 +16049,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/moti-styled.jpg",
-          "from": "/assets/images/moti.jpg|1.8|50%|24%|50% 12%",
-          "px": 615
+          "from": "/assets/images/moti.jpg|1.3|50%|24%|50% 12%",
+          "px": 852
         }
       }
     },
@@ -14713,7 +16196,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "20%",
           "op": "45% 8%"
@@ -14791,8 +16274,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/megh-styled.jpg",
-          "from": "/assets/images/megh.jpg|1.8|45%|20%|45% 8%",
-          "px": 535
+          "from": "/assets/images/megh.jpg|1.3|45%|20%|45% 8%",
+          "px": 741
         }
       }
     },
@@ -14846,62 +16329,36 @@
       },
       "images": [
         {
-          "src": "/assets/images/hiran-main.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/hiran-window.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Hiran — a vermilion saree with silver zari deer and tree-of-life medallions, worn standing at a lattice window in a blue room",
-          "pos": "50% 50%"
+          "alt": "Hiran worn full length beside a jaali window: zari deer and medallions over the vermilion body, the woven pallu over one arm",
+          "source": "model photography/Hiran shoot (sent in chat 23 Nov 2026)/hiran-window.png"
         },
         {
-          "src": "/assets/images/hiran-2.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/hiran-incense.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Hiran — held with a brass lantern in a blue arched room, the pallu falling over the shoulder",
-          "frame": {
-            "x": 0,
-            "y": 0.15,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "alt": "Hiran in a blue room, holding a brass incense pot to the window, red roses in the hair",
+          "source": "model photography/Hiran shoot (sent in chat 23 Nov 2026)/hiran-incense.png"
         },
         {
-          "src": "/assets/images/hiran-3.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/hiran-closeup.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Hiran — in profile at the lattice window, the pallu with silver deer and a tree-of-life medallion",
-          "frame": {
-            "x": 0,
-            "y": 0.06,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
-        },
-        {
-          "src": "/assets/images/hiran-4.jpg",
-          "width": 1600,
-          "height": 2400,
-          "real": true,
-          "alt": "Hiran — close up of the zari deer, medallions and lattice border",
-          "frame": {
-            "x": 0,
-            "y": 0,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "alt": "Hiran up close: vermilion silk woven with zari deer and a tree-of-life medallion, the pallu over a mustard blouse, stacked gold cuffs",
+          "source": "model photography/Hiran shoot (sent in chat 23 Nov 2026)/hiran-closeup.png"
         }
       ],
       "crops": {
         "silhouette": {
-          "img": 0
+          "img": 2
         },
         "fall": {
-          "img": 0,
+          "img": 2,
           "s": 1.5,
           "ox": "86%",
           "oy": "100%",
@@ -14915,53 +16372,53 @@
           "op": "50% 80%"
         },
         "border": {
-          "img": 3,
+          "img": 2,
           "s": 2,
           "ox": "0%",
           "oy": "60%",
           "op": "50% 100%"
         },
         "weave": {
-          "img": 3,
+          "img": 2,
           "s": 1.8,
           "ox": "73%",
           "oy": "68%",
           "op": "50% 100%"
         },
         "borderDetail": {
-          "img": 3,
+          "img": 2,
           "s": 2.4,
           "ox": "0%",
           "oy": "59%",
           "op": "50% 100%"
         },
         "motif": {
-          "img": 3,
+          "img": 2,
           "s": 3,
           "ox": "68%",
           "oy": "50%",
           "op": "50% 95%"
         },
         "colour": {
-          "img": 0,
+          "img": 2,
           "s": 1.5,
           "ox": "86%",
           "oy": "50%",
           "op": "50% 80%"
         },
         "swatch": {
-          "img": 3,
+          "img": 2,
           "s": 2,
           "ox": "70%",
           "oy": "66%",
           "op": "50% 100%"
         },
         "styling": {
-          "img": 2,
-          "s": 1.8,
+          "img": 1,
+          "s": 1.3,
           "ox": "50%",
-          "oy": "39%",
-          "op": "50% 0%"
+          "oy": "30%",
+          "op": "50% 15%"
         }
       },
       "backdrop": {
@@ -14991,48 +16448,59 @@
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/hiran-fabric.jpg",
-          "from": "/assets/images/hiran-4.jpg|2.4|64%|84%|50% 100%",
-          "px": 667
+          "from": "/assets/images/hiran-closeup.jpg|2.2|13%|100%|50% 100%",
+          "px": 465
         },
         "border": {
           "src": "/assets/images/detail/hiran-border.jpg",
-          "from": "/assets/images/hiran-4.jpg|2.6|0%|70%|50% 100%",
-          "px": 615
+          "from": "/assets/images/hiran-closeup.jpg|2.2|0%|50%|50% 86%",
+          "px": 465
         },
         "motif": {
           "src": "/assets/images/detail/hiran-motif.jpg",
-          "from": "/assets/images/hiran-4.jpg|3|68%|50%|50% 92%",
-          "px": 533
+          "from": "/assets/images/hiran-closeup.jpg|2.3|43%|50%|50% 80%",
+          "px": 461
         },
         "styled": {
           "src": "/assets/images/detail/hiran-styled.jpg",
-          "from": "/assets/images/hiran-3.jpg|1.8|50%|39%|50% 0%",
-          "px": 889
+          "from": "/assets/images/hiran-incense.jpg|1.3|50%|30%|50% 15%",
+          "px": 788
         }
       },
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 3,
-          "s": 2.4,
-          "ox": "64%",
-          "oy": "84%",
+          "img": 2,
+          "s": 2.2,
+          "ox": "13%",
+          "oy": "100%",
           "op": "50% 100%"
         },
         "border": {
-          "img": 3,
-          "s": 2.6,
+          "img": 2,
+          "s": 2.2,
           "ox": "0%",
-          "oy": "70%",
-          "op": "50% 100%"
+          "oy": "50%",
+          "op": "50% 86%"
         },
         "motif": {
-          "img": 3,
-          "s": 3,
-          "ox": "68%",
+          "img": 2,
+          "s": 2.3,
+          "ox": "43%",
           "oy": "50%",
-          "op": "50% 92%"
+          "op": "50% 80%"
         }
+      },
+      "video": {
+        "src": "/assets/video/hiran-reel.mp4",
+        "srcSmall": "/assets/video/hiran-reel-small.mp4",
+        "poster": "/assets/images/hiran-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/hiran/hiran.MP4 (3 s to 11 s; enhanced by _tools/enhance-reel.sh, firmer stabilisation and red flare rolled off, 23 Nov 2026; no sound)"
+        ]
       }
     },
     {
@@ -15091,6 +16559,50 @@
       },
       "images": [
         {
+          "src": "/assets/images/kumkum-e2-lotus.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Kumkum worn against gold damask, holding pink lotus buds, the pallu scattered with buta",
+          "source": "model photography/Kumkum shoot (20 Nov 2026)/client edits (23 Nov 2026)/kumkum-e2-lotus.png"
+        },
+        {
+          "src": "/assets/images/kumkum-e3-full.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Kumkum full length between red velvet curtains, the broad zari pallu falling to the floor",
+          "source": "model photography/Kumkum shoot (20 Nov 2026)/client edits (23 Nov 2026)/kumkum-e3-full.png"
+        },
+        {
+          "src": "/assets/images/kumkum-e1-closeup.jpg",
+          "width": 1024,
+          "height": 1536,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kumkum up close: rust silk with zari flower sprays and coral, navy and olive buta, the zari pallu held out",
+          "source": "model photography/Kumkum shoot (20 Nov 2026)/client edits (23 Nov 2026)/kumkum-e1-closeup.png"
+        },
+        {
+          "src": "/assets/images/kumkum-e4-portrait.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Kumkum worn with a green brocade blouse, smelling lotus buds beside a Mughal portrait",
+          "source": "model photography/Kumkum shoot (20 Nov 2026)/client edits (23 Nov 2026)/kumkum-e4-portrait.png"
+        },
+        {
+          "src": "/assets/images/kumkum-booti.jpg",
+          "width": 1320,
+          "height": 1980,
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "alt": "Kumkum up close: coral, navy and olive buta among zari flower sprays on rust silk",
+          "source": "model photography/Kumkum shoot (20 Nov 2026)/kumkum-closeup.jpg (booti zoom: 1500×2250 crop of the 4000px original, Lanczos; overall colour levels matched to the client edit kumkum-e1-closeup)"
+        },
+        {
           "src": "/assets/images/kumkum-full.jpg",
           "width": 1600,
           "height": 2400,
@@ -15103,7 +16615,8 @@
           },
           "alt": "Kumkum, a rust saree woven with zari flower sprays and coral, navy and olive buta, worn full length between red velvet curtains, holding pink lotus buds, the deep zari border at the hem",
           "source": "model photography/Kumkum shoot (20 Nov 2026)/kumkum-full.jpg",
-          "pos": "50% 55%"
+          "pos": "50% 55%",
+          "gallery": false
         },
         {
           "src": "/assets/images/kumkum-lotus.jpg",
@@ -15117,7 +16630,8 @@
             "h": 0.8889
           },
           "alt": "Kumkum worn with a green and gold brocade blouse, lotus buds held up to the face, the zari border across the shoulder",
-          "source": "model photography/Kumkum shoot (20 Nov 2026)/kumkum-lotus.jpg"
+          "source": "model photography/Kumkum shoot (20 Nov 2026)/kumkum-lotus.jpg",
+          "gallery": false
         },
         {
           "src": "/assets/images/kumkum-closeup.jpg",
@@ -15127,7 +16641,8 @@
           "fit": "cover",
           "actual": true,
           "alt": "Kumkum up close: zari flower sprays and coral, navy and olive buta on rust, beside the deep zari border",
-          "source": "model photography/Kumkum shoot (20 Nov 2026)/kumkum-closeup.jpg"
+          "source": "model photography/Kumkum shoot (20 Nov 2026)/kumkum-closeup.jpg",
+          "gallery": false
         },
         {
           "src": "/assets/images/kumkum-damask.jpg",
@@ -15141,67 +16656,68 @@
             "h": 0.8889
           },
           "alt": "Kumkum worn standing against gold damask, the pallu gathered over the arm",
-          "source": "model photography/Kumkum shoot (20 Nov 2026)/kumkum-damask.jpg"
+          "source": "model photography/Kumkum shoot (20 Nov 2026)/kumkum-damask.jpg",
+          "gallery": false
         }
       ],
       "crops": {
         "silhouette": {
-          "img": 0
+          "img": 5
         },
         "fall": {
-          "img": 0,
+          "img": 5,
           "s": 1.5,
           "ox": "55%",
           "oy": "80%"
         },
         "pallu": {
-          "img": 0,
+          "img": 5,
           "s": 1.5,
           "ox": "55%",
           "oy": "55%"
         },
         "border": {
-          "img": 2,
+          "img": 7,
           "s": 1.4,
           "ox": "80%",
           "oy": "75%"
         },
         "weave": {
-          "img": 2,
+          "img": 7,
           "s": 1.3,
           "ox": "55%",
           "oy": "50%"
         },
         "borderDetail": {
-          "img": 2,
+          "img": 7,
           "s": 1.8,
           "ox": "80%",
           "oy": "75%"
         },
         "motif": {
-          "img": 2,
+          "img": 7,
           "s": 2.2,
           "ox": "62%",
           "oy": "33%"
         },
         "colour": {
-          "img": 0,
+          "img": 5,
           "s": 1.3,
           "ox": "55%",
           "oy": "55%"
         },
         "swatch": {
-          "img": 2,
+          "img": 7,
           "s": 1.8,
           "ox": "55%",
           "oy": "45%"
         },
         "styling": {
-          "img": 1,
-          "s": 1.8,
+          "img": 3,
+          "s": 1.3,
           "ox": "45%",
-          "oy": "50%",
-          "op": "50% 45%"
+          "oy": "55%",
+          "op": "50% 30%"
         }
       },
       "backdrop": {
@@ -15231,21 +16747,21 @@
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 2,
+          "img": 7,
           "s": 2,
           "ox": "94%",
           "oy": "50%",
           "op": "50% 26%"
         },
         "border": {
-          "img": 2,
+          "img": 7,
           "s": 2,
           "ox": "100%",
           "oy": "75%",
           "op": "50% 100%"
         },
         "motif": {
-          "img": 2,
+          "img": 7,
           "s": 2.4,
           "ox": "71%",
           "oy": "49%",
@@ -15270,9 +16786,20 @@
         },
         "styled": {
           "src": "/assets/images/detail/kumkum-styled.jpg",
-          "from": "/assets/images/kumkum-lotus.jpg|1.8|45%|50%|50% 45%",
-          "px": 2222
+          "from": "/assets/images/kumkum-e4-portrait.jpg|1.3|45%|55%|50% 30%",
+          "px": 788
         }
+      },
+      "video": {
+        "src": "/assets/video/kumkum-reel.mp4",
+        "srcSmall": "/assets/video/kumkum-reel-small.mp4",
+        "poster": "/assets/images/kumkum-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/kumkum/kumkum.MP4 (0:02–0:14; enhanced by _tools/enhance-reel.sh with the low-light grade: shadows below Y 70 lifted gently, hqdn3d 1.5:1.5:3:3; client-approved 23 Nov 2026; no sound)"
+        ]
       }
     },
     {
@@ -15428,7 +16955,7 @@
         },
         "styling": {
           "img": 2,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "55%",
           "oy": "50%",
           "op": "50% 20%"
@@ -15476,8 +17003,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/chandni-styled.jpg",
-          "from": "/assets/images/chandni-real-1.jpg|1.8|55%|50%|50% 20%",
-          "px": 889
+          "from": "/assets/images/chandni-real-1.jpg|1.3|55%|50%|50% 20%",
+          "px": 1231
         }
       },
       "features": {
@@ -15503,7 +17030,18 @@
           "op": "50% 0%"
         }
       },
-      "galleryListed": true
+      "galleryListed": true,
+      "video": {
+        "src": "/assets/video/chandni-reel.mp4",
+        "srcSmall": "/assets/video/chandni-reel-small.mp4",
+        "poster": "/assets/images/chandni-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/chandni/chandni.MP4 0 s-12 s; enhanced by _tools/enhance-reel.sh (SMOOTH=15), 23 Nov 2026; no sound"
+        ]
+      }
     },
     {
       "descriptionStatus": "draft",
@@ -15560,59 +17098,37 @@
       },
       "images": [
         {
-          "src": "/assets/images/narangi-1.jpg",
+          "src": "/assets/images/narangi-n1.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Narangi — an orange Banarasi saree with a gold-and-copper zari pallu, worn standing between red velvet curtains with a red brocade blouse",
-          "frame": {
-            "x": 0,
-            "y": 0.09,
-            "w": 1,
-            "h": 0.8889
-          }
+          "alt": "Narangi — an orange Banarasi saree with a broad zari pallu and red brocade blouse, worn between red velvet curtains"
         },
         {
-          "src": "/assets/images/narangi-2.jpg",
+          "src": "/assets/images/narangi-n2.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Narangi — the pallu falling over the shoulder, with gold earrings and a brass basket of jasmine",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Narangi — in profile, the orange silk with its zari pallu and woven floral booti against damask wallpaper",
           "fit": "cover"
         },
         {
-          "src": "/assets/images/narangi-3.jpg",
+          "src": "/assets/images/narangi-n3.jpg",
           "width": 1600,
           "height": 2400,
           "real": true,
-          "alt": "Narangi — the pallu border with peacocks and vines, beside a red brocade blouse",
-          "frame": {
-            "x": 0,
-            "y": 0.02,
-            "w": 1,
-            "h": 0.8889
-          },
+          "alt": "Narangi — close up of the zari pallu, the red brocade blouse and the woven floral booti",
           "fit": "cover"
         },
         {
-          "src": "/assets/images/narangi-4.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/narangi-n4.jpg",
+          "width": 1320,
+          "height": 1760,
           "real": true,
-          "alt": "Narangi — worn in profile against damask wallpaper, the pallu pleated over the shoulder",
-          "frame": {
-            "x": 0,
-            "y": 0.12,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "role": "product",
+          "fit": "cover",
+          "alt": "Narangi — close up of the woven red and green floral booti on orange silk",
+          "source": "Client photo (close-up), 460px window, light denoise"
         }
       ],
       "crops": {
@@ -15622,65 +17138,65 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "65%",
+          "ox": "50%",
           "oy": "100%",
           "op": "50% 100%"
         },
         "pallu": {
           "img": 1,
-          "s": 1.6,
-          "ox": "63%",
-          "oy": "50%",
-          "op": "50% 86%"
+          "s": 1.4,
+          "ox": "70%",
+          "oy": "70%",
+          "op": "50% 60%"
         },
         "border": {
           "img": 2,
           "s": 2,
-          "ox": "40%",
-          "oy": "50%",
+          "ox": "30%",
+          "oy": "40%",
           "op": "50% 50%"
         },
         "weave": {
-          "img": 3,
+          "img": 2,
           "s": 1.8,
-          "ox": "91%",
-          "oy": "78%",
+          "ox": "55%",
+          "oy": "85%",
           "op": "50% 100%"
         },
         "borderDetail": {
           "img": 2,
-          "s": 2.4,
-          "ox": "41%",
-          "oy": "50%",
+          "s": 2,
+          "ox": "40%",
+          "oy": "45%",
           "op": "50% 50%"
         },
         "motif": {
           "img": 3,
-          "s": 3,
-          "ox": "77%",
-          "oy": "80%",
-          "op": "50% 100%"
+          "s": 1,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
         },
         "colour": {
-          "img": 1,
+          "img": 0,
           "s": 1.5,
           "ox": "50%",
-          "oy": "74%",
+          "oy": "70%",
           "op": "50% 100%"
         },
         "swatch": {
           "img": 3,
-          "s": 2,
-          "ox": "86%",
-          "oy": "75%",
-          "op": "50% 100%"
+          "s": 1,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
         },
         "styling": {
           "img": 1,
-          "s": 1.8,
-          "ox": "39%",
-          "oy": "50%",
-          "op": "50% 5%"
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "25%",
+          "op": "50% 0%"
         }
       },
       "backdrop": {
@@ -15707,50 +17223,61 @@
         ]
       },
       "photoshoot": true,
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/narangi-fabric.jpg",
-          "from": "/assets/images/narangi-4.jpg|2.4|67%|53%|50% 100%",
-          "px": 667
-        },
-        "border": {
-          "src": "/assets/images/detail/narangi-border.jpg",
-          "from": "/assets/images/narangi-3.jpg|2.8|42%|50%|50% 50%",
-          "px": 571
-        },
-        "motif": {
-          "src": "/assets/images/detail/narangi-motif.jpg",
-          "from": "/assets/images/narangi-4.jpg|3|77%|80%|50% 100%",
-          "px": 533
-        },
-        "styled": {
-          "src": "/assets/images/detail/narangi-styled.jpg",
-          "from": "/assets/images/narangi-2.jpg|1.8|39%|50%|50% 5%",
-          "px": 889
-        }
-      },
       "galleryListed": true,
       "features": {
         "fabric": {
-          "img": 3,
-          "s": 2.4,
-          "ox": "67%",
-          "oy": "53%",
+          "img": 2,
+          "s": 2.2,
+          "ox": "59%",
+          "oy": "92%",
           "op": "50% 100%"
         },
         "border": {
           "img": 2,
-          "s": 2.8,
-          "ox": "42%",
-          "oy": "50%",
-          "op": "50% 50%"
+          "s": 2.2,
+          "ox": "100%",
+          "oy": "41%",
+          "op": "50% 0%"
         },
         "motif": {
           "img": 3,
-          "s": 3,
-          "ox": "77%",
-          "oy": "80%",
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "77%",
           "op": "50% 100%"
+        }
+      },
+      "video": {
+        "src": "/assets/video/narangi-reel.mp4",
+        "srcSmall": "/assets/video/narangi-reel-small.mp4",
+        "poster": "/assets/images/narangi-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/narangi/narangi.MP4 1 s-9 s, slowed to half speed and heavily stabilised; enhanced by _tools/enhance-reel-slow.sh, 23 Nov 2026; no sound"
+        ]
+      },
+      "detailCircles": {
+        "fabric": {
+          "src": "/assets/images/detail/narangi-fabric.jpg",
+          "from": "/assets/images/narangi-n3.jpg|2.2|59%|92%|50% 100%",
+          "px": 727
+        },
+        "border": {
+          "src": "/assets/images/detail/narangi-border.jpg",
+          "from": "/assets/images/narangi-n3.jpg|2.2|100%|41%|50% 0%",
+          "px": 727
+        },
+        "motif": {
+          "src": "/assets/images/detail/narangi-motif.jpg",
+          "from": "/assets/images/narangi-n4.jpg|1.6|50%|77%|50% 100%",
+          "px": 825
+        },
+        "styled": {
+          "src": "/assets/images/detail/narangi-styled.jpg",
+          "from": "/assets/images/narangi-n2.jpg|1.3|50%|25%|50% 0%",
+          "px": 1231
         }
       }
     },
@@ -15804,45 +17331,50 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/neelambari-1.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/neelambari-turn.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Neelambari — a purple saree with small gold elephants, a black border with gold roundels and a paisley pallu, worn standing in a blue arched hall",
-          "frame": {
-            "x": 0,
-            "y": 0.1,
-            "w": 1,
-            "h": 0.8889
-          }
+          "alt": "Neelambari looking back over the shoulder beside a white carved pillar: purple silk with gold elephants and a black zari border",
+          "source": "model photography/Neelambari shoot (sent in chat 23 Nov 2026)/neelambari-turn.png"
         },
         {
-          "src": "/assets/images/neelambari-2.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/neelambari-wall.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Neelambari — looking over the shoulder, the pallu falling in soft folds with gold elephants",
-          "frame": {
-            "x": 0,
-            "y": 0.15,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "alt": "Neelambari worn full length against a teal wall, one hand raised to the brow, the black pallu of gold paisleys falling to the floor",
+          "source": "model photography/Neelambari shoot (sent in chat 23 Nov 2026)/neelambari-wall.png"
         },
         {
-          "src": "/assets/images/neelambari-3.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/neelambari-smile.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Neelambari — the black border with gold roundels and the paisley pallu, in profile",
-          "frame": {
-            "x": 0,
-            "y": 0.12,
-            "w": 1,
-            "h": 0.8889
-          },
-          "fit": "cover"
+          "alt": "Neelambari smiling over the shoulder, the purple pallu with gold elephants held in front",
+          "source": "model photography/Neelambari shoot (sent in chat 23 Nov 2026)/neelambari-smile.png"
+        },
+        {
+          "src": "/assets/images/neelambari-border-zoom.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Neelambari border up close: gold medallions on the black zari border beside the paisleys of the pallu",
+          "source": "model photography/Neelambari shoot (sent in chat 23 Nov 2026)/neelambari-turn.png (cropped x470 y800 480×720, spline 2.1×, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
+        },
+        {
+          "src": "/assets/images/neelambari-booti-zoom.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Neelambari booti up close: small gold elephants woven over the purple pleats",
+          "source": "model photography/Neelambari shoot (sent in chat 23 Nov 2026)/neelambari-turn.png (cropped x420 y1026 340×510, spline 3×, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
         }
       ],
       "crops": {
@@ -15857,7 +17389,7 @@
           "op": "50% 100%"
         },
         "pallu": {
-          "img": 2,
+          "img": 0,
           "s": 1.6,
           "ox": "100%",
           "oy": "83%",
@@ -15871,43 +17403,43 @@
           "op": "50% 100%"
         },
         "weave": {
-          "img": 1,
+          "img": 0,
           "s": 1.8,
           "ox": "77%",
           "oy": "50%",
           "op": "50% 86%"
         },
         "borderDetail": {
-          "img": 2,
+          "img": 0,
           "s": 2.4,
           "ox": "100%",
           "oy": "97%",
           "op": "50% 100%"
         },
         "motif": {
-          "img": 2,
+          "img": 0,
           "s": 3,
           "ox": "74%",
           "oy": "96%",
           "op": "50% 100%"
         },
         "colour": {
-          "img": 1,
+          "img": 0,
           "s": 1.5,
           "ox": "86%",
           "oy": "50%",
           "op": "50% 86%"
         },
         "swatch": {
-          "img": 1,
+          "img": 0,
           "s": 2,
           "ox": "74%",
           "oy": "50%",
           "op": "50% 86%"
         },
         "styling": {
-          "img": 1,
-          "s": 1.8,
+          "img": 0,
+          "s": 1.3,
           "ox": "50%",
           "oy": "39%",
           "op": "50% 0%"
@@ -15940,47 +17472,47 @@
       "photoshoot": true,
       "features": {
         "fabric": {
-          "img": 1,
-          "s": 2.4,
-          "ox": "71%",
+          "img": 4,
+          "s": 1.4,
+          "ox": "50%",
           "oy": "50%",
-          "op": "50% 86%"
+          "op": "50% 50%"
         },
         "border": {
-          "img": 0,
-          "s": 3,
-          "ox": "77%",
-          "oy": "66%",
-          "op": "50% 100%"
+          "img": 3,
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 65%"
         },
         "motif": {
-          "img": 2,
-          "s": 3,
-          "ox": "74%",
-          "oy": "96%",
-          "op": "50% 100%"
+          "img": 4,
+          "s": 1.8,
+          "ox": "39%",
+          "oy": "50%",
+          "op": "50% 65%"
         }
       },
       "detailCircles": {
         "fabric": {
           "src": "/assets/images/detail/neelambari-fabric.jpg",
-          "from": "/assets/images/neelambari-2.jpg|2.4|71%|50%|50% 86%",
-          "px": 667
+          "from": "/assets/images/neelambari-booti-zoom.jpg|1.4|50%|50%|50% 50%",
+          "px": 731
         },
         "border": {
           "src": "/assets/images/detail/neelambari-border.jpg",
-          "from": "/assets/images/neelambari-1.jpg|3|77%|66%|50% 100%",
-          "px": 533
+          "from": "/assets/images/neelambari-border-zoom.jpg|1.4|50%|50%|50% 65%",
+          "px": 731
         },
         "motif": {
           "src": "/assets/images/detail/neelambari-motif.jpg",
-          "from": "/assets/images/neelambari-3.jpg|3|74%|96%|50% 100%",
-          "px": 533
+          "from": "/assets/images/neelambari-booti-zoom.jpg|1.8|39%|50%|50% 65%",
+          "px": 569
         },
         "styled": {
           "src": "/assets/images/detail/neelambari-styled.jpg",
-          "from": "/assets/images/neelambari-2.jpg|1.8|50%|39%|50% 0%",
-          "px": 889
+          "from": "/assets/images/neelambari-turn.jpg|1.3|50%|39%|50% 0%",
+          "px": 788
         }
       }
     },
@@ -16105,11 +17637,11 @@
           "oy": "30%"
         },
         "styling": {
-          "img": 1,
-          "s": 1.4,
-          "ox": "40%",
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
           "oy": "30%",
-          "op": "40% 25%"
+          "op": "50% 10%"
         }
       },
       "looks": [],
@@ -16155,8 +17687,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gulaabi-styled.jpg",
-          "from": "/assets/images/gulaabi-detail.jpg|1.4|40%|30%|40% 25%",
-          "px": 731
+          "from": "/assets/images/gulaabi.jpg|1.3|50%|30%|50% 10%",
+          "px": 788
         }
       }
     },
@@ -16205,48 +17737,56 @@
         "blousePiece": null,
         "weave": null,
         "origin": null,
-        "availability": null
+        "availability": null,
+        "booti": "Gold and silver zari booti in a vine jaal"
       },
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/pista-full.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/pista-n1.jpg",
+          "width": 2000,
+          "height": 3000,
           "real": true,
-          "pos": "50% 60%",
-          "frame": {
-            "x": 0,
-            "y": 0.1111,
-            "w": 1,
-            "h": 0.8889
-          },
-          "alt": "Pista, a pistachio silk saree with a gold and silver zari jaal and a tasselled pallu, worn standing among palms beside white scalloped arches",
-          "source": "model photography/Pista shoot (20 Nov 2026)/pista-full.jpg"
+          "alt": "Pista, a pale pistachio-green Banarasi silk with silver and gold zari booti and a floral border, worn leaning in a white arcade among palms",
+          "source": "model photography/Pista shoot (23 Nov 2026)/pista-a.jpg"
         },
         {
-          "src": "/assets/images/pista-closeup.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/pista-n2.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Pista close up: the floral zari border at the shoulder and the zari booti on pistachio silk",
+          "source": "model photography/Pista shoot (23 Nov 2026)/pista-b.jpg",
+          "fit": "cover"
+        },
+        {
+          "src": "/assets/images/pista-n3.jpg",
+          "width": 2000,
+          "height": 3000,
+          "real": true,
+          "alt": "Pista worn standing by a white pillar, the broad zari pallu falling to a tasselled edge",
+          "source": "model photography/Pista shoot (23 Nov 2026)/pista-c.jpg",
+          "fit": "cover"
+        },
+        {
+          "src": "/assets/images/pista-n4.jpg",
           "role": "product",
           "fit": "cover",
           "actual": true,
-          "alt": "Pista up close: the gold and silver zari jaal with booti on pistachio silk, and the woven border over the shoulder",
-          "source": "model photography/Pista shoot (20 Nov 2026)/pista-closeup.jpg"
+          "width": 1320,
+          "height": 1760,
+          "alt": "Pista border up close: a floral zari border in gold and silver on pistachio silk",
+          "source": "model photography/Pista shoot (23 Nov 2026)/pista-b.jpg (cropped x2000 y1320 1500×2000)"
         },
         {
-          "src": "/assets/images/pista-pillar.jpg",
-          "width": 1600,
-          "height": 2400,
-          "real": true,
-          "frame": {
-            "x": 0,
-            "y": 0.1111,
-            "w": 1,
-            "h": 0.8889
-          },
-          "alt": "Pista worn with a red brocade blouse, the zari pallu gathered in her hands",
-          "source": "model photography/Pista shoot (20 Nov 2026)/pista-pillar.jpg"
+          "src": "/assets/images/pista-n5.jpg",
+          "role": "product",
+          "fit": "cover",
+          "actual": true,
+          "width": 1320,
+          "height": 1760,
+          "alt": "Pista booti up close: gold and silver zari booti within a vine jaal on pistachio silk",
+          "source": "model photography/Pista shoot (23 Nov 2026)/pista-b.jpg (cropped x1320 y3060 1680×2240)"
         }
       ],
       "crops": {
@@ -16308,10 +17848,10 @@
         },
         "styling": {
           "img": 0,
-          "s": 3,
-          "ox": "54%",
-          "oy": "44%",
-          "op": "50% 0%"
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "25%",
+          "op": "50% 15%"
         }
       },
       "looks": [],
@@ -16342,47 +17882,36 @@
       "features": {
         "fabric": {
           "img": 1,
-          "s": 2,
-          "ox": "40%",
-          "oy": "50%",
-          "op": "50% 80%"
-        },
-        "border": {
-          "img": 1,
-          "s": 2.6,
-          "ox": "70%",
-          "oy": "50%",
-          "op": "50% 14%"
-        },
-        "motif": {
-          "img": 1,
-          "s": 3.6,
+          "s": 2.2,
           "ox": "50%",
           "oy": "50%",
-          "op": "50% 44%"
-        }
-      },
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/pista-fabric.jpg",
-          "from": "/assets/images/pista-closeup.jpg|2|40%|50%|50% 80%",
-          "px": 2000
+          "op": "50% 86%"
         },
         "border": {
-          "src": "/assets/images/detail/pista-border.jpg",
-          "from": "/assets/images/pista-closeup.jpg|2.6|70%|50%|50% 14%",
-          "px": 1538
+          "img": 3,
+          "s": 1.6,
+          "ox": "50%",
+          "oy": "0%",
+          "op": "50% 0%"
         },
         "motif": {
-          "src": "/assets/images/detail/pista-motif.jpg",
-          "from": "/assets/images/pista-closeup.jpg|3.6|50%|50%|50% 44%",
-          "px": 1111
-        },
-        "styled": {
-          "src": "/assets/images/detail/pista-styled.jpg",
-          "from": "/assets/images/pista-full.jpg|3|54%|44%|50% 0%",
-          "px": 1333
+          "img": 4,
+          "s": 1.8,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
         }
+      },
+      "video": {
+        "src": "/assets/video/pista-reel.mp4",
+        "srcSmall": "/assets/video/pista-reel-small.mp4",
+        "poster": "/assets/images/pista-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/pista/pista.MP4 4.8 s–9 s (from the twirl), slowed to half speed and stabilised; enhanced by _tools/enhance-reel-slow.sh, 23 Nov 2026; GRADE=\"lutyuv=y='if(gt(val,190),190+(val-190)*0.6,val)',eq=contrast=1.04:saturation=1.03,hqdn3d=1:1:2:2,unsharp=5:5:0.4:5:5:0\"; no sound"
+        ]
       }
     },
     {
@@ -16435,45 +17964,68 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/dariya-1.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/dariya-arcade.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Dariya — an aqua saree with silver zari butis and a trailing vine border of indigo, coral, green and marigold flowers, worn beside palms in a blue and white arcade",
+          "alt": "Dariya, an aqua saree with silver zari booti and a flowering-vine border in indigo, coral, green and marigold, worn smiling under blue scalloped arches",
+          "source": "model photography/Dariya shoot (sent in chat 23 Nov 2026)/dariya-arcade.png",
           "frame": {
             "x": 0,
-            "y": 0.11,
+            "y": 0.1111,
             "w": 1,
             "h": 0.8889
           }
         },
         {
-          "src": "/assets/images/dariya-2.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/dariya-palms.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Dariya — laughing in the sun, the vine border across the shoulder and down the pallu",
+          "alt": "Dariya worn full length beside palms and a blue wall, face turned up to the light, the vine-bordered pallu falling to the floor",
+          "source": "model photography/Dariya shoot (sent in chat 23 Nov 2026)/dariya-palms.png",
           "frame": {
             "x": 0,
-            "y": 0.08,
+            "y": 0.1111,
             "w": 1,
             "h": 0.8889
-          },
-          "fit": "cover"
+          }
         },
         {
-          "src": "/assets/images/dariya-3.jpg",
-          "width": 1600,
-          "height": 2400,
+          "src": "/assets/images/dariya-laugh.jpg",
+          "width": 1024,
+          "height": 1536,
           "real": true,
-          "alt": "Dariya — the pallu over the shoulder, with the floral vine border and silver zari butis",
+          "alt": "Dariya laughing, the pallu over the arm with the flowering-vine border in front",
+          "source": "model photography/Dariya shoot (sent in chat 23 Nov 2026)/dariya-laugh.png",
           "frame": {
             "x": 0,
             "y": 0,
             "w": 1,
             "h": 0.8889
-          },
-          "fit": "cover"
+          }
+        },
+        {
+          "src": "/assets/images/dariya-border-zoom.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Dariya border up close: a flowering vine of indigo leaves with coral, green and marigold flowers",
+          "source": "model photography/Dariya shoot (sent in chat 23 Nov 2026)/dariya-laugh.png (cropped x190 y876 440×660, spline 2.3×, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
+        },
+        {
+          "src": "/assets/images/dariya-booti-zoom.jpg",
+          "width": 1024,
+          "height": 1536,
+          "real": true,
+          "alt": "Dariya booti up close: small silver zari flowers on the aqua body",
+          "source": "model photography/Dariya shoot (sent in chat 23 Nov 2026)/dariya-laugh.png (cropped x500 y840 340×510, spline 3×, light denoise)",
+          "role": "product",
+          "fit": "cover",
+          "actual": true
         }
       ],
       "crops": {
@@ -16537,11 +18089,11 @@
           "op": "50% 100%"
         },
         "styling": {
-          "img": 1,
-          "s": 1.8,
-          "ox": "61%",
-          "oy": "39%",
-          "op": "50% 0%"
+          "img": 0,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "35%",
+          "op": "50% 20%"
         }
       },
       "looks": [],
@@ -16569,50 +18121,39 @@
         ]
       },
       "photoshoot": true,
-      "detailCircles": {
-        "fabric": {
-          "src": "/assets/images/detail/dariya-fabric.jpg",
-          "from": "/assets/images/dariya-3.jpg|2.4|88%|59%|50% 100%",
-          "px": 667
-        },
-        "border": {
-          "src": "/assets/images/detail/dariya-border.jpg",
-          "from": "/assets/images/dariya-3.jpg|2.6|26%|100%|50% 100%",
-          "px": 615
-        },
-        "motif": {
-          "src": "/assets/images/detail/dariya-motif.jpg",
-          "from": "/assets/images/dariya-2.jpg|3|20%|100%|50% 100%",
-          "px": 533
-        },
-        "styled": {
-          "src": "/assets/images/detail/dariya-styled.jpg",
-          "from": "/assets/images/dariya-2.jpg|1.8|61%|39%|50% 0%",
-          "px": 889
-        }
-      },
       "features": {
         "fabric": {
-          "img": 2,
-          "s": 2.4,
-          "ox": "88%",
-          "oy": "59%",
-          "op": "50% 100%"
+          "img": 4,
+          "s": 1.3,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 65%"
         },
         "border": {
-          "img": 2,
-          "s": 2.6,
-          "ox": "26%",
-          "oy": "100%",
-          "op": "50% 100%"
+          "img": 3,
+          "s": 1.4,
+          "ox": "50%",
+          "oy": "50%",
+          "op": "50% 50%"
         },
         "motif": {
-          "img": 1,
-          "s": 3,
-          "ox": "20%",
-          "oy": "100%",
-          "op": "50% 100%"
+          "img": 4,
+          "s": 1.8,
+          "ox": "7%",
+          "oy": "35%",
+          "op": "50% 0%"
         }
+      },
+      "video": {
+        "src": "/assets/video/dariya-reel.mp4",
+        "srcSmall": "/assets/video/dariya-reel-small.mp4",
+        "poster": "/assets/images/dariya-reel-poster.jpg",
+        "width": 1080,
+        "height": 1920,
+        "silent": true,
+        "sources": [
+          "model photography/saree videos/saree model vids/dariya/dariya.MP4 0–6 s, slowed to 0.8×; re-graded 23 Nov 2026 (client: background too bright, steadier): enhance-reel-slow.sh with SMOOTH=45 MAXSHIFT=40 GRADE=\"lutyuv=y='if(gt(255*pow(val/255,1.12),160),160+(255*pow(val/255,1.12)-160)*0.42,255*pow(val/255,1.12))',eq=contrast=1.06:saturation=1.08,hqdn3d=1:1:2:2,unsharp=5:5:0.4:5:5:0\" (deeper mids, glare rolled off, no white-balance change); no sound"
+        ]
       }
     },
     {
@@ -16769,7 +18310,7 @@
         },
         "styling": {
           "img": 1,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "39%",
           "op": "50% 0%"
@@ -16817,8 +18358,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/tota-styled.jpg",
-          "from": "/assets/images/tota-2.jpg|1.8|50%|39%|50% 0%",
-          "px": 889
+          "from": "/assets/images/tota-2.jpg|1.3|50%|39%|50% 0%",
+          "px": 1231
         }
       },
       "galleryListed": true,
@@ -17033,7 +18574,7 @@
         },
         "styling": {
           "img": 1,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "39%",
           "oy": "32%",
           "op": "50% 0%"
@@ -17081,8 +18622,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/saagar-styled.jpg",
-          "from": "/assets/images/saagar-2.jpg|1.8|39%|32%|50% 0%",
-          "px": 889
+          "from": "/assets/images/saagar-2.jpg|1.3|39%|32%|50% 0%",
+          "px": 1231
         }
       },
       "galleryListed": true,
@@ -17243,7 +18784,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "48%",
           "oy": "28%",
           "op": "48% 28%"
@@ -17291,8 +18832,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/nilam-styled.jpg",
-          "from": "/assets/images/nilam.jpg|1.8|48%|28%|48% 28%",
-          "px": 569
+          "from": "/assets/images/nilam.jpg|1.3|48%|28%|48% 28%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -17449,7 +18990,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 3,
+          "s": 1.3,
           "ox": "64%",
           "oy": "30%",
           "op": "50% 0%"
@@ -17497,8 +19038,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/baingani-styled.jpg",
-          "from": "/assets/images/baingani-full.jpg|3|64%|30%|50% 0%",
-          "px": 1333
+          "from": "/assets/images/baingani-full.jpg|1.3|64%|30%|50% 0%",
+          "px": 3077
         }
       },
       "galleryListed": true,
@@ -17638,7 +19179,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "48%",
           "oy": "22%",
           "op": "48% 22%"
@@ -17681,8 +19222,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kamdhenu-styled.jpg",
-          "from": "/assets/images/kamdhenu.jpg|1.8|48%|22%|48% 22%",
-          "px": 569
+          "from": "/assets/images/kamdhenu.jpg|1.3|48%|22%|48% 22%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -17825,7 +19366,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "73%",
           "oy": "39%",
           "op": "50% 0%"
@@ -17896,8 +19437,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gulnaar-styled.jpg",
-          "from": "/assets/images/gulnaar-shoot.jpg|1.8|73%|39%|50% 0%",
-          "px": 889
+          "from": "/assets/images/gulnaar-shoot.jpg|1.3|73%|39%|50% 0%",
+          "px": 1231
         }
       },
       "slideCuts": {
@@ -18030,7 +19571,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "34%",
           "oy": "50%",
           "op": "50% 8%"
@@ -18101,8 +19642,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/saawan-styled.jpg",
-          "from": "/assets/images/saawan-shoot.jpg|1.8|34%|50%|50% 8%",
-          "px": 889
+          "from": "/assets/images/saawan-shoot.jpg|1.3|34%|50%|50% 8%",
+          "px": 1231
         }
       },
       "slideCuts": {
@@ -18270,7 +19811,7 @@
         },
         "styling": {
           "img": 2,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "50%",
           "op": "50% 5%"
@@ -18318,8 +19859,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gagan-styled.jpg",
-          "from": "/assets/images/gagan-3.jpg|1.8|50%|50%|50% 5%",
-          "px": 889
+          "from": "/assets/images/gagan-3.jpg|1.3|50%|50%|50% 5%",
+          "px": 1231
         }
       },
       "galleryListed": true,
@@ -18521,7 +20062,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "20%",
           "op": "47% 8%"
@@ -18576,8 +20117,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/surmai-styled.jpg",
-          "from": "/assets/images/surmai.jpg|1.8|47%|20%|47% 8%",
-          "px": 594
+          "from": "/assets/images/surmai.jpg|1.3|47%|20%|47% 8%",
+          "px": 823
         }
       }
     },
@@ -18748,7 +20289,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "22%",
           "op": "47% 10%"
@@ -18816,8 +20357,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/zamurrad-styled.jpg",
-          "from": "/assets/images/zamurrad.jpg|1.8|47%|22%|47% 10%",
-          "px": 599
+          "from": "/assets/images/zamurrad.jpg|1.3|47%|22%|47% 10%",
+          "px": 829
         }
       }
     },
@@ -18977,7 +20518,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "43%",
           "oy": "20%",
           "op": "43% 8%"
@@ -19042,8 +20583,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/shahtoot-styled.jpg",
-          "from": "/assets/images/shahtoot.jpg|1.8|43%|20%|43% 8%",
-          "px": 623
+          "from": "/assets/images/shahtoot.jpg|1.3|43%|20%|43% 8%",
+          "px": 862
         }
       }
     },
@@ -19213,7 +20754,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "42%",
           "op": "50% 30%"
@@ -19278,8 +20819,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/khubani-styled.jpg",
-          "from": "/assets/images/khubani.jpg|1.8|50%|42%|50% 30%",
-          "px": 603
+          "from": "/assets/images/khubani.jpg|1.3|50%|42%|50% 30%",
+          "px": 835
         }
       }
     },
@@ -19440,7 +20981,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "27%",
           "op": "47% 15%"
@@ -19500,8 +21041,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kachnar-styled.jpg",
-          "from": "/assets/images/kachnar.jpg|1.8|47%|27%|47% 15%",
-          "px": 623
+          "from": "/assets/images/kachnar.jpg|1.3|47%|27%|47% 15%",
+          "px": 863
         }
       }
     },
@@ -19671,7 +21212,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "30%",
           "op": "47% 18%"
@@ -19736,8 +21277,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/jharokha-styled.jpg",
-          "from": "/assets/images/jharokha.jpg|1.8|47%|30%|47% 18%",
-          "px": 604
+          "from": "/assets/images/jharokha.jpg|1.3|47%|30%|47% 18%",
+          "px": 837
         }
       }
     },
@@ -19908,7 +21449,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "24%",
           "op": "47% 12%"
@@ -19973,8 +21514,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gunja-styled.jpg",
-          "from": "/assets/images/gunja.jpg|1.8|47%|24%|47% 12%",
-          "px": 569
+          "from": "/assets/images/gunja.jpg|1.3|47%|24%|47% 12%",
+          "px": 788
         }
       }
     },
@@ -20144,7 +21685,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "42%",
           "oy": "39%",
           "op": "42% 27%"
@@ -20209,8 +21750,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gulbahar-styled.jpg",
-          "from": "/assets/images/gulbahar.jpg|1.8|42%|39%|42% 27%",
-          "px": 623
+          "from": "/assets/images/gulbahar.jpg|1.3|42%|39%|42% 27%",
+          "px": 863
         }
       }
     },
@@ -20382,7 +21923,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "45%",
           "op": "47% 33%"
@@ -20437,8 +21978,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/jaswand-styled.jpg",
-          "from": "/assets/images/jaswand.jpg|1.8|47%|45%|47% 33%",
-          "px": 569
+          "from": "/assets/images/jaswand.jpg|1.3|47%|45%|47% 33%",
+          "px": 788
         }
       }
     },
@@ -20604,7 +22145,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "48%",
           "oy": "29%",
           "op": "48% 17%"
@@ -20655,7 +22196,7 @@
         "fabric": {
           "src": "/assets/images/detail/tulsi-fabric.jpg",
           "from": "/assets/images/tulsi-print.jpg|2|30%|75%|",
-          "px": 800
+          "px": 2000
         },
         "border": {
           "src": "/assets/images/detail/tulsi-border.jpg",
@@ -20665,12 +22206,12 @@
         "motif": {
           "src": "/assets/images/detail/tulsi-motif.jpg",
           "from": "/assets/images/tulsi-print.jpg|1.6|50%|50%|",
-          "px": 1000
+          "px": 2500
         },
         "styled": {
           "src": "/assets/images/detail/tulsi-styled.jpg",
-          "from": "/assets/images/tulsi.jpg|1.8|48%|29%|48% 17%",
-          "px": 603
+          "from": "/assets/images/tulsi.jpg|1.3|48%|29%|48% 17%",
+          "px": 835
         }
       }
     },
@@ -20820,7 +22361,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "22%",
           "op": "50% 10%"
@@ -20885,8 +22426,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/tesu-styled.jpg",
-          "from": "/assets/images/tesu.jpg|1.8|50%|22%|50% 10%",
-          "px": 580
+          "from": "/assets/images/tesu.jpg|1.3|50%|22%|50% 10%",
+          "px": 803
         }
       }
     },
@@ -21056,7 +22597,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "60%",
           "oy": "29%",
           "op": "60% 17%"
@@ -21121,8 +22662,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/mitti-styled.jpg",
-          "from": "/assets/images/mitti.jpg|1.8|60%|29%|60% 17%",
-          "px": 623
+          "from": "/assets/images/mitti.jpg|1.3|60%|29%|60% 17%",
+          "px": 862
         }
       }
     },
@@ -21277,7 +22818,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "20%",
           "oy": "32%",
           "op": "20% 20%"
@@ -21342,8 +22883,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kokum-styled.jpg",
-          "from": "/assets/images/kokum.jpg|1.8|20%|32%|20% 20%",
-          "px": 623
+          "from": "/assets/images/kokum.jpg|1.3|20%|32%|20% 20%",
+          "px": 863
         }
       }
     },
@@ -21512,7 +23053,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "27%",
           "op": "47% 15%"
@@ -21577,8 +23118,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/amavas-styled.jpg",
-          "from": "/assets/images/amavas.jpg|1.8|47%|27%|47% 15%",
-          "px": 604
+          "from": "/assets/images/amavas.jpg|1.3|47%|27%|47% 15%",
+          "px": 836
         }
       }
     },
@@ -21738,7 +23279,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "39%",
           "op": "47% 27%"
@@ -21798,8 +23339,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/shikara-styled.jpg",
-          "from": "/assets/images/shikara.jpg|1.8|47%|39%|47% 27%",
-          "px": 569
+          "from": "/assets/images/shikara.jpg|1.3|47%|39%|47% 27%",
+          "px": 788
         }
       }
     },
@@ -21971,7 +23512,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "32%",
           "op": "50% 20%"
@@ -22029,8 +23570,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/saunf-styled.jpg",
-          "from": "/assets/images/saunf.jpg|1.8|50%|32%|50% 20%",
-          "px": 569
+          "from": "/assets/images/saunf.jpg|1.3|50%|32%|50% 20%",
+          "px": 788
         }
       }
     },
@@ -22201,7 +23742,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "39%",
           "op": "50% 27%"
@@ -22251,8 +23792,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/neem-styled.jpg",
-          "from": "/assets/images/neem.jpg|1.8|50%|39%|50% 27%",
-          "px": 569
+          "from": "/assets/images/neem.jpg|1.3|50%|39%|50% 27%",
+          "px": 788
         }
       }
     },
@@ -22424,7 +23965,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "30%",
           "op": "45% 18%"
@@ -22489,8 +24030,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/sitara-styled.jpg",
-          "from": "/assets/images/sitara.jpg|1.8|45%|30%|45% 18%",
-          "px": 623
+          "from": "/assets/images/sitara.jpg|1.3|45%|30%|45% 18%",
+          "px": 863
         }
       }
     },
@@ -22650,7 +24191,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "55%",
           "oy": "39%",
           "op": "55% 27%"
@@ -22715,8 +24256,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gulaal-styled.jpg",
-          "from": "/assets/images/gulaal.jpg|1.8|55%|39%|55% 27%",
-          "px": 569
+          "from": "/assets/images/gulaal.jpg|1.3|55%|39%|55% 27%",
+          "px": 788
         }
       }
     },
@@ -22876,7 +24417,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "30%",
           "oy": "50%",
           "op": "30% 38%"
@@ -22941,8 +24482,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/aparajita-styled.jpg",
-          "from": "/assets/images/aparajita.jpg|1.8|30%|50%|30% 38%",
-          "px": 569
+          "from": "/assets/images/aparajita.jpg|1.3|30%|50%|30% 38%",
+          "px": 788
         }
       }
     },
@@ -23107,7 +24648,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "73%",
           "oy": "50%",
           "op": "73% 38%"
@@ -23158,7 +24699,7 @@
         "fabric": {
           "src": "/assets/images/detail/banafsha-fabric.jpg",
           "from": "/assets/images/banafsha-print.jpg|2|30%|75%|",
-          "px": 800
+          "px": 2000
         },
         "border": {
           "src": "/assets/images/detail/banafsha-border.jpg",
@@ -23168,12 +24709,12 @@
         "motif": {
           "src": "/assets/images/detail/banafsha-motif.jpg",
           "from": "/assets/images/banafsha-print.jpg|1.6|50%|50%|",
-          "px": 1000
+          "px": 2500
         },
         "styled": {
           "src": "/assets/images/detail/banafsha-styled.jpg",
-          "from": "/assets/images/banafsha.jpg|1.8|73%|50%|73% 38%",
-          "px": 569
+          "from": "/assets/images/banafsha.jpg|1.3|73%|50%|73% 38%",
+          "px": 788
         }
       }
     },
@@ -23332,7 +24873,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "39%",
           "op": "50% 27%"
@@ -23397,8 +24938,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kumud-styled.jpg",
-          "from": "/assets/images/kumud.jpg|1.8|50%|39%|50% 27%",
-          "px": 523
+          "from": "/assets/images/kumud.jpg|1.3|50%|39%|50% 27%",
+          "px": 725
         }
       }
     },
@@ -23569,7 +25110,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "42%",
           "oy": "30%",
           "op": "42% 18%"
@@ -23634,8 +25175,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/maina-styled.jpg",
-          "from": "/assets/images/maina.jpg|1.8|42%|30%|42% 18%",
-          "px": 569
+          "from": "/assets/images/maina.jpg|1.3|42%|30%|42% 18%",
+          "px": 788
         }
       }
     },
@@ -23806,7 +25347,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "45%",
           "oy": "32%",
           "op": "45% 20%"
@@ -23866,8 +25407,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/pudina-styled.jpg",
-          "from": "/assets/images/pudina.jpg|1.8|45%|32%|45% 20%",
-          "px": 591
+          "from": "/assets/images/pudina.jpg|1.3|45%|32%|45% 20%",
+          "px": 818
         }
       }
     },
@@ -24038,7 +25579,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "47%",
           "oy": "26%",
           "op": "47% 14%"
@@ -24103,8 +25644,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/laali-styled.jpg",
-          "from": "/assets/images/laali.jpg|1.8|47%|26%|47% 14%",
-          "px": 569
+          "from": "/assets/images/laali.jpg|1.3|47%|26%|47% 14%",
+          "px": 788
         }
       }
     },
@@ -24206,7 +25747,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -24239,8 +25780,8 @@
       "detailCircles": {
         "styled": {
           "src": "/assets/images/detail/rekha-styled.jpg",
-          "from": "/assets/images/rekha.jpg|1.8|50%|15%|50% 10%",
-          "px": 602
+          "from": "/assets/images/rekha.jpg|1.3|50%|15%|50% 10%",
+          "px": 833
         }
       },
       "slideCuts": {
@@ -24359,7 +25900,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -24392,8 +25933,8 @@
       "detailCircles": {
         "styled": {
           "src": "/assets/images/detail/syahi-styled.jpg",
-          "from": "/assets/images/syahi.jpg|1.8|50%|15%|50% 10%",
-          "px": 569
+          "from": "/assets/images/syahi.jpg|1.3|50%|15%|50% 10%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -24511,7 +26052,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -24560,8 +26101,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/chaand-styled.jpg",
-          "from": "/assets/images/chaand.jpg|1.8|50%|15%|50% 10%",
-          "px": 409
+          "from": "/assets/images/chaand.jpg|1.3|50%|15%|50% 10%",
+          "px": 566
         }
       },
       "slideCuts": {
@@ -24681,7 +26222,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -24725,8 +26266,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/champa-styled.jpg",
-          "from": "/assets/images/champa.jpg|1.8|50%|15%|50% 10%",
-          "px": 486
+          "from": "/assets/images/champa.jpg|1.3|50%|15%|50% 10%",
+          "px": 673
         }
       },
       "slideCuts": {
@@ -24844,7 +26385,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -24893,8 +26434,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/jaali-styled.jpg",
-          "from": "/assets/images/jaali.jpg|1.8|50%|15%|50% 10%",
-          "px": 391
+          "from": "/assets/images/jaali.jpg|1.3|50%|15%|50% 10%",
+          "px": 542
         }
       },
       "slideCuts": {
@@ -25013,7 +26554,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -25062,8 +26603,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/samandar-styled.jpg",
-          "from": "/assets/images/samandar.jpg|1.8|50%|15%|50% 10%",
-          "px": 484
+          "from": "/assets/images/samandar.jpg|1.3|50%|15%|50% 10%",
+          "px": 670
         }
       },
       "slideCuts": {
@@ -25182,7 +26723,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -25226,8 +26767,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/saras-styled.jpg",
-          "from": "/assets/images/saras.jpg|1.8|50%|15%|50% 10%",
-          "px": 502
+          "from": "/assets/images/saras.jpg|1.3|50%|15%|50% 10%",
+          "px": 695
         }
       },
       "slideCuts": {
@@ -25345,7 +26886,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -25389,8 +26930,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/shaam-styled.jpg",
-          "from": "/assets/images/shaam.jpg|1.8|50%|15%|50% 10%",
-          "px": 474
+          "from": "/assets/images/shaam.jpg|1.3|50%|15%|50% 10%",
+          "px": 656
         }
       },
       "slideCuts": {
@@ -25508,7 +27049,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -25552,8 +27093,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/rangrez-styled.jpg",
-          "from": "/assets/images/rangrez.jpg|1.8|50%|15%|50% 10%",
-          "px": 489
+          "from": "/assets/images/rangrez.jpg|1.3|50%|15%|50% 10%",
+          "px": 678
         }
       },
       "slideCuts": {
@@ -25671,7 +27212,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -25720,8 +27261,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/jugnu-styled.jpg",
-          "from": "/assets/images/jugnu.jpg|1.8|50%|15%|50% 10%",
-          "px": 474
+          "from": "/assets/images/jugnu.jpg|1.3|50%|15%|50% 10%",
+          "px": 656
         }
       },
       "slideCuts": {
@@ -25839,7 +27380,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -25883,8 +27424,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/patti-styled.jpg",
-          "from": "/assets/images/patti.jpg|1.8|50%|15%|50% 10%",
-          "px": 382
+          "from": "/assets/images/patti.jpg|1.3|50%|15%|50% 10%",
+          "px": 529
         }
       },
       "slideCuts": {
@@ -26002,7 +27543,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -26051,8 +27592,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/dhaara-styled.jpg",
-          "from": "/assets/images/dhaara.jpg|1.8|50%|15%|50% 10%",
-          "px": 474
+          "from": "/assets/images/dhaara.jpg|1.3|50%|15%|50% 10%",
+          "px": 656
         }
       },
       "slideCuts": {
@@ -26171,7 +27712,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -26220,8 +27761,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/sarson-styled.jpg",
-          "from": "/assets/images/sarson.jpg|1.8|50%|15%|50% 10%",
-          "px": 491
+          "from": "/assets/images/sarson.jpg|1.3|50%|15%|50% 10%",
+          "px": 680
         }
       },
       "slideCuts": {
@@ -26339,7 +27880,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -26372,8 +27913,8 @@
       "detailCircles": {
         "styled": {
           "src": "/assets/images/detail/raat-styled.jpg",
-          "from": "/assets/images/raat.jpg|1.8|50%|15%|50% 10%",
-          "px": 569
+          "from": "/assets/images/raat.jpg|1.3|50%|15%|50% 10%",
+          "px": 788
         }
       },
       "slideCuts": {
@@ -26493,7 +28034,7 @@
         },
         "styling": {
           "img": 0,
-          "s": 1.8,
+          "s": 1.3,
           "ox": "50%",
           "oy": "15%",
           "op": "50% 10%"
@@ -26526,8 +28067,8 @@
       "detailCircles": {
         "styled": {
           "src": "/assets/images/detail/mehrab-styled.jpg",
-          "from": "/assets/images/mehrab.jpg|1.8|50%|15%|50% 10%",
-          "px": 569
+          "from": "/assets/images/mehrab.jpg|1.3|50%|15%|50% 10%",
+          "px": 788
         }
       },
       "slideCuts": {

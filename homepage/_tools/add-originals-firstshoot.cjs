@@ -4,8 +4,9 @@
 // image indices don't move. Safe to re-run. Run from homepage/: node _tools/add-originals-firstshoot.cjs
 const fs = require('fs'); const f = 'assets/data/products.json'; const d = JSON.parse(fs.readFileSync(f, 'utf8'));
 const ADD = {
-  kairi: { drive: 'IMG_7947.JPG', alt: 'Kairi, folded: the saree itself, a chartreuse pallu with a gold zari border over the lilac body with silver buti' },
-  bagh: { drive: 'IMG_7944.JPG', alt: 'Bagh, folded: the saree itself, magenta with silver flower buti and the orange zari pallu folded open' },
+  // kairi, bagh: removed 23 Nov 2026 — the client says these folded photos are not these sarees
+  _kairi_removed: { drive: 'IMG_7947.JPG', alt: 'Kairi, folded: the saree itself, a chartreuse pallu with a gold zari border over the lilac body with silver buti' },
+  _bagh_removed: { drive: 'IMG_7944.JPG', alt: 'Bagh, folded: the saree itself, magenta with silver flower buti and the orange zari pallu folded open' },
 };
 for (const [slug, a] of Object.entries(ADD)) {
   const p = d.products.find((x) => x.slug === slug);

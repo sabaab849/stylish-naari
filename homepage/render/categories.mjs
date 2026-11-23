@@ -5,7 +5,7 @@
 // A category without a photograph shows a plain panel; a category without sarees shows a short note, never a fake product.
 import { page, productCard, esc, link } from './pdp.mjs';
 
-const productsIn = (data, slug) => data.products.filter((p) => (p.categories || []).includes(slug));
+const productsIn = (data, slug) => data.products.filter((p) => !p.unlisted && (p.categories || []).includes(slug)); // unlisted: colour variants shown only from their main saree's page (client, 23 Nov 2026)
 const childrenOf = (data, slug) => (data.categories || []).filter((c) => c.parent === slug);
 
 /* Old state-wise links (Banaras ki Bunkari …): where they go now, or null. */

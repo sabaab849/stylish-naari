@@ -1,3 +1,6 @@
+// SUPERSEDED (23 Nov 2026): Kumkum now shows the client's colour-edited photos (kumkum-e1…e4.jpg, galleryListed); the camera photos
+// this script sets are kept as hidden images[4–7] for the circles. Do not re-run it.
+if (!process.env.FORCE_OLD_KUMKUM) { console.log("set-kumkum-shoot.cjs is superseded; see the note at the top"); process.exit(0); }
 // Kumkum: the camera photos from the shoot replace the earlier 1024×1536 copies (client, 20 Nov 2026). Gallery: full
 // length between the velvet curtains first (client), then the photos in the order sent: portrait with lotus buds →
 // close-up of the buta and zari border (real close-up, "Actual product photograph") → standing against the damask.

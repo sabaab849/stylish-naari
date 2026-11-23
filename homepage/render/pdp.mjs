@@ -88,7 +88,8 @@ export function galleryViews(p) {
   }
   if (!p.galleryListed) for (const img of products) if (!early.includes(img)) views.push(productView(img));
   // The second photograph always fills the frame edge to edge, no bands either side (client, 17 Nov 2026)
-  if (views[1] && !views[1].video && views[1].whole) views[1] = { ...views[1], style: '', whole: false };
+  // …unless the photo is marked images[].keepWhole: the client asked for it uncropped (Elaichi's second photo, 23 Nov 2026)
+  if (views[1] && !views[1].video && views[1].whole && !views[1].img.keepWhole) views[1] = { ...views[1], style: '', whole: false };
   if (p.video?.src) views.push({ video: p.video, img: { src: p.video.poster || p.images[0].src, width: p.video.width || 720, height: p.video.height || 1280 }, alt: `${p.name}: the saree in motion` });
   // Caption under every photograph (client, Nov 16), from what the photo really is (isActual):
   //   real photo of the saree itself (folded / laid flat / Drive pendrive / catalogue)  → "Actual product photograph"
@@ -661,7 +662,7 @@ export function productCard(p, index = 0, { wishlist = true } = {}) {
 }
 
 function renderRelated(p, data) {
-  const others = data.products.filter((x) => x.slug !== p.slug);
+  const others = data.products.filter((x) => x.slug !== p.slug && !x.unlisted); // unlisted: colour variants shown only from their main saree's page (client, 23 Nov 2026)
   // Prefer sarees that share an edit; fall back to the rest of the collection.
   const sharedKey = p.edits.find((k) => others.some((x) => x.edits.includes(k)));
   const shared = sharedKey ? others.filter((x) => x.edits.includes(sharedKey)) : [];

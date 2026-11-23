@@ -14,7 +14,7 @@ import { page, esc, cropImg } from './pdp.mjs';
 import { reel, marks, closing, lookbook, kalamkari, crafts } from './craft-content.mjs';
 import { windowFrame } from './craft-windows.mjs';
 
-const productsIn = (data, slug) => data.products.filter((p) => (p.categories || []).includes(slug));
+const productsIn = (data, slug) => data.products.filter((p) => !p.unlisted && (p.categories || []).includes(slug)); // unlisted: colour variants shown only from their main saree's page (client, 23 Nov 2026)
 const arrowLink = (label, href, extra = '') => `<a class="link${extra}" href="${esc(href)}"><span class="link__label">${esc(label)}</span></a>`;
 
 /* ─── 1. Hero: one craft film, an editorial composition over it ──────

@@ -13,6 +13,7 @@ const BOOTI = {
   jamun: 'Gold zari booti',
   neel: 'Silver lotus booti',
   bagh: 'Silver floral booti',
+  pista: 'Gold and silver zari booti in a vine jaal',
   hariyali: 'Gold flower booti with magenta leaves',
   gulkand: 'Small floral booti in silver and red',
   parinda: 'Zari parrot booti',

@@ -155,7 +155,7 @@ change the token, never a page.
   portrait frame (`fit: cover`), longest side 2400px. Slide order: model → folded → print → border beside the print →
   blouse piece (client, 19 Nov 2026; checked against Drive "Original folded images", `_tools/semi-silk-slides.cjs`).
   SN-057 – 02 in Drive is not Surmai (teal jaal): never use it.
-- The second gallery slide always fills the frame edge to edge, never shown whole with bands at the sides (client,
+- The second gallery slide always fills the frame edge to edge, never shown whole with bands at the sides (`images[].keepWhole: true` would show it whole with bands; the client tried it on Elaichi, 23 Nov 2026, and preferred the fill) (client,
   17 Nov 2026; `render/pdp.mjs`, after the views are built). Later slides keep their own `fit`.
 - Blouse piece (client, 18 Nov 2026): the last slide, role "blouse", caption "Blouse piece, actual product photograph", and
   the details row "Blouse piece" (always shown when set). From Drive folder "2day" (folders 49–92, matched to products by
@@ -171,6 +171,7 @@ change the token, never a page.
 - No border-only slides (client, Nov 2026): a photo that shows the border beside plain body cloth, with none of the
   print, is not a gallery slide. It stays in `images` with `gallery: false` (crops still use it by index; `render/pdp.mjs`
   skips it, and skips crops cut from it). List: `_tools/hide-border-only.cjs` — check every new saree's border shot by eye.
+- First-shoot Banarasi sarees Kairi, Jamun, Neel, Bagh (client, 23 Nov 2026, replaces the note below): the folded / laid-flat photos are NOT these sarees and are removed. Gallery = model photo → border zoom → print zoom (`<slug>-border-zoom.jpg`, `<slug>-print-zoom.jpg`, cut from the ~1100px model photo: light nlmeans, spline scaling to 1320×1760, no sharpening), galleryListed; circles from those zooms. The old note below is superseded; add-originals-firstshoot.cjs and detail-slides-from-original.cjs no longer touch them. Larger camera originals of the model photos would make the zooms sharper.
 - First-shoot Banarasi sarees (Kairi, Jamun, Neel, Bagh): model photo → real folded photo (`images[].second: true`, from the
   Drive folder "Stylissh Naari" flat-lays, turned upright: `_tools/originals-firstshoot.ps1` + `add-originals-firstshoot.cjs`)
   → border crop → print crop. Kairi = IMG_7947, Bagh = IMG_7944. Kahani and Leela (client, 20 Nov 2026): their laid-flat product photo is slide 2 the same way (`second: true`). No flat-lay of Jamun or Neel in that folder yet (Jamun's real
@@ -188,6 +189,18 @@ change the token, never a page.
   `_tools/convert-kasni-colours.cjs` + `add-kasni-colours.cjs`, then `set-feature-crops.cjs`; blouse piece = the plain
   striped body with the border (Gold 06, Red 05); Gold 02 (folded with the lilac) is not used; Kasni's reel stays lilac only.
   The homepage shows only the first colour of a set (`render/collection.mjs` → `renderNewArrivals`); category pages show all.
+  Third set (client, 23 Nov 2026): Jamun's weave in Tamra (copper orange, rani pink pallu) and Mirchi (chilli red, bottle green
+  pallu), `_tools/add-jamun-colours.cjs`; folded photos only (camera originals in `model photography/Jamun colours (23 Nov 2026)/`),
+  turned upright, plus booti and border close-ups cut from the originals. These carry `unlisted: true`: a colour variant that
+  appears ONLY via its main saree's colour chips (and search), never on the homepage, shop all, category, craft or edit pages or
+  under "you may also like" (filters in collection.mjs, categories.mjs, craft.mjs, pdp.mjs). Use it for any future variant set.
+  Fourth set (client, 23 Nov 2026): Neel's lotus buti weave in Abeer (magenta, orange pallu), Kopal (pista green, rose pink pallu),
+  Bhanwra (violet, lemon yellow pallu), `_tools/add-neel-colours.cjs`, unlisted. Every page of the set, Neel included, has the group
+  photo (Neel's model seated beside the three folded colours, `neel-colours-group.jpg`) as slide 2. Neel's reel was removed (it showed
+  another colour of the design).
+  Fifth set (client, 23 Nov 2026): Kairi's floral buta weave in Sabza (sage green, lilac pallu), Mohini (magenta, rose pink pallu),
+  Mahavar (crimson, rose pink pallu), `_tools/add-kairi-colours.cjs`, unlisted; folded photos + booti and border close-ups. Kairi's
+  reel was removed for the same reason.
   Their model photos are the seated set sent 20 Nov 2026 (`kajal-model.jpg`, `kishmish-seated.jpg`, `gulmohar-seated.jpg`, 1024×1536):
   3:4 frame from the bottom (y 0.1111), card `pos: 50% 70%`. The earlier padded `-space.jpg` photos are no longer used.
 - Slides 3–4 come from the original (client, 20 Nov 2026): model → original saree photo → print and border close-ups from the
@@ -273,12 +286,18 @@ AI model photo or AI close-ups (client, 19 Nov 2026); only "As styled" uses the 
 use `products.json → features` (`_tools/set-feature-crops.cjs`: [image, focal x, focal y, zoom] per circle; add new sarees
 there). Sarees with no real photo yet (53 AI-only or photoshoot sarees) still use their old crops until one is supplied.
 
+"As styled" is wide, never a tight zoom on the face (client, 23 Nov 2026): crops.styling zoom is capped at 1.3 and aimed at a photo that shows the face, jewellery and blouse (; per-saree fixes in its FIX list). Run it, then make-detail-circles.mjs, after changing any model photo.
+
+"As styled" is wide, never a tight zoom on the face (client, 23 Nov 2026): crops.styling zoom is capped at 1.3 and aimed at a
+photo that shows the face, jewellery and blouse (`_tools/set-styled-wide.cjs`; per-saree fixes in its FIX list). Run it, then
+make-detail-circles.mjs, after changing any model photo.
+
 Never blurry (client, 20 Nov 2026): every circle is pre-cut into its own 720×720 file, `assets/images/detail/<slug>-<key>.jpg`
 (`products.json → detailCircles`), by `_tools/make-detail-circles.mjs` (needs FFMPEG and FFPROBE). It cuts from the sharpest copy
 on disk (the Drive or `model photography/` original when it is the same picture), never uses fewer than 480 source pixels across
 a circle (a deeper zoom widens the view instead, leaning towards the saree), and scales with Lanczos. A cut is used only while its
 crop is unchanged (`render/pdp.mjs` → `circleSig`), so **re-run it after changing any crop, feature or photo**, and for new sarees.
-New camera shoots sent in chat (4000×6000): keep the full-size files in `model photography/<Saree> shoot (<date>)/` and point `images[].source` at them, so circles cut from the original (Elaichi, 20 Nov 2026; Genda the same day: standing → portrait → cuff close-up in the client's order, `_tools/set-genda-shoot.cjs`; two model photos at the client's request; Kumkum likewise: full length → lotus portrait → close-up → damask, `_tools/set-kumkum-shoot.cjs`). The tool reads EXIF Orientation, so sideways-stored camera JPEGs still match.
+New camera shoots sent in chat (4000×6000): keep the full-size files in `model photography/<Saree> shoot (<date>)/` and point `images[].source` at them, so circles cut from the original (Elaichi, 20 Nov 2026; Genda the same day: standing → portrait → blouse close-up (added 23 Nov 2026, chat copy 1024px) → cuff close-up in the client's order, `_tools/set-genda-shoot.cjs`; reel = genda (1) 3–10 s + genda (2) 3 s–end joined by `_tools/enhance-reel-merge.sh`; two model photos at the client's request; Kumkum likewise: full length → lotus portrait → close-up → damask, `_tools/set-kumkum-shoot.cjs`). The tool reads EXIF Orientation, so sideways-stored camera JPEGs still match.
 
 ## PDP "Shipping & return" and "Disclaimer" accordions
 
@@ -287,10 +306,16 @@ styles `pdp.css` → `.pdp-acc`). "Shipping & return" holds Shipping (`store.shi
 **Import duty, which is PLACEHOLDER text** (`[Insert import duty details]`) until the client supplies it. "Disclaimer" is about photographs
 (colour variation, handmade variation, model's blouse/jewellery is styling only). Copy lives as constants in `pdp.mjs`.
 
-Parinda (client, 20 Nov 2026) is the one exception to "one model photograph per product": its gallery is three real shoot photos in the
-client's order — seated on the balcony, standing between pillars, pallu close-up (`parinda-seat/stand/close.jpg`, `galleryListed`). Circles
-are cut from the standing (border) and close-up (fabric, motif) photos.
+Parinda (client, 23 Nov 2026; was the 20 Nov seat / stand / close set) is an exception to "one model photograph per product": its gallery is the client's four photos in order — standing at the gold door, by the lotus pillar, seated against the sky, close-up — then a booti close-up cut from the seated photo (enlarged 2× bicubic, no sharpening, so it stays smooth), then the reel (3 s–13 s of painda.MP4, GRADE as in `_tools/set-parinda-shoot.cjs`). All four are 1024×1536 chat copies: ask for the full-size files. Circles come from the close-up.
+
+Neelambari (client, 23 Nov 2026): the client's three photos in order (over the shoulder by the pillar → full length → smiling) → border zoom → booti zoom, both cut from photo 1 (light nlmeans, spline scaling, no sharpening); circles from the zooms; `_tools/set-neelambari-shoot.cjs` (1024px chat copies: ask for full-size files).
 
 Gulkand (client, 23 Nov 2026) is a second exception: main photo → back view (pallu held out) → border close-up (cut from a 488px photo sent in chat; ask for the full-size file) → booti close-up (cut from the back view; cleaned of JPEG blocking, no sharpening, so it reads smooth) → aanchal; the film goes after it when supplied. Circles come from the 20 Nov close-up, kept as `images[5]` with `gallery: false`. Originals: `model photography/Gulkand shoot (20–23 Nov 2026)/`.
 
-Reel enhancement (client-approved, 23 Nov 2026): raw model videos go through `homepage/_tools/enhance-reel.sh <slug> "<original>" [start] [duration]` (light vid.stab stabilisation capped at 24px, highlight roll-off only, no white-balance change, contrast +4%, saturation +3%, light denoise + gentle sharpen, 1080×1920 at 25fps, no sound). It keeps the original, writes `<name> - enhanced.mp4` beside it, the site reel + small copy + poster. Always send the client a side-by-side preview first. A clip with no sound sets `video.silent: true`, which removes the sound buttons (`render/pdp.mjs`, `pdp.js`). First: Gulkand, from 0:02. Elaichi (23 Nov 2026): 1 s–8 s, with `GRADE=` for its sunlit background (luma only: gamma 0.95, highlights above 125 compressed to 40 %, contrast +8 %, saturation +6 %); the command is in `_tools/set-elaichi-shoot.cjs`'s video entry. Its gallery is the client's four photos in order (door → pillar with rose → close-up → peacock feather; pillar and door originals kept hidden for the circles): `_tools/set-elaichi-shoot.cjs`. Photos 2 and 4 are chat copies (~1100px): ask for the full-size files.
+Reel enhancement (client-approved, 23 Nov 2026): raw model videos go through `homepage/_tools/enhance-reel.sh <slug> "<original>" [start] [duration]` (light vid.stab stabilisation capped at 24px, highlight roll-off only, no white-balance change, contrast +4%, saturation +3%, light denoise + gentle sharpen, 1080×1920 at 25fps, no sound). It keeps the original, writes `<name> - enhanced.mp4` beside it, the site reel + small copy + poster. Always send the client a side-by-side preview first. A clip with no sound sets `video.silent: true`, which removes the sound buttons (`render/pdp.mjs`, `pdp.js`). First: Gulkand, from 0:02. Hiran (23 Nov 2026): 3–11 s, `SMOOTH=30` and a GRADE that rolls off clipped red chroma (the "red flashes"); gallery = full length → incense pot → close-up (client's order) (`_tools/set-hiran-shoot.cjs`, 1024px chat copies). Elaichi (23 Nov 2026): 1 s–8 s, with `GRADE=` for its sunlit background (luma only: gamma 0.95, highlights above 125 compressed to 40 %, contrast +8 %, saturation +6 %); the command is in `_tools/set-elaichi-shoot.cjs`'s video entry. Its gallery is the client's four photos in order (door → pillar with rose → close-up → peacock feather; pillar and door originals kept hidden for the circles): `_tools/set-elaichi-shoot.cjs`. Photos 2 and 4 are chat copies (~1100px): ask for the full-size files.
+
+Bright backlit reels (Dariya, 23 Nov 2026, re-graded at the client's request): enhance-reel-slow.sh with SMOOTH=45 MAXSHIFT=40 (firmer but the zoom stays ~7%) and a GRADE that deepens the mids (gamma 1.12) and compresses everything above 160 to 42%; the full command is in products.json → dariya.video.sources.
+
+Low-light reels (Kumkum, 23 Nov 2026, client-approved): run enhance-reel.sh with GRADE set to the default grade plus a gentle lift of Y < 70 and hqdn3d 1.5:1.5:3:3: GRADE="lutyuv=y='if(gt(val\,200)\,200+(val-200)*35/55\,if(lt(val\,70)\,val+(70-val)*(val-16)/54*0.18\,val))',eq=contrast=1.04:saturation=1.03,hqdn3d=1.5:1.5:3:3,unsharp=5:5:0.4:5:5:0" (keep the backslashes before the commas)
+
+Dariya (client, 23 Nov 2026): the client's three photos in order (arcade → palms → laughing) → border zoom → booti zoom (both from photo 3, light nlmeans, spline, no sharpening) → reel (dariya.MP4 0–6 s, 0.8× via `_tools/enhance-reel-slow.sh` with SMOOTH=15 MAXSHIFT=16 and a stronger highlight roll-off for the overexposed arcade; exact GRADE in `_tools/set-dariya-shoot.cjs`). Preview: `dariya - PREVIEW original vs enhanced.mp4` beside the original. 1024px chat copies: ask for full-size files.

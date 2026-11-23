@@ -26,6 +26,8 @@ const peacock = by('elaichi-peacock.jpg') || {
   source: `${SHOOT}/sent in chat 23 Nov 2026/elaichi-peacock.jpg`,
 };
 delete rose.gallery; delete peacock.gallery;
+// 4:5 photos fill the 2:3 frame edge to edge (client, 23 Nov 2026: no grey bands); scaled down only, sides trimmed slightly
+for (const im of [rose, peacock]) Object.assign(im, { role: 'product', fit: 'cover' });
 p.images = [shoot, rose, closeup, peacock, { ...pillar, gallery: false }, { ...door, gallery: false }];
 const idx = (n) => p.images.findIndex((im) => im.src === old[n]);
 for (const group of [p.crops, p.features]) for (const c of Object.values(group || {})) if (c && c.img != null) c.img = idx(c.img);

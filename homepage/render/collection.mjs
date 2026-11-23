@@ -79,7 +79,8 @@ function renderFilters(data, list, { withEdits }) {
 export function renderCollection(data, editKey = null) {
   const edit = editKey ? data.edits[editKey] : null;
   if (editKey && !edit) return null;
-  const list = edit ? data.products.filter((p) => p.edits.includes(editKey)) : data.products;
+  const shown = data.products.filter((p) => !p.unlisted); // unlisted: colour variants shown only from their main saree's page (client, 23 Nov 2026)
+  const list = edit ? shown.filter((p) => p.edits.includes(editKey)) : shown;
   const title = edit ? edit.title : 'All sarees';
   const intro = edit ? edit.descriptor : 'Every saree in the collection.';
 
@@ -87,7 +88,7 @@ export function renderCollection(data, editKey = null) {
     `<li><a class="collection__tab${current ? ' is-current' : ''}" href="${href}"${current ? ' aria-current="page"' : ''}>${esc(label)} <span>${pad2(count)}</span></a></li>`;
   const tabs = [tab('/sarees', 'All sarees', data.products.length, !edit)]
     .concat(Object.entries(data.edits).map(([key, e]) =>
-      tab(`/edits/${key}`, e.title, data.products.filter((p) => p.edits.includes(key)).length, key === editKey)))
+      tab(`/edits/${key}`, e.title, data.products.filter((p) => !p.unlisted && p.edits.includes(key)).length, key === editKey)))
     .join('');
 
   const filters = renderFilters(data, list, { withEdits: !edit });
@@ -145,7 +146,7 @@ export function renderNewArrivals(data) {
   // One card per print: of a colour-sibling set (products.json → colourSiblings) only the first colour is shown; the
   // others are a chip away on its PDP (client, 20 Nov 2026)
   const firstColour = (p) => !p.colourSiblings?.length || p.colourSiblings[0] === p.slug;
-  const list = data.products.filter((p) => p.isNew && firstColour(p));
+  const list = data.products.filter((p) => p.isNew && !p.unlisted && firstColour(p));
   // the homepage row carries no wishlist hearts: Quick add only
   return (list.length ? list : data.products).map((p, i) => productCard(p, i, { wishlist: false })).join('');
 }
