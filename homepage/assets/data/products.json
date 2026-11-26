@@ -22212,17 +22212,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/surmai.jpg",
-          "width": 1070,
-          "height": 1470,
-          "pos": "50% 50%",
-          "alt": "Surmai — a grey saree with a broad gold zari pallu, worn standing in front of an olive arch with dried grasses",
-          "source": "model photography/premium silk ai photography/Elegant Gold and Silver Saree Portrait 1.png",
+          "src": "/assets/images/surmai-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "50% 40%",
+          "alt": "Surmai — a grey tissue saree with a broad gold zari pallu, worn seated beneath a painting of cows",
+          "source": "model photography/AI model images (26 Nov 2026)/Surmai (SN-057).png",
           "frame": {
-            "x": 0.0054,
-            "y": 0.01,
-            "w": 0.9892,
-            "h": 0.96
+            "x": 0,
+            "y": 0.1111,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -22286,14 +22286,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "40%",
-          "oy": "90%"
+          "ox": "35%",
+          "oy": "88%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "60%",
-          "oy": "50%"
+          "ox": "58%",
+          "oy": "72%"
         },
         "border": {
           "img": 3,
@@ -22322,8 +22322,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "38%",
-          "oy": "55%"
+          "ox": "40%",
+          "oy": "62%"
         },
         "swatch": {
           "img": 2,
@@ -22334,16 +22334,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "47%",
-          "oy": "20%",
-          "op": "47% 8%"
+          "ox": "52%",
+          "oy": "30%",
+          "op": "52% 15%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "60% 50%",
-        "posMobile": "60% 50%"
+        "pos": "50% 40%",
+        "posMobile": "50% 40%"
       },
       "closer": {
         "heading": "Kohl grey, edged in gold.",
@@ -22388,8 +22388,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/surmai-styled.jpg",
-          "from": "/assets/images/surmai.jpg|1.3|47%|20%|47% 8%",
-          "px": 823
+          "from": "/assets/images/surmai-ai.jpg|1.3|52%|30%|52% 15%",
+          "px": 788
         }
       }
     },
@@ -22451,17 +22451,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/zamurrad.jpg",
-          "width": 1078,
-          "height": 1460,
-          "pos": "55% 50%",
-          "alt": "Zamurrad — an emerald saree with a gold lattice, worn standing beside brass urns of pink flowers",
-          "source": "model photography/premium silk ai photography/Elegant Green Saree Studio Portrait 1.png",
+          "src": "/assets/images/zamurrad-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Zamurrad — a green saree with a gold jaal and a magenta border, worn seated on old stone steps",
+          "source": "model photography/AI model images (26 Nov 2026)/Zamurrad (SN-066).png",
           "frame": {
-            "x": 0.0858,
-            "y": 0.05,
-            "w": 0.9142,
-            "h": 0.9
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -22513,14 +22513,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "50%",
-          "oy": "88%"
+          "ox": "40%",
+          "oy": "86%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "62%",
-          "oy": "45%"
+          "ox": "75%",
+          "oy": "70%"
         },
         "border": {
           "img": 3,
@@ -22561,16 +22561,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "47%",
-          "oy": "22%",
-          "op": "47% 10%"
+          "ox": "45%",
+          "oy": "28%",
+          "op": "45% 14%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "62% 45%",
-        "posMobile": "62% 45%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Emerald, latticed in gold.",
@@ -22628,8 +22628,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/zamurrad-styled.jpg",
-          "from": "/assets/images/zamurrad.jpg|1.3|47%|22%|47% 10%",
-          "px": 829
+          "from": "/assets/images/zamurrad-ai.jpg|1.3|45%|28%|45% 14%",
+          "px": 788
         }
       }
     },
@@ -23153,17 +23153,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/kachnar.jpg",
-          "width": 1122,
-          "height": 1402,
-          "pos": "50% 50%",
-          "alt": "Kachnar — a pink saree with ivory leaves and a lime green border, worn standing between banks of hydrangeas and orchids",
-          "source": "model photography/premium silk ai photography/Elegant Pink Saree Portrait 1.png",
+          "src": "/assets/images/kachnar-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Kachnar — a pink and lime green saree with large woven flowers, worn standing by a wooden door reading a book",
+          "source": "model photography/AI model images (26 Nov 2026)/Kachnar (SN-071).png",
           "frame": {
-            "x": 0.097,
-            "y": 0.1,
-            "w": 0.806,
-            "h": 0.86
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -23205,14 +23205,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "50%",
-          "oy": "88%"
+          "ox": "40%",
+          "oy": "80%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "60%",
-          "oy": "50%"
+          "ox": "62%",
+          "oy": "55%"
         },
         "border": {
           "img": 3,
@@ -23241,8 +23241,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "45%",
-          "oy": "60%"
+          "ox": "50%",
+          "oy": "72%"
         },
         "swatch": {
           "img": 2,
@@ -23254,15 +23254,15 @@
           "img": 0,
           "s": 1.3,
           "ox": "47%",
-          "oy": "27%",
-          "op": "47% 15%"
+          "oy": "28%",
+          "op": "47% 14%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "60% 50%",
-        "posMobile": "60% 50%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Pink, leafed in lime.",
@@ -23312,8 +23312,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/kachnar-styled.jpg",
-          "from": "/assets/images/kachnar.jpg|1.3|47%|27%|47% 15%",
-          "px": 863
+          "from": "/assets/images/kachnar-ai.jpg|1.3|47%|28%|47% 14%",
+          "px": 788
         }
       }
     },
@@ -23612,15 +23612,15 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/gunja.jpg",
+          "src": "/assets/images/gunja-ai.jpg",
           "width": 1024,
           "height": 1536,
-          "pos": "50% 50%",
-          "alt": "Gunja — a red saree with a broad black and gold floral border, worn standing in front of a draped brown backdrop",
-          "source": "model photography/premium silk ai photography/Elegant Red Saree Portrait (1) 1.png",
+          "pos": "55% 75%",
+          "alt": "Gunja — a red saree with gold buti and a black floral border and pallu, worn seated in a palm garden",
+          "source": "model photography/AI model images (26 Nov 2026)/Gunja (SN-070).png",
           "frame": {
             "x": 0,
-            "y": 0.08,
+            "y": 0.1111,
             "w": 1,
             "h": 0.8889
           }
@@ -23673,14 +23673,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "45%",
-          "oy": "90%"
+          "ox": "30%",
+          "oy": "86%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "60%",
-          "oy": "45%"
+          "ox": "72%",
+          "oy": "82%"
         },
         "border": {
           "img": 3,
@@ -23709,8 +23709,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "42%",
-          "oy": "55%"
+          "ox": "45%",
+          "oy": "70%"
         },
         "swatch": {
           "img": 2,
@@ -23721,16 +23721,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "47%",
-          "oy": "24%",
-          "op": "47% 12%"
+          "ox": "60%",
+          "oy": "58%",
+          "op": "60% 50%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "60% 45%",
-        "posMobile": "60% 45%"
+        "pos": "55% 75%",
+        "posMobile": "55% 75%"
       },
       "closer": {
         "heading": "Red, bordered in black.",
@@ -23785,7 +23785,7 @@
         },
         "styled": {
           "src": "/assets/images/detail/gunja-styled.jpg",
-          "from": "/assets/images/gunja.jpg|1.3|47%|24%|47% 12%",
+          "from": "/assets/images/gunja-ai.jpg|1.3|60%|58%|60% 50%",
           "px": 788
         }
       }
@@ -23848,17 +23848,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/gulbahar.jpg",
-          "width": 1122,
-          "height": 1402,
-          "pos": "55% 50%",
-          "alt": "Gulbahar — a red saree with multicolour flowers, the fringed pallu lifting in the air, in an ochre room with arched niches",
-          "source": "model photography/premium silk ai photography/Elegant Red Saree in Arched Studio Setting 1.png",
+          "src": "/assets/images/gulbahar-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Gulbahar — a red saree woven with colourful floral vines and border, worn seated reading a book",
+          "source": "model photography/AI model images (26 Nov 2026)/Gulbahar (SN-055).png",
           "frame": {
-            "x": 0.1611,
-            "y": 0.12,
-            "w": 0.7778,
-            "h": 0.83
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -23909,14 +23909,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "42%",
-          "oy": "88%"
+          "ox": "70%",
+          "oy": "85%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "72%",
-          "oy": "60%"
+          "ox": "60%",
+          "oy": "55%"
         },
         "border": {
           "img": 3,
@@ -23945,8 +23945,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "45%",
-          "oy": "55%"
+          "ox": "60%",
+          "oy": "60%"
         },
         "swatch": {
           "img": 2,
@@ -23957,16 +23957,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "42%",
-          "oy": "39%",
-          "op": "42% 27%"
+          "ox": "40%",
+          "oy": "28%",
+          "op": "40% 14%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "72% 60%",
-        "posMobile": "72% 60%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Red, in full spring.",
@@ -24021,8 +24021,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/gulbahar-styled.jpg",
-          "from": "/assets/images/gulbahar.jpg|1.3|42%|39%|42% 27%",
-          "px": 863
+          "from": "/assets/images/gulbahar-ai.jpg|1.3|40%|28%|40% 14%",
+          "px": 788
         }
       }
     },
@@ -24086,17 +24086,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/jaswand.jpg",
+          "src": "/assets/images/jaswand-ai.jpg",
           "width": 1024,
-          "height": 1535,
-          "pos": "50% 50%",
-          "alt": "Jaswand — a rani pink saree with a purple border, worn seated beside a brass bowl of lotus buds before a painted landscape",
-          "source": "model photography/premium silk ai photography/Elegant Saree Portrait by Lotus Bowl 1.png",
+          "height": 1536,
+          "pos": "55% 35%",
+          "alt": "Jaswand — a rani pink saree with gold paisley buta and a purple border, worn holding a lotus bud",
+          "source": "model photography/AI model images (26 Nov 2026)/Jaswand (SN-061).png",
           "frame": {
-            "x": 0.0953,
-            "y": 0.27,
-            "w": 0.8095,
-            "h": 0.72
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -24154,7 +24154,7 @@
           "img": 0,
           "s": 1.5,
           "ox": "70%",
-          "oy": "75%"
+          "oy": "50%"
         },
         "border": {
           "img": 3,
@@ -24184,7 +24184,7 @@
           "img": 0,
           "s": 1.4,
           "ox": "40%",
-          "oy": "70%"
+          "oy": "85%"
         },
         "swatch": {
           "img": 2,
@@ -24195,16 +24195,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "47%",
-          "oy": "45%",
-          "op": "47% 33%"
+          "ox": "55%",
+          "oy": "30%",
+          "op": "55% 15%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "70% 75%",
-        "posMobile": "70% 75%"
+        "pos": "55% 35%",
+        "posMobile": "55% 35%"
       },
       "closer": {
         "heading": "Hibiscus pink, bordered in purple.",
@@ -24249,7 +24249,7 @@
         },
         "styled": {
           "src": "/assets/images/detail/jaswand-styled.jpg",
-          "from": "/assets/images/jaswand.jpg|1.3|47%|45%|47% 33%",
+          "from": "/assets/images/jaswand-ai.jpg|1.3|55%|30%|55% 15%",
           "px": 788
         }
       }
@@ -24308,17 +24308,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/tulsi.jpg",
-          "width": 1086,
-          "height": 1448,
-          "pos": "50% 50%",
-          "alt": "Tulsi — a bottle green saree with silver buti and border, worn standing beneath hanging marigolds beside clay pots",
-          "source": "model photography/premium silk ai photography/Emerald Saree Marigold Portrait 1.png",
+          "src": "/assets/images/tulsi-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Tulsi — a bottle green saree with silver buti and a floral border, worn seated on a carpet, looking over her shoulder",
+          "source": "model photography/AI model images (26 Nov 2026)/Tulsi (SN-054).png",
           "frame": {
-            "x": 0.065,
-            "y": 0.08,
-            "w": 0.87,
-            "h": 0.87
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -24369,14 +24369,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "50%",
-          "oy": "88%"
+          "ox": "25%",
+          "oy": "90%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "58%",
-          "oy": "60%"
+          "ox": "60%",
+          "oy": "65%"
         },
         "border": {
           "img": 3,
@@ -24405,8 +24405,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "45%",
-          "oy": "50%"
+          "ox": "55%",
+          "oy": "55%"
         },
         "swatch": {
           "img": 2,
@@ -24417,16 +24417,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "48%",
-          "oy": "29%",
-          "op": "48% 17%"
+          "ox": "42%",
+          "oy": "28%",
+          "op": "42% 14%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "58% 60%",
-        "posMobile": "58% 60%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Basil green, in silver.",
@@ -24481,8 +24481,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/tulsi-styled.jpg",
-          "from": "/assets/images/tulsi.jpg|1.3|48%|29%|48% 17%",
-          "px": 835
+          "from": "/assets/images/tulsi-ai.jpg|1.3|42%|28%|42% 14%",
+          "px": 788
         }
       }
     },
@@ -24539,12 +24539,18 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/tesu.jpg",
-          "width": 1044,
-          "height": 1507,
-          "pos": "50% 40%",
-          "alt": "Tesu — a marigold orange saree with small red flowers, worn standing against a terracotta backdrop",
-          "source": "model photography/premium silk ai photography/Golden Orange Saree Editorial Portrait 1.png"
+          "src": "/assets/images/tesu-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Tesu — a marigold yellow saree with orange buti, worn seated on a cane bench against a green wall",
+          "source": "model photography/AI model images (26 Nov 2026)/Tesu (SN-078).png",
+          "frame": {
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
+          }
         },
         {
           "src": "/assets/images/tesu-original.jpg",
@@ -24585,14 +24591,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "50%",
-          "oy": "90%"
+          "ox": "40%",
+          "oy": "86%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "62%",
-          "oy": "45%"
+          "ox": "60%",
+          "oy": "50%"
         },
         "border": {
           "img": 3,
@@ -24621,8 +24627,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "45%",
-          "oy": "65%"
+          "ox": "50%",
+          "oy": "72%"
         },
         "swatch": {
           "img": 2,
@@ -24633,16 +24639,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "50%",
-          "oy": "22%",
-          "op": "50% 10%"
+          "ox": "48%",
+          "oy": "28%",
+          "op": "48% 14%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "62% 45%",
-        "posMobile": "62% 45%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Saffron orange, flecked with red.",
@@ -24697,8 +24703,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/tesu-styled.jpg",
-          "from": "/assets/images/tesu.jpg|1.3|50%|22%|50% 10%",
-          "px": 803
+          "from": "/assets/images/tesu-ai.jpg|1.3|48%|28%|48% 14%",
+          "px": 788
         }
       }
     },
@@ -24760,17 +24766,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/mitti.jpg",
-          "width": 1121,
-          "height": 1403,
-          "pos": "55% 50%",
-          "alt": "Mitti — an earthy beige saree with small coloured buti and a silver border, worn in an ochre room lit with brass lamps",
-          "source": "model photography/premium silk ai photography/Golden Saree Portrait in an Ochre Interior 1.png",
+          "src": "/assets/images/mitti-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "55% 35%",
+          "alt": "Mitti — a grey-beige saree with orange and green buti and a white woven border, worn against a pale blue wall",
+          "source": "model photography/AI model images (26 Nov 2026)/Mitti (SN-056).png",
           "frame": {
-            "x": 0.1511,
-            "y": 0.1,
-            "w": 0.7979,
-            "h": 0.85
+            "x": 0,
+            "y": 0.08,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -24821,14 +24827,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "50%",
-          "oy": "88%"
+          "ox": "40%",
+          "oy": "86%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "65%",
-          "oy": "60%"
+          "ox": "66%",
+          "oy": "70%"
         },
         "border": {
           "img": 3,
@@ -24857,7 +24863,7 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "50%",
+          "ox": "45%",
           "oy": "55%"
         },
         "swatch": {
@@ -24869,16 +24875,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "60%",
-          "oy": "29%",
-          "op": "60% 17%"
+          "ox": "58%",
+          "oy": "30%",
+          "op": "58% 15%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "65% 60%",
-        "posMobile": "65% 60%"
+        "pos": "55% 35%",
+        "posMobile": "55% 35%"
       },
       "closer": {
         "heading": "Earth, lit with colour.",
@@ -24933,8 +24939,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/mitti-styled.jpg",
-          "from": "/assets/images/mitti.jpg|1.3|60%|29%|60% 17%",
-          "px": 862
+          "from": "/assets/images/mitti-ai.jpg|1.3|58%|30%|58% 15%",
+          "px": 788
         }
       }
     },
@@ -25216,17 +25222,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/amavas.jpg",
-          "width": 1087,
-          "height": 1447,
-          "pos": "50% 50%",
-          "alt": "Amavas — a black saree with ivory paisleys and a multicolour floral border, worn between carved sandstone pillars",
-          "source": "model photography/premium silk ai photography/Heritage Elegance in Embroidered Black Saree 1.png",
+          "src": "/assets/images/amavas-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Amavas — a black saree with large woven buta and a colourful floral border, worn seated on red velvet",
+          "source": "model photography/AI model images (26 Nov 2026)/Amavas (SN-074).png",
           "frame": {
-            "x": 0.0607,
-            "y": 0.08,
-            "w": 0.8786,
-            "h": 0.88
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -25277,13 +25283,13 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "45%",
-          "oy": "90%"
+          "ox": "40%",
+          "oy": "85%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "60%",
+          "ox": "70%",
           "oy": "50%"
         },
         "border": {
@@ -25313,7 +25319,7 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "42%",
+          "ox": "55%",
           "oy": "55%"
         },
         "swatch": {
@@ -25325,16 +25331,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "47%",
-          "oy": "27%",
-          "op": "47% 15%"
+          "ox": "45%",
+          "oy": "28%",
+          "op": "45% 14%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "60% 50%",
-        "posMobile": "60% 50%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Black, lit by flowers.",
@@ -25389,8 +25395,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/amavas-styled.jpg",
-          "from": "/assets/images/amavas.jpg|1.3|47%|27%|47% 15%",
-          "px": 836
+          "from": "/assets/images/amavas-ai.jpg|1.3|45%|28%|45% 14%",
+          "px": 788
         }
       }
     },
@@ -25675,17 +25681,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/saunf.jpg",
-          "width": 1025,
-          "height": 1535,
-          "pos": "50% 50%",
-          "alt": "Saunf — an olive green saree with gold buti and a paisley border, worn standing before a carved settee and candelabra",
-          "source": "model photography/premium silk ai photography/Model 01 in Olive Silk Elegance 1.png",
+          "src": "/assets/images/saunf-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "50% 35%",
+          "alt": "Saunf — an olive green saree with gold buti and a paisley border, worn with a purple blouse beside a wooden chair",
+          "source": "model photography/AI model images (26 Nov 2026)/Saunf (SN-062).png",
           "frame": {
-            "x": 0.0058,
-            "y": 0.1,
-            "w": 0.9884,
-            "h": 0.88
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -25736,14 +25742,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "45%",
-          "oy": "90%"
+          "ox": "52%",
+          "oy": "86%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "62%",
-          "oy": "60%"
+          "ox": "80%",
+          "oy": "80%"
         },
         "border": {
           "img": 3,
@@ -25773,7 +25779,7 @@
           "img": 0,
           "s": 1.4,
           "ox": "45%",
-          "oy": "55%"
+          "oy": "50%"
         },
         "swatch": {
           "img": 2,
@@ -25784,16 +25790,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "50%",
-          "oy": "32%",
-          "op": "50% 20%"
+          "ox": "46%",
+          "oy": "28%",
+          "op": "46% 12%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "62% 60%",
-        "posMobile": "62% 60%"
+        "pos": "50% 35%",
+        "posMobile": "50% 35%"
       },
       "closer": {
         "heading": "Fennel green, in gold.",
@@ -25841,7 +25847,7 @@
         },
         "styled": {
           "src": "/assets/images/detail/saunf-styled.jpg",
-          "from": "/assets/images/saunf.jpg|1.3|50%|32%|50% 20%",
+          "from": "/assets/images/saunf-ai.jpg|1.3|46%|28%|46% 12%",
           "px": 788
         }
       }
@@ -25904,17 +25910,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/neem.jpg",
+          "src": "/assets/images/neem-ai.jpg",
           "width": 1024,
-          "height": 1535,
-          "pos": "50% 50%",
-          "alt": "Neem — an emerald saree with embroidered flowers and a broad silver border, worn standing between carved temple pillars",
-          "source": "model photography/premium silk ai photography/Modern Muse in Emerald Silk 1.png",
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Neem — a bottle green saree with hand-embroidered bootas and a silver zari border, worn seated on a wooden chair",
+          "source": "model photography/AI model images (26 Nov 2026)/Neem (SN-082).png",
           "frame": {
-            "x": 0.0559,
-            "y": 0.18,
-            "w": 0.8882,
-            "h": 0.79
+            "x": 0,
+            "y": 0.08,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -25966,14 +25972,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "50%",
-          "oy": "92%"
+          "ox": "38%",
+          "oy": "80%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "60%",
-          "oy": "60%"
+          "ox": "85%",
+          "oy": "55%"
         },
         "border": {
           "img": 3,
@@ -26002,8 +26008,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "45%",
-          "oy": "60%"
+          "ox": "30%",
+          "oy": "72%"
         },
         "swatch": {
           "img": 2,
@@ -26014,16 +26020,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "50%",
-          "oy": "39%",
-          "op": "50% 27%"
+          "ox": "40%",
+          "oy": "32%",
+          "op": "40% 18%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "60% 60%",
-        "posMobile": "60% 60%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Neem green, sprigged with flowers.",
@@ -26063,7 +26069,7 @@
         },
         "styled": {
           "src": "/assets/images/detail/neem-styled.jpg",
-          "from": "/assets/images/neem.jpg|1.3|50%|39%|50% 27%",
+          "from": "/assets/images/neem-ai.jpg|1.3|40%|32%|40% 18%",
           "px": 788
         }
       }
@@ -26127,17 +26133,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/sitara.jpg",
-          "width": 1122,
-          "height": 1402,
-          "pos": "48% 50%",
-          "alt": "Sitara — a navy saree with a silver geometric jaal, worn standing between two hanging marigold garlands",
-          "source": "model photography/premium silk ai photography/Modern Muse in Navy Saree 1.png",
+          "src": "/assets/images/sitara-ai.jpg",
+          "width": 1024,
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Sitara — a navy saree with a silver and gold jaal and a rani pink edge, worn seated holding a pink lotus",
+          "source": "model photography/AI model images (26 Nov 2026)/Sitara (SN-065).png",
           "frame": {
-            "x": 0.1004,
-            "y": 0.12,
-            "w": 0.7591,
-            "h": 0.81
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -26189,14 +26195,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "45%",
-          "oy": "88%"
+          "ox": "60%",
+          "oy": "86%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "55%",
-          "oy": "55%"
+          "ox": "52%",
+          "oy": "42%"
         },
         "border": {
           "img": 3,
@@ -26225,8 +26231,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "45%",
-          "oy": "40%"
+          "ox": "50%",
+          "oy": "66%"
         },
         "swatch": {
           "img": 2,
@@ -26237,16 +26243,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "45%",
-          "oy": "30%",
-          "op": "45% 18%"
+          "ox": "40%",
+          "oy": "28%",
+          "op": "40% 14%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "55% 55%",
-        "posMobile": "55% 55%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Navy, full of stars.",
@@ -26301,8 +26307,8 @@
         },
         "styled": {
           "src": "/assets/images/detail/sitara-styled.jpg",
-          "from": "/assets/images/sitara.jpg|1.3|45%|30%|45% 18%",
-          "px": 863
+          "from": "/assets/images/sitara-ai.jpg|1.3|40%|28%|40% 14%",
+          "px": 788
         }
       }
     },
@@ -27272,17 +27278,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/maina.jpg",
+          "src": "/assets/images/maina-ai.jpg",
           "width": 1024,
-          "height": 1535,
-          "pos": "50% 50%",
-          "alt": "Maina — a magenta saree woven with birds and flowers, worn seated with the pallu spread out before a deep red wall",
-          "source": "model photography/premium silk ai photography/Serene Magenta Saree Portrait 1.png",
+          "height": 1536,
+          "pos": "45% 35%",
+          "alt": "Maina — a magenta saree woven with birds and flowers, with a gold border, worn seated on a brass stool",
+          "source": "model photography/AI model images (26 Nov 2026)/Maina (SN-052).png",
           "frame": {
-            "x": 0.0166,
-            "y": 0.12,
-            "w": 0.9669,
-            "h": 0.86
+            "x": 0,
+            "y": 0.0556,
+            "w": 1,
+            "h": 0.8889
           }
         },
         {
@@ -27334,13 +27340,13 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "35%",
+          "ox": "20%",
           "oy": "85%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "75%",
+          "ox": "62%",
           "oy": "70%"
         },
         "border": {
@@ -27370,8 +27376,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "35%",
-          "oy": "65%"
+          "ox": "50%",
+          "oy": "50%"
         },
         "swatch": {
           "img": 2,
@@ -27382,16 +27388,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "42%",
+          "ox": "40%",
           "oy": "30%",
-          "op": "42% 18%"
+          "op": "40% 15%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "75% 70%",
-        "posMobile": "75% 70%"
+        "pos": "45% 35%",
+        "posMobile": "45% 35%"
       },
       "closer": {
         "heading": "Magenta, full of birdsong.",
@@ -27446,7 +27452,7 @@
         },
         "styled": {
           "src": "/assets/images/detail/maina-styled.jpg",
-          "from": "/assets/images/maina.jpg|1.3|42%|30%|42% 18%",
+          "from": "/assets/images/maina-ai.jpg|1.3|40%|30%|40% 15%",
           "px": 788
         }
       }
@@ -27742,17 +27748,17 @@
       "galleryListed": true,
       "images": [
         {
-          "src": "/assets/images/laali.jpg",
+          "src": "/assets/images/laali-ai.jpg",
           "width": 1024,
-          "height": 1535,
-          "pos": "55% 50%",
-          "alt": "Laali — a coral red saree with gold buti, worn standing before a carved settee and candelabra",
-          "source": "model photography/premium silk ai photography/Timeless Coral Saree Elegance 1.png",
+          "height": 1536,
+          "pos": "45% 40%",
+          "alt": "Laali — a coral red saree with gold buti and a rani pink and gold border, worn seated beside a wooden crate",
+          "source": "model photography/AI model images (26 Nov 2026)/Laali (SN-064).png",
           "frame": {
             "x": 0,
-            "y": 0.08,
+            "y": 0.0556,
             "w": 1,
-            "h": 0.8895
+            "h": 0.8889
           }
         },
         {
@@ -27803,14 +27809,14 @@
         "fall": {
           "img": 0,
           "s": 1.5,
-          "ox": "45%",
+          "ox": "60%",
           "oy": "90%"
         },
         "pallu": {
           "img": 0,
           "s": 1.5,
-          "ox": "65%",
-          "oy": "50%"
+          "ox": "85%",
+          "oy": "85%"
         },
         "border": {
           "img": 3,
@@ -27839,8 +27845,8 @@
         "colour": {
           "img": 0,
           "s": 1.4,
-          "ox": "60%",
-          "oy": "60%"
+          "ox": "72%",
+          "oy": "55%"
         },
         "swatch": {
           "img": 2,
@@ -27851,16 +27857,16 @@
         "styling": {
           "img": 0,
           "s": 1.3,
-          "ox": "47%",
-          "oy": "26%",
-          "op": "47% 14%"
+          "ox": "46%",
+          "oy": "36%",
+          "op": "46% 22%"
         }
       },
       "looks": [],
       "backdrop": {
         "img": 0,
-        "pos": "65% 50%",
-        "posMobile": "65% 50%"
+        "pos": "45% 40%",
+        "posMobile": "45% 40%"
       },
       "closer": {
         "heading": "Coral red, in gold.",
@@ -27915,7 +27921,7 @@
         },
         "styled": {
           "src": "/assets/images/detail/laali-styled.jpg",
-          "from": "/assets/images/laali.jpg|1.3|47%|26%|47% 14%",
+          "from": "/assets/images/laali-ai.jpg|1.3|46%|36%|46% 22%",
           "px": 788
         }
       }

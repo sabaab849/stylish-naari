@@ -155,6 +155,11 @@ change the token, never a page.
   portrait frame (`fit: cover`), longest side 2400px. Slide order: model → folded → print → border beside the print →
   blouse piece (client, 19 Nov 2026; checked against Drive "Original folded images", `_tools/semi-silk-slides.cjs`).
   SN-057 – 02 in Drive is not Surmai (teal jaal): never use it.
+- New AI model photos (client, 26 Nov 2026): Surmai, Neem, Gunja, Mitti, Saunf, Tulsi, Laali, Amavas, Maina, Sitara, Jaswand,
+  Gulbahar, Kachnar, Tesu, Zamurrad have a new slide 1 (`<slug>-ai.jpg`, 1024×1536 = the generator's full size, never upscaled;
+  originals in `model photography/AI model images (26 Nov 2026)/`), matched to their SN through the folded reference photo the
+  client sent with each: `_tools/set-ai-models-26nov.cjs` (frame, card pos and the fall / pallu / colour / styled crop centres per
+  photo), then make-detail-circles.mjs. Their reels (where they have one) were made from the older AI pictures.
 - The second gallery slide always fills the frame edge to edge, never shown whole with bands at the sides (`images[].keepWhole: true` would show it whole with bands; the client tried it on Elaichi, 23 Nov 2026, and preferred the fill) (client,
   17 Nov 2026; `render/pdp.mjs`, after the views are built). Later slides keep their own `fit`.
 - Blouse piece (client, 18 Nov 2026): the last slide, role "blouse", caption "Blouse piece, actual product photograph", and
